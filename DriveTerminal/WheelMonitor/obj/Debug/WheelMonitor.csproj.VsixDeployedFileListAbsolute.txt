@@ -1,0 +1,4 @@
+C:\Users\greg\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\WheelMonitor\1.0\\WheelMonitor.dll
+C:\Users\greg\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\WheelMonitor\1.0\\WheelMonitor.pkgdef
+C:\Users\greg\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\WheelMonitor\1.0\\extension.vsixmanifest
+C:\Users\greg\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\WheelMonitor\1.0\\WheelMonitor.pdb

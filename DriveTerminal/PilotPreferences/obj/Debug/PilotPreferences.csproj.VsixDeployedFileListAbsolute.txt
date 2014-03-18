@@ -1,0 +1,6 @@
+C:\Users\greg\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\PilotPreferences.dll
+C:\Users\greg\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\PilotPreferences.pkgdef
+C:\Users\greg\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\extension.vsixmanifest
+C:\Users\greg\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\PilotPreferences.pdb
+C:\Users\greg\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\Deadzone.dll
+C:\Users\greg\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\Deadzone.pdb
