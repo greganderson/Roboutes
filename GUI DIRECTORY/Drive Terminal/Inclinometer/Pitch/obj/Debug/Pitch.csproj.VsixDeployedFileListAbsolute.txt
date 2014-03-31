@@ -1,0 +1,4 @@
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\Pitch\1.0\\Pitch.dll
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\Pitch\1.0\\Pitch.pkgdef
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\Pitch\1.0\\extension.vsixmanifest
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\Pitch\1.0\\Pitch.pdb

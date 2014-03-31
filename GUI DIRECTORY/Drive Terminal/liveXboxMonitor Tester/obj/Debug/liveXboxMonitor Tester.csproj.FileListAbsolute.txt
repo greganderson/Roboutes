@@ -1,0 +1,15 @@
+D:\GUI DIRECTORY\Drive Terminal\liveXboxMonitor Tester\bin\Debug\liveXboxMonitor Tester.exe.config
+D:\GUI DIRECTORY\Drive Terminal\liveXboxMonitor Tester\bin\Debug\liveXboxMonitor Tester.exe
+D:\GUI DIRECTORY\Drive Terminal\liveXboxMonitor Tester\bin\Debug\liveXboxMonitor Tester.pdb
+D:\GUI DIRECTORY\Drive Terminal\liveXboxMonitor Tester\bin\Debug\liveXboxMonitor.dll
+D:\GUI DIRECTORY\Drive Terminal\liveXboxMonitor Tester\bin\Debug\liveXboxMonitor.pdb
+D:\GUI DIRECTORY\Drive Terminal\liveXboxMonitor Tester\obj\Debug\liveXboxMonitor Tester.csprojResolveAssemblyReference.cache
+D:\GUI DIRECTORY\Drive Terminal\liveXboxMonitor Tester\obj\Debug\MainWindow.baml
+D:\GUI DIRECTORY\Drive Terminal\liveXboxMonitor Tester\obj\Debug\MainWindow.g.cs
+D:\GUI DIRECTORY\Drive Terminal\liveXboxMonitor Tester\obj\Debug\App.g.cs
+D:\GUI DIRECTORY\Drive Terminal\liveXboxMonitor Tester\obj\Debug\liveXboxMonitor Tester_MarkupCompile.cache
+D:\GUI DIRECTORY\Drive Terminal\liveXboxMonitor Tester\obj\Debug\liveXboxMonitor Tester.g.resources
+D:\GUI DIRECTORY\Drive Terminal\liveXboxMonitor Tester\obj\Debug\liveXboxMonitor_Tester.Properties.Resources.resources
+D:\GUI DIRECTORY\Drive Terminal\liveXboxMonitor Tester\obj\Debug\liveXboxMonitor Tester.csproj.GenerateResource.Cache
+D:\GUI DIRECTORY\Drive Terminal\liveXboxMonitor Tester\obj\Debug\liveXboxMonitor Tester.exe
+D:\GUI DIRECTORY\Drive Terminal\liveXboxMonitor Tester\obj\Debug\liveXboxMonitor Tester.pdb

@@ -1,0 +1,4 @@
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\liveXboxMonitor\1.0\\liveXboxMonitor.dll
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\liveXboxMonitor\1.0\\liveXboxMonitor.pkgdef
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\liveXboxMonitor\1.0\\extension.vsixmanifest
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\liveXboxMonitor\1.0\\liveXboxMonitor.pdb

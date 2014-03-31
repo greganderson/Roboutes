@@ -1,0 +1,4 @@
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\GUIArmDrive\1.0\\GUIArmDrive.dll
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\GUIArmDrive\1.0\\GUIArmDrive.pkgdef
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\GUIArmDrive\1.0\\extension.vsixmanifest
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\GUIArmDrive\1.0\\GUIArmDrive.pdb

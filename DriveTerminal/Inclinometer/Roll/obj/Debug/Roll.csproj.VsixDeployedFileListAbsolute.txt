@@ -1,4 +1,0 @@
-C:\Users\greg\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\Roll\1.0\\Roll.dll
-C:\Users\greg\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\Roll\1.0\\Roll.pkgdef
-C:\Users\greg\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\Roll\1.0\\extension.vsixmanifest
-C:\Users\greg\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\Roll\1.0\\Roll.pdb

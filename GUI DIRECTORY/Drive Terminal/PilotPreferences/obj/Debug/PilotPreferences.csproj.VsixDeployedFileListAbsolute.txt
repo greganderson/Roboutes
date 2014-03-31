@@ -1,0 +1,10 @@
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\PilotPreferences.dll
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\Deadzone.dll
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\liveXboxMonitor.dll
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\toggleIndicator.dll
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\PilotPreferences.pkgdef
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\extension.vsixmanifest
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\PilotPreferences.pdb
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\Deadzone.pdb
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\liveXboxMonitor.pdb
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\toggleIndicator.pdb

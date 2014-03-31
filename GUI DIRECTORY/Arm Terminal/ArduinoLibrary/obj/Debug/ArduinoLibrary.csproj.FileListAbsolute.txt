@@ -1,0 +1,10 @@
+C:\Users\CORE\Documents\Visual Studio 2012\Projects\ArduinoLibrary\ArduinoLibrary\bin\Debug\ArduinoLibrary.dll
+C:\Users\CORE\Documents\Visual Studio 2012\Projects\ArduinoLibrary\ArduinoLibrary\bin\Debug\ArduinoLibrary.pdb
+C:\Users\CORE\Documents\Visual Studio 2012\Projects\ArduinoLibrary\ArduinoLibrary\obj\Debug\ArduinoLibrary.dll
+C:\Users\CORE\Documents\Visual Studio 2012\Projects\ArduinoLibrary\ArduinoLibrary\obj\Debug\ArduinoLibrary.pdb
+C:\Users\CORE\Documents\Visual Studio 2012\Projects\ArduinoLibrary\ArduinoLibrary\obj\Debug\ArduinoLibrary.csprojResolveAssemblyReference.cache
+D:\GUI DIRECTORY\Arm Terminal\ArduinoLibrary\bin\Debug\ArduinoLibrary.dll
+D:\GUI DIRECTORY\Arm Terminal\ArduinoLibrary\bin\Debug\ArduinoLibrary.pdb
+D:\GUI DIRECTORY\Arm Terminal\ArduinoLibrary\obj\Debug\ArduinoLibrary.dll
+D:\GUI DIRECTORY\Arm Terminal\ArduinoLibrary\obj\Debug\ArduinoLibrary.pdb
+D:\GUI DIRECTORY\Arm Terminal\ArduinoLibrary\obj\Debug\ArduinoLibrary.csprojResolveAssemblyReference.cache

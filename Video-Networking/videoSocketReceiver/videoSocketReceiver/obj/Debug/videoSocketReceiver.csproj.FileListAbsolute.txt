@@ -1,0 +1,10 @@
+c:\users\hal9000\documents\visual studio 2012\Projects\videoSocketReceiver\videoSocketReceiver\bin\Debug\videoSocketReceiver.dll
+c:\users\hal9000\documents\visual studio 2012\Projects\videoSocketReceiver\videoSocketReceiver\bin\Debug\videoSocketReceiver.pdb
+c:\users\hal9000\documents\visual studio 2012\Projects\videoSocketReceiver\videoSocketReceiver\obj\Debug\videoSocketReceiver.dll
+c:\users\hal9000\documents\visual studio 2012\Projects\videoSocketReceiver\videoSocketReceiver\obj\Debug\videoSocketReceiver.pdb
+C:\Users\HAL9000\Documents\visual studio 2012\Projects\videoSocketReceiver\videoSocketReceiver\obj\Debug\videoSocketReceiver.csprojResolveAssemblyReference.cache
+C:\Users\CORE\Desktop\CORE Image\videoSocketReceiver\videoSocketReceiver\bin\Debug\videoSocketReceiver.dll
+C:\Users\CORE\Desktop\CORE Image\videoSocketReceiver\videoSocketReceiver\bin\Debug\videoSocketReceiver.pdb
+C:\Users\CORE\Desktop\CORE Image\videoSocketReceiver\videoSocketReceiver\obj\Debug\videoSocketReceiver.csprojResolveAssemblyReference.cache
+C:\Users\CORE\Desktop\CORE Image\videoSocketReceiver\videoSocketReceiver\obj\Debug\videoSocketReceiver.dll
+C:\Users\CORE\Desktop\CORE Image\videoSocketReceiver\videoSocketReceiver\obj\Debug\videoSocketReceiver.pdb

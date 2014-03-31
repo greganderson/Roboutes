@@ -1,6 +1,0 @@
-C:\Users\greg\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\LiveDriveData.dll
-C:\Users\greg\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\WheelMonitor.dll
-C:\Users\greg\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\LiveDriveData.pkgdef
-C:\Users\greg\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\extension.vsixmanifest
-C:\Users\greg\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\LiveDriveData.pdb
-C:\Users\greg\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\WheelMonitor.pdb
