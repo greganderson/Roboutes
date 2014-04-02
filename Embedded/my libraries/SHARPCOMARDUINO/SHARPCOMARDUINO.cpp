@@ -51,6 +51,10 @@ void ADVCOM::blinky(int time){
 	delay(time/2);  //wait the last half of the wanted period
 }
 
+void ADVCOM::writeln(String toSend){
+	SerialLine->println(toSend);
+}
+
 void ADVCOM::serialEvent()
 {
 	int read;
@@ -60,29 +64,21 @@ void ADVCOM::serialEvent()
 	{
 		read = Serial.read();
 		if(read == 1){
-			//Serial.flush();
 			Serial.print("POLO->");
 			Serial.println(ID);
-			//TimerB = millis();
 			return;
 		}
 		else if(read == 4){
-			//Serial.flush();
 			Serial.println("|");
-			//TimerB = millis();
 		}
 		else if(read == 3){
 			newDataAvailable = true;
-			//Serial.println("~");
 			return;
 		}
 		else{
 			toadd = (char)read;
 			fromPC += toadd;
-			//Serial.println("~");
 		}
-		//Serial.println("~");
 	}
-	//Serial.flush();
 	Serial.println("~");
 }

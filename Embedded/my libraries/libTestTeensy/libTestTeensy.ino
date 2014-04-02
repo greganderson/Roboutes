@@ -9,18 +9,20 @@ void setup(){
 }
 
 void loop(){
-  /*if(test.newData(&dataFromPC)){ //Print parsed number information EX. (N: 45)
+  if(test.newData(&dataFromPC)){ //Print parsed number information EX. (N: 45)
     dataFromPC.replace("N:","");
     int parsed = dataFromPC.toInt();
-    Serial.flush();
     String temp = parsed;
     String toSend = "P: "+temp;
-    Serial.println(dataFromPC);
+    test.writeln(dataFromPC);
+  }
+  
+  /*if(test.newData(&dataFromPC)){  //Print all information received
+    test.writeln(dataFromPC);
   }*/
   
-  if(test.newData(&dataFromPC)){  //Print all information received
-    Serial.println(dataFromPC);
-  }
+  /*test.writeln("CAT"); 
+  delay(20);*/
   
   test.serialEvent();
 }

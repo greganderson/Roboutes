@@ -31,6 +31,11 @@ bool ADVCOM::newData(String *data){
 	}
 }
 
+void ADVCOM::writeln(String toSend){
+	Serial.flush();
+	SerialLine->print(toSend+"\n");
+}
+
 //blink the LED in a period equal to parameter time.
 void ADVCOM::blinky(int time){
 	digitalWrite(LED_PIN,HIGH); //set the pin HIGH and thus turn LED on
@@ -51,25 +56,20 @@ void ADVCOM::serialEvent()
 			Serial.flush();
 			Serial.print("POLO->");
 			Serial.println(ID);
-			//TimerB = millis();
 			return;
 		}
 		else if(read == 4){
 			Serial.flush();
 			Serial.println("|");
-			//TimerB = millis();
 		}
 		else if(read == 3){
 			newDataAvailable = true;
-			//Serial.println("~");
 			return;
 		}
 		else{
 			toadd = (char)read;
 			fromPC += toadd;
-			//Serial.println("~");
 		}
-		//Serial.println("~");
 	}
 	Serial.flush();
 	Serial.println("~");
