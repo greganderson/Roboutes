@@ -5,9 +5,9 @@ const byte LED_PIN = 13; //use the LED @ Arduino pin 13
 //<<constructor>>
 ADVCOM::ADVCOM(HardwareSerial *serialIn, String _ID){
     pinMode(LED_PIN, OUTPUT); //make that pin an OUTPUT
-	ID = _ID;
 	SerialLine = serialIn;
 	newDataAvailable = false;
+	ID = _ID;
 }
 
 //<<destructor>>
@@ -60,14 +60,14 @@ void ADVCOM::serialEvent()
 	{
 		read = Serial.read();
 		if(read == 1){
-			Serial.flush();
+			//Serial.flush();
 			Serial.print("POLO->");
 			Serial.println(ID);
 			//TimerB = millis();
 			return;
 		}
 		else if(read == 4){
-			Serial.flush();
+			//Serial.flush();
 			Serial.println("|");
 			//TimerB = millis();
 		}
@@ -83,6 +83,6 @@ void ADVCOM::serialEvent()
 		}
 		//Serial.println("~");
 	}
-	Serial.flush();
+	//Serial.flush();
 	Serial.println("~");
 }

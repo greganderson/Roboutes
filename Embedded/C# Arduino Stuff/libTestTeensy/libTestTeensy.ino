@@ -1,6 +1,5 @@
 #include <SHARPCOMTEENSY.h>
 
-
 ADVCOM test(&Serial, "ARM");
 String dataFromPC;
 String tester;
@@ -10,22 +9,19 @@ void setup(){
 }
 
 void loop(){
-  if(test.newData(&dataFromPC)){
+  /*if(test.newData(&dataFromPC)){ //Print parsed number information EX. (N: 45)
     dataFromPC.replace("N:","");
     int parsed = dataFromPC.toInt();
     Serial.flush();
-    //Serial.print("Parsed: ");
     String temp = parsed;
     String toSend = "P: "+temp;
-    Serial.println(toSend);
+    Serial.println(dataFromPC);
+  }*/
+  
+  if(test.newData(&dataFromPC)){  //Print all information received
+    Serial.println(dataFromPC);
   }
   
-  /*tester = test.newData();
-  if(tester != NULL){
-   Serial.flush();
-   Serial.print(tester);
-   //delay(50);
-  }*/
   test.serialEvent();
 }
 

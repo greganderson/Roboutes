@@ -31,18 +31,6 @@ bool ADVCOM::newData(String *data){
 	}
 }
 
-String ADVCOM::newData(){
-	if(newDataAvailable){
-		String toReturn = fromPC;
-		newDataAvailable = false;
-		fromPC = "";
-		return toReturn;
-	}
-	else{
-		return NULL;
-	}
-}
-
 //blink the LED in a period equal to parameter time.
 void ADVCOM::blinky(int time){
 	digitalWrite(LED_PIN,HIGH); //set the pin HIGH and thus turn LED on

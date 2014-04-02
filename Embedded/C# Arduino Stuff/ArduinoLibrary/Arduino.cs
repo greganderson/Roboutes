@@ -9,7 +9,7 @@ using System.Management;
 
 
 namespace ArduinoLibrary {
-    public class Arduino {
+    public class Arduino : IDisposable {
 
         private SerialPort ArduinoSerial;
         /// <summary>
@@ -262,7 +262,12 @@ namespace ArduinoLibrary {
 
 
 
-        
+
+
+        public void Dispose()
+        {
+            ArduinoSerial.Dispose();
+        }
     }
 
     public class ArduinoGeneralError : Exception {
