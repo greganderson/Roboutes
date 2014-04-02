@@ -28,3 +28,6 @@ C:\Users\CORE\Desktop\CORE Image\videoSocketReceiver\videoSocketReceiverTestRend
 C:\Users\CORE\Desktop\CORE Image\videoSocketReceiver\videoSocketReceiverTestRender\obj\Debug\videoSocketReceiverTestRender.g.resources
 C:\Users\CORE\Desktop\CORE Image\videoSocketReceiver\videoSocketReceiverTestRender\obj\Debug\videoSocketReceiverTestRender.Properties.Resources.resources
 C:\Users\CORE\Desktop\CORE Image\videoSocketReceiver\videoSocketReceiverTestRender\obj\Debug\videoSocketReceiverTestRender.csproj.GenerateResource.Cache
+C:\Users\CORE\Documents\GitHub\Roboutes\Video-Networking\videoSocketReceiver\videoSocketReceiverTestRender\bin\Debug\videoSocketReceiverTestRender.exe.config
+C:\Users\CORE\Documents\GitHub\Roboutes\Video-Networking\videoSocketReceiver\videoSocketReceiverTestRender\obj\Debug\videoSocketReceiverTestRender.exe
+C:\Users\CORE\Documents\GitHub\Roboutes\Video-Networking\videoSocketReceiver\videoSocketReceiverTestRender\obj\Debug\videoSocketReceiverTestRender.pdb

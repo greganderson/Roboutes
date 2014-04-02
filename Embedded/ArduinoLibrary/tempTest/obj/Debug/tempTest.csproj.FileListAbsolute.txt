@@ -1,6 +1,0 @@
-C:\Users\CORE\Documents\Visual Studio 2012\Projects\ArduinoLibrary\tempTest\bin\Debug\tempTest.exe.config
-C:\Users\CORE\Documents\Visual Studio 2012\Projects\ArduinoLibrary\tempTest\bin\Debug\tempTest.exe
-C:\Users\CORE\Documents\Visual Studio 2012\Projects\ArduinoLibrary\tempTest\bin\Debug\tempTest.pdb
-C:\Users\CORE\Documents\Visual Studio 2012\Projects\ArduinoLibrary\tempTest\obj\Debug\tempTest.exe
-C:\Users\CORE\Documents\Visual Studio 2012\Projects\ArduinoLibrary\tempTest\obj\Debug\tempTest.pdb
-C:\Users\CORE\Documents\Visual Studio 2012\Projects\ArduinoLibrary\tempTest\obj\Debug\tempTest.csprojResolveAssemblyReference.cache

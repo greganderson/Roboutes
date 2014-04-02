@@ -1,8 +1,0 @@
-C:\Users\CORE\Documents\Visual Studio 2012\Projects\ArduinoLibrary\test2\bin\Debug\test2.exe.config
-C:\Users\CORE\Documents\Visual Studio 2012\Projects\ArduinoLibrary\test2\bin\Debug\test2.exe
-C:\Users\CORE\Documents\Visual Studio 2012\Projects\ArduinoLibrary\test2\bin\Debug\test2.pdb
-C:\Users\CORE\Documents\Visual Studio 2012\Projects\ArduinoLibrary\test2\bin\Debug\ArduinoLibrary.dll
-C:\Users\CORE\Documents\Visual Studio 2012\Projects\ArduinoLibrary\test2\bin\Debug\ArduinoLibrary.pdb
-C:\Users\CORE\Documents\Visual Studio 2012\Projects\ArduinoLibrary\test2\obj\Debug\test2.csprojResolveAssemblyReference.cache
-C:\Users\CORE\Documents\Visual Studio 2012\Projects\ArduinoLibrary\test2\obj\Debug\test2.exe
-C:\Users\CORE\Documents\Visual Studio 2012\Projects\ArduinoLibrary\test2\obj\Debug\test2.pdb

@@ -16,3 +16,6 @@ C:\Users\CORE\Desktop\CORE Image\testSendImage\testSendImage V2.0\obj\Debug\test
 C:\Users\CORE\Desktop\CORE Image\testSendImage\testSendImage V2.0\bin\Debug\testSendImage.exe
 C:\Users\CORE\Desktop\CORE Image\testSendImage\testSendImage V2.0\bin\Debug\testSendImage.pdb
 C:\Users\CORE\Desktop\CORE Image\testSendImage\testSendImage V2.0\obj\Debug\testSendImageV2.0.csprojResolveAssemblyReference.cache
+C:\Users\CORE\Documents\GitHub\Roboutes\Video-Networking\testSendImage\testSendImage V2.0\bin\Debug\testSendImage.exe.config
+C:\Users\CORE\Documents\GitHub\Roboutes\Video-Networking\testSendImage\testSendImage V2.0\obj\Debug\testSendImage.exe
+C:\Users\CORE\Documents\GitHub\Roboutes\Video-Networking\testSendImage\testSendImage V2.0\obj\Debug\testSendImage.pdb

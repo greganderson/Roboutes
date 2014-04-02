@@ -13,3 +13,6 @@ D:\GUI DIRECTORY\Drive Terminal\toggleIndicator Tester\obj\Debug\toggleIndicator
 D:\GUI DIRECTORY\Drive Terminal\toggleIndicator Tester\obj\Debug\toggleIndicator Tester.csproj.GenerateResource.Cache
 D:\GUI DIRECTORY\Drive Terminal\toggleIndicator Tester\obj\Debug\toggleIndicator Tester.exe
 D:\GUI DIRECTORY\Drive Terminal\toggleIndicator Tester\obj\Debug\toggleIndicator Tester.pdb
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\toggleIndicator Tester\bin\Debug\toggleIndicator Tester.exe.config
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\toggleIndicator Tester\obj\Debug\toggleIndicator Tester.exe
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\toggleIndicator Tester\obj\Debug\toggleIndicator Tester.pdb

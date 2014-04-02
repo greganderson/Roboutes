@@ -140,21 +140,19 @@ namespace MasterArmGUI {
 
         }
 
-        void ARM_Data_Received(List<string> receivedData) {
+        void ARM_Data_Received(string currentData) {
             //Print info to Incoming COM window and use data.
-            foreach (string currentData in receivedData) {
-                Dispatcher.Invoke(()=>incomingCOMViz.addText("REC: "+currentData+"\n"));
-                if (currentData.StartsWith("POS") && currentData.Length > 4) {
-                    string data = currentData.Remove(0,3);
-                    int tempPos = 0;
-                    if (int.TryParse(data, out tempPos)) {
-                        if (tempPos >= 0 && tempPos <= 255) {
-                            currentPos = tempPos;
-                        }
+            Dispatcher.Invoke(()=>incomingCOMViz.addText("REC: "+currentData+"\n"));
+            if (currentData.StartsWith("POS") && currentData.Length > 4) {
+                string data = currentData.Remove(0,3);
+                int tempPos = 0;
+                if (int.TryParse(data, out tempPos)) {
+                    if (tempPos >= 0 && tempPos <= 255) {
+                        currentPos = tempPos;
                     }
-                    else {
-                        //Dispatcher.BeginInvoke(new ThreadStart(delegate { tempLABEL.Content = "BROKE: "+currentPos; }));
-                    }
+                }
+                else {
+                    //Dispatcher.BeginInvoke(new ThreadStart(delegate { tempLABEL.Content = "BROKE: "+currentPos; }));
                 }
             }
         }

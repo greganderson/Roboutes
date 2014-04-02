@@ -19,3 +19,24 @@ D:\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\obj\Debug\PilotPreferenc
 D:\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\obj\Debug\PilotPreferences Tester.csproj.GenerateResource.Cache
 D:\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\obj\Debug\PilotPreferences Tester.exe
 D:\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\obj\Debug\PilotPreferences Tester.pdb
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\bin\Debug\PilotPreferences Tester.exe.config
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\obj\Debug\PilotPreferences Tester.exe
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\obj\Debug\PilotPreferences Tester.pdb
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\bin\Debug\PilotPreferences Tester.exe
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\bin\Debug\PilotPreferences Tester.pdb
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\bin\Debug\liveXboxMonitor.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\bin\Debug\PilotPreferences.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\bin\Debug\Deadzone.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\bin\Debug\toggleIndicator.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\bin\Debug\liveXboxMonitor.pdb
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\bin\Debug\PilotPreferences.pdb
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\bin\Debug\Deadzone.pdb
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\bin\Debug\toggleIndicator.pdb
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\obj\Debug\PilotPreferences Tester.csprojResolveAssemblyReference.cache
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\obj\Debug\MainWindow.baml
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\obj\Debug\MainWindow.g.cs
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\obj\Debug\App.g.cs
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\obj\Debug\PilotPreferences Tester_MarkupCompile.cache
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\obj\Debug\PilotPreferences Tester.g.resources
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\obj\Debug\PilotPreferences_Tester.Properties.Resources.resources
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\obj\Debug\PilotPreferences Tester.csproj.GenerateResource.Cache
