@@ -121,41 +121,10 @@ namespace ArduinoLibrary {
             }
         }
 
-       /* void ArduinoSerial_DataReceived(object sender, SerialDataReceivedEventArgs e) {
-            lock (sync) {
-                recentData = true;
-            }
-            List<string> receivedStringList = new List<string>();
-            SerialPort temp = (SerialPort)sender;
-            if (currentString.Length >= 10000) {
-                currentString = null;
-            }
-            else {
-                string toParse = currentString + temp.ReadLine();
-                string[] tempString = (toParse).Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
-                foreach (string t in tempString) {
-                    if (t == tempString.First()) {
-                        receivedStringList.Add(t);
-                        currentString = "";
-                    }
-                    else if (t != tempString.Last()) {
-                        receivedStringList.Add(t);
-                    }
-                    else {
-                        if (t.EndsWith("\r\n") || t.EndsWith("\n")) {
-                            receivedStringList.Add(t);
-                        }
-                        else {
-                            currentString += t;
-                        }
-                    }
-                }
-            }
-            if (Data_Received != null) {
-                Data_Received(receivedStringList);
-            }
-        }*/
-
+        /// <summary>
+        /// The reccomended way to communicate with the arduino. Is slower than writeNOW, but also much safer.
+        /// </summary>
+        /// <param name="data"></param>
         public void write(String data) {
             lock (thingsToSend)
             {
@@ -183,84 +152,10 @@ namespace ArduinoLibrary {
             }
         }
 
-        /*public void resetArduino() {
-            resetting = true;*/
-            /*Thread.Sleep(200);
-            ArduinoSerial.DtrEnable = false;
-            ArduinoSerial.DtrEnable = true;
-            Thread.Sleep(1500);*/
-
-            /////////////////////////////////////////////////////
-            /*string instanceId = "";
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher("select * from Win32_SerialPort");
-            foreach (ManagementObject port in searcher.Get()) {
-                if (port["DeviceID"].ToString().Equals("COM3")) {
-                    instanceId = port["PNPDeviceID"].ToString();
-                    break;
-                }
-            }
-
-
-            /////////////////////////////////////////////////////
-            write("Marco");
-            resetting = false;
-        }*/
-
-        /*public static bool TryResetPortByInstanceId(string instanceId) {
-            SafeDeviceInfoSetHandle diSetHandle = null;
-            if (!String.IsNullOrEmpty(instanceId)) {
-                try {
-                    Guid[] guidArray = GetGuidFromName("Ports");
-
-                    //Get the handle to a device information set for all
-                    //devices matching classGuid that are present on the
-                    //system.
-                    diSetHandle = NativeMethods.SetupDiGetClassDevs(
-                        ref guidArray[0],
-                        null,
-                        IntPtr.Zero,
-                        SetupDiGetClassDevsFlags.DeviceInterface);
-
-                    //Get the device information data for each matching device.
-                    DeviceInfoData[] diData = GetDeviceInfoData(diSetHandle);
-
-                    //Try to find the object with the same instance Id.
-                    foreach (var infoData in diData) {
-                        var instanceIds =
-                                GetInstanceIdsFromClassGuid(infoData.ClassGuid);
-                        foreach (var id in instanceIds) {
-                            if (id.Equals(instanceId)) {
-                                //disable port
-                                SetDeviceEnabled(infoData.ClassGuid, id, false);
-                                //wait some milliseconds
-                                Thread.Sleep(200);
-                                //enable port
-                                SetDeviceEnabled(infoData.ClassGuid, id, true);
-                                return true;
-                            }
-                        }
-                    }
-                }
-                catch (Exception) {
-                    return false;
-                }
-                finally {
-                    if (diSetHandle != null) {
-                        if (diSetHandle.IsClosed == false) {
-                            diSetHandle.Close();
-                        }
-                        diSetHandle.Dispose();
-                    }
-                }
-            }
-            return false;
-        }*/
 
         void ArduinoSerial_ErrorReceived(object sender, SerialErrorReceivedEventArgs e) {
             throw new ArduinoGeneralError((SerialPort)sender, e);
         }
-
-
 
 
 

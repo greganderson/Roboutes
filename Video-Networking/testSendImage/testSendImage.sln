@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testSendImage", "testSendIm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testSendImageV2.0", "testSendImage V2.0\testSendImageV2.0.csproj", "{1CEBCE80-EE52-4526-8083-0789EFF917BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testSendVideo", "testSendVideo\testSendVideo.csproj", "{74BD0A2D-3CE0-4D1B-8A37-9273147F2C76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{1CEBCE80-EE52-4526-8083-0789EFF917BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CEBCE80-EE52-4526-8083-0789EFF917BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CEBCE80-EE52-4526-8083-0789EFF917BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74BD0A2D-3CE0-4D1B-8A37-9273147F2C76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74BD0A2D-3CE0-4D1B-8A37-9273147F2C76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74BD0A2D-3CE0-4D1B-8A37-9273147F2C76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74BD0A2D-3CE0-4D1B-8A37-9273147F2C76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -20,8 +20,9 @@ namespace ArmVideoComponent_Tester {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
-            vidComp.setMJPEGVideoFeedSource("http://localhost:8080");
-            vidComp.StartVideo();
+            vidComp.showLocalCam(0);
+            //vidComp.setMJPEGVideoFeedSource("http://localhost:8080");
+            //vidComp.StartVideo();
         }
 
         private void Window_Closed(object sender, EventArgs e) {

@@ -9,6 +9,7 @@ namespace testSendImageV2
 {
     class Program
     {
+
         static void Main (String[] args)
         {
             // 1. to create a socket
