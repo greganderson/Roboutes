@@ -94,9 +94,17 @@ namespace videoSocketReceiverTestRender {
             switch (connectionId)
             {
             case 1:
-            this.imageBox = ((System.Windows.Controls.Image)(target));
+            
+            #line 4 "..\..\MainWindow.xaml"
+            ((videoSocketReceiverTestRender.MainWindow)(target)).Closing += new System.ComponentModel.CancelEventHandler(this.Window_Closing);
+            
+            #line default
+            #line hidden
             return;
             case 2:
+            this.imageBox = ((System.Windows.Controls.Image)(target));
+            return;
+            case 3:
             this.nextFrameButton = ((System.Windows.Controls.Button)(target));
             
             #line 7 "..\..\MainWindow.xaml"
@@ -105,7 +113,7 @@ namespace videoSocketReceiverTestRender {
             #line default
             #line hidden
             return;
-            case 3:
+            case 4:
             this.frameNum = ((System.Windows.Controls.Label)(target));
             return;
             }

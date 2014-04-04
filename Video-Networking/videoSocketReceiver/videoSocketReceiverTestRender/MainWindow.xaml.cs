@@ -55,6 +55,11 @@ namespace videoSocketReceiverTestRender {
         {
             vidSocRec.start();
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 
     public class ByteImageConverter {
