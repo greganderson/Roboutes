@@ -30,7 +30,7 @@ namespace ArduinoLibrary
         }
 
         /// <summary>
-        /// Must be called before any Arduinos can be connected to. Returns true if ANY Arduinos were found.
+        /// Must be called before any Arduinos can be connected to. Returns true if ANY Arduinos were found. If non-standard Arduinos need to be talked to, pass in a string array with their names
         /// </summary>
         /// <returns></returns>
         public bool findArduinos() {
@@ -59,11 +59,27 @@ namespace ArduinoLibrary
                         _ArduinoMap.Add(Arduino_Codes.ARM_IDENTITY, new Arduino(temp, Arduino_Codes.ARM_IDENTITY));
                         return true;
                     }
-                    else if (ID.Contains(Arduino_Codes.WRIST_IDENTITY_RESPONSE))
+                    else if (ID.Contains(Arduino_Codes.HAND_IDENTITY_RESPONSE))
                     {
-                        _ArduinoMap.Add(Arduino_Codes.WRIST_IDENTITY, new Arduino(temp, Arduino_Codes.WRIST_IDENTITY));
+                        _ArduinoMap.Add(Arduino_Codes.HAND_IDENTITY, new Arduino(temp, Arduino_Codes.HAND_IDENTITY));
                         return true;
                     }
+                    else if (ID.Contains(Arduino_Codes.DRIVEFRONT_IDENTITY_RESPONSE))
+                    {
+                        _ArduinoMap.Add(Arduino_Codes.DRIVEFRONT_IDENTITY, new Arduino(temp, Arduino_Codes.DRIVEFRONT_IDENTITY));
+                        return true;
+                    }
+                    else if (ID.Contains(Arduino_Codes.DRIVEBACK_IDENTITY_RESPONSE))
+                    {
+                        _ArduinoMap.Add(Arduino_Codes.DRIVEBACK_IDENTITY, new Arduino(temp, Arduino_Codes.DRIVEBACK_IDENTITY));
+                        return true;
+                    }
+                    else if (ID.Contains(Arduino_Codes.PT_IDENTITY_RESPONSE))
+                    {
+                        _ArduinoMap.Add(Arduino_Codes.PT_IDENTITY, new Arduino(temp, Arduino_Codes.PT_IDENTITY));
+                        return true;
+                    }
+
                     temp.Dispose(); //Gets rid of safe handle issue! Or at least appears to!
                 }
                 catch {
@@ -71,6 +87,19 @@ namespace ArduinoLibrary
                 }
             }
             return false;
+        }
+
+        /// <summary>
+        /// Attempts to return the Arduino object associated with the ID passed. If none exist returns null.
+        /// </summary>
+        /// <returns></returns>
+        public Arduino getCustomArduino(String ID)
+        {
+            if (ArduinoMap.ContainsKey(ID))
+            {
+                return ArduinoMap[ID];
+            }
+            return null;
         }
 
         public Arduino getArmArduino() {
@@ -83,15 +112,51 @@ namespace ArduinoLibrary
             }
         }
 
-        public Arduino getWristArduino()
+        public Arduino getHandArduino()
         {
-            if (ArduinoMap.ContainsKey(Arduino_Codes.WRIST_IDENTITY))
+            if (ArduinoMap.ContainsKey(Arduino_Codes.HAND_IDENTITY))
             {
-                return ArduinoMap[Arduino_Codes.WRIST_IDENTITY];
+                return ArduinoMap[Arduino_Codes.HAND_IDENTITY];
             }
             else
             {
-                throw new Exception("No Wrist Arduino Exists");
+                throw new Exception("No Hand Arduino Exists");
+            }
+        }
+
+        public Arduino getDriveFrontArduino()
+        {
+            if (ArduinoMap.ContainsKey(Arduino_Codes.DRIVEFRONT_IDENTITY))
+            {
+                return ArduinoMap[Arduino_Codes.DRIVEFRONT_IDENTITY];
+            }
+            else
+            {
+                throw new Exception("No Drive Front Arduino Exists");
+            }
+        }
+
+        public Arduino getDriveBackArduino()
+        {
+            if (ArduinoMap.ContainsKey(Arduino_Codes.DRIVEBACK_IDENTITY))
+            {
+                return ArduinoMap[Arduino_Codes.DRIVEBACK_IDENTITY];
+            }
+            else
+            {
+                throw new Exception("No Drive Back Arduino Exists");
+            }
+        }
+
+        public Arduino getPanTiltArduino()
+        {
+            if (ArduinoMap.ContainsKey(Arduino_Codes.PT_IDENTITY))
+            {
+                return ArduinoMap[Arduino_Codes.PT_IDENTITY];
+            }
+            else
+            {
+                throw new Exception("No Drive Back Arduino Exists");
             }
         }
 
@@ -121,10 +186,28 @@ namespace ArduinoLibrary
         public static readonly string ARM_IDENTITY = "ARM";
 
         /////////////////////////////////////////////////////////////
-        ///////////////      WRIST CODES - Apply to the wrist arduino
+        ///////////////      HAND CODES - Apply to the hand arduino
         /////////////////////////////////////////////////////////////
-        public static readonly string WRIST_IDENTITY_RESPONSE = "POLO->WRIST";
-        public static readonly string WRIST_IDENTITY = "WRIST";
+        public static readonly string HAND_IDENTITY_RESPONSE = "POLO->HAND";
+        public static readonly string HAND_IDENTITY = "HAND";
+
+        /////////////////////////////////////////////////////////////
+        ///////////////      DRIVE FRONT CODES - Apply to the drive front arduino
+        /////////////////////////////////////////////////////////////
+        public static readonly string DRIVEFRONT_IDENTITY_RESPONSE = "POLO->DRIVEFRONT";
+        public static readonly string DRIVEFRONT_IDENTITY = "DRIVEFRONT";
+
+        /////////////////////////////////////////////////////////////
+        ///////////////      DRIVE BACK CODES - Apply to the drive back arduino
+        /////////////////////////////////////////////////////////////
+        public static readonly string DRIVEBACK_IDENTITY_RESPONSE = "POLO->DRIVEBACK";
+        public static readonly string DRIVEBACK_IDENTITY = "DRIVEBACK";
+
+        /////////////////////////////////////////////////////////////
+        ///////////////      PAN/TILT CODES - Apply to the pan tilt arduino
+        /////////////////////////////////////////////////////////////
+        public static readonly string PT_IDENTITY_RESPONSE = "POLO->PT";
+        public static readonly string PT_IDENTITY = "PT";
     }
     
     

@@ -27,7 +27,7 @@ namespace WpfApplication1
         {
             InitializeComponent();
             ArduMan.findArduinos();
-            testDuino = ArduMan.getArmArduino();
+            testDuino = ArduMan.getPanTiltArduino();
             testDuino.Data_Received+=testDuino_Data_Received;
         }
 

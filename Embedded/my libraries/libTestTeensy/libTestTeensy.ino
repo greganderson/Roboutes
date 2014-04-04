@@ -1,6 +1,6 @@
 #include <SHARPCOMTEENSY.h>
 
-ADVCOM test(&Serial, "ARM");
+ADVCOM test(&Serial, "PT");
 String dataFromPC;
 String tester;
 
