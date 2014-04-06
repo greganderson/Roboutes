@@ -29,9 +29,9 @@ namespace videoSocketReceiverTestRender {
 
         public MainWindow() {
             InitializeComponent();
-            client = new TcpClient();
-            client.Connect("127.0.0.1", 4321);
-            vidSocRec = new videoSocketReceiver(client);
+            //client = new TcpClient();
+            //client.Connect("127.0.0.1", 4321);
+            vidSocRec = new videoSocketReceiver(4321);
             vidSocRec.frameReceived += vidSocRec_frameReceived;
             
         }

@@ -8,3 +8,8 @@ C:\Users\CORE\Desktop\CORE Image\videoSocketReceiver\videoSocketReceiver\bin\Deb
 C:\Users\CORE\Desktop\CORE Image\videoSocketReceiver\videoSocketReceiver\obj\Debug\videoSocketReceiver.csprojResolveAssemblyReference.cache
 C:\Users\CORE\Desktop\CORE Image\videoSocketReceiver\videoSocketReceiver\obj\Debug\videoSocketReceiver.dll
 C:\Users\CORE\Desktop\CORE Image\videoSocketReceiver\videoSocketReceiver\obj\Debug\videoSocketReceiver.pdb
+C:\Users\CORE\Documents\GitHub\Roboutes\Video-Networking\videoSocketReceiver\videoSocketReceiver\bin\Debug\videoSocketReceiver.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\Video-Networking\videoSocketReceiver\videoSocketReceiver\bin\Debug\videoSocketReceiver.pdb
+C:\Users\CORE\Documents\GitHub\Roboutes\Video-Networking\videoSocketReceiver\videoSocketReceiver\obj\Debug\videoSocketReceiver.csprojResolveAssemblyReference.cache
+C:\Users\CORE\Documents\GitHub\Roboutes\Video-Networking\videoSocketReceiver\videoSocketReceiver\obj\Debug\videoSocketReceiver.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\Video-Networking\videoSocketReceiver\videoSocketReceiver\obj\Debug\videoSocketReceiver.pdb

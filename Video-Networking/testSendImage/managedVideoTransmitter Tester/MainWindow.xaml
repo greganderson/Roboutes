@@ -1,0 +1,13 @@
+﻿<Window x:Class="managedVideoTransmitter_Tester.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525" Closing="Window_Closing">
+    <Grid>
+        <Button x:Name="startButton" Content="START" HorizontalAlignment="Left" Margin="352,61,0,0" VerticalAlignment="Top" Width="75" Click="startButton_Click"/>
+        <Button x:Name="stopButton" Content="STOP" HorizontalAlignment="Left" Margin="352,103,0,0" VerticalAlignment="Top" Width="75" Click="stopButton_Click"/>
+        <Slider x:Name="qualitySlider" HorizontalAlignment="Left" Margin="10,280,0,0" VerticalAlignment="Top" Width="497" Maximum="100" SmallChange="1" TickPlacement="Both" ValueChanged="qualitySlider_ValueChanged"/>
+        <Label Content="Quality% : " HorizontalAlignment="Left" Margin="360,146,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="qualityLabel" Content="NA" HorizontalAlignment="Left" Margin="432,146,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
