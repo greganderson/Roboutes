@@ -8,6 +8,8 @@
         <Label x:Name="frameSizeLabel" Content="NA" HorizontalAlignment="Left" Margin="590,83,0,0" VerticalAlignment="Top" Width="80"/>
         <Label Content="FPS: " HorizontalAlignment="Left" Margin="512,114,0,0" VerticalAlignment="Top"/>
         <Label x:Name="fpsLabel" Content="NA" HorizontalAlignment="Left" Margin="590,114,0,0" VerticalAlignment="Top" Width="80"/>
+        <Label Content="Instantaneous bandwidth: " HorizontalAlignment="Left" Margin="435,284,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="IBLabel" Content="NA" HorizontalAlignment="Left" Margin="590,284,0,0" VerticalAlignment="Top" Width="80"/>
 
     </Grid>
 </Window>

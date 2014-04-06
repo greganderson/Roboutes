@@ -5,9 +5,14 @@
     <Grid>
         <Button x:Name="startButton" Content="START" HorizontalAlignment="Left" Margin="352,61,0,0" VerticalAlignment="Top" Width="75" Click="startButton_Click"/>
         <Button x:Name="stopButton" Content="STOP" HorizontalAlignment="Left" Margin="352,103,0,0" VerticalAlignment="Top" Width="75" Click="stopButton_Click"/>
-        <Slider x:Name="qualitySlider" HorizontalAlignment="Left" Margin="10,280,0,0" VerticalAlignment="Top" Width="497" Maximum="100" SmallChange="1" TickPlacement="Both" ValueChanged="qualitySlider_ValueChanged"/>
-        <Label Content="Quality% : " HorizontalAlignment="Left" Margin="360,146,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="qualityLabel" Content="NA" HorizontalAlignment="Left" Margin="432,146,0,0" VerticalAlignment="Top"/>
+        <Slider x:Name="qualitySlider" HorizontalAlignment="Left" Margin="10,202,0,0" VerticalAlignment="Top" Width="497" Maximum="100" SmallChange="1" TickPlacement="Both" ValueChanged="qualitySlider_ValueChanged" IsSnapToTickEnabled="True"/>
+        <Label Content="Quality% : " HorizontalAlignment="Left" Margin="356,132,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="qualityLabel" Content="NA" HorizontalAlignment="Left" Margin="428,132,0,0" VerticalAlignment="Top"/>
+        <Label Content="QUALITY" HorizontalAlignment="Left" Margin="10,171,0,0" VerticalAlignment="Top"/>
+        <Slider x:Name="fpsSlider" HorizontalAlignment="Left" Margin="10,263,0,0" VerticalAlignment="Top" Width="497" Maximum="50" SmallChange="1" TickPlacement="Both" ValueChanged="fpsSlider_ValueChanged" IsSnapToTickEnabled="True"/>
+        <Label Content="FPS" HorizontalAlignment="Left" Margin="10,232,0,0" VerticalAlignment="Top"/>
+        <Label Content="FPS: " HorizontalAlignment="Left" Margin="356,158,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="fpsLabel" Content="NA" HorizontalAlignment="Left" Margin="396,158,0,0" VerticalAlignment="Top" Width="80"/>
 
     </Grid>
 </Window>

@@ -25,6 +25,42 @@ namespace videoSocketTools
         private volatile bool Transmitting = false;
         private long quality = 15; //15% is default quality
         private object qualitySync = 1;
+        private volatile bool timeExpired = true; //when expired the frame can be sent (used to control FPS)
+        private int FPS = 15;
+        private object fpsSync = 1;
+        Timer fpsTimer;
+
+        public int transmissionFPS
+        {
+            get { return FPS; }
+            set {
+                if (value < 0)
+                {
+                    lock (fpsSync)
+                    {
+                        FPS = 1; //only go down to 1. Otherwise your dividing by zero...
+                    }
+                }
+                else if (value > 1000)
+                {
+                    lock (fpsSync)
+                    {
+                        FPS = 1000; //only 1000 ms in a second...
+                    }
+                }
+                else
+                {
+                    lock (fpsSync)
+                    {
+                        FPS = value;
+                    }
+                }
+                lock (fpsSync)
+                {
+                    fpsTimer.Change(0, 1000 / FPS);
+                }
+            }
+        }
 
         /// <summary>
         /// set the video quality to transmit, only accepts values from 0 to 100.
@@ -64,9 +100,18 @@ namespace videoSocketTools
         public delegate void connectCallback(bool connectionStatus);
 
         public videoSocketSender(VideoCaptureDevice _cameraSource){
+            lock (fpsSync)
+            {
+                fpsTimer = new Timer(timerCallback, null, 0, 1000 / FPS);
+            }
             cameraSource = _cameraSource;
             cameraSource.NewFrame +=cameraSource_NewFrame;
             cameraSource.Start();
+        }
+
+        private void timerCallback(object state)
+        {
+            timeExpired = true;
         }
 
         public void beginConnect(IPAddress IP, int port, connectCallback callback){
@@ -130,8 +175,9 @@ namespace videoSocketTools
 
         private void cameraSource_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
-            if (Transmitting)
+            if (Transmitting && timeExpired)
             {
+                timeExpired = false;
                 try
                 {
                     byte[] jpegImage = Bitmap2JpegArray(eventArgs.Frame);

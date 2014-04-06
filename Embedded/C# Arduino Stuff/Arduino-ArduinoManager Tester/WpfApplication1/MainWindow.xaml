@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525" Closing="Window_Closing">
     <Grid>
-        <TextBox x:Name="toSendBox" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="427" RenderTransformOrigin="-1.058,-1.522"/>
+        <TextBox x:Name="toSendBox" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="427" RenderTransformOrigin="-1.058,-1.522" KeyDown="toSendBox_KeyDown"/>
         <Button x:Name="sendButton" Content="SEND" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="442,10,0,0" Click="sendButton_Click"/>
         <TextBox x:Name="sentBox" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left" Height="239" Margin="10,71,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="245"/>
         <TextBox x:Name="recBox" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left" Height="239" Margin="262,71,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="245"/>

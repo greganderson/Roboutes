@@ -67,5 +67,11 @@ namespace managedVideoTransmitter_Tester
             MVT.setQuality((int)e.NewValue);
             Dispatcher.Invoke(() => qualityLabel.Content = (int)e.NewValue);
         }
+
+        private void fpsSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            MVT.setFPS((int)e.NewValue);
+            Dispatcher.Invoke(() => fpsLabel.Content = (int)e.NewValue);
+        }
     }
 }

@@ -37,6 +37,7 @@ namespace videoSocketReceiver_Tester
         int frameCount = 0;
         object sync = 1;
         Timer timer;
+        int FPS = 0;
         ///////////////////////////////
 
         public MainWindow()
@@ -48,7 +49,6 @@ namespace videoSocketReceiver_Tester
 
         private void timeCallback(object state)
         {
-            int FPS;
             lock (sync)
             {
                 FPS = frameCount;
@@ -75,12 +75,16 @@ namespace videoSocketReceiver_Tester
 
         private void VSRTest_frameReceived(byte[] newFrame)
         {
-            lock (sync)
+            if (newFrame.Length != null && newFrame.Length > 0)
             {
-                frameCount++;
+                lock (sync)
+                {
+                    frameCount++;
+                }
+                Dispatcher.Invoke(() => frameSizeLabel.Content = (newFrame.Length / 1000) + "kB");
+                Dispatcher.Invoke(() => IBLabel.Content = (newFrame.Length / 1000) * FPS + "kB/S");
+                Dispatcher.Invoke(() => imageBox.Source = ByteImageConverter.ByteToImage(newFrame));
             }
-            Dispatcher.Invoke(() => frameSizeLabel.Content = (newFrame.Length/1000)+"kB");
-            Dispatcher.Invoke(() => imageBox.Source = ByteImageConverter.ByteToImage(newFrame));
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

@@ -27,7 +27,7 @@ namespace WpfApplication1
         {
             InitializeComponent();
             ArduMan.findArduinos();
-            testDuino = ArduMan.getPanTiltArduino();
+            testDuino = ArduMan.getHandArduino();
             testDuino.Data_Received+=testDuino_Data_Received;
         }
 
@@ -54,6 +54,17 @@ namespace WpfApplication1
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void toSendBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            Key read = e.Key;
+            if (read == Key.Return)
+            {
+                string toSend = toSendBox.Text;
+                Dispatcher.Invoke(() => toSendBox.Text = "");
+                testDuino.write(toSend);
+            }
         }
     }
 }

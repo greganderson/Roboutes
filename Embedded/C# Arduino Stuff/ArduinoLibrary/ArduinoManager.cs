@@ -89,19 +89,6 @@ namespace ArduinoLibrary
             return false;
         }
 
-        /// <summary>
-        /// Attempts to return the Arduino object associated with the ID passed. If none exist returns null.
-        /// </summary>
-        /// <returns></returns>
-        public Arduino getCustomArduino(String ID)
-        {
-            if (ArduinoMap.ContainsKey(ID))
-            {
-                return ArduinoMap[ID];
-            }
-            return null;
-        }
-
         public Arduino getArmArduino() {
             if (ArduinoMap.ContainsKey(Arduino_Codes.ARM_IDENTITY))
             {

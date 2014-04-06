@@ -1,8 +1,7 @@
 #include <SHARPCOMARDUINO.h>
 
-ADVCOM test(&Serial, "ARM");
+ADVCOM test(&Serial, "HAND");
 String dataFromPC;
-String tester;
 
 void setup(){
   test.init(9600);

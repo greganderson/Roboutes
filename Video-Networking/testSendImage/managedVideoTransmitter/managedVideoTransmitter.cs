@@ -52,6 +52,22 @@ namespace videoSocketTools
 
         }
 
+        public void setFPS(int FPS)
+        {
+            if (FPS < 1)
+            {
+                VSS.transmissionFPS = 1;
+            }
+            else if (FPS > 1000)
+            {
+                VSS.transmissionFPS = 1000;
+            }
+            else
+            {
+                VSS.transmissionFPS = FPS;
+            }
+        }
+
         public void startTransmitting()
         {
             ON = true;
