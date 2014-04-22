@@ -28,7 +28,9 @@ namespace videoSocketTools
         private volatile bool timeExpired = true; //when expired the frame can be sent (used to control FPS)
         private int FPS = 15;
         private object fpsSync = 1;
+        private int framesSent = 0;
         Timer fpsTimer;
+        Timer transmittedFPSTimer;
 
         public int transmissionFPS
         {
@@ -96,6 +98,9 @@ namespace videoSocketTools
         public delegate void connectionLostEventHandler();
         public event connectionLostEventHandler connectionLost;
 
+        public delegate void actualFPSChangedEventHandler(int newFPS);
+        public event actualFPSChangedEventHandler actualFPSRecalculated;
+
 
         public delegate void connectCallback(bool connectionStatus);
 
@@ -104,9 +109,24 @@ namespace videoSocketTools
             {
                 fpsTimer = new Timer(timerCallback, null, 0, 1000 / FPS);
             }
+            transmittedFPSTimer = new Timer(transmittedFPSTimerCallback, null, 0, 1000);
             cameraSource = _cameraSource;
             cameraSource.NewFrame +=cameraSource_NewFrame;
             cameraSource.Start();
+        }
+
+        private void transmittedFPSTimerCallback(object state)
+        {
+            int temp;
+            lock (fpsSync)
+            {
+                temp = framesSent;
+                framesSent = 0;
+            }
+            if (actualFPSRecalculated != null)
+            {
+                actualFPSRecalculated(temp);
+            }
         }
 
         private void timerCallback(object state)
@@ -175,6 +195,7 @@ namespace videoSocketTools
 
         private void cameraSource_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
+            Console.WriteLine("test A");
             if (Transmitting && timeExpired)
             {
                 timeExpired = false;
@@ -183,8 +204,21 @@ namespace videoSocketTools
                     byte[] jpegImage = Bitmap2JpegArray(eventArgs.Frame);
                     string headerBuilder = "SIZE:" + jpegImage.Length + "Z";
                     byte[] header = Encoding.ASCII.GetBytes(headerBuilder);
-                    sendSocket.Send(header, header.Length, SocketFlags.None);
-                    sendSocket.Send(jpegImage, jpegImage.Length, SocketFlags.None);
+                    int headerSent = sendSocket.Send(header, header.Length, SocketFlags.None);
+                    int imageSent = sendSocket.Send(jpegImage, jpegImage.Length, SocketFlags.None);
+                    Console.WriteLine("test B");
+                    if (headerSent != header.Length)
+                    {
+                        Console.WriteLine("HEADER SIZE CONFLICT: \n SENT: " + headerSent + "\n  REQUIRED: " + header.Length + "\n");
+                    }
+                    if (imageSent != jpegImage.Length)
+                    {
+                        Console.WriteLine("IMAGE SIZE CONFLICT: \n SENT: " + imageSent + "\n  REQUIRED: " + jpegImage.Length + "\n");
+                    }
+                    lock (fpsSync)
+                    {
+                        framesSent++;
+                    }
                 }
                 catch
                 {

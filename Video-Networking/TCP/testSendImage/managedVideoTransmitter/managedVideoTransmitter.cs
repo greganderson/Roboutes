@@ -20,6 +20,10 @@ namespace videoSocketTools
         private volatile bool ON = false;
         private volatile bool connected = false;
 
+        public delegate void actualFPSChangedEventHandler(int newFPS);
+        public event actualFPSChangedEventHandler actualFPSRecalculated;
+
+
         public managedVideoTransmitter(VideoCaptureDevice _cameraSource, IPAddress _IP, int _port)
         {
             cameraSource = _cameraSource;
@@ -27,6 +31,15 @@ namespace videoSocketTools
             port = _port;
             VSS = new videoSocketSender(cameraSource);
             VSS.connectionLost += VSS_connectionLost;
+            VSS.actualFPSRecalculated += VSS_acualFPSRecalculated;
+        }
+
+        void VSS_acualFPSRecalculated(int newFPS)
+        {
+            if (actualFPSRecalculated != null)
+            {
+                actualFPSRecalculated(newFPS);
+            }
         }
 
         public void stop()
