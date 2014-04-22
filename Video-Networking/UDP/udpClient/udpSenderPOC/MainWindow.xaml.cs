@@ -52,6 +52,7 @@ namespace udpSenderPOC
             tempSource.NewFrame += tempSource_NewFrame;
             tempSource.Start();
             uclient = new UdpClient();
+            uclient.DontFragment = true;
             //uclient.AllowNatTraversal(true);
             Console.WriteLine("trying to connect to server");
             uclient.Connect("127.0.0.1", 45000);
@@ -81,7 +82,7 @@ namespace udpSenderPOC
         {
             MemoryStream ms = new MemoryStream();
             EncoderParameters myEncoderParameters = new EncoderParameters(1);
-            EncoderParameter qualityParameter = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 0L);
+            EncoderParameter qualityParameter = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 20L);
             myEncoderParameters.Param[0] = qualityParameter;
             Frame.Save(ms, GetEncoder(ImageFormat.Jpeg), myEncoderParameters);
             byte[] toReturn = ms.ToArray();

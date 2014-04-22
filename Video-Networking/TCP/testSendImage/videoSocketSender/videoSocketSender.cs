@@ -197,7 +197,7 @@ namespace videoSocketTools
             }
         }
 
-        private byte[] Bitmap2JpegArray(Bitmap Frame) //TODO:!!!! THIS IS WHERE QUALITY CAN BE DETERMINED!!!!
+        private byte[] Bitmap2JpegArray(Bitmap Frame)
         {
             MemoryStream ms = new MemoryStream();
             long sendQuality;

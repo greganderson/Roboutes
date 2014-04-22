@@ -33,9 +33,9 @@ namespace udpReceiverPOC
             InitializeComponent();
             buffer = new byte[45000];
             serverSocket = new Socket(SocketType.Dgram, ProtocolType.Udp);
-            IPEndPoint endpoint = new IPEndPoint(IPAddress.Any, 3500);
+            IPEndPoint endpoint = new IPEndPoint(IPAddress.Any, 45000);
             serverSocket.Bind(endpoint);
-            Console.WriteLine("Listening on port 3500");
+            Console.WriteLine("Listening on port 45000");
             serverSocket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, gotData, null);
         }
 

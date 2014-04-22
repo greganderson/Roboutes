@@ -62,7 +62,6 @@ namespace ArduinoLibrary {
                                 arduinoReady = false;
                             }
                         }
-
                     }
                 }
                 Thread.Sleep(20);

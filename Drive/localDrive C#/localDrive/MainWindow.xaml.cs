@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 using XboxController;
 using ArduinoLibrary;
+using System.Threading;
 
 namespace localDrive
 {
@@ -28,9 +29,10 @@ namespace localDrive
         Arduino frontDriveDuino;
         Arduino backDriveDuino;
         ArduinoManager ArduMan;
-        float oldRightY = 0;
-        float oldLeftY = 0;
-        float deadzone = 15; // set lower for HIGHER resolution
+
+        string toSendLeft = "";
+        string toSendRight = "";
+        Timer sendTimer;
 
         public MainWindow()
         {
@@ -45,10 +47,31 @@ namespace localDrive
             xboxCont.ThumbStickLeft += xboxCont_ThumbStickLeft;
             xboxCont.ThumbStickRight += xboxCont_ThumbStickRight;
 
+            
             backDuinoInViz.setTitle("BACK COM IN");
             backDuinoOutViz.setTitle("BACK COM OUT");
             frontDuinoInViz.setTitle("FRONT COM IN");
             frontDuinoOutViz.setTitle("FRONT COM OUT");
+            sendTimer = new Timer(sendTimerCallback, null, 0, 200);
+        }
+
+        private void sendTimerCallback(object state)
+        {
+            lock (toSendRight)
+            {
+                lock (toSendLeft)
+                {
+                    frontDuinoOutViz.addText("\nSENDING: " + toSendRight + "\n");
+                    backDuinoOutViz.addText("\nSENDING: " + toSendRight + "\n");
+                    frontDriveDuino.write(toSendRight);
+                    backDriveDuino.write(toSendRight);
+
+                    frontDuinoOutViz.addText("\nSENDING: " + toSendLeft + "\n");
+                    backDuinoOutViz.addText("\nSENDING: " + toSendLeft + "\n");
+                    frontDriveDuino.write(toSendLeft);
+                    backDriveDuino.write(toSendLeft);
+                }
+            }
         }
 
         void backDriveDuino_Data_Received(string receivedData)
@@ -63,35 +86,25 @@ namespace localDrive
 
         void xboxCont_ThumbStickRight(object sender, EventArgs e)
         {
-            string toSend;
             XboxEventArgs args = (XboxEventArgs)e;
             Tuple<float, float> vec = args.GetThumbStickRight();
-            float newRightY = vec.Item2.Map(-1, 1, -255, 255);
-            float rightDif = Math.Abs(newRightY - oldRightY);
-            if (rightDif >= deadzone)
+            Dispatcher.Invoke(() => rightStickVal.Content = vec.Item2);
+            float newRightY = vec.Item2.Map(-1, 1, 0, 100);
+            lock (toSendRight)
             {
-                toSend = "R" + newRightY.ToString(valFormat);
-                frontDuinoOutViz.addText("\nSENDING: " + toSend + "\n");
-                backDuinoOutViz.addText("\nSENDING: " + toSend + "\n");
-                frontDriveDuino.write(toSend);
-                backDriveDuino.write(toSend);
+                toSendRight = " R" + newRightY.ToString(valFormat);
             }
         }
 
         private void xboxCont_ThumbStickLeft(object sender, EventArgs e)
         {
-            string toSend;
             XboxEventArgs args = (XboxEventArgs)e;
             Tuple<float, float> vec = args.GetThumbStickLeft();
-            float newLeftY = vec.Item2.Map(-1, 1, -255, 255);
-            float leftDif = Math.Abs(newLeftY - oldLeftY);
-            if (leftDif >= deadzone)
+            Dispatcher.Invoke(() => leftStickVal.Content = vec.Item2);
+            float newLeftY = vec.Item2.Map(-1, 1, 0, 100);
+            lock (toSendLeft)
             {
-                toSend = "L" + newLeftY.ToString(valFormat);
-                frontDuinoOutViz.addText("\nSENDING: " + toSend + "\n");
-                backDuinoOutViz.addText("\nSENDING: " + toSend + "\n");
-                frontDriveDuino.write(toSend);
-                backDriveDuino.write(toSend);
+                toSendLeft = " L" + newLeftY.ToString(valFormat);
             }
         }
 

@@ -14,13 +14,37 @@ Encoder myEnc(0, 1);
 //   avoid using pins with LEDs attached
 
 ///////////////////////////////////////////
+//////Change these to use other setups/////
+///////////////////////////////////////////
+//Encoder
+double countsPerRevolution = 64.0;
+//Gearbox
+double gearRatio = 131.0;
+//Motor Controller
+int pololuDMD = 0;
+int pololuSMD = 1;
+
+if(pololuDMD == 1){
+double max_duty = 255;
+}
+
+else if(pololuSMD == 1){
+double max_duty = 3200;
+}
+
+///////////////////////////////////////////
+///////////////////////////////////////////
+///////////////////////////////////////////
+
+
+
+
+///////////////////////////////////////////
 //////Change these to change performance///
 ///////////////////////////////////////////
-double countsPerRevolution = 64.0;
-double gearRatio = 131.0;
 double Hertz = 40.0;
 double TT_P_gain = 600;
-double TT_I_gain = 0.001;
+double TT_I_gain = 0;
 double TT_error_tolerance = 0;
 ///////////////////////////////////////////
 ///////////////////////////////////////////
@@ -78,6 +102,7 @@ void loop() {
     oldPosition = newPosition;
     timerB = millis();
   }
+////////////////////////////////////////////////////////////////////////////////////////////////////////
   
   if(stringComplete){
     if(inputString.startsWith("GOAL:")){
@@ -96,35 +121,47 @@ void loop() {
     inputString = "";
   }
   
-  /////////////////////////////////////////////////
-        //Command Generation
+/////////////////////////////////////////////////////////////////////////
+///////////////Command Generation////////////////////////////////////////
+
         TT_error = (Speed-target);
-        TT_integral_error = TT_integral_error + TT_error;
+        TT_integral_error = TT_integral_error + TT_error*checkFrequency;
         
-        TT_duty_cycle = (abs(TT_error)*TT_P_gain) + abs(TT_integral_error)*TT_I_gain;
+        TT_duty_cycle = TT_error*TT_P_gain + TT_integral_error*TT_I_gain;
         
-        if(TT_duty_cycle > 255){
-          TT_duty_cycle = 255;
-        } // end if
-        // Command Execution  
-         if(1 == 0){
-           digitalWrite(TT_cw, LOW);
-           digitalWrite(TT_ccw, LOW);
-           analogWrite(TT_pwm, 0); 
-         }
-        
-        else if(TT_error < 0){
+        if(TT_duty_cycle > max_duty){
+          TT_duty_cycle = max_duty;
+        } //end if
+        else if(TT_duty_cycle < -max_duty){
+          TT_duty_cycle = -max_duty;
+          
+        } // end else if
+ 
+///////////Pololu Dual///////////////////////////////////////////////////// 
+//////// Command Execution/////////////////////////////////////////////////  
+
+if(pololuDMD){        
+        if(TT_duty_cycle < 0){
            digitalWrite(TT_cw, LOW);
            digitalWrite(TT_ccw, HIGH);
-           analogWrite(TT_pwm, TT_duty_cycle); 
+           analogWrite(TT_pwm, abs(TT_duty_cycle)); 
         }
         
-        else if(TT_error > 0) {
+        else if(TT_duty_cycle > 0) {
            digitalWrite(TT_cw, HIGH);
            digitalWrite(TT_ccw, LOW);
-           analogWrite(TT_pwm, TT_duty_cycle); 
+           analogWrite(TT_pwm, abs(TT_duty_cycle)); 
         }
-   /////////////////////////////////////////////////
+
+}
+///////////Pololu Simple//////////////////////////////////////////////////////
+////////////Command Execution/////////////////////////////////////////////////
+
+   setMotor_topleft(TT_duty_cycle);
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
    Serial.print("SPEED: ");
    Serial.print(Speed);
    Serial.print("   Target: ");
@@ -132,6 +169,10 @@ void loop() {
    Serial.print("   TT_DUTY: ");
    Serial.println(TT_duty_cycle);
 }
+
+
+////////////////////////////////////////////////////////////////////////////////
+////////////Serial Event///////////////////////////////////////////////////////
 
 void serialEvent() {////Serial event loop (outside of normal/main loop)
   while (Serial.available()) {
@@ -147,3 +188,19 @@ void serialEvent() {////Serial event loop (outside of normal/main loop)
     }
   }
 } //end serial loop
+
+///////////////////////////////////////////////////////////////////////////////
+//////////Pololu Simple Helper////////////////////////////////////////////////
+
+void setMotor_topleft(int speed){
+ if(speed<0){
+    Serial1.write(0x86);
+    speed=-speed;
+ }
+ else{
+  Serial1.write(0x85); 
+ }
+ Serial1.write(speed & 0x1F);
+ 
+ Serial1.write(speed >> 5);
+}
