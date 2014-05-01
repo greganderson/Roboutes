@@ -37,3 +37,4 @@ C:\Users\CORE\Documents\GitHub\Roboutes\Arm\localArmControl\liveXboxMonitorV2\ob
 C:\Users\CORE\Documents\GitHub\Roboutes\Arm\localArmControl\liveXboxMonitorV2\obj\Debug\liveXboxMonitorV2.pkgdef
 C:\Users\CORE\Documents\GitHub\Roboutes\Arm\localArmControl\liveXboxMonitorV2\obj\Debug\liveXboxMonitorV2.latest.pkgdef
 C:\Users\CORE\Documents\GitHub\Roboutes\Arm\localArmControl\liveXboxMonitorV2\obj\Debug\extension.vsixmanifest
+C:\Users\CORE\Documents\GitHub\Roboutes\Arm\localArmControl\liveXboxMonitorV2\obj\Debug\liveXboxMonitorV2.csprojResolveAssemblyReference.cache

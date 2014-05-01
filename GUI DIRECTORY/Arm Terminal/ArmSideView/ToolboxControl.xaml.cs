@@ -11,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using XboxController;
+using System.Threading;
 
 namespace ArmSideView {
     /// <summary>
@@ -18,6 +20,30 @@ namespace ArmSideView {
     /// </summary>
     [ProvideToolboxControl("ArmSideView", true)]
     public partial class ArmSide : UserControl {
+
+        Thread elbowUpdateThread;
+        Thread shoulderUpdateThread;
+
+        double commandedElbowAngle;
+        double elbowRate;
+        object elbowSync = 1;
+
+        double commandedShoulderAngle;
+        double shoulderRate;
+        object shoulderSync = 1;
+
+        private XboxController.XboxController _xboxController;
+        public XboxController.XboxController XboxController
+        {
+            set
+            {
+                _xboxController = value;
+                _xboxController.ThumbStickRight += _xboxController_ThumbStickRight;
+                _xboxController.TriggerLeft += _xboxController_TriggerLeft;
+                _xboxController.TriggerRight += _xboxController_TriggerRight;
+            }
+        }
+
         double gShoulderAngle = 0;
         double gElbowAngle = 0;
         double gElbowOffsetAngle = -180;
@@ -30,6 +56,71 @@ namespace ArmSideView {
             InitializeComponent();
             gRec2.RenderTransform = new RotateTransform(gElbowOffsetAngle);
             aRec2.RenderTransform = new RotateTransform(aElbowOffsetAngle);
+            elbowUpdateThread = new Thread(new ThreadStart(elbowUpdate));
+            elbowUpdateThread.Start();
+            shoulderUpdateThread = new Thread(new ThreadStart(shoulderUpdate));
+            shoulderUpdateThread.Start();
+        }
+
+        void shoulderUpdate()
+        {
+            while (true)
+            {
+                lock (shoulderSync)
+                {
+                    commandedShoulderAngle += shoulderRate;
+                    Dispatcher.Invoke(() => updateGoalShoulder(commandedShoulderAngle));
+                    Thread.Sleep(20);
+                }
+            }
+        }
+
+        void elbowUpdate()
+        {
+            while (true)
+            {
+                lock (elbowSync)
+                {
+                    commandedElbowAngle -= elbowRate;   //TODO: This is currently inverted, make it += instead
+                    Dispatcher.Invoke(() => updateGoalElbow(commandedElbowAngle));
+                    Thread.Sleep(20);
+                }
+            }
+        }
+
+        void _xboxController_TriggerLeft(object sender, EventArgs e)
+        {
+            XboxEventArgs args = (XboxEventArgs)e;
+            float val = args.GetLeftTrigger();
+            val = val / 2;  //keep it slow
+            Console.WriteLine("val: " + val);
+            lock (shoulderSync)
+            {
+                shoulderRate = -val;    //left trigger is down
+            }
+        }
+
+        void _xboxController_TriggerRight(object sender, EventArgs e)
+        {
+            XboxEventArgs args = (XboxEventArgs)e;
+            float val = args.GetRightTrigger();
+            val = val / 2;  //keep it slow
+            Console.WriteLine("val: " + val);
+            lock (shoulderSync)
+            {
+                shoulderRate = val;    //right trigger is up
+            }
+        }
+
+        void _xboxController_ThumbStickRight(object sender, EventArgs e)
+        {
+            XboxEventArgs args = (XboxEventArgs)e;
+            Tuple<float, float> vec = args.GetRightThumbStick();
+            double Y = vec.Item2.Map(-1, 1, -2, 2);
+            lock (elbowSync)
+            {
+                elbowRate = Y;
+            }
         }
 
         /// <summary>
@@ -78,6 +169,35 @@ namespace ArmSideView {
 
         public double ConvertToRadians(double angle) {
             return (Math.PI / 180) * angle;
+        }
+    }
+
+    public static class ExtensionMethods
+    {
+        public static float Map(this float value, float fromSource, float toSource, float fromTarget, float toTarget)
+        {
+            return (value - fromSource) / (toSource - fromSource) * (toTarget - fromTarget) + fromTarget;
+        }
+
+        public static double Map(this double value, double fromSource, double toSource, double fromTarget, double toTarget)
+        {
+            return (value - fromSource) / (toSource - fromSource) * (toTarget - fromTarget) + fromTarget;
+        }
+
+        public static double Constrain(this double value, double min, double max)
+        {
+            if (value > max)
+            {
+                return max;
+            }
+            else if (value < min)
+            {
+                return min;
+            }
+            else
+            {
+                return value;
+            }
         }
     }
 }

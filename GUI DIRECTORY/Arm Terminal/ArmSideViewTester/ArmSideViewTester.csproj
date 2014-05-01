@@ -100,6 +100,10 @@
       <Project>{041B7E7E-D7AA-47DF-BD1C-AF95E50388A3}</Project>
       <Name>ArmSideView</Name>
     </ProjectReference>
+    <ProjectReference Include="..\XboxController\XboxController.csproj">
+      <Project>{cac2902b-97fd-483e-b362-39e244aa1ace}</Project>
+      <Name>XboxController</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

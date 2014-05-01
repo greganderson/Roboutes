@@ -14,9 +14,9 @@
 
             <Macros:Macros x:Name="macroButtons" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="262.5" Width="480"/>
 
-            <ArmTopView:ArmTop HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="263" Width="480" Margin="0,0,0,262.5"/>
+            <ArmTopView:ArmTop x:Name="armTopView" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="263" Width="480" Margin="0,0,0,262.5"/>
 
-            <ArmSideView:ArmSide HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="263" Width="480" Margin="0,0,480,262.5"/>
+            <ArmSideView:ArmSide x:Name="armSideView" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="263" Width="480" Margin="0,0,480,262.5"/>
 
             <GUIArmDrive:GUIArmDrive x:Name="GUIArmDrive" HorizontalAlignment="Right" Margin="0,0,480,0" VerticalAlignment="Bottom" Height="262.5" Width="480"/>
 

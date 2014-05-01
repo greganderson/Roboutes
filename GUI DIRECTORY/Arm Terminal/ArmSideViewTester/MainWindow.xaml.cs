@@ -12,18 +12,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using XboxController;
 
 namespace tester1 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
+        XboxController.XboxController xboxController;
         public MainWindow() {
             InitializeComponent();
             gShoulderSlider.ValueChanged += updateGShoulder;
             gElbowSlider.ValueChanged += updateGElbow;
             aShoulderSlider.ValueChanged += updateAShoulder;
             aElbowSlider.ValueChanged += updateAElbow;
+            xboxController = new XboxController.XboxController();
+            testSideView.XboxController = xboxController;
         }
 
         private void updateGElbow(object sender, RoutedPropertyChangedEventArgs<double> e) {
@@ -40,6 +44,11 @@ namespace tester1 {
 
         private void updateAShoulder(object sender, RoutedPropertyChangedEventArgs<double> e) {
             testSideView.updateActualShoulder(e.NewValue);
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

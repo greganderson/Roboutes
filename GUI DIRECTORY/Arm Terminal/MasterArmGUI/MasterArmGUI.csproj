@@ -127,6 +127,10 @@
       <Project>{F55614F2-E7ED-441D-B3E5-95628F20DB32}</Project>
       <Name>Macros</Name>
     </ProjectReference>
+    <ProjectReference Include="..\XboxController\XboxController.csproj">
+      <Project>{cac2902b-97fd-483e-b362-39e244aa1ace}</Project>
+      <Name>XboxController</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

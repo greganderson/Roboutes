@@ -34,3 +34,6 @@ C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideViewTe
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideViewTester\obj\Debug\tester1.g.resources
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideViewTester\obj\Debug\tester1.Properties.Resources.resources
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideViewTester\obj\Debug\ArmSideViewTester.csproj.GenerateResource.Cache
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideViewTester\bin\Debug\XboxController.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideViewTester\bin\Debug\Microsoft.Xna.Framework.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideViewTester\bin\Debug\XboxController.pdb

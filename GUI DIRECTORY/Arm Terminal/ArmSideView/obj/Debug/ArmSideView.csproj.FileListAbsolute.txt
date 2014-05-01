@@ -48,3 +48,6 @@ C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\o
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\obj\Debug\ArmSideView.latest.pkgdef
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\obj\Debug\extension.vsixmanifest
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\obj\Debug\ArmSideView.csprojResolveAssemblyReference.cache
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\bin\Debug\XboxController.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\bin\Debug\Microsoft.Xna.Framework.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\bin\Debug\XboxController.pdb

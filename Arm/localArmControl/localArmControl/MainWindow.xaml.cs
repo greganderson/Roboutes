@@ -41,7 +41,10 @@ namespace localArmControl
             Console.WriteLine("***Arm Control Booted***");
             xboxController = new XboxController.XboxController();
             xboxControllerMonitor.xboxController = xboxController;
+            armSideView.XboxController = xboxController;
+            armTopView.XboxController = xboxController;
             Console.WriteLine("***XBOX CONTROLLER CONNECTED***");
+
         }
 
         void armDuino_Data_Received(string receivedData)

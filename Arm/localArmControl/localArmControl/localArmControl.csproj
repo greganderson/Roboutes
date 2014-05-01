@@ -101,7 +101,7 @@
       <Name>ArduinoLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\ArmSideView\ArmSideView.csproj">
-      <Project>{041B7E7E-D7AA-47DF-BD1C-AF95E50388A3}</Project>
+      <Project>{041b7e7e-d7aa-47df-bd1c-af95e50388a3}</Project>
       <Name>ArmSideView</Name>
     </ProjectReference>
     <ProjectReference Include="..\ArmTopView\ArmTopView.csproj">
