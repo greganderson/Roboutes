@@ -35,6 +35,11 @@ namespace ArduinoLibrary
         /// <returns></returns>
         public bool findArduinos() {
             string[] COMPorts = SerialPort.GetPortNames();
+            /*Console.WriteLine("FOUND COM PORTS: ");
+            foreach (string serialPort in COMPorts)
+            {
+                Console.WriteLine(" "+serialPort);
+            }*/
             bool foundAny = false;
             foreach (string potentialArduino in COMPorts) {
                 if (identify(ref ArduinoMap, potentialArduino)) {
@@ -49,10 +54,13 @@ namespace ArduinoLibrary
                 SerialPort temp;
                 try {
                     temp = new SerialPort(_potentialArduino);
+                    temp.RtsEnable = !temp.RtsEnable;
+                    Thread.Sleep(300);
+                    temp.RtsEnable = !temp.RtsEnable;
                     temp.Open();
                     string toWrite = Arduino_Codes.IDENTITY_QUERY;
                     temp.WriteLine(toWrite);
-                    Thread.Sleep(300);
+                    Thread.Sleep(500);
                     string ID = temp.ReadExisting();
                     if (ID.Contains(Arduino_Codes.ARM_IDENTITY_RESPONSE))
                     {

@@ -12,7 +12,6 @@ public:
 	~ADVCOM();
 	void init(int baud); //starts the hardware serial at the specified baud rate
 	void writeln(String toSend);
-	void blinky(int time);
 	bool newData(String *data); //returns true if new data was available and is put into *data.
 	void serialEvent(); //must be called at the end of, but inside, the void loop()
 private:

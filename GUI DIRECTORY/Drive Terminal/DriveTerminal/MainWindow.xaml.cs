@@ -12,14 +12,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using XboxController;
 
 namespace DriveTerminal {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
+        XboxController.XboxController xboxController;
+
         public MainWindow() {
             InitializeComponent();
+            xboxController = new XboxController.XboxController();
+            pilotPreferences.xboxController = xboxController;
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

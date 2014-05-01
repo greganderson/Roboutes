@@ -82,3 +82,8 @@ C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPrefer
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences\obj\Debug\PilotPreferences.pkgdef
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences\obj\Debug\PilotPreferences.latest.pkgdef
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences\obj\Debug\extension.vsixmanifest
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences\bin\Debug\liveXboxMonitorV2.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences\bin\Debug\XboxController.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences\bin\Debug\Microsoft.Xna.Framework.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences\bin\Debug\liveXboxMonitorV2.pdb
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences\bin\Debug\XboxController.pdb

@@ -21,7 +21,7 @@ namespace commFeedViz_Tester {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
-            testFeed.setTitle("catsrKewl");
+            testFeed.title = "catsrKewl";
             Console.WriteLine("NORMAL LOCATION");
             Console.SetOut(testFeed.getStreamLink());
             Console.WriteLine("This text was printed from a call to Console.WriteLine and should contain all NORMAL (error has not been, but can be, redirected in this example) console output.");

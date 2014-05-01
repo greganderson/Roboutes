@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using XboxController;
 
 namespace PilotPreferences_Tester
 {
@@ -20,6 +21,9 @@ namespace PilotPreferences_Tester
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        XboxController.XboxController xboxController;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -32,6 +36,9 @@ namespace PilotPreferences_Tester
             pilotPrefComp.topSpeedChanged += pilotPrefComp_topSpeedChanged;
 
             topSpeedVal.Content = pilotPrefComp.TopSpeedPercentage; //just so the gui shows the same value as the slider at boot...
+
+            xboxController = new XboxController.XboxController();
+            pilotPrefComp.xboxController = xboxController;
         }
 
         void pilotPrefComp_topSpeedChanged(object sender, int newValue)

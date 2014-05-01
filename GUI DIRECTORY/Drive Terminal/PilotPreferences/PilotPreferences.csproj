@@ -102,6 +102,10 @@
       <Project>{1498D0C1-72D4-443E-9EB7-A2911888EAAD}</Project>
       <Name>Deadzone</Name>
     </ProjectReference>
+    <ProjectReference Include="..\liveXboxMonitorV2\liveXboxMonitorV2.csproj">
+      <Project>{cd51e462-bf4a-4b1e-a85e-e1008d77fe4c}</Project>
+      <Name>liveXboxMonitorV2</Name>
+    </ProjectReference>
     <ProjectReference Include="..\liveXboxMonitor\liveXboxMonitor.csproj">
       <Project>{7879ebef-6914-4e68-b410-b519cec4318e}</Project>
       <Name>liveXboxMonitor</Name>
@@ -109,6 +113,10 @@
     <ProjectReference Include="..\toggleIndicator\toggleIndicator.csproj">
       <Project>{c2dd09cf-4e6d-456b-ab71-752d4e354714}</Project>
       <Name>toggleIndicator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XboxController\XboxController.csproj">
+      <Project>{cac2902b-97fd-483e-b362-39e244aa1ace}</Project>
+      <Name>XboxController</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,0 +1,4 @@
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\ArmSideView\1.0\\ArmSideView.dll
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\ArmSideView\1.0\\ArmSideView.pkgdef
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\ArmSideView\1.0\\extension.vsixmanifest
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\ArmSideView\1.0\\ArmSideView.pdb

@@ -139,6 +139,10 @@
       <Project>{F88D4E04-95A9-4F90-8C63-0C67972414F2}</Project>
       <Name>WheelMonitor</Name>
     </ProjectReference>
+    <ProjectReference Include="..\XboxController\XboxController.csproj">
+      <Project>{cac2902b-97fd-483e-b362-39e244aa1ace}</Project>
+      <Name>XboxController</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:Deadzone="clr-namespace:Deadzone;assembly=Deadzone" xmlns:toggleIndicator="clr-namespace:toggleIndicator;assembly=toggleIndicator" xmlns:liveXboxMonitor="clr-namespace:liveXboxMonitor;assembly=liveXboxMonitor" x:Class="PilotPreferences.ToolboxControl" 
+             xmlns:Deadzone="clr-namespace:Deadzone;assembly=Deadzone" xmlns:toggleIndicator="clr-namespace:toggleIndicator;assembly=toggleIndicator" xmlns:liveXboxMonitor="clr-namespace:liveXboxMonitor;assembly=liveXboxMonitor" xmlns:liveXboxMonitorV2="clr-namespace:liveXboxMonitorV2;assembly=liveXboxMonitorV2" x:Class="PilotPreferences.ToolboxControl" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="700">
     <Viewbox Stretch="Fill">
@@ -66,7 +66,7 @@
             <toggleIndicator:ToolboxControl x:Name="xboxControllerConnectedIndicator" HorizontalAlignment="Left" Margin="624,254,0,0" VerticalAlignment="Top" Height="36" Width="49"/>
             <Viewbox x:Name="liveItems" Margin="28,56,84,37" Stretch="Fill">
                 <Grid Height="207" Width="588">
-                    <liveXboxMonitor:ToolboxControl x:Name="liveXboxControllerMonitor" HorizontalAlignment="Left" Margin="162,0,0,0" VerticalAlignment="Top" Height="205" Width="289"/>
+                    <liveXboxMonitorV2:ToolboxControl x:Name="liveXboxControllerMonitor" HorizontalAlignment="Left" Margin="158,6,0,0" VerticalAlignment="Top" Height="191" Width="316"/>
                     <Rectangle Fill="Black" HorizontalAlignment="Left" Height="2" Margin="84,76,0,0" Stroke="Black" VerticalAlignment="Top" Width="134" RenderTransformOrigin="0.5,0.5">
                         <Rectangle.RenderTransform>
                             <TransformGroup>

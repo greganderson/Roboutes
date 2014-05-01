@@ -5,7 +5,7 @@
         Title="MainWindow" Height="350" Width="525" Closing="Window_Closing">
     <Grid>
 
-        <commFeedViz:commFeedViz x:Name="testFeed" HorizontalAlignment="Left" Margin="51,42,0,0" VerticalAlignment="Top"/>
+        <commFeedViz:commFeedViz x:Name="testFeed" HorizontalAlignment="Left" Margin="91,29,0,0" VerticalAlignment="Top" Width="290" Height="234"/>
 
     </Grid>
 </Window>

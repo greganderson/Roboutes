@@ -40,3 +40,8 @@ C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPrefer
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\obj\Debug\PilotPreferences Tester.g.resources
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\obj\Debug\PilotPreferences_Tester.Properties.Resources.resources
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\obj\Debug\PilotPreferences Tester.csproj.GenerateResource.Cache
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\bin\Debug\liveXboxMonitorV2.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\bin\Debug\XboxController.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\bin\Debug\Microsoft.Xna.Framework.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\bin\Debug\liveXboxMonitorV2.pdb
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\PilotPreferences Tester\bin\Debug\XboxController.pdb

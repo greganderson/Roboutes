@@ -36,21 +36,15 @@ void ADVCOM::writeln(String toSend){
 	SerialLine->print(toSend+"\n");
 }
 
-//blink the LED in a period equal to parameter time.
-void ADVCOM::blinky(int time){
-	digitalWrite(LED_PIN,HIGH); //set the pin HIGH and thus turn LED on
-	delay(time/2);  //wait half of the wanted period
-	digitalWrite(LED_PIN,LOW); //set the pin LOW and thus turn LED off
-	delay(time/2);  //wait the last half of the wanted period
-}
-
 void ADVCOM::serialEvent()
 {
 	int read;
 	char toadd;
+	static bool reportedCOMready;
 
 	while(Serial.available() > 0)
 	{
+		reportedCOMready = false;
 		read = Serial.read();
 		if(read == 1){
 			Serial.flush();
@@ -68,9 +62,15 @@ void ADVCOM::serialEvent()
 		}
 		else{
 			toadd = (char)read;
-			fromPC += toadd;
+			if(toadd != '\n'){
+				fromPC += toadd;
+			}
 		}
 	}
-	Serial.flush();
-	Serial.println("~");
+
+	if(!reportedCOMready ){
+		Serial.flush();
+		Serial.println("~");
+		reportedCOMready = true;
+	}
 }

@@ -16,3 +16,6 @@ C:\Users\CORE\Desktop\XboxControllerSample\XboxControllerSample\bin\Debug\XboxCo
 C:\Users\CORE\Desktop\XboxControllerSample\XboxControllerSample\bin\Debug\Microsoft.Xna.Framework.dll
 C:\Users\CORE\Desktop\XboxControllerSample\XboxControllerSample\bin\Debug\Microsoft.Xna.Framework.xml
 C:\Users\CORE\Desktop\XboxControllerSample\XboxControllerSample\obj\Debug\XboxControllerSample.csprojResolveAssemblyReference.cache
+C:\Users\CORE\Documents\GitHub\Roboutes\XboxController\XboxControllerSample\XboxControllerSample\bin\Debug\XboxControllerSample.exe.config
+C:\Users\CORE\Documents\GitHub\Roboutes\XboxController\XboxControllerSample\XboxControllerSample\obj\Debug\XboxControllerSample.exe
+C:\Users\CORE\Documents\GitHub\Roboutes\XboxController\XboxControllerSample\XboxControllerSample\obj\Debug\XboxControllerSample.pdb

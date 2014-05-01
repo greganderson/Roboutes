@@ -68,3 +68,8 @@ C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\DriveTermin
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\DriveTerminal\obj\Debug\DriveTerminal.g.resources
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\DriveTerminal\obj\Debug\DriveTerminal.Properties.Resources.resources
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\DriveTerminal\obj\Debug\MasterDriveGUI.csproj.GenerateResource.Cache
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\DriveTerminal\bin\Debug\liveXboxMonitorV2.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\DriveTerminal\bin\Debug\XboxController.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\DriveTerminal\bin\Debug\Microsoft.Xna.Framework.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\DriveTerminal\bin\Debug\liveXboxMonitorV2.pdb
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\DriveTerminal\bin\Debug\XboxController.pdb

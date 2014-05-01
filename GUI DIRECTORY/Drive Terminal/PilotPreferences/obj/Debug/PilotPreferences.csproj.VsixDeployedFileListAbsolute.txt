@@ -8,3 +8,8 @@ C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Ander
 C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\Deadzone.pdb
 C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\liveXboxMonitor.pdb
 C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\toggleIndicator.pdb
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\liveXboxMonitorV2.dll
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\XboxController.dll
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\Microsoft.Xna.Framework.dll
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\liveXboxMonitorV2.pdb
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\XboxController.pdb

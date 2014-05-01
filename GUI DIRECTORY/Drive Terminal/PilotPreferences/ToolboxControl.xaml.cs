@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using XboxController;
 
 namespace PilotPreferences {
     /// <summary>
@@ -27,6 +28,17 @@ namespace PilotPreferences {
         public event sliderChangedEventHandler deadZoneRightMinChanged;
         public event sliderChangedEventHandler deadZoneRightMaxChanged;
         public event sliderChangedEventHandler topSpeedChanged;
+
+        public XboxController.XboxController xboxController
+        {
+            set
+            {
+                _xboxController = value;
+                XBoxControllerConnected = true;
+                liveXboxControllerMonitor.xboxController = _xboxController;
+            }
+        }
+        private XboxController.XboxController _xboxController;
 
         /// <summary>
         /// used to represent/change the state of the Pilot Preferences component.
