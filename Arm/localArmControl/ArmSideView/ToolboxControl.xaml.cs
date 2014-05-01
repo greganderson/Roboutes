@@ -128,7 +128,7 @@ namespace ArmSideView {
         /// <param name="angle"></param>
         public void updateActualElbow(double angle) {
             aElbowAngle = angle;
-            aRec2.RenderTransform = new RotateTransform(180 - aElbowAngle + (aShoulderAngle));
+            Dispatcher.Invoke(()=>aRec2.RenderTransform = new RotateTransform(180 - aElbowAngle + (aShoulderAngle)));
         }
 
         /// <summary>
@@ -147,10 +147,10 @@ namespace ArmSideView {
         /// <param name="angle"></param>
         public void updateActualShoulder(double angle) {
             aShoulderAngle = -angle;
-            aRec1.RenderTransform = new RotateTransform(aShoulderAngle);
-            Canvas.SetLeft(aRec2, Canvas.GetLeft(aRec1) + (aRec1.Width * Math.Cos(ConvertToRadians(aShoulderAngle)))); //set rec2 dist from left
-            Canvas.SetBottom(aRec2, Canvas.GetBottom(aRec1) + (aRec1.Width * Math.Sin(ConvertToRadians(-aShoulderAngle)))); //set rec2 dist from top
-            updateActualElbow(aElbowAngle);
+            Dispatcher.Invoke(()=>aRec1.RenderTransform = new RotateTransform(aShoulderAngle));
+            Dispatcher.Invoke(()=>Canvas.SetLeft(aRec2, Canvas.GetLeft(aRec1) + (aRec1.Width * Math.Cos(ConvertToRadians(aShoulderAngle))))); //set rec2 dist from left
+            Dispatcher.Invoke(()=>Canvas.SetBottom(aRec2, Canvas.GetBottom(aRec1) + (aRec1.Width * Math.Sin(ConvertToRadians(-aShoulderAngle))))); //set rec2 dist from top
+            Dispatcher.Invoke(()=>updateActualElbow(aElbowAngle));
         }
 
         /// <summary>

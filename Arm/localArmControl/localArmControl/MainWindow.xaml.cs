@@ -50,6 +50,7 @@ namespace localArmControl
         void armDuino_Data_Received(string receivedData)
         {
             armComIn.addText(receivedData);
+            armComInHandler(receivedData);
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -60,6 +61,40 @@ namespace localArmControl
         private void Window_Closing_1(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void armComInHandler(string receivedData)
+        {
+            if (receivedData.Contains("Shoulder Position:"))
+            {
+                string toParse = receivedData.Substring(receivedData.LastIndexOf(":")+1);
+                int parsedVal;
+                if(int.TryParse(toParse,out parsedVal)){
+                    armSideView.updateActualShoulder(parsedVal);
+                }
+            }
+            else if (receivedData.Contains("Elbow Position:"))
+            {
+                string toParse = receivedData.Substring(receivedData.LastIndexOf(":") + 1);
+                int parsedVal;
+                if (int.TryParse(toParse, out parsedVal))
+                {
+                    armSideView.updateActualElbow(parsedVal);
+                }
+            }
+        }
+    }
+
+    public static class ExtensionMethods
+    {
+        public static float Map(this float value, float fromSource, float toSource, float fromTarget, float toTarget)
+        {
+            return (value - fromSource) / (toSource - fromSource) * (toTarget - fromTarget) + fromTarget;
+        }
+
+        public static double Map(this double value, double fromSource, double toSource, double fromTarget, double toTarget)
+        {
+            return (value - fromSource) / (toSource - fromSource) * (toTarget - fromTarget) + fromTarget;
         }
     }
 }
