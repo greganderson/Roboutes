@@ -51,8 +51,13 @@ namespace ArduinoLibrary
                     temp = new SerialPort(_potentialArduino);
                     temp.Open();
                     string toWrite = Arduino_Codes.IDENTITY_QUERY;
+                    temp.DiscardOutBuffer();
+                    temp.DiscardInBuffer();
+                    Thread.Sleep(100);
                     temp.WriteLine(toWrite);
-                    Thread.Sleep(300);
+                    Thread.Sleep(200);
+                    temp.WriteLine(toWrite);
+                    Thread.Sleep(200);
                     string ID = temp.ReadExisting();
                     if (ID.Contains(Arduino_Codes.ARM_IDENTITY_RESPONSE))
                     {

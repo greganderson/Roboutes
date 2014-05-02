@@ -44,7 +44,6 @@ namespace localArmControl
             armSideView.XboxController = xboxController;
             armTopView.XboxController = xboxController;
             Console.WriteLine("***XBOX CONTROLLER CONNECTED***");
-
         }
 
         void armDuino_Data_Received(string receivedData)
@@ -80,6 +79,15 @@ namespace localArmControl
                 if (int.TryParse(toParse, out parsedVal))
                 {
                     armSideView.updateActualElbow(parsedVal);
+                }
+            }
+            else if (receivedData.Contains("Turn Table Position:"))
+            {
+                string toParse = receivedData.Substring(receivedData.LastIndexOf(":") + 1);
+                int parsedVal;
+                if (int.TryParse(toParse, out parsedVal))
+                {
+                    armTopView.updateActualArmAngle(parsedVal);
                 }
             }
         }

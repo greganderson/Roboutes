@@ -49,7 +49,7 @@ namespace ArmTopView {
             XboxEventArgs args = (XboxEventArgs)e;
             Tuple<float, float> vec = args.GetRightThumbStick();
             double X = vec.Item1.Map(-1, 1, -2, 2);
-            Console.WriteLine("val: " + X);
+            //Console.WriteLine("val: " + X);
             lock (turnTableSync)
             {
                 turnTableRate = X;
@@ -72,7 +72,7 @@ namespace ArmTopView {
 
         public void updateActualArmAngle(double angle) {
             if (angle >= 0 && angle <= maxRotation) { //changes goal arm shoulder rotation angle
-                aRec.RenderTransform = new RotateTransform(180 + angle);
+                Dispatcher.Invoke(() =>aRec.RenderTransform = new RotateTransform(180 + angle));
             }
         }
 

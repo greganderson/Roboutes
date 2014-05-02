@@ -72,7 +72,7 @@ namespace ArmTopView {
 
         public void updateActualArmAngle(double angle) {
             if (angle >= 0 && angle <= maxRotation) { //changes goal arm shoulder rotation angle
-                aRec.RenderTransform = new RotateTransform(180 + angle);
+                Dispatcher.Invoke(() =>aRec.RenderTransform = new RotateTransform(180 + angle));
             }
         }
 
