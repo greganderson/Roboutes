@@ -12,8 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 using XboxController;
 using ArduinoLibrary;
+using ArmControlTools;
 
 namespace localArmControl
 {
@@ -27,10 +29,13 @@ namespace localArmControl
         Arduino armDuino;
         Arduino handDuino;
         ArduinoManager ArduMan;
+        armInputManager armInput;
+        localArmCommandTransmitter armTransmitter;
 
         public MainWindow()
         {
             InitializeComponent();
+
             ArduMan = ArduinoManager.Instance;
             ArduMan.findArduinos();
 
@@ -40,9 +45,13 @@ namespace localArmControl
             Console.SetOut(consoleViz.getStreamLink()); //Show console output in gui
             Console.WriteLine("***Arm Control Booted***");
             xboxController = new XboxController.XboxController();
+
+            armInput = armInputManager.getInstance(xboxController);
+            armTransmitter = new localArmCommandTransmitter(armDuino, armInput);
+
             xboxControllerMonitor.xboxController = xboxController;
-            armSideView.XboxController = xboxController;
-            armTopView.XboxController = xboxController;
+            armSideView.armInputManager = armInput;
+            armTopView.armInputManager = armInput;
             Console.WriteLine("***XBOX CONTROLLER CONNECTED***");
         }
 
@@ -53,11 +62,6 @@ namespace localArmControl
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            Environment.Exit(0);
-        }
-
-        private void Window_Closing_1(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Environment.Exit(0);
         }

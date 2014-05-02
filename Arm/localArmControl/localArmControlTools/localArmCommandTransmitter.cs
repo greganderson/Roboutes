@@ -7,17 +7,85 @@ using System.Threading.Tasks;
 using XboxController;
 using ArduinoLibrary;
 using System.Threading;
+using ArmControlTools;
 
 namespace ArmControlTools
 {
     public class localArmCommandTransmitter
     {
         private Arduino armArduino;
+        private armInputManager armInput;
+        Timer elbowTimer;
+        Timer shoulderTimer;
+        Timer turnTableTimer;
+        bool elbowTimerExpired = false;
+        bool shoulderTimerExpired = false;
+        bool turnTableTimerExpired = false;
 
-        public localArmCommandTransmitter(Arduino _armArduino)
+        int delay = 100;    //How often new commands will be sent, used to avoid overflowing the line (Serial or internet)
+
+        int oldElbow = 0;
+        int oldTurnTable = 0;
+        int oldShoulder = 0;
+
+        public localArmCommandTransmitter(Arduino _armArduino , armInputManager _armInput)
         {
             armArduino = _armArduino;
-            
+            armInput = _armInput;
+            armInput.targetElbowChanged += armInput_targetElbowChanged;
+            armInput.targetShoulderChanged += armInput_targetShoulderChanged;
+            armInput.targetTurnTableChanged += armInput_targetTurnTableChanged;
+            elbowTimer = new Timer(elbowTimerCallback, null, 0, delay);
+            shoulderTimer = new Timer(shoulderTimerCallback, null, 0, delay);
+            turnTableTimer = new Timer(turnTableTimerCallback, null, 0, delay);
+        }
+
+        private void turnTableTimerCallback(object state)
+        {
+            turnTableTimerExpired = true;
+        }
+
+        private void shoulderTimerCallback(object state)
+        {
+            shoulderTimerExpired = true;
+        }
+
+        private void elbowTimerCallback(object state)
+        {
+            elbowTimerExpired = true;
+        }
+
+        void armInput_targetTurnTableChanged(double newAngle)
+        {
+            if (( ((int)newAngle).Map(0, 90, 0, 1023) != oldTurnTable) && turnTableTimerExpired)
+            {
+                oldTurnTable = ((int)newAngle).Map(0, 90, 0, 1023);
+                turnTableTimerExpired = false;
+                armArduino.write("TTPOS:" + ((int)newAngle).Map(0, 90, 0, 1023)); //TODO: This is temporary! When finished we will be sending just an angle.
+            }
+            //Console.WriteLine("TT: " + ((int)newAngle).Map(0, 90, 0, 1023));
+        }
+
+        void armInput_targetShoulderChanged(double newAngle)
+        {
+            if (( ((int)newAngle).Map(0, 90, 0, 1023) != oldShoulder) && shoulderTimerExpired)
+            {
+                oldShoulder = ((int)newAngle).Map(0, 90, 0, 1023);
+                shoulderTimerExpired = false;
+                armArduino.write("S1POS:" + ((int)newAngle).Map(0, 90, 0, 1023)); //TODO: This is temporary! When finished we will be sending just an angle.
+            }
+            //Console.WriteLine("S1: " + ((int)newAngle).Map(0, 90, 0, 1023));
+        }
+
+        void armInput_targetElbowChanged(double newAngle)
+        {
+            if (( ((int)newAngle).Map(0, 180, 0, 1023) != oldElbow) && elbowTimerExpired)
+            {
+                oldElbow = ((int)newAngle).Map(0, 180, 0, 1023);
+                elbowTimerExpired = false;
+                armArduino.write("ELPOS:" + ((int)newAngle).Map(0, 180, 0, 1023)); //TODO: This is temporary! When finished we will be sending just an angle.
+            }
+            //Console.WriteLine("EL: " + ((int)newAngle).Map(0, 180, 0, 1023));
         }
     }
 
@@ -25,6 +93,11 @@ namespace ArmControlTools
     {
         XboxController.XboxController xboxController;
         private static armInputManager actualInstance;
+
+        public delegate void ChangedJointPositionEventHandler(double newAngle);
+        public event ChangedJointPositionEventHandler targetElbowChanged;
+        public event ChangedJointPositionEventHandler targetShoulderChanged;
+        public event ChangedJointPositionEventHandler targetTurnTableChanged;
 
         double commandedTurntableAngle;
         double turnTableRate;
@@ -76,7 +149,15 @@ namespace ArmControlTools
                 lock (shoulderSync)
                 {
                     commandedShoulderAngle += shoulderRate;
-                    Thread.Sleep(20);
+                    commandedShoulderAngle = commandedShoulderAngle.Constrain(0, 90);
+                    if (shoulderRate != 0)
+                    {
+                        if (targetShoulderChanged != null)
+                        {
+                            targetShoulderChanged(commandedShoulderAngle);
+                        }
+                    }
+                    Thread.Sleep(10);
                 }
             }
         }
@@ -88,7 +169,15 @@ namespace ArmControlTools
                 lock (elbowSync)
                 {
                     commandedElbowAngle -= elbowRate;   //TODO: This is currently inverted, make it += instead to un-invert it
-                    Thread.Sleep(20);
+                    commandedElbowAngle = commandedElbowAngle.Constrain(0, 180);
+                    if (elbowRate != 0)
+                    {
+                        if (targetElbowChanged != null)
+                        {
+                            targetElbowChanged(commandedElbowAngle);
+                        }
+                    }
+                    Thread.Sleep(10);
                 }
             }
         }
@@ -101,7 +190,14 @@ namespace ArmControlTools
                 {
                     commandedTurntableAngle += turnTableRate;
                     commandedTurntableAngle = commandedTurntableAngle.Constrain(0, 90);
-                    Thread.Sleep(20);
+                    if (turnTableRate != 0)
+                    {
+                        if (targetTurnTableChanged != null)
+                        {
+                            targetTurnTableChanged(commandedTurntableAngle);
+                        }
+                    }
+                    Thread.Sleep(10);
                 }
             }
         }
@@ -110,13 +206,13 @@ namespace ArmControlTools
         {
             XboxEventArgs args = (XboxEventArgs)e;
             Tuple<float, float> vec = args.GetRightThumbStick();
-            double X = vec.Item1.Map(-1, 1, -2, 2);
+            double X = Math.Round(vec.Item1.Map(-1, 1, -2, 2), 1); //only 2 decimals of precision
             lock (turnTableSync)
             {
                 turnTableRate = X;
             }
 
-            double Y = vec.Item2.Map(-1, 1, -2, 2);
+            double Y = Math.Round(vec.Item2.Map(-1, 1, -2, 2), 1); //only 2 decimals of precision
             lock (elbowSync)
             {
                 elbowRate = Y;
@@ -126,8 +222,8 @@ namespace ArmControlTools
         void xboxController_TriggerLeft(object sender, EventArgs e)
         {
             XboxEventArgs args = (XboxEventArgs)e;
-            float val = args.GetLeftTrigger();
-            val = val / 2;  //keep it slow
+            double val = args.GetLeftTrigger();
+            val = Math.Round((val / 2), 1);  //keep it slow , only 2 decimals of precision
             lock (shoulderSync)
             {
                 shoulderRate = -val;    //left trigger is down
@@ -137,8 +233,8 @@ namespace ArmControlTools
         void xboxController_TriggerRight(object sender, EventArgs e)
         {
             XboxEventArgs args = (XboxEventArgs)e;
-            float val = args.GetRightTrigger();
-            val = val / 2;  //keep it slow
+            double val = args.GetRightTrigger();
+            val = Math.Round((val / 2), 1);  //keep it slow , only 2 decimals of precision
             lock (shoulderSync)
             {
                 shoulderRate = val;    //right trigger is up
@@ -156,6 +252,11 @@ namespace ArmControlTools
         public static double Map(this double value, double fromSource, double toSource, double fromTarget, double toTarget)
         {
             return (value - fromSource) / (toSource - fromSource) * (toTarget - fromTarget) + fromTarget;
+        }
+
+        public static int Map(this int value, double fromSource, double toSource, double fromTarget, double toTarget)
+        {
+            return (int)((value - fromSource) / (toSource - fromSource) * (toTarget - fromTarget) + fromTarget);
         }
 
         public static double Constrain(this double value, double min, double max)

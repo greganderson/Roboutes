@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:commFeedViz="clr-namespace:commFeedViz;assembly=commFeedViz" xmlns:liveXboxMonitorV2="clr-namespace:liveXboxMonitorV2;assembly=liveXboxMonitorV2" xmlns:ArmSideView="clr-namespace:ArmSideView;assembly=ArmSideView" xmlns:ArmTopView="clr-namespace:ArmTopView;assembly=ArmTopView" x:Class="localArmControl.MainWindow"
-        Title="MainWindow" Height="570" Width="1524" Closing="Window_Closing_1">
+        Title="MainWindow" Height="570" Width="1524" Closing="Window_Closing">
     <Grid>
         <commFeedViz:commFeedViz x:Name="armComOut" HorizontalAlignment="Left" Margin="10,318,0,0" VerticalAlignment="Top" Height="210" Width="298" title="ARM COM OUT"/>
         <commFeedViz:commFeedViz x:Name="armComIn" HorizontalAlignment="Left" Margin="308,318,0,0" VerticalAlignment="Top" Height="210" Width="298" title="ARM COM IN"/>

@@ -72,3 +72,7 @@ C:\Users\CORE\Documents\GitHub\Roboutes\Arm\localArmControl\ArmTopView\obj\Debug
 C:\Users\CORE\Documents\GitHub\Roboutes\Arm\localArmControl\ArmTopView\obj\Debug\ArmTopView.pkgdef
 C:\Users\CORE\Documents\GitHub\Roboutes\Arm\localArmControl\ArmTopView\obj\Debug\ArmTopView.latest.pkgdef
 C:\Users\CORE\Documents\GitHub\Roboutes\Arm\localArmControl\ArmTopView\obj\Debug\extension.vsixmanifest
+C:\Users\CORE\Documents\GitHub\Roboutes\Arm\localArmControl\ArmTopView\bin\Debug\localArmControlTools.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\Arm\localArmControl\ArmTopView\bin\Debug\ArduinoLibrary.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\Arm\localArmControl\ArmTopView\bin\Debug\localArmControlTools.pdb
+C:\Users\CORE\Documents\GitHub\Roboutes\Arm\localArmControl\ArmTopView\bin\Debug\ArduinoLibrary.pdb

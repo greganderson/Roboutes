@@ -117,6 +117,10 @@
       <Project>{cd51e462-bf4a-4b1e-a85e-e1008d77fe4c}</Project>
       <Name>liveXboxMonitorV2</Name>
     </ProjectReference>
+    <ProjectReference Include="..\localArmControlTools\ArmControlTools.csproj">
+      <Project>{9ff256b8-f7e0-4917-a1ac-c0938a0dd038}</Project>
+      <Name>ArmControlTools</Name>
+    </ProjectReference>
     <ProjectReference Include="..\toggleIndicator\toggleIndicator.csproj">
       <Project>{C2DD09CF-4E6D-456B-AB71-752D4E354714}</Project>
       <Name>toggleIndicator</Name>

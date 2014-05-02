@@ -5,3 +5,6 @@ C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\Arm
 C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\ArmSideView\1.0\\XboxController.dll
 C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\ArmSideView\1.0\\Microsoft.Xna.Framework.dll
 C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\ArmSideView\1.0\\XboxController.pdb
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\ArmSideView\1.0\\localArmControlTools.dll
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\ArmSideView\1.0\\localArmControlTools.pdb
+C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\ArmSideView\1.0\\ArduinoLibrary.dll

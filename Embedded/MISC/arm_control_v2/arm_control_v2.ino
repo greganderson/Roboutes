@@ -54,18 +54,18 @@ String tester;
   // Turntable
     
       // Analog
-      int TT_pot = A2;
+      int TT_pot = A3; //pin 17
       int TT_CS = A9;
       
       // Digital
-      int TT_cw = 11;
-      int TT_ccw = 12;
-      int TT_pwm = 10;
+      int TT_cw = 1;
+      int TT_ccw = 2;
+      int TT_pwm = 3;
 
   // Shoulder 1
     
       // Analog
-      int S1_pot = A4;
+      int S1_pot = A2; //pin 16
       int S1_CS = A8;
       
       // Digital
@@ -264,7 +264,7 @@ void loop() { //////////////////////////////////////////////////////////////////
       int S2_duty_cycle = 0;
           */
           ///////////////////////////////////////////////////
-          ////////new turn table position serial
+          ////////new turn table position serial/////////////
           ///////////////////////////////////////////////////
           if(dataFromPC.startsWith("TTPOS:")){ //new turn table position incoming
             dataFromPC.replace("TTPOS:",""); //remove the "TTPOS:" header
@@ -280,18 +280,17 @@ void loop() { //////////////////////////////////////////////////////////////////
           }
           
           ///////////////////////////////////////////////////
-          ////////new elbow position serial
+          ////////new elbow position serial//////////////////
           ///////////////////////////////////////////////////
           else if(dataFromPC.startsWith("ELPOS:")){ //new elbow position incoming
             dataFromPC.replace("ELPOS:",""); //remove the "ELPOS:" header
-            int newCommand = constrain(dataFromPC.toInt(),0,1023);
-            if(newCommand == 0){ //toInt() will return a zero if it couldnt correctly parse a value.
-               //Do nothing, didnt parse correctly, maybe print an error
+            int newCommand = constrain(dataFromPC.toInt(),0,1023) - 1;
+            if(newCommand == -1){ //toInt() will return a zero if it couldnt correctly parse a value.
                armCOM.writeln("ArduError: unable to parse. Expected new elbow position");
             }
             else{
-             E_command = newCommand;
-             armCOM.writeln("New elbow pos: "+(String)E_command);
+               E_command = newCommand+1;
+               armCOM.writeln("New elbow pos: "+(String)E_command);
             }
           }
           
@@ -300,13 +299,12 @@ void loop() { //////////////////////////////////////////////////////////////////
           ///////////////////////////////////////////////////
           else if(dataFromPC.startsWith("S1POS:")){ //new shoulder 1 position incoming
             dataFromPC.replace("S1POS:",""); //remove the "S1POS:" header
-            int newCommand = constrain(dataFromPC.toInt(),0,1023);
-            if(newCommand == 0){ //toInt() will return a zero if it couldnt correctly parse a value.
-               //Do nothing, didnt parse correctly, maybe print an error
+            int newCommand = constrain(dataFromPC.toInt(),0,1023) - 1;
+            if(newCommand == -1){ //toInt() will return a zero if it couldnt correctly parse a value.
                armCOM.writeln("ArduError: unable to parse. Expected new shoulder position");
             }
             else{
-             S1_command = newCommand;
+             S1_command = newCommand+1;
              armCOM.writeln("New shoulder 1 pos: "+(String)S1_command);
             }
           }
@@ -472,7 +470,7 @@ if(newtime-oldtime >= 1000){
     LED_status = 0;
     oldtime = newtime;
   }
-  armCOM.writeln("POSITION READS:");
+  /*armCOM.writeln("POSITION READS:");
   armCOM.writeln("    Shoulder Position: "+(String)S1_read+" \n\r");
   armCOM.writeln("    Elbow Position: "+(String)E_read+" \n\r");
   armCOM.writeln("    Turn Table Position: "+(String)TT_read+" \n\r");
@@ -481,7 +479,7 @@ if(newtime-oldtime >= 1000){
   armCOM.writeln("    Shoulder Command: "+(String)S1_command+" \n\r");
   armCOM.writeln("    Elbow Command: "+(String)E_command+" \n\r");
   armCOM.writeln("    Turn Table Command: "+(String)TT_command+" \n\r");
-  armCOM.writeln("\n\r------------------------\n\r");
+  armCOM.writeln("\n\r------------------------\n\r");*/
 }
  armCOM.serialEvent();
 } //end loop

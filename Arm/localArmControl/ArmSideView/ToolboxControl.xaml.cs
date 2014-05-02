@@ -11,8 +11,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 using XboxController;
 using System.Threading;
+using ArmControlTools;
 
 namespace ArmSideView {
     /// <summary>
@@ -21,27 +23,25 @@ namespace ArmSideView {
     [ProvideToolboxControl("ArmSideView", true)]
     public partial class ArmSide : UserControl {
 
-        Thread elbowUpdateThread;
-        Thread shoulderUpdateThread;
-
-        double commandedElbowAngle;
-        double elbowRate;
-        object elbowSync = 1;
-
-        double commandedShoulderAngle;
-        double shoulderRate;
-        object shoulderSync = 1;
-
-        private XboxController.XboxController _xboxController;
-        public XboxController.XboxController XboxController
+        private armInputManager _armInputManager;
+        public armInputManager armInputManager
         {
             set
             {
-                _xboxController = value;
-                _xboxController.ThumbStickRight += _xboxController_ThumbStickRight;
-                _xboxController.TriggerLeft += _xboxController_TriggerLeft;
-                _xboxController.TriggerRight += _xboxController_TriggerRight;
+                _armInputManager = value;
+                _armInputManager.targetElbowChanged += _armInputManager_targetElbowChanged;
+                _armInputManager.targetShoulderChanged += _armInputManager_targetShoulderChanged;
             }
+        }
+
+        void _armInputManager_targetShoulderChanged(double newAngle)
+        {
+            Dispatcher.Invoke(() => updateGoalShoulder(newAngle));
+        }
+
+        void _armInputManager_targetElbowChanged(double newAngle)
+        {
+            Dispatcher.Invoke(() => updateGoalElbow(newAngle));
         }
 
         double gShoulderAngle = 0;
@@ -56,69 +56,6 @@ namespace ArmSideView {
             InitializeComponent();
             gRec2.RenderTransform = new RotateTransform(gElbowOffsetAngle);
             aRec2.RenderTransform = new RotateTransform(aElbowOffsetAngle);
-            elbowUpdateThread = new Thread(new ThreadStart(elbowUpdate));
-            elbowUpdateThread.Start();
-            shoulderUpdateThread = new Thread(new ThreadStart(shoulderUpdate));
-            shoulderUpdateThread.Start();
-        }
-
-        void shoulderUpdate()
-        {
-            while (true)
-            {
-                lock (shoulderSync)
-                {
-                    commandedShoulderAngle += shoulderRate;
-                    Dispatcher.Invoke(() => updateGoalShoulder(commandedShoulderAngle));
-                    Thread.Sleep(20);
-                }
-            }
-        }
-
-        void elbowUpdate()
-        {
-            while (true)
-            {
-                lock (elbowSync)
-                {
-                    commandedElbowAngle -= elbowRate;   //TODO: This is currently inverted, make it += instead
-                    Dispatcher.Invoke(() => updateGoalElbow(commandedElbowAngle));
-                    Thread.Sleep(20);
-                }
-            }
-        }
-
-        void _xboxController_TriggerLeft(object sender, EventArgs e)
-        {
-            XboxEventArgs args = (XboxEventArgs)e;
-            float val = args.GetLeftTrigger();
-            val = val / 2;  //keep it slow
-            lock (shoulderSync)
-            {
-                shoulderRate = -val;    //left trigger is down
-            }
-        }
-
-        void _xboxController_TriggerRight(object sender, EventArgs e)
-        {
-            XboxEventArgs args = (XboxEventArgs)e;
-            float val = args.GetRightTrigger();
-            val = val / 2;  //keep it slow
-            lock (shoulderSync)
-            {
-                shoulderRate = val;    //right trigger is up
-            }
-        }
-
-        void _xboxController_ThumbStickRight(object sender, EventArgs e)
-        {
-            XboxEventArgs args = (XboxEventArgs)e;
-            Tuple<float, float> vec = args.GetRightThumbStick();
-            double Y = vec.Item2.Map(-1, 1, -2, 2);
-            lock (elbowSync)
-            {
-                elbowRate = Y;
-            }
         }
 
         /// <summary>

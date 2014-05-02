@@ -26,3 +26,5 @@ C:\Users\CORE\Documents\GitHub\Roboutes\Arm\localArmControl\localArmControl\bin\
 C:\Users\CORE\Documents\GitHub\Roboutes\Arm\localArmControl\localArmControl\bin\Debug\XboxController.pdb
 C:\Users\CORE\Documents\GitHub\Roboutes\Arm\localArmControl\localArmControl\obj\Debug\localArmControl.exe
 C:\Users\CORE\Documents\GitHub\Roboutes\Arm\localArmControl\localArmControl\obj\Debug\localArmControl.pdb
+C:\Users\CORE\Documents\GitHub\Roboutes\Arm\localArmControl\localArmControl\bin\Debug\localArmControlTools.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\Arm\localArmControl\localArmControl\bin\Debug\localArmControlTools.pdb
