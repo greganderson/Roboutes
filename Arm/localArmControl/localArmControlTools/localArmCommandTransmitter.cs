@@ -63,7 +63,6 @@ namespace ArmControlTools
                 turnTableTimerExpired = false;
                 armArduino.write("TTPOS:" + ((int)newAngle).Map(0, 90, 0, 1023)); //TODO: This is temporary! When finished we will be sending just an angle.
             }
-            //Console.WriteLine("TT: " + ((int)newAngle).Map(0, 90, 0, 1023));
         }
 
         void armInput_targetShoulderChanged(double newAngle)
@@ -74,7 +73,6 @@ namespace ArmControlTools
                 shoulderTimerExpired = false;
                 armArduino.write("S1POS:" + ((int)newAngle).Map(0, 90, 0, 1023)); //TODO: This is temporary! When finished we will be sending just an angle.
             }
-            //Console.WriteLine("S1: " + ((int)newAngle).Map(0, 90, 0, 1023));
         }
 
         void armInput_targetElbowChanged(double newAngle)
@@ -85,7 +83,6 @@ namespace ArmControlTools
                 elbowTimerExpired = false;
                 armArduino.write("ELPOS:" + ((int)newAngle).Map(0, 180, 0, 1023)); //TODO: This is temporary! When finished we will be sending just an angle.
             }
-            //Console.WriteLine("EL: " + ((int)newAngle).Map(0, 180, 0, 1023));
         }
     }
 
@@ -157,7 +154,7 @@ namespace ArmControlTools
                             targetShoulderChanged(commandedShoulderAngle);
                         }
                     }
-                    Thread.Sleep(10);
+                    Thread.Sleep(20);
                 }
             }
         }
@@ -177,7 +174,7 @@ namespace ArmControlTools
                             targetElbowChanged(commandedElbowAngle);
                         }
                     }
-                    Thread.Sleep(10);
+                    Thread.Sleep(20);
                 }
             }
         }
@@ -197,7 +194,7 @@ namespace ArmControlTools
                             targetTurnTableChanged(commandedTurntableAngle);
                         }
                     }
-                    Thread.Sleep(10);
+                    Thread.Sleep(20);
                 }
             }
         }

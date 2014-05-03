@@ -42,6 +42,11 @@ String tester;
       int E_read;
       int TT_state;
       
+      //old positions, used to send updates to computer efficiently
+      int oldTT_read;
+      int oldS1_read;
+      int oldE_read;
+      
       // Current Sensing
       
       // I don't want to implement this right now.
@@ -55,7 +60,6 @@ String tester;
     
       // Analog
       int TT_pot = A3; //pin 17
-      int TT_CS = A9;
       
       // Digital
       int TT_cw = 1;
@@ -66,7 +70,6 @@ String tester;
     
       // Analog
       int S1_pot = A2; //pin 16
-      int S1_CS = A8;
       
       // Digital
       int S1_cw = 6;
@@ -184,14 +187,12 @@ void setup() { /////////////////////////////////////////////////////////////////
     
     // TT
     pinMode(TT_pot, INPUT);
-    pinMode(TT_CS, INPUT);
     pinMode(TT_cw, OUTPUT);
     pinMode(TT_ccw, OUTPUT);
     pinMode(TT_pwm, OUTPUT);
     
      // S1
     pinMode(S1_pot, INPUT);
-    pinMode(S1_CS, INPUT);
     pinMode(S1_cw, OUTPUT);
     pinMode(S1_ccw, OUTPUT);
     pinMode(S1_pwm, OUTPUT);
@@ -255,27 +256,22 @@ void setup() { /////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 void loop() { //////////////////////////////////////////////////////////////////////////////////
-  
+        
   //Serial stuff
         if(armCOM.newData(&dataFromPC)){
-          /*
-          int TT_duty_cycle = 0;
-      int S1_duty_cycle = 0;
-      int S2_duty_cycle = 0;
-          */
           ///////////////////////////////////////////////////
           ////////new turn table position serial/////////////
           ///////////////////////////////////////////////////
           if(dataFromPC.startsWith("TTPOS:")){ //new turn table position incoming
             dataFromPC.replace("TTPOS:",""); //remove the "TTPOS:" header
-            int newCommand = constrain(dataFromPC.toInt(),0,1023);
+            int newCommand = constrain(dataFromPC.toInt(),0,1023) - 1;
             if(newCommand == 0){ //toInt() will return a zero if it couldnt correctly parse a value.
                //Do nothing, didnt parse correctly, maybe print an error
                armCOM.writeln("ArduError: unable to parse. Expected new turntable position");
             }
             else{
-             TT_command = newCommand;
-             armCOM.writeln("New turntable pos: "+(String)TT_command);
+             TT_command = newCommand+1;
+             armCOM.writeln("New turntable pos: "+(String)TT_command+"\r");
             }
           }
           
@@ -285,12 +281,12 @@ void loop() { //////////////////////////////////////////////////////////////////
           else if(dataFromPC.startsWith("ELPOS:")){ //new elbow position incoming
             dataFromPC.replace("ELPOS:",""); //remove the "ELPOS:" header
             int newCommand = constrain(dataFromPC.toInt(),0,1023) - 1;
-            if(newCommand == -1){ //toInt() will return a zero if it couldnt correctly parse a value.
+            if(newCommand == 0){ //toInt() will return a zero if it couldnt correctly parse a value.
                armCOM.writeln("ArduError: unable to parse. Expected new elbow position");
             }
             else{
                E_command = newCommand+1;
-               armCOM.writeln("New elbow pos: "+(String)E_command);
+               armCOM.writeln("New elbow pos: "+(String)E_command+"\r");
             }
           }
           
@@ -300,12 +296,12 @@ void loop() { //////////////////////////////////////////////////////////////////
           else if(dataFromPC.startsWith("S1POS:")){ //new shoulder 1 position incoming
             dataFromPC.replace("S1POS:",""); //remove the "S1POS:" header
             int newCommand = constrain(dataFromPC.toInt(),0,1023) - 1;
-            if(newCommand == -1){ //toInt() will return a zero if it couldnt correctly parse a value.
+            if(newCommand == 0){ //toInt() will return a zero if it couldnt correctly parse a value.
                armCOM.writeln("ArduError: unable to parse. Expected new shoulder position");
             }
             else{
              S1_command = newCommand+1;
-             armCOM.writeln("New shoulder 1 pos: "+(String)S1_command);
+             armCOM.writeln("New shoulder 1 pos: "+(String)S1_command+"\r");
             }
           }
           
@@ -315,10 +311,12 @@ void loop() { //////////////////////////////////////////////////////////////////
              E_command = E_read;
           }
         }
+        
   
   // Turntable
         // Command Generation
-        TT_read = rollingAverage(TT_pot_reads, 10,analogRead(TT_pot)) - TT_pot_constant_offset;  
+        oldTT_read = TT_read;
+        TT_read = rollingAverage(TT_pot_reads, 10,analogRead(TT_pot)) - TT_pot_constant_offset;
         TT_difference = (TT_command - TT_read);
         TT_error = TT_difference*pow(2, -10);
         TT_difference_abs = abs(TT_difference);
@@ -331,10 +329,10 @@ void loop() { //////////////////////////////////////////////////////////////////
         } // end if
       
         // Command Execution  
-         if(abs(TT_difference) <= TT_error_tolerance){
+        if(abs(TT_difference) <= TT_error_tolerance){
            digitalWrite(TT_cw, LOW);
            digitalWrite(TT_ccw, LOW);
-           analogWrite(TT_pwm, 0); 
+           analogWrite(TT_pwm, 0);
            TT_state = 0;
         }
         
@@ -358,7 +356,7 @@ void loop() { //////////////////////////////////////////////////////////////////
    S2_command = S1_command; // Shoulders are linked
         
         // Shoulder 1 Command Generation
-        
+        oldS1_read = S1_read;
         S1_read = rollingAverage(S1_pot_reads, 10,analogRead(S1_pot));  
         S1_difference = (S1_command - S1_read);
         S1_error = S1_difference*pow(2, -10);
@@ -427,6 +425,7 @@ void loop() { //////////////////////////////////////////////////////////////////
    
     // Elbow
         // Command Generation
+        oldE_read = E_read;
         E_read = rollingAverage(E_pot_reads, 10,analogRead(E_pot));  
         E_difference = (E_command - E_read);
         E_error = E_difference*pow(2, -10);
@@ -457,9 +456,10 @@ void loop() { //////////////////////////////////////////////////////////////////
            digitalWrite(E_ccw, LOW);
            analogWrite(E_pwm, E_duty_cycle); 
         }
-  
+
 newtime = millis();
-if(newtime-oldtime >= 1000){
+if(newtime-oldtime >= 200){
+  
   if(LED_status == 0){
     digitalWrite(heartbeat_LED, HIGH);
     LED_status = 1;
@@ -470,16 +470,32 @@ if(newtime-oldtime >= 1000){
     LED_status = 0;
     oldtime = newtime;
   }
-  /*armCOM.writeln("POSITION READS:");
-  armCOM.writeln("    Shoulder Position: "+(String)S1_read+" \n\r");
-  armCOM.writeln("    Elbow Position: "+(String)E_read+" \n\r");
-  armCOM.writeln("    Turn Table Position: "+(String)TT_read+" \n\r");
-  armCOM.writeln("\n\r");
-  armCOM.writeln("POSITION COMMANDS:");
-  armCOM.writeln("    Shoulder Command: "+(String)S1_command+" \n\r");
-  armCOM.writeln("    Elbow Command: "+(String)E_command+" \n\r");
-  armCOM.writeln("    Turn Table Command: "+(String)TT_command+" \n\r");
-  armCOM.writeln("\n\r------------------------\n\r");*/
+  sendPositionUpdates();
 }
  armCOM.serialEvent();
-} //end loop
+} //end main loop
+
+void sendPositionUpdates(){
+  int elbDiff = E_read - oldE_read;
+  
+  int shoulDiff = S1_read - oldS1_read;
+  
+  int TTDiff = TT_read - oldTT_read;
+  
+  /*if(elbDiff >= 1 || elbDiff <= -1){
+    armCOM.writeln("Elbow Position: "+(String)E_read+"\r");
+  }*/
+  if(shoulDiff >= 1 || shoulDiff <= -1){
+    armCOM.writeln("Shoulder Position: "+(String)S1_read+"\r");
+  }
+  
+  armCOM.writeln("TT_difference: "+(String)TT_difference+"\r");
+  armCOM.writeln("TT_read: "+(String)TT_read+"\r");
+  armCOM.writeln("TT_command: "+(String)TT_command+"\r");
+  armCOM.writeln("TT_duty_cycle: "+(String)TT_duty_cycle+"\r");
+ /* if(TTDiff >= 1 || TTDiff <= -1){
+    armCOM.writeln("Turn Table Position: "+(String)TT_read+"\r");
+  }*/
+}
+
+

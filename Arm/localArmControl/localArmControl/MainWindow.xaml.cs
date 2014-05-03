@@ -73,6 +73,7 @@ namespace localArmControl
                 string toParse = receivedData.Substring(receivedData.LastIndexOf(":")+1);
                 int parsedVal;
                 if(int.TryParse(toParse,out parsedVal)){
+                    parsedVal = parsedVal.Map(0, 1023, 0, 90);
                     armSideView.updateActualShoulder(parsedVal);
                 }
             }
@@ -82,6 +83,7 @@ namespace localArmControl
                 int parsedVal;
                 if (int.TryParse(toParse, out parsedVal))
                 {
+                    parsedVal = parsedVal.Map(0, 1023, 0, 180);
                     armSideView.updateActualElbow(parsedVal);
                 }
             }
@@ -91,6 +93,7 @@ namespace localArmControl
                 int parsedVal;
                 if (int.TryParse(toParse, out parsedVal))
                 {
+                    parsedVal = parsedVal.Map(0, 1023, 0, 90);
                     armTopView.updateActualArmAngle(parsedVal);
                 }
             }
