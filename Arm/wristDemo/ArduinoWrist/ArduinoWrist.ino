@@ -1,4 +1,4 @@
-#include <SHARPCOMARDUINO.h>
+#include <SHARPCOMTEENSY.h>
 
 ADVCOM test(&Serial, "HAND");
 String dataFromPC;
@@ -88,14 +88,12 @@ void executeCommands(){
   else if(upCommand < -255){
    upCommand = -255; 
   }
-  
   if(leftCommand > 255){
    leftCommand = 255; 
   }
   else if(leftCommand < -255){
    leftCommand = -255; 
   }
-  
   if(rightCommand > 255){
    rightCommand = 255; 
   }
@@ -109,8 +107,7 @@ void executeCommands(){
  map(upCommand,-255,255,0,255);
  map(leftCommand,-255,255,0,255);
  map(rightCommand,-255,255,0,255);
- test.writeln("UP: "+(String)upCommand + " LEFT: "+(String)leftCommand+ " RIGHT: "+(String)rightCommand); 
-  
+ test.writeln("VALUES: UP: "+(String)upCommand + " LEFT: "+(String)leftCommand+ " RIGHT: "+(String)rightCommand);
  analogWrite(upwrist, upCommand);
  analogWrite(leftwrist, leftCommand);
  analogWrite(rightwrist, rightCommand);

@@ -24,9 +24,8 @@ String tester;
       int S1_S2_Bias = 50;
 
   // Commands
-      int TT_command;
+      int TT_command = 600;
       int S1_command;
-      int S2_command; // We should not actually send commands to S2, it gets its commands elsewhere
       int E_command;
       
       // boolean Emergency Stop Command = ??? - we need to write a serial event that sets all desired positions to current positions (aka stops the arm)
@@ -38,7 +37,6 @@ String tester;
       //Positions
       int TT_read;
       int S1_read;
-      int S2_read;
       int E_read;
       int TT_state;
       
@@ -69,34 +67,22 @@ String tester;
   // Shoulder 1
     
       // Analog
-      int S1_pot = A2; //pin 16
+      int S1_pot = A0; //pin 16
       
       // Digital
-      int S1_cw = 6;
-      int S1_ccw = 5;
-      int S1_pwm = 4;
-    
-  // Shoulder 2
-    
-      // Analog
-      int S2_pot = A3;
-      int S2_CS = A7;
-      
-      // Digital
-      int S2_cw = 8;
-      int S2_ccw = 7;
-      int S2_pwm = 9;
+      int S1_cw = 7;
+      int S1_ccw = 8;
+      int S1_pwm = 9;
 
   // Elbow
     
       // Analog
-      int E_pot = A5;
-      int E_CS = A6;
+      int E_pot = A1;
       
       // Digital    
-      int E_cw = 1;
-      int E_ccw = 2;
-      int E_pwm = 3;
+      int E_cw = 12;
+      int E_ccw = 11;
+      int E_pwm = 10;
       
    // LED Status Lights
       int heartbeat_LED = 13;
@@ -117,7 +103,6 @@ String tester;
       int TT_pot_reads[10];
       int TT_pot_constant_offset;
       int S1_pot_reads[10];
-      int S2_pot_reads[10];
       int E_pot_reads[10];
       
   // Error Variables
@@ -129,10 +114,6 @@ String tester;
       int S1_difference_abs;
       float S1_error;
       
-      int S2_difference;
-      int S2_difference_abs;
-      float S2_error;
-      
       int E_difference;
       int E_difference_abs;
       float E_error;
@@ -140,39 +121,33 @@ String tester;
   // Integral Erros    
       int TT_integral_error;
       int S1_integral_error;
-      int S2_integral_error;
       int E_integral_error;
       
       
   // Integral Error Arrays
       int TT_integral_errors[100];
       int S1_integral_errors[100];
-      int S2_integral_errors[100];
       int E_integral_errors[100];
       
 
   // Error Tolerances
       float TT_error_tolerance = 3;
       float S1_error_tolerance = 5;
-      float S2_error_tolerance = 5;
       float E_error_tolerance = 3;
 
   // P Gains
       int TT_P_gain = 675;
       int S1_P_gain = 3000;
-      int S2_P_gain = 3000;
       int E_P_gain = 3000;
 
   // I Gains
       float TT_I_gain = 5;
       float S1_I_gain = 5;
-      float S2_I_gain = 5;
       float E_I_gain = 5;
       
   // Duty Cycles
       int TT_duty_cycle = 0;
       int S1_duty_cycle = 0;
-      int S2_duty_cycle = 0;
       int E_duty_cycle = 0;
 
 
@@ -197,16 +172,8 @@ void setup() { /////////////////////////////////////////////////////////////////
     pinMode(S1_ccw, OUTPUT);
     pinMode(S1_pwm, OUTPUT);
     
-     // S2
-    pinMode(S2_pot, INPUT);
-    pinMode(S2_CS, INPUT);
-    pinMode(S2_cw, OUTPUT);
-    pinMode(S2_ccw, OUTPUT);
-    pinMode(S2_pwm, OUTPUT);
-    
      // E
     pinMode(E_pot, INPUT);
-    pinMode(E_CS, INPUT);
     pinMode(E_cw, OUTPUT);
     pinMode(E_ccw, OUTPUT);
     pinMode(E_pwm, OUTPUT);
@@ -223,7 +190,6 @@ void setup() { /////////////////////////////////////////////////////////////////
           for(int i=0; i<10; i++) {
               TT_pot_reads[i] = analogRead(TT_pot);
               S1_pot_reads[i] = analogRead(S1_pot);
-              S2_pot_reads[i] = analogRead(S2_pot);
               E_pot_reads[i] = analogRead(E_pot);
           
       } //end for
@@ -234,8 +200,6 @@ void setup() { /////////////////////////////////////////////////////////////////
                TT_command = TT_read;
                S1_read = rollingAverage(S1_pot_reads, 10, analogRead(S1_pot));
                S1_command = S1_read;
-               S2_read = rollingAverage(S2_pot_reads, 10, analogRead(S2_pot));
-               S2_command = S2_read;
                E_read = rollingAverage(E_pot_reads, 10, analogRead(E_pot));
                E_command = E_read;
                
@@ -271,6 +235,7 @@ void loop() { //////////////////////////////////////////////////////////////////
             }
             else{
              TT_command = newCommand+1;
+             TT_command = constrain(TT_command,80,650);
              armCOM.writeln("New turntable pos: "+(String)TT_command+"\r");
             }
           }
@@ -323,6 +288,7 @@ void loop() { //////////////////////////////////////////////////////////////////
         TT_integral_error = rollingAverage(TT_integral_errors, 100, TT_difference_abs);
         
         TT_duty_cycle = (abs(TT_error)*TT_P_gain) + TT_integral_error*TT_I_gain;
+        TT_duty_cycle = TT_duty_cycle/5;
         
         if(TT_duty_cycle > 255){
           TT_duty_cycle = 255;
@@ -337,23 +303,21 @@ void loop() { //////////////////////////////////////////////////////////////////
         }
         
         else if(TT_error < 0){
-           digitalWrite(TT_cw, LOW);
-           digitalWrite(TT_ccw, HIGH);
-           analogWrite(TT_pwm, TT_duty_cycle); 
+           digitalWrite(TT_cw, HIGH);
+           digitalWrite(TT_ccw, LOW);
+           analogWrite(TT_pwm, TT_duty_cycle);
            TT_state = 1;
         }
         
         else if(TT_error > 0) {
-           digitalWrite(TT_cw, HIGH);
-           digitalWrite(TT_ccw, LOW);
-           analogWrite(TT_pwm, TT_duty_cycle); 
+           digitalWrite(TT_cw, LOW);
+           digitalWrite(TT_ccw, HIGH);
+           analogWrite(TT_pwm, TT_duty_cycle);
            TT_state = 2;
         }
   
   
    // Shoulders
-   
-   S2_command = S1_command; // Shoulders are linked
         
         // Shoulder 1 Command Generation
         oldS1_read = S1_read;
@@ -361,29 +325,16 @@ void loop() { //////////////////////////////////////////////////////////////////
         S1_difference = (S1_command - S1_read);
         S1_error = S1_difference*pow(2, -10);
         S1_difference_abs = abs(S1_difference);
-        S1_integral_error = rollingAverage(S1_integral_errors, 100, S1_difference_abs);
-        
-        // Shoulder 2 Command Generation
-        S2_read = rollingAverage(S2_pot_reads, 10,analogRead(S2_pot));  
-        S2_difference = (S2_command - S2_read);
-        S2_error = S2_difference*pow(2, -10);
-        S2_difference_abs = abs(S2_difference);
-        S2_integral_error = rollingAverage(S2_integral_errors, 100, S2_difference_abs);
-        
-
+        S1_integral_error = rollingAverage(S1_integral_errors, 100, S1_difference_abs);  
         
         S1_duty_cycle = (abs(S1_error)*S1_P_gain) + S1_integral_error*S1_I_gain;
+        S1_duty_cycle = 15;
+        
         
         if(S1_duty_cycle > 255){
           S1_duty_cycle = 255;
           S1_duty_cycle = S1_duty_cycle - S1_S2_Bias;
         } // end if
-        
-        S2_duty_cycle = (abs(S2_error)*S2_P_gain) + S2_integral_error*S2_I_gain;
-        
-        if(S2_duty_cycle > 255){
-          S2_duty_cycle = 255;
-          } // end if
       
         // Shoulder 1 Command Execution  
          if(abs(S1_difference) <= S1_error_tolerance){
@@ -403,26 +354,7 @@ void loop() { //////////////////////////////////////////////////////////////////
            digitalWrite(S1_ccw, LOW);
            analogWrite(S1_pwm, S1_duty_cycle); 
         }
-  
-        // Shoulder 2 Command Execution  
-         if(abs(S2_difference) <= S2_error_tolerance){
-           digitalWrite(S2_cw, LOW);
-           digitalWrite(S2_ccw, LOW);
-           analogWrite(S2_pwm, 0); 
-        }
-        
-        else if(S2_error < 0){
-           digitalWrite(S2_cw, LOW);
-           digitalWrite(S2_ccw, HIGH);
-           analogWrite(S2_pwm, S2_duty_cycle); 
-        }
-        
-        else if(S2_error > 0) {
-           digitalWrite(S2_cw, HIGH);
-           digitalWrite(S2_ccw, LOW);
-           analogWrite(S2_pwm, S2_duty_cycle); 
-        }
-   
+     
     // Elbow
         // Command Generation
         oldE_read = E_read;
@@ -458,7 +390,7 @@ void loop() { //////////////////////////////////////////////////////////////////
         }
 
 newtime = millis();
-if(newtime-oldtime >= 200){
+if(newtime-oldtime >= 100){
   
   if(LED_status == 0){
     digitalWrite(heartbeat_LED, HIGH);
@@ -484,18 +416,18 @@ void sendPositionUpdates(){
   
   /*if(elbDiff >= 1 || elbDiff <= -1){
     armCOM.writeln("Elbow Position: "+(String)E_read+"\r");
-  }*/
+  }
   if(shoulDiff >= 1 || shoulDiff <= -1){
     armCOM.writeln("Shoulder Position: "+(String)S1_read+"\r");
-  }
-  
-  armCOM.writeln("TT_difference: "+(String)TT_difference+"\r");
-  armCOM.writeln("TT_read: "+(String)TT_read+"\r");
-  armCOM.writeln("TT_command: "+(String)TT_command+"\r");
-  armCOM.writeln("TT_duty_cycle: "+(String)TT_duty_cycle+"\r");
- /* if(TTDiff >= 1 || TTDiff <= -1){
-    armCOM.writeln("Turn Table Position: "+(String)TT_read+"\r");
   }*/
+  
+  /*armCOM.writeln("S1_difference: "+(String)S1_difference+"\r");
+  armCOM.writeln("S1_read: "+(String)S1_read+"\r");
+  armCOM.writeln("S1_command: "+(String)S1_command+"\r");
+  armCOM.writeln("S1_duty_cycle: "+(String)S1_duty_cycle+"\r");*/
+  if(TTDiff >= 1 || TTDiff <= -1){
+    armCOM.writeln("Turn Table Position: "+(String)TT_read+"\r");
+  }
 }
 
 

@@ -26,13 +26,15 @@ namespace wristControlDevelopment
     {
         ArduinoManager ArduMan;
         Arduino wristDuino;
+        Timer serialTimer;
+        volatile bool serialReady = false;
 
         XboxController.XboxController XBoxCon;
         float Y = 0;
         float X = 0;
         double MAG = 0;
         double MAGpercent = 0;
-        private double MAX_MAGNITUDE = 255;
+        private double MAX_MAGNITUDE = 100;
 
         double upPerc = 0;
         double leftPerc = 0;
@@ -50,7 +52,9 @@ namespace wristControlDevelopment
         public MainWindow()
         {
             InitializeComponent();
-            
+
+            serialTimer = new Timer(serialTimerCallback, null, 0, 50);
+
             wristInViz.setTitle("WRIST COM IN");
 
             ArduMan = ArduinoManager.Instance;
@@ -61,6 +65,11 @@ namespace wristControlDevelopment
             XBoxCon = new XboxController.XboxController();
             XBoxCon.ThumbStickLeft+= XBoxCon_ThumbStickLeft;
             Dispatcher.Invoke(() => maxMagSlider.Value = MAX_MAGNITUDE);
+        }
+
+        private void serialTimerCallback(object state)
+        {
+            serialReady = true;
         }
 
         void wristDuino_Data_Received(string receivedData)
@@ -163,24 +172,32 @@ namespace wristControlDevelopment
 
         private void updateArduino()
         {
-            /*if (Math.Abs(oldUpMag - (int)upMag) > deadzone || Math.Abs(oldLeftMag - (int)leftMag) > deadzone || Math.Abs(oldRightMag - (int)rightMag) > deadzone)
+            if (serialReady)
             {
-                wristDuino.flushWriteBuffer();
-            }*/
-            if (Math.Abs(oldUpMag - (int)upMag) > deadzone)
-            {
-                oldUpMag = (int)upMag;
-                wristDuino.write("U:" + (int)upMag);
-            }
-            if (Math.Abs(oldLeftMag - (int)leftMag) > deadzone)
-            {
-                oldLeftMag = (int)leftMag;
-                wristDuino.write("L:" + (int)leftMag);
-            }
-            if (Math.Abs(oldRightMag - (int)rightMag) > deadzone)
-            {
-                oldRightMag = (int)rightMag;
-                wristDuino.write("R:" + (int)rightMag);
+                bool transmitted = false;
+                if (Math.Abs(oldUpMag - (int)upMag) > deadzone)
+                {
+                    oldUpMag = (int)upMag;
+                    wristDuino.write("U:" + (int)upMag);
+                    transmitted = true;
+                }
+                if (Math.Abs(oldLeftMag - (int)leftMag) > deadzone)
+                {
+                    oldLeftMag = (int)leftMag;
+                    wristDuino.write("L:" + (int)leftMag);
+                    transmitted = true;
+                }
+                if (Math.Abs(oldRightMag - (int)rightMag) > deadzone)
+                {
+                    oldRightMag = (int)rightMag;
+                    wristDuino.write("R:" + (int)rightMag);
+                    transmitted = true;
+                }
+
+                if (transmitted)
+                {
+                    serialReady = false;
+                }
             }
         }
 
