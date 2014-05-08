@@ -77,11 +77,11 @@ namespace ArmControlTools
 
         void armInput_targetElbowChanged(double newAngle)
         {
-            if (( ((int)newAngle).Map(0, 180, 0, 1023) != oldElbow) && elbowTimerExpired)
+            if (( ((int)newAngle).Map(0, 120, 0, 1023) != oldElbow) && elbowTimerExpired)
             {
-                oldElbow = ((int)newAngle).Map(0, 180, 0, 1023);
+                oldElbow = ((int)newAngle).Map(0, 120, 0, 1023);
                 elbowTimerExpired = false;
-                armArduino.write("ELPOS:" + ((int)newAngle).Map(0, 180, 0, 1023)); //TODO: This is temporary! When finished we will be sending just an angle.
+                armArduino.write("ELPOS:" + ((int)newAngle).Map(0, 120, 0, 1023)); //TODO: This is temporary! When finished we will be sending just an angle.
             }
         }
     }
@@ -166,7 +166,7 @@ namespace ArmControlTools
                 lock (elbowSync)
                 {
                     commandedElbowAngle -= elbowRate;   //TODO: This is currently inverted, make it += instead to un-invert it
-                    commandedElbowAngle = commandedElbowAngle.Constrain(0, 180);
+                    commandedElbowAngle = commandedElbowAngle.Constrain(0, 120);
                     if (elbowRate != 0)
                     {
                         if (targetElbowChanged != null)

@@ -47,3 +47,4 @@ C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\ConsoleOutp
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\ConsoleOutput\obj\Debug\ConsoleOutput.pkgdef
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\ConsoleOutput\obj\Debug\ConsoleOutput.latest.pkgdef
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\ConsoleOutput\obj\Debug\extension.vsixmanifest
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\ConsoleOutput\obj\Debug\ConsoleOutput.csprojResolveAssemblyReference.cache

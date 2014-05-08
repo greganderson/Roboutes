@@ -31,10 +31,7 @@ namespace wristControlDevelopment
         volatile bool newPositions = false;
 
         XboxController.XboxController XBoxCon;
-        float Y = 0;
-        float X = 0;
         double MAG = 0;
-        double MAGpercent = 0;
         private double MAX_MAGNITUDE = 100;
 
         double upPerc = 0;
@@ -90,10 +87,10 @@ namespace wristControlDevelopment
                 newPositions = true;
                 XboxEventArgs args = (XboxEventArgs)e;
                 Tuple<float, float> vec = args.GetLeftThumbStick();
-                Y = vec.Item2.Map(-1, 1, -100, 100);
-                X = vec.Item1.Map(-1, 1, -100, 100);
+                float Y = vec.Item2.Map(-1, 1, -100, 100);
+                float X = vec.Item1.Map(-1, 1, -100, 100);
                 double rotationAngle = -((Math.Atan2(Y, X) * 180) / Math.PI);
-                MAGpercent = Math.Sqrt(Math.Pow(X, 2) + Math.Pow(Y, 2));
+                double MAGpercent = Math.Sqrt(Math.Pow(X, 2) + Math.Pow(Y, 2));
                 if (MAGpercent > 100) //gets rid of some slight noise
                 {
                     MAGpercent = 100;

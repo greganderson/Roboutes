@@ -46,9 +46,6 @@ namespace dualCameraViewer
             }
             VideoCaptureDevice leftSource = new VideoCaptureDevice(videoDevices[0].MonikerString);
             VideoCaptureDevice rightSource = new VideoCaptureDevice(videoDevices[1].MonikerString);
-
-
-
             
             leftPlayer.VideoSource = leftSource;
             rightPlayer.VideoSource = rightSource;

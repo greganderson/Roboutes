@@ -64,3 +64,4 @@ C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\Inclinomete
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\Inclinometer\Roll\obj\Debug\Roll.pkgdef
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\Inclinometer\Roll\obj\Debug\Roll.latest.pkgdef
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\Inclinometer\Roll\obj\Debug\extension.vsixmanifest
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\Inclinometer\Roll\obj\Debug\Roll.csprojResolveAssemblyReference.cache

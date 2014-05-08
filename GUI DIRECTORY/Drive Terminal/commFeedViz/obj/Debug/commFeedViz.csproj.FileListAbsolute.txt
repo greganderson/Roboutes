@@ -48,3 +48,4 @@ C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\commFeedViz
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\commFeedViz\obj\Debug\commFeedViz.pkgdef
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\commFeedViz\obj\Debug\commFeedViz.latest.pkgdef
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\commFeedViz\obj\Debug\extension.vsixmanifest
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\commFeedViz\obj\Debug\commFeedViz.csprojResolveAssemblyReference.cache

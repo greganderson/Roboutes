@@ -23,3 +23,8 @@ C:\Users\MonahanWork\Desktop\panTiltDevelopment\PTC#\ArduinoLibrary\bin\Debug\Ar
 C:\Users\MonahanWork\Desktop\panTiltDevelopment\PTC#\ArduinoLibrary\obj\Debug\ArduinoLibrary.csprojResolveAssemblyReference.cache
 C:\Users\MonahanWork\Desktop\panTiltDevelopment\PTC#\ArduinoLibrary\obj\Debug\ArduinoLibrary.dll
 C:\Users\MonahanWork\Desktop\panTiltDevelopment\PTC#\ArduinoLibrary\obj\Debug\ArduinoLibrary.pdb
+C:\Users\CORE\Documents\GitHub\Roboutes\panTiltDevelopment\PTC#\ArduinoLibrary\bin\Debug\ArduinoLibrary.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\panTiltDevelopment\PTC#\ArduinoLibrary\bin\Debug\ArduinoLibrary.pdb
+C:\Users\CORE\Documents\GitHub\Roboutes\panTiltDevelopment\PTC#\ArduinoLibrary\obj\Debug\ArduinoLibrary.csprojResolveAssemblyReference.cache
+C:\Users\CORE\Documents\GitHub\Roboutes\panTiltDevelopment\PTC#\ArduinoLibrary\obj\Debug\ArduinoLibrary.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\panTiltDevelopment\PTC#\ArduinoLibrary\obj\Debug\ArduinoLibrary.pdb

@@ -24,3 +24,11 @@ C:\Users\MonahanWork\Desktop\panTiltDevelopment\PTC#\OculusOrientation\obj\Debug
 C:\Users\MonahanWork\Desktop\panTiltDevelopment\PTC#\OculusOrientation\bin\Debug\log4net.dll
 C:\Users\MonahanWork\Desktop\panTiltDevelopment\PTC#\OculusOrientation\bin\Debug\log4net.pdb
 C:\Users\MonahanWork\Desktop\panTiltDevelopment\PTC#\OculusOrientation\obj\Debug\OculusOrientationLibrary.csprojResolveAssemblyReference.cache
+C:\Users\CORE\Documents\GitHub\Roboutes\panTiltDevelopment\PTC#\OculusOrientation\bin\Debug\OculusOrientation.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\panTiltDevelopment\PTC#\OculusOrientation\bin\Debug\OculusOrientation.pdb
+C:\Users\CORE\Documents\GitHub\Roboutes\panTiltDevelopment\PTC#\OculusOrientation\bin\Debug\log4net.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\panTiltDevelopment\PTC#\OculusOrientation\bin\Debug\SharpDX.xml
+C:\Users\CORE\Documents\GitHub\Roboutes\panTiltDevelopment\PTC#\OculusOrientation\bin\Debug\log4net.pdb
+C:\Users\CORE\Documents\GitHub\Roboutes\panTiltDevelopment\PTC#\OculusOrientation\obj\Debug\OculusOrientationLibrary.csprojResolveAssemblyReference.cache
+C:\Users\CORE\Documents\GitHub\Roboutes\panTiltDevelopment\PTC#\OculusOrientation\obj\Debug\OculusOrientation.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\panTiltDevelopment\PTC#\OculusOrientation\obj\Debug\OculusOrientation.pdb

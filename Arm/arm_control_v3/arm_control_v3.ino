@@ -57,7 +57,7 @@ String tester;
   // Turntable
     
       // Analog
-      int TT_pot = A3; //pin 17
+      int TT_pot = A3;
       
       // Digital
       int TT_cw = 1;
@@ -67,7 +67,7 @@ String tester;
   // Shoulder 1
     
       // Analog
-      int S1_pot = A0; //pin 16
+      int S1_pot = A0;
       
       // Digital
       int S1_cw = 7;
@@ -80,8 +80,8 @@ String tester;
       int E_pot = A1;
       
       // Digital    
-      int E_cw = 12;
-      int E_ccw = 11;
+      int E_cw = 11;
+      int E_ccw = 12;
       int E_pwm = 10;
       
    // LED Status Lights
@@ -136,20 +136,26 @@ String tester;
       float E_error_tolerance = 3;
 
   // P Gains
-      int TT_P_gain = 675;
+      int TT_P_gain = 675; //was 675
       int S1_P_gain = 3000;
       int E_P_gain = 3000;
 
   // I Gains
       float TT_I_gain = 5;
-      float S1_I_gain = 5;
+      float S1_I_gain = 50;
       float E_I_gain = 5;
       
   // Duty Cycles
       int TT_duty_cycle = 0;
       int S1_duty_cycle = 0;
       int E_duty_cycle = 0;
-
+      
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Constants ////////////////////////////////////////////////////////////////////////////////////////////////
+#define shoulderMaxAngle 50
+#define shoulderMinAngle 0
+#define shoulderDeployedPot 270
+#define shoulderRetractedPot 749
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 void setup() { ////////////////////////////////////////////////////////////////////////////
@@ -228,16 +234,10 @@ void loop() { //////////////////////////////////////////////////////////////////
           ///////////////////////////////////////////////////
           if(dataFromPC.startsWith("TTPOS:")){ //new turn table position incoming
             dataFromPC.replace("TTPOS:",""); //remove the "TTPOS:" header
-            int newCommand = constrain(dataFromPC.toInt(),0,1023) - 1;
-            if(newCommand == 0){ //toInt() will return a zero if it couldnt correctly parse a value.
-               //Do nothing, didnt parse correctly, maybe print an error
-               armCOM.writeln("ArduError: unable to parse. Expected new turntable position");
-            }
-            else{
-             TT_command = newCommand+1;
-             TT_command = constrain(TT_command,80,650);
-             armCOM.writeln("New turntable pos: "+(String)TT_command+"\r");
-            }
+            int newCommand = constrain(dataFromPC.toInt(),0,1023);
+            TT_command = newCommand;
+            TT_command = constrain(TT_command,80,650);
+            armCOM.writeln("New turntable pos: "+(String)TT_command+"\r");
           }
           
           ///////////////////////////////////////////////////
@@ -245,14 +245,9 @@ void loop() { //////////////////////////////////////////////////////////////////
           ///////////////////////////////////////////////////
           else if(dataFromPC.startsWith("ELPOS:")){ //new elbow position incoming
             dataFromPC.replace("ELPOS:",""); //remove the "ELPOS:" header
-            int newCommand = constrain(dataFromPC.toInt(),0,1023) - 1;
-            if(newCommand == 0){ //toInt() will return a zero if it couldnt correctly parse a value.
-               armCOM.writeln("ArduError: unable to parse. Expected new elbow position");
-            }
-            else{
-               E_command = newCommand+1;
-               armCOM.writeln("New elbow pos: "+(String)E_command+"\r");
-            }
+            int newCommand = constrain(dataFromPC.toInt(),0,1023);
+            E_command = 1023-newCommand;
+            armCOM.writeln("New elbow pos: "+(String)E_command+"\r");
           }
           
           ///////////////////////////////////////////////////
@@ -260,14 +255,9 @@ void loop() { //////////////////////////////////////////////////////////////////
           ///////////////////////////////////////////////////
           else if(dataFromPC.startsWith("S1POS:")){ //new shoulder 1 position incoming
             dataFromPC.replace("S1POS:",""); //remove the "S1POS:" header
-            int newCommand = constrain(dataFromPC.toInt(),0,1023) - 1;
-            if(newCommand == 0){ //toInt() will return a zero if it couldnt correctly parse a value.
-               armCOM.writeln("ArduError: unable to parse. Expected new shoulder position");
-            }
-            else{
-             S1_command = newCommand+1;
-             armCOM.writeln("New shoulder 1 pos: "+(String)S1_command+"\r");
-            }
+            int newCommand = dataFromPC.toInt();
+            S1_command = solveShoulderCommand(newCommand);
+            armCOM.writeln("New shoulder 1 pos: "+(String)S1_command+"\r");
           }
           
           else if (dataFromPC.startsWith("EMERSTOP")){
@@ -288,7 +278,6 @@ void loop() { //////////////////////////////////////////////////////////////////
         TT_integral_error = rollingAverage(TT_integral_errors, 100, TT_difference_abs);
         
         TT_duty_cycle = (abs(TT_error)*TT_P_gain) + TT_integral_error*TT_I_gain;
-        TT_duty_cycle = TT_duty_cycle/5;
         
         if(TT_duty_cycle > 255){
           TT_duty_cycle = 255;
@@ -317,7 +306,7 @@ void loop() { //////////////////////////////////////////////////////////////////
         }
   
   
-   // Shoulders
+   // Shoulder
         
         // Shoulder 1 Command Generation
         oldS1_read = S1_read;
@@ -328,7 +317,6 @@ void loop() { //////////////////////////////////////////////////////////////////
         S1_integral_error = rollingAverage(S1_integral_errors, 100, S1_difference_abs);  
         
         S1_duty_cycle = (abs(S1_error)*S1_P_gain) + S1_integral_error*S1_I_gain;
-        S1_duty_cycle = 15;
         
         
         if(S1_duty_cycle > 255){
@@ -344,14 +332,14 @@ void loop() { //////////////////////////////////////////////////////////////////
         }
         
         else if(S1_error < 0){
-           digitalWrite(S1_cw, LOW);
-           digitalWrite(S1_ccw, HIGH);
+           digitalWrite(S1_cw, HIGH);
+           digitalWrite(S1_ccw, LOW);
            analogWrite(S1_pwm, S1_duty_cycle); 
         }
         
         else if(S1_error > 0) {
-           digitalWrite(S1_cw, HIGH);
-           digitalWrite(S1_ccw, LOW);
+           digitalWrite(S1_cw, LOW);
+           digitalWrite(S1_ccw, HIGH);
            analogWrite(S1_pwm, S1_duty_cycle); 
         }
      
@@ -415,19 +403,58 @@ void sendPositionUpdates(){
   int TTDiff = TT_read - oldTT_read;
   
   /*if(elbDiff >= 1 || elbDiff <= -1){
-    armCOM.writeln("Elbow Position: "+(String)E_read+"\r");
-  }
+    armCOM.writeln("Elbow Position: "+(String)E_read);
+  }*/
   if(shoulDiff >= 1 || shoulDiff <= -1){
-    armCOM.writeln("Shoulder Position: "+(String)S1_read+"\r");
+    int shoulderPercPos = solveShoulderPosition(S1_read);
+    armCOM.writeln("Shoulder Position: "+(String)shoulderPercPos);
+  }
+  /*if(TTDiff >= 1 || TTDiff <= -1){
+    armCOM.writeln("Turn Table Position: "+(String)TT_read);
   }*/
   
-  /*armCOM.writeln("S1_difference: "+(String)S1_difference+"\r");
-  armCOM.writeln("S1_read: "+(String)S1_read+"\r");
-  armCOM.writeln("S1_command: "+(String)S1_command+"\r");
-  armCOM.writeln("S1_duty_cycle: "+(String)S1_duty_cycle+"\r");*/
-  if(TTDiff >= 1 || TTDiff <= -1){
-    armCOM.writeln("Turn Table Position: "+(String)TT_read+"\r");
+  ///DIAG ONLY -- Comment out if not needed
+  
+  //armCOM.writeln("S1 DUTY: "+(String)S1_duty_cycle+"\r");
+}
+
+int solveShoulderPosition(float shoulderRead){
+  float range = shoulderDeployedPot - shoulderRetractedPot;
+  range = abs(range);
+  
+  int target;
+  
+  if(shoulderRetractedPot < shoulderDeployedPot){
+    shoulderRead = constrain(shoulderRead,shoulderRetractedPot,shoulderDeployedPot);
+    shoulderRead = shoulderRead - shoulderRetractedPot;
+    target = (int)((shoulderRead/range)*100);
   }
+  else if (shoulderRetractedPot > shoulderDeployedPot){
+    shoulderRead = constrain(shoulderRead,shoulderDeployedPot,shoulderRetractedPot);
+    shoulderRead = shoulderRead - shoulderDeployedPot;
+    target = (int)(100-((shoulderRead/range)*100));
+  }
+  
+  return target;
+}
+
+int solveShoulderCommand(float newAngle){
+  newAngle = constrain(newAngle,shoulderMinAngle,shoulderMaxAngle);
+  float extendedPercent = newAngle/shoulderMaxAngle;
+  
+  int range = shoulderDeployedPot - shoulderRetractedPot;
+  range = abs(range);
+  
+  int target;
+  
+  if(shoulderRetractedPot < shoulderDeployedPot){
+    target = shoulderRetractedPot+ (extendedPercent*range);
+  }
+  else if (shoulderRetractedPot > shoulderDeployedPot){
+    target = shoulderRetractedPot - (extendedPercent*range);
+  }
+  
+  return target;
 }
 
 

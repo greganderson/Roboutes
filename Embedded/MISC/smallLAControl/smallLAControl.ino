@@ -9,7 +9,7 @@ void setup() {
   // initialize serial:
   Serial.begin(9600);
   // reserve 200 bytes for the inputString:
-  myservo.attach(A0);
+  myservo.attach(A1);
 }
 
 void loop() {

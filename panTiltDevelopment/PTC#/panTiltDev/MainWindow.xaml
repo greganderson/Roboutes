@@ -11,7 +11,8 @@
         <Label x:Name="yawValLabel" Content="NA" HorizontalAlignment="Left" Margin="56,254,0,0" VerticalAlignment="Top"/>
         <Label Content="PITCH: " HorizontalAlignment="Left" Margin="10,280,0,0" VerticalAlignment="Top"/>
         <Label x:Name="pitchValLabel" Content="NA" HorizontalAlignment="Left" Margin="63,280,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="fullScreenButton" Content="Button" HorizontalAlignment="Left" Margin="620,306,0,0" VerticalAlignment="Top" Width="75" Click="fullScreenButton_Click"/>
+        <Button x:Name="fullScreenButton" Content="FULL SCREEN" HorizontalAlignment="Left" Margin="620,306,0,0" VerticalAlignment="Top" Width="98" Click="fullScreenButton_Click"/>
+        <Button x:Name="resetButton" Content="RESET ORIENTATION" HorizontalAlignment="Left" Margin="383,306,0,0" VerticalAlignment="Top" Width="137" Click="resetButton_Click"/>
 
     </Grid>
 </Window>

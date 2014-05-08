@@ -104,6 +104,11 @@ namespace panTiltDev
                 camViewMaximized = true;
             }
         }
+
+        private void resetButton_Click(object sender, RoutedEventArgs e)
+        {
+            orientation.resetOrientation();
+        }
     }
 
     public static class ExtensionMethods

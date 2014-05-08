@@ -11,13 +11,12 @@ Servo pitchServo;
 
 void setup() {
   test.init(9600);
-  yawServo.attach(22);
-  pitchServo.attach(23);
+  yawServo.attach(23);
+  pitchServo.attach(22);
 }
 
 void loop() {
-  if (test.newData(&dataFromPC)) { //Print parsed number information EX. (N: 45)
-    dataFromPC.replace("\n", "");
+  if (test.newData(&dataFromPC)) {
     if (dataFromPC.startsWith("Y:")) { //yaw update
       dataFromPC.replace("Y:", "");
       int parsed = dataFromPC.toInt();
