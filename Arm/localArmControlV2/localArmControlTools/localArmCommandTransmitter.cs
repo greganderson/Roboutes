@@ -67,23 +67,24 @@ namespace ArmControlTools
 
         void armInput_targetShoulderChanged(double newAngle)
         {
-            if (( newAngle != oldShoulder) && shoulderTimerExpired)
+            if (( ((int)newAngle) != oldShoulder) && shoulderTimerExpired)
             {
                 oldShoulder = ((int)newAngle);
                 shoulderTimerExpired = false;
                 newAngle = newAngle.Constrain(armConstants.MIN_SHOULDER_ANGLE, armConstants.MAX_SHOULDER_ANGLE);
                 armArduino.write("S1POS:" + ((int)newAngle) );
-                Console.WriteLine("S1POS:" + ((int)newAngle));
             }
         }
 
         void armInput_targetElbowChanged(double newAngle)
         {
-            if (( ((int)newAngle).Map(0, 120, 0, 1023) != oldElbow) && elbowTimerExpired)
+            if (( ((int)newAngle) != oldElbow) && elbowTimerExpired)
             {
-                oldElbow = ((int)newAngle).Map(0, 120, 0, 1023);
+                oldElbow = ((int)newAngle);
                 elbowTimerExpired = false;
-                armArduino.write("ELPOS:" + ((int)newAngle).Map(0, 120, 0, 1023)); //TODO: This is temporary! When finished we will be sending just an angle.
+                newAngle = newAngle.Constrain(armConstants.MIN_ELBOW_ANGLE, armConstants.MAX_ELBOW_ANGLE);
+                armArduino.write("ELPOS:" + ((int)newAngle) ); //TODO: This is temporary! When finished we will be sending just an angle.
+                Console.WriteLine("ELPOS:" + ((int)newAngle));
             }
         }
     }
@@ -208,7 +209,7 @@ namespace ArmControlTools
                 lock (elbowSync)
                 {
                     commandedElbowAngle -= elbowRate;   //TODO: This is currently inverted, make it += instead to un-invert it
-                    commandedElbowAngle = commandedElbowAngle.Constrain(0, 120);
+                    commandedElbowAngle = commandedElbowAngle.Constrain(armConstants.MIN_ELBOW_ANGLE, armConstants.MAX_ELBOW_ANGLE);
                     if (elbowRate != 0)
                     {
                         if (targetElbowChanged != null)
@@ -412,5 +413,9 @@ namespace ArmControlTools
         public const int MAX_SHOULDER_ANGLE = 50;
         public const int MIN_SHOULDER_ANGLE = 0;
         public const int SHOULDER_RANGE = 50;
+
+        public const int MAX_ELBOW_ANGLE = 120;
+        public const int MIN_ELBOW_ANGLE = 0;
+        public const int ELBOW_RANGE = 120;
     }
 }

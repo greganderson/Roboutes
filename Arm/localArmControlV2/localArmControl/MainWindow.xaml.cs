@@ -83,8 +83,8 @@ namespace localArmControl
                 int parsedVal;
                 if (int.TryParse(toParse, out parsedVal))
                 {
-                    parsedVal = parsedVal.Map(0, 1023, 0, 120);
-                    armSideView.updateActualElbow(120-parsedVal);
+                    parsedVal = (int)((parsedVal / 100.0) * armConstants.ELBOW_RANGE); ;
+                    armSideView.updateActualElbow(parsedVal); //TODO: idk if I need this "120-" part anymore
                 }
             }
             else if (receivedData.Contains("Turn Table Position:"))

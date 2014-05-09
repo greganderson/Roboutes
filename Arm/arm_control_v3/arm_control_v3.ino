@@ -40,11 +40,6 @@ String tester;
       int E_read;
       int TT_state;
       
-      //old positions, used to send updates to computer efficiently
-      int oldTT_read;
-      int oldS1_read;
-      int oldE_read;
-      
       // Current Sensing
       
       // I don't want to implement this right now.
@@ -132,11 +127,11 @@ String tester;
 
   // Error Tolerances
       float TT_error_tolerance = 3;
-      float S1_error_tolerance = 5;
+      float S1_error_tolerance = 2;
       float E_error_tolerance = 3;
 
   // P Gains
-      int TT_P_gain = 675; //was 675
+      int TT_P_gain = 1000; //was 675
       int S1_P_gain = 3000;
       int E_P_gain = 3000;
 
@@ -156,6 +151,11 @@ String tester;
 #define shoulderMinAngle 0
 #define shoulderDeployedPot 270
 #define shoulderRetractedPot 749
+
+#define elbowMaxAngle 120
+#define elbowMinAngle 10
+#define elbowDeployedPot 14
+#define elbowRetractedPot 974
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 void setup() { ////////////////////////////////////////////////////////////////////////////
@@ -208,8 +208,6 @@ void setup() { /////////////////////////////////////////////////////////////////
                S1_command = S1_read;
                E_read = rollingAverage(E_pot_reads, 10, analogRead(E_pot));
                E_command = E_read;
-               
-               
       /* // Brute Force        
                TT_command = 100;
                S1_command = 100;
@@ -245,8 +243,8 @@ void loop() { //////////////////////////////////////////////////////////////////
           ///////////////////////////////////////////////////
           else if(dataFromPC.startsWith("ELPOS:")){ //new elbow position incoming
             dataFromPC.replace("ELPOS:",""); //remove the "ELPOS:" header
-            int newCommand = constrain(dataFromPC.toInt(),0,1023);
-            E_command = 1023-newCommand;
+            int newCommand = dataFromPC.toInt();
+            E_command = solveElbowCOmmand(newCommand);
             armCOM.writeln("New elbow pos: "+(String)E_command+"\r");
           }
           
@@ -270,7 +268,6 @@ void loop() { //////////////////////////////////////////////////////////////////
   
   // Turntable
         // Command Generation
-        oldTT_read = TT_read;
         TT_read = rollingAverage(TT_pot_reads, 10,analogRead(TT_pot)) - TT_pot_constant_offset;
         TT_difference = (TT_command - TT_read);
         TT_error = TT_difference*pow(2, -10);
@@ -309,7 +306,6 @@ void loop() { //////////////////////////////////////////////////////////////////
    // Shoulder
         
         // Shoulder 1 Command Generation
-        oldS1_read = S1_read;
         S1_read = rollingAverage(S1_pot_reads, 10,analogRead(S1_pot));  
         S1_difference = (S1_command - S1_read);
         S1_error = S1_difference*pow(2, -10);
@@ -345,7 +341,6 @@ void loop() { //////////////////////////////////////////////////////////////////
      
     // Elbow
         // Command Generation
-        oldE_read = E_read;
         E_read = rollingAverage(E_pot_reads, 10,analogRead(E_pot));  
         E_difference = (E_command - E_read);
         E_error = E_difference*pow(2, -10);
@@ -378,7 +373,7 @@ void loop() { //////////////////////////////////////////////////////////////////
         }
 
 newtime = millis();
-if(newtime-oldtime >= 100){
+if(newtime-oldtime >= 300){
   
   if(LED_status == 0){
     digitalWrite(heartbeat_LED, HIGH);
@@ -390,32 +385,27 @@ if(newtime-oldtime >= 100){
     LED_status = 0;
     oldtime = newtime;
   }
-  sendPositionUpdates();
+  /////////////////////////////UPDATE GUI POSITIONS -- START
+    
+    //Elbow
+    int elbowPercPos = solveElbowPosition(E_read);
+    armCOM.writeln("Elbow Position: "+(String)elbowPercPos);
+    
+    //Shoulder
+    int shoulderPercPos = solveShoulderPosition(S1_read);
+    armCOM.writeln("Shoulder Position: "+(String)shoulderPercPos);
+
+  /////////////////////////////UPDATE GUI POSITIONS -- END
 }
  armCOM.serialEvent();
 } //end main loop
 
-void sendPositionUpdates(){
-  int elbDiff = E_read - oldE_read;
-  
-  int shoulDiff = S1_read - oldS1_read;
-  
-  int TTDiff = TT_read - oldTT_read;
-  
-  /*if(elbDiff >= 1 || elbDiff <= -1){
-    armCOM.writeln("Elbow Position: "+(String)E_read);
-  }*/
-  if(shoulDiff >= 1 || shoulDiff <= -1){
-    int shoulderPercPos = solveShoulderPosition(S1_read);
-    armCOM.writeln("Shoulder Position: "+(String)shoulderPercPos);
-  }
-  /*if(TTDiff >= 1 || TTDiff <= -1){
-    armCOM.writeln("Turn Table Position: "+(String)TT_read);
-  }*/
-  
-  ///DIAG ONLY -- Comment out if not needed
-  
-  //armCOM.writeln("S1 DUTY: "+(String)S1_duty_cycle+"\r");
+int solveElbowCommand(float newAngle){
+ return 0; 
+}
+
+int solveElbowPosition(float elbowRead){
+  return 0;
 }
 
 int solveShoulderPosition(float shoulderRead){
