@@ -57,11 +57,12 @@ namespace ArmControlTools
 
         void armInput_targetTurnTableChanged(double newAngle)
         {
-            if (( ((int)newAngle).Map(0, 90, 0, 1023) != oldTurnTable) && turnTableTimerExpired)
+            if (( ((int)newAngle) != oldTurnTable) && turnTableTimerExpired)
             {
-                oldTurnTable = ((int)newAngle).Map(0, 90, 0, 1023);
+                oldTurnTable = ((int)newAngle);
                 turnTableTimerExpired = false;
-                armArduino.write("TTPOS:" + ((int)newAngle).Map(0, 90, 0, 1023)); //TODO: This is temporary! When finished we will be sending just an angle.
+                newAngle = newAngle.Constrain(armConstants.MIN_TURNTABLE_ANGLE, armConstants.MAX_TURNTABLE_ANGLE);
+                armArduino.write("TTPOS:"+ ((int)newAngle) );
             }
         }
 
@@ -84,7 +85,6 @@ namespace ArmControlTools
                 elbowTimerExpired = false;
                 newAngle = newAngle.Constrain(armConstants.MIN_ELBOW_ANGLE, armConstants.MAX_ELBOW_ANGLE);
                 armArduino.write("ELPOS:" + ((int)newAngle) ); //TODO: This is temporary! When finished we will be sending just an angle.
-                Console.WriteLine("ELPOS:" + ((int)newAngle));
             }
         }
     }
@@ -208,7 +208,7 @@ namespace ArmControlTools
             {
                 lock (elbowSync)
                 {
-                    commandedElbowAngle -= elbowRate;   //TODO: This is currently inverted, make it += instead to un-invert it
+                    commandedElbowAngle += elbowRate;
                     commandedElbowAngle = commandedElbowAngle.Constrain(armConstants.MIN_ELBOW_ANGLE, armConstants.MAX_ELBOW_ANGLE);
                     if (elbowRate != 0)
                     {
@@ -229,7 +229,7 @@ namespace ArmControlTools
                 lock (turnTableSync)
                 {
                     commandedTurntableAngle += turnTableRate;
-                    commandedTurntableAngle = commandedTurntableAngle.Constrain(0, 90);
+                    commandedTurntableAngle = commandedTurntableAngle.Constrain(armConstants.MIN_TURNTABLE_ANGLE, armConstants.MAX_TURNTABLE_ANGLE);
                     if (turnTableRate != 0)
                     {
                         if (targetTurnTableChanged != null)
@@ -417,5 +417,9 @@ namespace ArmControlTools
         public const int MAX_ELBOW_ANGLE = 120;
         public const int MIN_ELBOW_ANGLE = 0;
         public const int ELBOW_RANGE = 120;
+
+        public const int MAX_TURNTABLE_ANGLE = 330;
+        public const int MIN_TURNTABLE_ANGLE = 0;
+        public const int TURNTABLE_RANGE = 330;
     }
 }

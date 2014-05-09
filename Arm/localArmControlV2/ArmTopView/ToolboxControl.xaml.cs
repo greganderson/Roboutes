@@ -38,20 +38,20 @@ namespace ArmTopView {
         }
 
         public double maxLength = 260; //starting standard value
-        public double maxRotation = 90; //starting standard value
+        public double maxRotation = armConstants.MAX_TURNTABLE_ANGLE; //starting standard value
         public ArmTop() {
             InitializeComponent();
         }
 
         public void updateActualArmAngle(double angle) {
             if (angle >= 0 && angle <= maxRotation) { //changes goal arm shoulder rotation angle
-                Dispatcher.Invoke(() =>aRec.RenderTransform = new RotateTransform(180 + angle));
+                Dispatcher.Invoke(() =>aRec.RenderTransform = new RotateTransform(103 + angle));
             }
         }
 
         public void updateGoalArmAngle(double angle){
             if (angle >= 0 && angle <= maxRotation) { //changes goal arm shoulder rotation angle
-                gRec.RenderTransform = new RotateTransform(180+angle);
+                gRec.RenderTransform = new RotateTransform(103 + angle);
             }
         }
 

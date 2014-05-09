@@ -153,10 +153,14 @@ String tester;
 #define shoulderRetractedPot 749
 
 #define elbowMaxAngle 120
-#define elbowMinAngle 10
+#define elbowMinAngle 0
 #define elbowDeployedPot 14
 #define elbowRetractedPot 974
 
+#define turnTableMaxAngle 355
+#define turnTableMinAngle 0
+#define turnTableDeployedPot 230
+#define turnTableRetractedPot 825
 ////////////////////////////////////////////////////////////////////////////////////////////
 void setup() { ////////////////////////////////////////////////////////////////////////////
  
@@ -232,9 +236,8 @@ void loop() { //////////////////////////////////////////////////////////////////
           ///////////////////////////////////////////////////
           if(dataFromPC.startsWith("TTPOS:")){ //new turn table position incoming
             dataFromPC.replace("TTPOS:",""); //remove the "TTPOS:" header
-            int newCommand = constrain(dataFromPC.toInt(),0,1023);
-            TT_command = newCommand;
-            TT_command = constrain(TT_command,80,650);
+            int newCommand = dataFromPC.toInt();
+            TT_command = solveTurnTableCommand(newCommand);
             armCOM.writeln("New turntable pos: "+(String)TT_command+"\r");
           }
           
@@ -244,7 +247,7 @@ void loop() { //////////////////////////////////////////////////////////////////
           else if(dataFromPC.startsWith("ELPOS:")){ //new elbow position incoming
             dataFromPC.replace("ELPOS:",""); //remove the "ELPOS:" header
             int newCommand = dataFromPC.toInt();
-            E_command = solveElbowCOmmand(newCommand);
+            E_command = solveElbowCommand(newCommand);
             armCOM.writeln("New elbow pos: "+(String)E_command+"\r");
           }
           
@@ -275,7 +278,7 @@ void loop() { //////////////////////////////////////////////////////////////////
         TT_integral_error = rollingAverage(TT_integral_errors, 100, TT_difference_abs);
         
         TT_duty_cycle = (abs(TT_error)*TT_P_gain) + TT_integral_error*TT_I_gain;
-        
+        TT_duty_cycle = 80;////////////////////////////////////////////////////////////////////////////////////////TEMP!@!!!!!!!!!!!!!!!@!@!@!#!@$E!@#!@#!@$R!@##!@        
         if(TT_duty_cycle > 255){
           TT_duty_cycle = 255;
         } // end if
@@ -373,7 +376,7 @@ void loop() { //////////////////////////////////////////////////////////////////
         }
 
 newtime = millis();
-if(newtime-oldtime >= 300){
+if(newtime-oldtime >= 500){
   
   if(LED_status == 0){
     digitalWrite(heartbeat_LED, HIGH);
@@ -394,18 +397,60 @@ if(newtime-oldtime >= 300){
     //Shoulder
     int shoulderPercPos = solveShoulderPosition(S1_read);
     armCOM.writeln("Shoulder Position: "+(String)shoulderPercPos);
+    
+    int turnTablePercPos = solveTurnTablePosition(TT_read);
+    armCOM.writeln("Turn Table Position: "+(String)turnTablePercPos);
 
   /////////////////////////////UPDATE GUI POSITIONS -- END
 }
  armCOM.serialEvent();
 } //end main loop
 
-int solveElbowCommand(float newAngle){
+int solveTurnTableCommand(float newAngle){
  return 0; 
 }
 
-int solveElbowPosition(float elbowRead){
+int solveTurnTablePosition(float newAngle){
   return 0;
+}
+
+int solveElbowCommand(float newAngle){
+  newAngle = constrain(newAngle,elbowMinAngle,elbowMaxAngle);
+  float extendedPercent = newAngle/elbowMaxAngle;
+  
+  int range = elbowDeployedPot - elbowRetractedPot;
+  range = abs(range);
+  
+  int target;
+  
+  if(elbowRetractedPot < elbowDeployedPot){
+    target = elbowRetractedPot+ (extendedPercent*range);
+  }
+  else if (elbowRetractedPot > elbowDeployedPot){
+    target = elbowRetractedPot - (extendedPercent*range);
+  }
+  
+  return target;
+}
+
+int solveElbowPosition(float elbowRead){
+  float range = elbowDeployedPot - elbowRetractedPot;
+  range = abs(range);
+  
+  int target;
+  
+  if(elbowRetractedPot < elbowDeployedPot){
+    elbowRead = constrain(elbowRead,elbowRetractedPot,elbowDeployedPot);
+    elbowRead = elbowRead - elbowRetractedPot;
+    target = (int)((elbowRead/range)*100);
+  }
+  else if (elbowRetractedPot > elbowDeployedPot){
+    elbowRead = constrain(elbowRead,elbowDeployedPot,elbowRetractedPot);
+    elbowRead = elbowRead - elbowDeployedPot;
+    target = (int)(100-((elbowRead/range)*100));
+  }
+  
+  return target;
 }
 
 int solveShoulderPosition(float shoulderRead){
