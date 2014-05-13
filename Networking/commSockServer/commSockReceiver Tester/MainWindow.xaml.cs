@@ -46,5 +46,13 @@ namespace commSockReceiver_Tester
         {
             CSR.write(" BLARG ");
         }
+
+        private void floodButton_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                CSR.write("MC FLOOD: " + i+"\r");
+            }
+        }
     }
 }
