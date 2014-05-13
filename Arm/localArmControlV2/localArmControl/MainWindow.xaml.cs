@@ -39,7 +39,10 @@ namespace localArmControl
             ArduMan = ArduinoManager.Instance;
             ArduMan.findArduinos();
 
-            armDuino = ArduMan.getArmArduino(); //TODO: Setup the hand arduino (handDuino)
+            handDuino = ArduMan.getHandArduino();
+            handDuino.Data_Received += handDuino_Data_Received;
+
+            armDuino = ArduMan.getArmArduino();
             armDuino.Data_Received += armDuino_Data_Received;
 
             Console.SetOut(consoleViz.getStreamLink()); //Show console output in gui
@@ -47,12 +50,19 @@ namespace localArmControl
             xboxController = new XboxController.XboxController();
 
             armInput = armInputManager.getInstance(xboxController);
-            armTransmitter = new localArmCommandTransmitter(armDuino, armInput);
+            armTransmitter = new localArmCommandTransmitter(armDuino, handDuino, armInput);
 
             xboxControllerMonitor.xboxController = xboxController;
             armSideView.armInputManager = armInput;
             armTopView.armInputManager = armInput;
             Console.WriteLine("***XBOX CONTROLLER CONNECTED***");
+
+            wristComponent._xboxController = xboxController;
+        }
+
+        void handDuino_Data_Received(string receivedData)
+        {
+            handComIn.addText(receivedData); //TODO: see how theres an armComHandler below, if the wrist involves the GUI one must be added here...
         }
 
         void armDuino_Data_Received(string receivedData)

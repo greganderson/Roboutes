@@ -14,30 +14,57 @@ namespace ArmControlTools
     public class localArmCommandTransmitter
     {
         private Arduino armArduino;
+        private Arduino handArduino;
         private armInputManager armInput;
+
         Timer elbowTimer;
         Timer shoulderTimer;
         Timer turnTableTimer;
-        bool elbowTimerExpired = false;
-        bool shoulderTimerExpired = false;
-        bool turnTableTimerExpired = false;
+        Timer gripperTimer;
+        Timer wristTimer;
 
-        int delay = 100;    //How often new commands will be sent, used to avoid overflowing the line (Serial or internet)
+        volatile bool elbowTimerExpired = false;
+        volatile bool shoulderTimerExpired = false;
+        volatile bool turnTableTimerExpired = false;
+        volatile bool gripperTimerExpired = false;
+        volatile bool wristTimerExpired = false;
+
+        private int delay = 100;    //How often new commands will be sent, used to avoid overflowing the line (Serial or internet)
 
         int oldElbow = 0;
         int oldTurnTable = 0;
         int oldShoulder = 0;
+        int oldGripper = 0;
+        wristPositionData oldWrist = new wristPositionData(0, 0, 0);
 
-        public localArmCommandTransmitter(Arduino _armArduino , armInputManager _armInput)
+        public localArmCommandTransmitter(Arduino _armArduino, Arduino _handArduino, armInputManager _armInput)
         {
             armArduino = _armArduino;
             armInput = _armInput;
+            handArduino = _handArduino;
+
             armInput.targetElbowChanged += armInput_targetElbowChanged;
             armInput.targetShoulderChanged += armInput_targetShoulderChanged;
             armInput.targetTurnTableChanged += armInput_targetTurnTableChanged;
+            armInput.targetWristChanged += armInput_targetWristChanged;
+            armInput.targetGripperChanged += armInput_targetGripperChanged;
+
             elbowTimer = new Timer(elbowTimerCallback, null, 0, delay);
             shoulderTimer = new Timer(shoulderTimerCallback, null, 0, delay);
             turnTableTimer = new Timer(turnTableTimerCallback, null, 0, delay);
+            wristTimer = new Timer(wristTimerCallback, null, 0, delay);
+            gripperTimer = new Timer(gripperTimerCallback, null, 0, delay);
+
+        }
+
+        private void wristTimerCallback(object state)
+        {
+            wristTimerExpired = true;
+        }
+
+        private void gripperTimerCallback(object state)
+        {
+            gripperTimerExpired = true;
         }
 
         private void turnTableTimerCallback(object state)
@@ -53,6 +80,28 @@ namespace ArmControlTools
         private void elbowTimerCallback(object state)
         {
             elbowTimerExpired = true;
+        }
+
+        void armInput_targetWristChanged(wristPositionData newPosition)
+        {
+            if (!newPosition.Equals(oldWrist) && wristTimerExpired)
+            {
+                oldWrist = newPosition;
+                wristTimerExpired = false;
+                handArduino.write("U:" + newPosition.upVal);
+                handArduino.write("L:" + newPosition.leftVal);
+                handArduino.write("R:" + newPosition.rightVal);
+            }
+        }
+
+        void armInput_targetGripperChanged(double newGrip)
+        {
+            if (((int)newGrip != oldGripper) && gripperTimerExpired)
+            {
+                oldGripper = (int)newGrip;
+                gripperTimerExpired = false;
+                handArduino.write("G:"+ ((int)newGrip) );
+            }
         }
 
         void armInput_targetTurnTableChanged(double newAngle)
@@ -98,6 +147,8 @@ namespace ArmControlTools
         public event ChangedJointPositionEventHandler targetElbowChanged;
         public event ChangedJointPositionEventHandler targetShoulderChanged;
         public event ChangedJointPositionEventHandler targetTurnTableChanged;
+        public event ChangedJointPositionEventHandler targetGripperChanged;
+        public event ChangedJointPositionEventHandler targetWristRotationAngleChanged;
 
         public delegate void ChangedWristPositionEventHandler(wristPositionData newPosition);
         public event ChangedWristPositionEventHandler targetWristChanged;
@@ -114,10 +165,15 @@ namespace ArmControlTools
         double shoulderRate;
         object shoulderSync = 1;
 
+        int commandedGripper = 100;
+        int gripperRate;
+        object gripperSync = 1;
+
         Thread elbowUpdateThread;
         Thread shoulderUpdateThread;
         Thread turntableUpdateThread;
         Thread wristUpdateThread;
+        Thread gripperUpdateThread;
 
         ////////// Special variable for wrist stuff
         volatile bool newWristPositions = false;
@@ -150,10 +206,16 @@ namespace ArmControlTools
         private armInputManager(XboxController.XboxController _xboxController)
         {
             xboxController = _xboxController;
+
             xboxController.ThumbStickRight += xboxController_ThumbStickRight;
             xboxController.TriggerLeft += xboxController_TriggerLeft;
             xboxController.TriggerRight += xboxController_TriggerRight;
             xboxController.ThumbStickLeft += xboxController_ThumbStickLeft;
+            xboxController.ButtonRightShoulderPressed += xboxController_ButtonRightShoulderPressed;
+            xboxController.ButtonLeftShoulderPressed += xboxController_ButtonLeftShoulderPressed;
+            xboxController.ButtonRightShoulderReleased += bumperReleased;
+            xboxController.ButtonLeftShoulderReleased += bumperReleased;
+
             turntableUpdateThread = new Thread(new ThreadStart(turnTableUpdate));
             turntableUpdateThread.Start();
             elbowUpdateThread = new Thread(new ThreadStart(elbowUpdate));
@@ -162,6 +224,28 @@ namespace ArmControlTools
             shoulderUpdateThread.Start();
             wristUpdateThread = new Thread(new ThreadStart(wristUpdate));
             wristUpdateThread.Start();
+            gripperUpdateThread = new Thread(new ThreadStart(gripperUpdate));
+            gripperUpdateThread.Start();
+        }
+
+        private void gripperUpdate()
+        {
+            while (true)
+            {
+                lock (gripperSync)
+                {
+                    commandedGripper += gripperRate;
+                    commandedGripper = commandedGripper.Constrain(armConstants.MIN_GRIPPER, armConstants.MAX_GRIPPER);
+                    if (gripperRate != 0)
+                    {
+                        if (targetGripperChanged != null)
+                        {
+                            targetGripperChanged(100-commandedGripper); //this way 100 is fully gripped and 0 is relaxed, seems more intuituve...
+                        }
+                    }
+                }
+                Thread.Sleep(20);
+            }
         }
 
         private void wristUpdate()
@@ -256,6 +340,11 @@ namespace ArmControlTools
             }
             double MAG = ((MAGpercent / 100) * MAX_MAGNITUDE) / 100;
 
+            if (targetWristRotationAngleChanged != null)
+            {
+                targetWristRotationAngleChanged(rotationAngle);
+            }
+
             updateModel(rotationAngle, MAG);
         }
 
@@ -348,6 +437,30 @@ namespace ArmControlTools
             }
         }
 
+        void xboxController_ButtonRightShoulderPressed(object sender, EventArgs e)
+        {
+            lock (gripperSync)
+            {
+                gripperRate = 1;
+            }
+        }
+        void xboxController_ButtonLeftShoulderPressed(object sender, EventArgs e)
+        {
+            lock (gripperSync)
+            {
+                gripperRate = -1;
+            }
+        }
+
+        void bumperReleased(object sender, EventArgs e)
+        {
+            lock (gripperSync)
+            {
+                gripperRate = 0;
+            }
+        }
+
+
         void xboxController_TriggerRight(object sender, EventArgs e)
         {
             XboxEventArgs args = (XboxEventArgs)e;
@@ -371,6 +484,32 @@ namespace ArmControlTools
             upVal = upActuator;
             leftVal = leftActuator;
             rightVal = rightActuator;
+        }
+
+        /// <summary>
+        /// Overridden version of the equals method. Determines if the values within the wristPosition are the same.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            try
+            {
+                if (obj.GetType() != base.GetType())
+                {
+                    return false;
+                }
+                wristPositionData tempOther = (wristPositionData)obj;
+                if (tempOther.leftVal == leftVal && tempOther.rightVal == rightVal && tempOther.upVal == upVal)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 
@@ -406,6 +545,22 @@ namespace ArmControlTools
                 return value;
             }
         }
+
+        public static int Constrain(this int value, int min, int max)
+        {
+            if (value > max)
+            {
+                return max;
+            }
+            else if (value < min)
+            {
+                return min;
+            }
+            else
+            {
+                return value;
+            }
+        }
     }
 
     public static class armConstants
@@ -421,5 +576,8 @@ namespace ArmControlTools
         public const int MAX_TURNTABLE_ANGLE = 330;
         public const int MIN_TURNTABLE_ANGLE = 0;
         public const int TURNTABLE_RANGE = 330;
+
+        public const int MAX_GRIPPER = 100;
+        public const int MIN_GRIPPER = 0;
     }
 }

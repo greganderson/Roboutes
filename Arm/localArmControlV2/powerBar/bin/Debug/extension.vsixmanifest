@@ -1,7 +1,7 @@
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011">
   <Metadata>
-    <Identity Id="commFeedViz..1b7323a7-6117-4f06-9c17-2854b4f1d6f8" Version="1.0" Language="en-US" Publisher="Matt M" />
-    <DisplayName>commFeedViz</DisplayName>
+    <Identity Id="powerBar..8fcc2ab5-b5f4-4d05-b5e3-2a7983d28786" Version="1.0" Language="en-US" Publisher="Matt M" />
+    <DisplayName>powerBar</DisplayName>
     <Description>WPF Toolbox Control</Description>
     <Icon />
     <PreviewImage />
@@ -13,6 +13,6 @@
     <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" Version="4.5" />
   </Dependencies>
   <Assets>
-    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="commFeedViz.pkgdef" />
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="powerBar.pkgdef" />
   </Assets>
 </PackageManifest>

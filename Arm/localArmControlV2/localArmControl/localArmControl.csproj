@@ -113,6 +113,10 @@
       <Project>{F470B85F-598A-4002-8191-111E9565F239}</Project>
       <Name>commFeedViz</Name>
     </ProjectReference>
+    <ProjectReference Include="..\handInfoViewer\handInfoViewer.csproj">
+      <Project>{F6D4ED91-8F1C-4C95-BAF3-172EE677DDDC}</Project>
+      <Name>handInfoViewer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\liveXboxMonitorV2\liveXboxMonitorV2.csproj">
       <Project>{cd51e462-bf4a-4b1e-a85e-e1008d77fe4c}</Project>
       <Name>liveXboxMonitorV2</Name>
@@ -120,6 +124,10 @@
     <ProjectReference Include="..\localArmControlTools\ArmControlTools.csproj">
       <Project>{9ff256b8-f7e0-4917-a1ac-c0938a0dd038}</Project>
       <Name>ArmControlTools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\powerBar\PowerBar.csproj">
+      <Project>{008D03B3-E23A-4A86-B7F8-2D75E0502703}</Project>
+      <Name>PowerBar</Name>
     </ProjectReference>
     <ProjectReference Include="..\toggleIndicator\toggleIndicator.csproj">
       <Project>{C2DD09CF-4E6D-456B-AB71-752D4E354714}</Project>

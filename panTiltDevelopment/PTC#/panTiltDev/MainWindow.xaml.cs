@@ -39,6 +39,10 @@ namespace panTiltDev
         public MainWindow()
         {
             InitializeComponent();
+
+            cameraView = new dualCameraViewer.MainWindow();
+            cameraView.Show();
+
             comVizIn.setTitle("PT COM IN");
             comVizOut.setTitle("PT COM OUT");
 
@@ -49,8 +53,7 @@ namespace panTiltDev
 
             orientation = OculusOrientation.getInstance();
             orientation.orientationChanged += orientation_orientationChanged;
-            cameraView = new dualCameraViewer.MainWindow();
-            cameraView.Show();
+            
         }
 
         void PTDuino_Data_Received(string receivedData)

@@ -131,7 +131,7 @@ String tester;
       float E_error_tolerance = 3;
 
   // P Gains
-      int TT_P_gain = 1000; //was 675
+      int TT_P_gain = 675; //was 675
       int S1_P_gain = 3000;
       int E_P_gain = 3000;
 
@@ -157,7 +157,7 @@ String tester;
 #define elbowDeployedPot 14
 #define elbowRetractedPot 974
 
-#define turnTableMaxAngle 355
+#define turnTableMaxAngle 330
 #define turnTableMinAngle 0
 #define turnTableDeployedPot 230
 #define turnTableRetractedPot 825
@@ -278,7 +278,7 @@ void loop() { //////////////////////////////////////////////////////////////////
         TT_integral_error = rollingAverage(TT_integral_errors, 100, TT_difference_abs);
         
         TT_duty_cycle = (abs(TT_error)*TT_P_gain) + TT_integral_error*TT_I_gain;
-        TT_duty_cycle = 80;////////////////////////////////////////////////////////////////////////////////////////TEMP!@!!!!!!!!!!!!!!!@!@!@!#!@$E!@#!@#!@$R!@##!@        
+        //TT_duty_cycle = 80;////////////////////////////////////////////////////////////////////////////////////////TEMP!@!!!!!!!!!!!!!!!@!@!@!#!@$E!@#!@#!@$R!@##!@        
         if(TT_duty_cycle > 255){
           TT_duty_cycle = 255;
         } // end if
@@ -407,11 +407,42 @@ if(newtime-oldtime >= 500){
 } //end main loop
 
 int solveTurnTableCommand(float newAngle){
- return 0; 
+  newAngle = constrain(newAngle,turnTableMinAngle,turnTableMaxAngle);
+  float extendedPercent = newAngle/turnTableMaxAngle;
+  
+  int range = turnTableDeployedPot - turnTableRetractedPot;
+  range = abs(range);
+  
+  int target;
+  
+  if(turnTableRetractedPot < turnTableDeployedPot){
+    target = turnTableRetractedPot+ (extendedPercent*range);
+  }
+  else if (turnTableRetractedPot > turnTableDeployedPot){
+    target = turnTableRetractedPot - (extendedPercent*range);
+  }
+  
+  return target;
 }
 
-int solveTurnTablePosition(float newAngle){
-  return 0;
+int solveTurnTablePosition(float turnTableRead){
+  float range = turnTableDeployedPot - turnTableRetractedPot;
+  range = abs(range);
+  
+  int target;
+  
+  if(turnTableRetractedPot < turnTableDeployedPot){
+    turnTableRead = constrain(turnTableRead,turnTableRetractedPot,turnTableDeployedPot);
+    turnTableRead = turnTableRead - turnTableRetractedPot;
+    target = (int)((turnTableRead/range)*100);
+  }
+  else if (turnTableRetractedPot > turnTableDeployedPot){
+    turnTableRead = constrain(turnTableRead,turnTableDeployedPot,turnTableRetractedPot);
+    turnTableRead = turnTableRead - turnTableDeployedPot;
+    target = (int)(100-((turnTableRead/range)*100));
+  }
+  
+  return target;
 }
 
 int solveElbowCommand(float newAngle){
