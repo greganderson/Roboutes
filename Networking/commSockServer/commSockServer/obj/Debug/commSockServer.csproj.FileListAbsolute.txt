@@ -1,0 +1,18 @@
+C:\Users\HAL9000\Documents\Visual Studio 2012\Projects\commSockServer\commSockServer\bin\Debug\commSockServer.dll
+C:\Users\HAL9000\Documents\Visual Studio 2012\Projects\commSockServer\commSockServer\bin\Debug\commSockServer.pdb
+C:\Users\HAL9000\Documents\Visual Studio 2012\Projects\commSockServer\commSockServer\bin\Debug\ChatClientModel.dll
+C:\Users\HAL9000\Documents\Visual Studio 2012\Projects\commSockServer\commSockServer\bin\Debug\StringSocket.dll
+C:\Users\HAL9000\Documents\Visual Studio 2012\Projects\commSockServer\commSockServer\bin\Debug\ChatClientModel.pdb
+C:\Users\HAL9000\Documents\Visual Studio 2012\Projects\commSockServer\commSockServer\bin\Debug\StringSocket.pdb
+C:\Users\HAL9000\Documents\Visual Studio 2012\Projects\commSockServer\commSockServer\obj\Debug\commSockServer.csprojResolveAssemblyReference.cache
+C:\Users\HAL9000\Documents\Visual Studio 2012\Projects\commSockServer\commSockServer\obj\Debug\commSockServer.dll
+C:\Users\HAL9000\Documents\Visual Studio 2012\Projects\commSockServer\commSockServer\obj\Debug\commSockServer.pdb
+C:\Users\HAL9000\Desktop\commSockServer\commSockServer\bin\Debug\commSockServer.dll
+C:\Users\HAL9000\Desktop\commSockServer\commSockServer\bin\Debug\commSockServer.pdb
+C:\Users\HAL9000\Desktop\commSockServer\commSockServer\bin\Debug\ChatClientModel.dll
+C:\Users\HAL9000\Desktop\commSockServer\commSockServer\bin\Debug\StringSocket.dll
+C:\Users\HAL9000\Desktop\commSockServer\commSockServer\bin\Debug\ChatClientModel.pdb
+C:\Users\HAL9000\Desktop\commSockServer\commSockServer\bin\Debug\StringSocket.pdb
+C:\Users\HAL9000\Desktop\commSockServer\commSockServer\obj\Debug\commSockServer.csprojResolveAssemblyReference.cache
+C:\Users\HAL9000\Desktop\commSockServer\commSockServer\obj\Debug\commSockServer.dll
+C:\Users\HAL9000\Desktop\commSockServer\commSockServer\obj\Debug\commSockServer.pdb
