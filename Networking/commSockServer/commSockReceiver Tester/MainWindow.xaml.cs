@@ -26,7 +26,7 @@ namespace commSockReceiver_Tester
         public MainWindow()
         {
             InitializeComponent();
-            CSR = new commSockReceiver(2000);
+            CSR = new commSockReceiver(35000);
             CSR.beginAccept();
             CSR.IncomingLine += CSR_IncomingLine;
             CSR.newConnection += CSR_newConnection;
@@ -34,7 +34,7 @@ namespace commSockReceiver_Tester
 
         void CSR_newConnection(bool obj)
         {
-            MessageBox.Show("NEW CONNECTION INCOMING");
+            //MessageBox.Show("NEW CONNECTION INCOMING");
         }
 
         void CSR_IncomingLine(string obj)

@@ -1,4 +1,4 @@
-C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\Deadzone\1.0\\Deadzone.dll
-C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\Deadzone\1.0\\Deadzone.pkgdef
-C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\Deadzone\1.0\\extension.vsixmanifest
-C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\Deadzone\1.0\\Deadzone.pdb
+C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\Deadzone\1.0\\Deadzone.dll
+C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\Deadzone\1.0\\Deadzone.pkgdef
+C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\Deadzone\1.0\\extension.vsixmanifest
+C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\Deadzone\1.0\\Deadzone.pdb

@@ -62,7 +62,7 @@
             </Viewbox>
 
             <Button x:Name="stateButton" Content="SETTINGS" HorizontalAlignment="Left" VerticalAlignment="Top" Width="163" Margin="10,44,0,0" Height="43" Background="#FF252525" Foreground="#FFFF7400" FontWeight="Bold" FontSize="24" BorderBrush="Red" Click="stateButton_Click"/>
-            <Label Content="XBox Controller Connected:" HorizontalAlignment="Left" Margin="440,261,0,0" VerticalAlignment="Top" Width="168" Foreground="#FFFF5D00" FontWeight="Bold"/>
+            <Label Content="XBox Controller Assigned:" HorizontalAlignment="Left" Margin="440,261,0,0" VerticalAlignment="Top" Width="168" Foreground="#FFFF5D00" FontWeight="Bold"/>
             <toggleIndicator:ToolboxControl x:Name="xboxControllerConnectedIndicator" HorizontalAlignment="Left" Margin="624,254,0,0" VerticalAlignment="Top" Height="36" Width="49"/>
             <Viewbox x:Name="liveItems" Margin="28,56,84,37" Stretch="Fill">
                 <Grid Height="207" Width="588">

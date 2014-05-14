@@ -20,3 +20,7 @@ C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\XboxControl
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\XboxController\obj\Debug\XboxController.csprojResolveAssemblyReference.cache
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\XboxController\obj\Debug\XboxController.dll
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\XboxController\obj\Debug\XboxController.pdb
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\XboxController\bin\Debug\XboxController.dll
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\XboxController\bin\Debug\XboxController.pdb
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\XboxController\obj\Debug\XboxController.dll
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\XboxController\obj\Debug\XboxController.pdb

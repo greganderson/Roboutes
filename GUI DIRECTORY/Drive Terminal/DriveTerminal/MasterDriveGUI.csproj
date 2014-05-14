@@ -99,6 +99,10 @@
       <Project>{f470b85f-598a-4002-8191-111e9565f239}</Project>
       <Name>commFeedViz</Name>
     </ProjectReference>
+    <ProjectReference Include="..\commSockServer\commSockServer.csproj">
+      <Project>{c3252112-2fad-46f9-a34a-609185a67747}</Project>
+      <Name>commSockServer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ConsoleOutput\ConsoleOutput.csproj">
       <Project>{82932e9b-dbca-4e25-92be-0aecb0b8ef0f}</Project>
       <Name>ConsoleOutput</Name>
@@ -126,6 +130,10 @@
     <ProjectReference Include="..\liveXboxMonitor\liveXboxMonitor.csproj">
       <Project>{7879ebef-6914-4e68-b410-b519cec4318e}</Project>
       <Name>liveXboxMonitor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\networkStatusIndicator\networkStatusIndicator.csproj">
+      <Project>{f169b9c3-3117-487d-a186-5b2ef9d71805}</Project>
+      <Name>networkStatusIndicator</Name>
     </ProjectReference>
     <ProjectReference Include="..\PilotPreferences\PilotPreferences.csproj">
       <Project>{594EBB9F-15A4-4E82-869A-6713262EE74D}</Project>

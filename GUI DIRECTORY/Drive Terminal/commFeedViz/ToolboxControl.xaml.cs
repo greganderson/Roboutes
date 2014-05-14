@@ -20,6 +20,17 @@ namespace commFeedViz {
     /// </summary>
     [ProvideToolboxControl("commFeedViz", true)]
     public partial class commFeedViz : UserControl {
+
+        public String title
+        {
+            set {
+                Dispatcher.Invoke(() =>titleLabel.Content = value);            
+            }
+            get {
+                return (String)titleLabel.Content;            
+            }
+        }
+
         TextBoxStreamWriter _writer;
         bool autoScroll = true;
 
@@ -29,14 +40,10 @@ namespace commFeedViz {
             autoScrollRadio.IsChecked = true;
         }
 
-        public void setTitle(string title) {
-            Dispatcher.Invoke(() => titleLabel.Content = title);
-        }
-
         public void addText(string toAdd) {
             Action action = delegate()
             {
-                if(terminalTextBox.Text.Length >= 7000){    //keeps you from printing stupidly huge amounts of data to the console. If it gets too long it will slow down the GUI
+                if(terminalTextBox.Text.Length >= 2000){    //keeps you from printing stupidly huge amounts of data to the console. If it gets too long it will slow down the GUI
                     terminalTextBox.Text = ">>>Feed Visualizer RESET to avoid massive string>>>\n\n\n" + toAdd;
                 }
                 else{

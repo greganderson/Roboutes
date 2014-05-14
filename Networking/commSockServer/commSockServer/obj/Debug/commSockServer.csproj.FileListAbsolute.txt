@@ -16,3 +16,12 @@ C:\Users\HAL9000\Desktop\commSockServer\commSockServer\bin\Debug\StringSocket.pd
 C:\Users\HAL9000\Desktop\commSockServer\commSockServer\obj\Debug\commSockServer.csprojResolveAssemblyReference.cache
 C:\Users\HAL9000\Desktop\commSockServer\commSockServer\obj\Debug\commSockServer.dll
 C:\Users\HAL9000\Desktop\commSockServer\commSockServer\obj\Debug\commSockServer.pdb
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\Networking\commSockServer\commSockServer\bin\Debug\commSockServer.dll
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\Networking\commSockServer\commSockServer\bin\Debug\commSockServer.pdb
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\Networking\commSockServer\commSockServer\bin\Debug\ChatClientModel.dll
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\Networking\commSockServer\commSockServer\bin\Debug\StringSocket.dll
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\Networking\commSockServer\commSockServer\bin\Debug\ChatClientModel.pdb
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\Networking\commSockServer\commSockServer\bin\Debug\StringSocket.pdb
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\Networking\commSockServer\commSockServer\obj\Debug\commSockServer.csprojResolveAssemblyReference.cache
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\Networking\commSockServer\commSockServer\obj\Debug\commSockServer.dll
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\Networking\commSockServer\commSockServer\obj\Debug\commSockServer.pdb
