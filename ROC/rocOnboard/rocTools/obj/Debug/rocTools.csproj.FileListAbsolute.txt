@@ -1,0 +1,5 @@
+C:\Users\CORE\Documents\GitHub\Roboutes\Arm\rocOnboard\rocTools\bin\Debug\rocTools.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\Arm\rocOnboard\rocTools\bin\Debug\rocTools.pdb
+C:\Users\CORE\Documents\GitHub\Roboutes\Arm\rocOnboard\rocTools\obj\Debug\rocTools.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\Arm\rocOnboard\rocTools\obj\Debug\rocTools.pdb
+C:\Users\CORE\Documents\GitHub\Roboutes\Arm\rocOnboard\rocTools\obj\Debug\rocTools.csprojResolveAssemblyReference.cache

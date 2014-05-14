@@ -118,7 +118,7 @@ String tester;
       int S1_integral_error;
       int E_integral_error;
       
-      
+       
   // Integral Error Arrays
       int TT_integral_errors[100];
       int S1_integral_errors[100];
@@ -137,7 +137,7 @@ String tester;
 
   // I Gains
       float TT_I_gain = 5;
-      float S1_I_gain = 50;
+      float S1_I_gain = 25;
       float E_I_gain = 5;
       
   // Duty Cycles
