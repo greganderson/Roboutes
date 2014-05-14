@@ -9,11 +9,9 @@ using CustomNetworking;
 namespace CC
 {
     /// <summary>
-    /// THIS CLASS IS HERE STRICTLY FOR TESTING PURPOSES.  IT IS NOT USED IN THE MAIN PART OF THE PROGRAM.  
-    /// IT IS USED TO TEST THE BOGGLE SERVER AND NOTHING MORE.
+    /// THIS CODE WAS WRITTIN FOR CS3500 BY EITHER DR. GERMAIN OR DR. ZACHARY
     /// </summary>
-
-    #region DO NOT GRADE - NOT PART OF THE ASSIGNMENT
+    /// 
     public class ChatClientModel
     {
 
@@ -90,7 +88,7 @@ namespace CC
             Console.WriteLine("Line received in ChatClientModel: " + s);
             if (s == null) {
                 Console.WriteLine("DISCONNECTION (no data) received in ChatClientModel");
-                s = "DISCONNECTION!";
+                IncomingLineEvent(s);
                 socket.close();
                 return;
             }
@@ -102,5 +100,4 @@ namespace CC
         }       
     }
 }
-    #endregion
 

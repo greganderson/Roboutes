@@ -23,6 +23,7 @@ namespace commSockServer
         public event Action<bool> newConnection;
         public event Action<bool> lostConnection;
         public event Action<String> IncomingLine;
+        public event Action connectionLost;
 
         public commSockReceiver(int port)
         {
@@ -66,11 +67,13 @@ namespace commSockServer
 
         private void connection_IncomingLineEvent(string obj)
         {
+            if (obj == null) {
+                if (connectionLost != null) {
+                    connectionLost();
+                }
+            }
             if (IncomingLine != null) {
                 IncomingLine(obj);
-            }
-            else {
-                Console.WriteLine("KJFDhshdgjfklgsadhukhfjcgdysiagufydsagyufglsdavgfhkldsgiufdshalukfsdlhuakhfbgusdlahbgkulsf");
             }
         }
 

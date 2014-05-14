@@ -30,8 +30,13 @@ namespace DriveTerminal {
             pilotPreferences.xboxController = xboxController;
             comSock = new commSockReceiver(35000); //TODO: Make a little network management window, maybe it shows when the start button is pressed?
             comSock.IncomingLine += comSock_IncomingLine;
-            comSock.newConnection += comSock_newConnection; 
+            comSock.newConnection += comSock_newConnection;
+            comSock.connectionLost += comSock_connectionLost;
             comSock.beginAccept();
+        }
+
+        void comSock_connectionLost() {
+            Dispatcher.Invoke(() => connectionIndicator.connected = false);
         }
 
         void comSock_newConnection(bool obj) {
