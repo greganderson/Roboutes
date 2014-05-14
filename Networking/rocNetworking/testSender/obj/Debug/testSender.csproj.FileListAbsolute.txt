@@ -32,3 +32,6 @@ E:\MATTS STUFF\rocNetworking\testSender\bin\Debug\commSocket.pdb
 E:\MATTS STUFF\rocNetworking\testSender\bin\Debug\StringSocket.pdb
 E:\MATTS STUFF\rocNetworking\testSender\obj\Debug\testSender.exe
 E:\MATTS STUFF\rocNetworking\testSender\obj\Debug\testSender.pdb
+C:\Users\ROC\Documents\GitHub\Roboutes\Networking\rocNetworking\testSender\bin\Debug\testSender.exe.config
+C:\Users\ROC\Documents\GitHub\Roboutes\Networking\rocNetworking\testSender\obj\Debug\testSender.exe
+C:\Users\ROC\Documents\GitHub\Roboutes\Networking\rocNetworking\testSender\obj\Debug\testSender.pdb

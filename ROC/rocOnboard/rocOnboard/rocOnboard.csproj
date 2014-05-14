@@ -96,6 +96,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\commFeedViz\commFeedViz.csproj">
+      <Project>{f470b85f-598a-4002-8191-111e9565f239}</Project>
+      <Name>commFeedViz</Name>
+    </ProjectReference>
     <ProjectReference Include="..\rocTools\rocTools.csproj">
       <Project>{a7dab2d1-3d18-44ec-baa6-6db118470785}</Project>
       <Name>rocTools</Name>
