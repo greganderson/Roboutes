@@ -3,15 +3,16 @@
 
 ADVCOM test(&Serial, "HAND");
 String dataFromPC;
-int upCommand = 127;
-int rightCommand = 127;
-int leftCommand = 127;
-int gripCommand = 127;
+int upCommand = 0;
+int rightCommand = 0;
+int leftCommand = 0;
+int gripCommand = 0;
 
 Servo upwrist;
 Servo leftwrist;
 Servo rightwrist;
 Servo gripper;
+
 bool newCommands  = false;
 
    // LED Status Lights
@@ -29,6 +30,8 @@ void setup(){
   leftwrist.attach(A2);
   rightwrist.attach(A3);
   gripper.attach(A4);
+  
+  executeCommands();
 }
 
 void loop(){
@@ -51,7 +54,6 @@ void loop(){
     else if(dataFromPC.startsWith("L:")){ //LEFT command data
       dataFromPC.replace("L:","");
       int parsed = dataFromPC.toInt();
-
       leftCommand = parsed; 
       test.writeln("LEFT: "+(String)leftCommand);
     }
@@ -59,7 +61,6 @@ void loop(){
     else if(dataFromPC.startsWith("G:")){ //GRIP command data
       dataFromPC.replace("G:","");
       int parsed = dataFromPC.toInt();
-
       gripCommand = parsed; 
       test.writeln("GRIP: "+(String)gripCommand);
     }
