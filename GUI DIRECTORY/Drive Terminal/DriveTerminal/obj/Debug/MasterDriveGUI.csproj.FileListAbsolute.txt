@@ -121,3 +121,5 @@ C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\Dr
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\DriveTerminal\bin\Debug\commSockServer.pdb
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\DriveTerminal\bin\Debug\ChatClientModel.pdb
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\DriveTerminal\bin\Debug\StringSocket.pdb
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\DriveTerminal\bin\Debug\driveTools.dll
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\DriveTerminal\bin\Debug\driveTools.pdb

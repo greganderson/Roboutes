@@ -111,6 +111,10 @@
       <Project>{1498D0C1-72D4-443E-9EB7-A2911888EAAD}</Project>
       <Name>Deadzone</Name>
     </ProjectReference>
+    <ProjectReference Include="..\driveTools\driveTools.csproj">
+      <Project>{f8d36943-8010-42e8-b84d-0b53eb4b67f2}</Project>
+      <Name>driveTools</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Inclinometer\Inclinometer\Inclinometer_Window.csproj">
       <Project>{8573703E-093F-4FE6-84B8-C5615D4B17DA}</Project>
       <Name>Inclinometer_Window</Name>

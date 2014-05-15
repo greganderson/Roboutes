@@ -53,3 +53,6 @@ C:\Users\CORE\Documents\GitHub\Roboutes\Drive\localDrive C#\localDrive\obj\Debug
 C:\Users\CORE\Documents\GitHub\Roboutes\Drive\localDrive C#\localDrive\obj\Debug\localDrive.g.resources
 C:\Users\CORE\Documents\GitHub\Roboutes\Drive\localDrive C#\localDrive\obj\Debug\localDrive.Properties.Resources.resources
 C:\Users\CORE\Documents\GitHub\Roboutes\Drive\localDrive C#\localDrive\obj\Debug\localDrive.csproj.GenerateResource.Cache
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\Drive\localDrive C#\localDrive\bin\Debug\localDrive.exe.config
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\Drive\localDrive C#\localDrive\obj\Debug\localDrive.exe
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\Drive\localDrive C#\localDrive\obj\Debug\localDrive.pdb

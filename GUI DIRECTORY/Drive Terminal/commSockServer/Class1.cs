@@ -21,7 +21,6 @@ namespace commSockServer
         private volatile bool recentData;
 
         public event Action<bool> newConnection;
-        public event Action<bool> lostConnection;
         public event Action<String> IncomingLine;
         public event Action connectionLost;
 

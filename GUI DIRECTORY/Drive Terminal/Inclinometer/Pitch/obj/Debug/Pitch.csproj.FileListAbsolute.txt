@@ -81,3 +81,4 @@ C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\In
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\Inclinometer\Pitch\obj\Debug\Pitch.pkgdef
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\Inclinometer\Pitch\obj\Debug\Pitch.latest.pkgdef
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\Inclinometer\Pitch\obj\Debug\extension.vsixmanifest
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\Inclinometer\Pitch\obj\Debug\Pitch.csprojResolveAssemblyReference.cache

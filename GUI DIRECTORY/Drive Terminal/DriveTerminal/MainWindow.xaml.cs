@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 using XboxController;
 using commSockServer;
+using driveTools;
 
 namespace DriveTerminal {
     /// <summary>
@@ -23,6 +24,8 @@ namespace DriveTerminal {
     public partial class MainWindow : Window {
         XboxController.XboxController xboxController;
         commSockReceiver comSock;
+        driveInputManager driveInputMan;
+        driveTransmitter driveTransmit;
 
         public MainWindow() {
             InitializeComponent();
@@ -33,6 +36,9 @@ namespace DriveTerminal {
             comSock.newConnection += comSock_newConnection;
             comSock.connectionLost += comSock_connectionLost;
             comSock.beginAccept();
+
+            driveInputMan = new driveInputManager(xboxController);
+            driveTransmit = new driveTransmitter(driveInputMan, comSock);
         }
 
         void comSock_connectionLost() {

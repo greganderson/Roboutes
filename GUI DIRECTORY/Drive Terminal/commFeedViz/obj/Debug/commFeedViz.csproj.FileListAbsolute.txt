@@ -64,3 +64,4 @@ C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\co
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\commFeedViz\obj\Debug\commFeedViz.pkgdef
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\commFeedViz\obj\Debug\commFeedViz.latest.pkgdef
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\commFeedViz\obj\Debug\extension.vsixmanifest
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\commFeedViz\obj\Debug\commFeedViz.csprojResolveAssemblyReference.cache

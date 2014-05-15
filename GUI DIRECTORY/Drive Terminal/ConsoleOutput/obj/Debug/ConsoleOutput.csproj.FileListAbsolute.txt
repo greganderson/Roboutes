@@ -64,3 +64,4 @@ C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\Co
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\ConsoleOutput\obj\Debug\ConsoleOutput.pkgdef
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\ConsoleOutput\obj\Debug\ConsoleOutput.latest.pkgdef
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\ConsoleOutput\obj\Debug\extension.vsixmanifest
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\ConsoleOutput\obj\Debug\ConsoleOutput.csprojResolveAssemblyReference.cache
