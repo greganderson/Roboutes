@@ -95,7 +95,7 @@ namespace localDrive
                 toSendRight = " R" + newRightY.ToString(valFormat);
             }
         }
-
+        
         private void xboxCont_ThumbStickLeft(object sender, EventArgs e)
         {
             XboxEventArgs args = (XboxEventArgs)e;
