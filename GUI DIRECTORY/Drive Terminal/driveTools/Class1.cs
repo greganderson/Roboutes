@@ -33,12 +33,12 @@ namespace driveTools
             lock (sync) {
                 if (leftVal != oldLeftVal) {
                     oldLeftVal = leftVal;
-                    CSR.write("Speed_L:" + leftVal);
+                    CSR.write("L:" + leftVal);
                 }
 
                 if (rightVal != oldRightVal) {
                     oldRightVal = rightVal;
-                    CSR.write("Speed_R:" + rightVal);
+                    CSR.write("R:" + rightVal);
                 }
             }
         }
