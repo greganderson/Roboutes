@@ -22,3 +22,4 @@ C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\ArduinoLibrary\bin\Debug\A
 C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\ArduinoLibrary\bin\Debug\ArduinoLibrary.pdb
 C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\ArduinoLibrary\obj\Debug\ArduinoLibrary.dll
 C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\ArduinoLibrary\obj\Debug\ArduinoLibrary.pdb
+C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\ArduinoLibrary\obj\Debug\ArduinoLibrary.csprojResolveAssemblyReference.cache

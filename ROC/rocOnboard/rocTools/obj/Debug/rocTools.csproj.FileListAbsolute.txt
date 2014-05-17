@@ -14,3 +14,11 @@ C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocTools\obj\Debug\rocTool
 C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocTools\obj\Debug\rocTools.pdb
 C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocTools\bin\Debug\ArduinoLibrary.dll
 C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocTools\bin\Debug\ArduinoLibrary.pdb
+C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocTools\bin\Debug\AForge.Video.DirectShow.dll
+C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocTools\bin\Debug\AForge.Video.dll
+C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocTools\bin\Debug\managedVideoTransmitter.dll
+C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocTools\bin\Debug\videoSocketSender.dll
+C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocTools\bin\Debug\managedVideoTransmitter.pdb
+C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocTools\bin\Debug\videoSocketSender.pdb
+C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocTools\bin\Debug\renderer.exe
+C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocTools\bin\Debug\renderer.pdb

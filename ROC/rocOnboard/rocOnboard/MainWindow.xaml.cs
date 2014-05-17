@@ -15,6 +15,9 @@ using System.Windows.Shapes;
 
 using rocTools;
 using ArduinoLibrary;
+using videoSocketTools;
+using AForge.Video;
+using AForge.Video.DirectShow;
 
 namespace rocOnboard
 {
@@ -26,9 +29,14 @@ namespace rocOnboard
         networkManager NetMan;
         ArduinoManager ArduMan;
         driveManager driveMan;
+        ptManager ptMan;
+        cameraManager camMan;
 
         Arduino backDrive;
         Arduino frontDrive;
+        Arduino ptDuino;
+
+        managedDualVideoTransmitter panTiltTransmitter;
 
         public MainWindow()
         {
@@ -45,10 +53,29 @@ namespace rocOnboard
 
             backDrive = ArduMan.getDriveBackArduino();
             frontDrive = ArduMan.getDriveFrontArduino();
+            ptDuino = ArduMan.getPanTiltArduino();
+
             backDrive.Data_Received += backDrive_Data_Received;
             frontDrive.Data_Received += frontDrive_Data_Received;
+            ptDuino.Data_Received += ptDuino_Data_Received;
 
             driveMan = driveManager.getInstance(backDrive, frontDrive, NetMan);
+            ptMan = ptManager.getInstance(ptDuino, NetMan);
+
+            camMan = cameraManager.getInstance();
+            camMan.assignCameras();
+
+            VideoCaptureDevice panTiltLeft;
+            VideoCaptureDevice panTiltRight;
+            if(camMan.getCamera(rocConstants.CAMS.PT_left, out panTiltLeft)  &&  camMan.getCamera(rocConstants.CAMS.PT_right, out panTiltRight)){ //if both the left and right cameras are found...
+                panTiltTransmitter = new managedDualVideoTransmitter(panTiltLeft, panTiltRight, rocConstants.MCIP_DRIVE, rocConstants.MCPORT_DRIVE_VIDEO_OCULUS);
+                panTiltTransmitter.startTransmitting();
+            }
+        }
+
+        void ptDuino_Data_Received(string receivedData)
+        {
+            Dispatcher.Invoke(() => panTiltCOMIN.addText(receivedData + "\r"));
         }
 
         void frontDrive_Data_Received(string receivedData)

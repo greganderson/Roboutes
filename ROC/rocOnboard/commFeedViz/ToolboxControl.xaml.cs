@@ -20,6 +20,7 @@ namespace commFeedViz {
     /// </summary>
     [ProvideToolboxControl("commFeedViz", true)]
     public partial class commFeedViz : UserControl {
+        Thread scrollThread;
 
         public String title
         {
@@ -32,12 +33,32 @@ namespace commFeedViz {
         }
 
         TextBoxStreamWriter _writer;
-        bool autoScroll = true;
+        private volatile bool autoScroll = true;
 
         public commFeedViz() {
             InitializeComponent();
             _writer = new TextBoxStreamWriter(terminalTextBox,this);
             autoScrollRadio.IsChecked = true;
+            scrollThread = new Thread(new ThreadStart(scroller));
+            scrollThread.Start();
+        }
+
+        private void scroller()
+        {
+            while (true)
+            {
+                Action action = delegate()
+                {
+                    if (autoScroll)
+                    {
+                        terminalTextBox.Focus();
+                        terminalTextBox.CaretIndex = terminalTextBox.Text.Length;
+                        terminalTextBox.ScrollToEnd();
+                    }
+                };
+                Dispatcher.Invoke(action);
+                Thread.Sleep(20); // ~50 times per second...
+            }
         }
 
         public void addText(string toAdd) {
@@ -67,11 +88,11 @@ namespace commFeedViz {
         }
 
         private void terminalTextBox_TextChanged(object sender, TextChangedEventArgs e) {
-            if (autoScroll) {
+            /*if (autoScroll) {
                 terminalTextBox.Focus();
                 terminalTextBox.CaretIndex = terminalTextBox.Text.Length;
                 terminalTextBox.ScrollToEnd();
-            }
+            }*/
         }
 
         private void autoScrollRadio_Click(object sender, RoutedEventArgs e) {

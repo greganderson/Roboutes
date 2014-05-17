@@ -8,6 +8,9 @@ using System.Net;
 using System.Net.Sockets;
 using commSockClient;
 using ArduinoLibrary;
+using AForge.Video;
+using AForge.Video.DirectShow;
+using videoSocketTools;
 
 namespace rocTools
 {
@@ -103,17 +106,26 @@ namespace rocTools
 
     public static class rocConstants
     {
-        public static readonly IPAddress MCIP_DRIVE = IPAddress.Parse("155.99.165.85");
+        public static readonly IPAddress MCIP_DRIVE = IPAddress.Parse("155.99.165.139");
         public static readonly string MCIP_ARM = "XXX.XXX.XXX.XXX";
         public static readonly string MCIP_LOGISTICS = "XXX.XXX.XXX.XXX";
 
         public static readonly int MCPORT_DRIVE = 35000;
+        public static readonly int MCPORT_DRIVE_VIDEO_OCULUS = 45000;
 
         public enum COMID
         {
             DRIVECOM = 0,
             ARMCOM = 1,
             LOGISTICSCOM = 2
+        };
+
+        public static int[] defaultCameraAssignments = new int[] { 0, 1 };
+
+        public enum CAMS
+        {
+            PT_left = 1,
+            PT_right = 0,
         };
     }
 
@@ -192,6 +204,159 @@ namespace rocTools
         private void backDriveDuino_Data_Received(string receivedData)
         {
             //throw new NotImplementedException();
+        }
+    }
+
+    public class ptManager
+    {
+        private Arduino ptDuino;
+        private networkManager netMan;
+
+        private static ptManager instance;
+        public static ptManager getInstance(Arduino panTiltArduino, networkManager _netMan)
+        {
+            if (instance == null)
+            {
+                instance = new ptManager(panTiltArduino,_netMan);
+            }
+            return instance;
+        }
+
+        private ptManager(Arduino panTiltArduino, networkManager _netMan)
+        {
+            ptDuino = panTiltArduino;
+            netMan = _netMan;
+            ptDuino.Data_Received += ptDuino_Data_Received;
+            netMan.incomingDrive += netMan_incomingDrive;
+        }
+
+        void netMan_incomingDrive(string incomingString)
+        {
+            if (incomingString.StartsWith("Y:"))
+            {
+                incomingString = incomingString.Replace("Y:", "");
+                int newYaw;
+                if (int.TryParse(incomingString, out newYaw))
+                {
+                    updateYaw(newYaw);
+                }
+            }
+            else if (incomingString.StartsWith("P:"))
+            {
+                incomingString = incomingString.Replace("P:", "");
+                int newPitch;
+                if (int.TryParse(incomingString, out newPitch))
+                {
+                    updatePitch(newPitch);
+                }
+            }
+        }
+
+        private void updatePitch(int newPitch)
+        {
+            ptDuino.write("P:" + newPitch);
+        }
+
+        private void updateYaw(int newYaw)
+        {
+            ptDuino.write("Y:" + newYaw);
+        }
+
+        void ptDuino_Data_Received(string receivedData)
+        {
+            //throw new NotImplementedException();
+        }
+    }
+
+    public class cameraManager
+    {
+        private FilterInfoCollection videoDevices;
+        private Dictionary<String, VideoCaptureDevice> cameraMap;
+        
+
+        private static cameraManager instance;
+        public static cameraManager getInstance()
+        {
+            if (instance == null)
+            {
+                instance = new cameraManager();
+            }
+            return instance;
+        }
+
+        private cameraManager()
+        {
+            videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            cameraMap = new Dictionary<string, VideoCaptureDevice>();
+        }
+
+        /// <summary>
+        /// must be called before any cameras are retrieved!!! The assignmentSheet tells which cameras are which and corespond with the monikerString. Uses the default assignmentSheet if none is passed in.
+        /// returns false if there were less cameras plugged in than are supposed to be assigned to or if something went wrong.
+        /// assignmentSheet KEY: firstVal = PT_left , secondVal = PT_right
+        /// </summary>
+        public bool assignCameras(int[] assignmentSheet)
+        {
+            bool toReturn = true;
+            try
+            {
+                if (assignmentSheet.Count() < videoDevices.Count)
+                {
+                    toReturn = false;
+                }
+
+                for (int i = 0; i < videoDevices.Count; i++)
+                {
+                    cameraMap.Add((((rocConstants.CAMS)i).ToString()), new VideoCaptureDevice(videoDevices[assignmentSheet[i]].MonikerString)); //really complicated way to just add the cameras in the order specified by the assignmentSheet 
+                }
+            }
+            catch
+            {
+                toReturn = false;
+            }
+            return toReturn;
+        }
+
+        /// <summary>
+        /// must be called before any cameras are retrieved!!! The assignmentSheet tells which cameras are which and corespond with the monikerString. Uses the default assignmentSheet if none is passed in.
+        /// returns false if there were less cameras plugged in than are supposed to be assigned to or if something went wrong.
+        /// assignmentSheet KEY: firstVal = PT_left , secondVal = PT_right
+        /// </summary>
+        public bool assignCameras()
+        {
+            bool toReturn = true;
+            try
+            {
+                int[] assignmentSheet = rocConstants.defaultCameraAssignments;
+                if (assignmentSheet.Count() < videoDevices.Count)
+                {
+                    toReturn = false;
+                }
+
+                for (int i = 0; i < videoDevices.Count; i++)
+                {
+                    cameraMap.Add((((rocConstants.CAMS)i).ToString()), new VideoCaptureDevice(videoDevices[assignmentSheet[i]].MonikerString)); //really complicated way to just add the cameras in the order specified by the assignmentSheet 
+                }
+            }
+            catch
+            {
+                toReturn = false;
+            }
+            return toReturn;
+        }
+
+        public bool getCamera(rocConstants.CAMS cameraID, out VideoCaptureDevice camera)
+        {
+            try
+            {
+                camera = cameraMap[cameraID.ToString()];
+            }
+            catch
+            {
+                camera = null;
+                return false;
+            }
+            return true;
         }
     }
 }

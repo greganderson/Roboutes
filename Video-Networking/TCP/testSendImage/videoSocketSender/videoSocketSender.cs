@@ -23,7 +23,7 @@ namespace videoSocketTools
         private TcpClient tcpClient;
         private Socket sendSocket;
         private volatile bool Transmitting = false;
-        private long quality = 15; //15% is default quality
+        private long quality = 13; //15% is default quality
         private object qualitySync = 1;
         private volatile bool timeExpired = true; //when expired the frame can be sent (used to control FPS)
         private int FPS = 15;
@@ -111,8 +111,13 @@ namespace videoSocketTools
             }
             transmittedFPSTimer = new Timer(transmittedFPSTimerCallback, null, 0, 1000);
             cameraSource = _cameraSource;
-            cameraSource.NewFrame +=cameraSource_NewFrame;
+            cameraSource.NewFrame+=cameraSource_NewFrame;
             cameraSource.Start();
+            VideoCapabilities[] vidCaps = cameraSource.VideoCapabilities;
+            foreach (VideoCapabilities vidC in vidCaps)
+            {
+                Console.WriteLine(vidC.FrameSize);
+            }
         }
 
         private void transmittedFPSTimerCallback(object state)
@@ -166,7 +171,7 @@ namespace videoSocketTools
         public bool connect(IPAddress IP, int port)
         {
             tcpClient = new TcpClient();
-            tcpClient.Connect(IPAddress.Parse("127.0.0.1"), port);
+            tcpClient.Connect(IP, port);
             sendSocket = tcpClient.Client;
             return true;
         }
@@ -195,7 +200,6 @@ namespace videoSocketTools
 
         private void cameraSource_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
-            Console.WriteLine("test A");
             if (Transmitting && timeExpired)
             {
                 timeExpired = false;
@@ -206,7 +210,7 @@ namespace videoSocketTools
                     byte[] header = Encoding.ASCII.GetBytes(headerBuilder);
                     int headerSent = sendSocket.Send(header, header.Length, SocketFlags.None);
                     int imageSent = sendSocket.Send(jpegImage, jpegImage.Length, SocketFlags.None);
-                    Console.WriteLine("test B");
+                    //Console.WriteLine("test B");
                     if (headerSent != header.Length)
                     {
                         Console.WriteLine("HEADER SIZE CONFLICT: \n SENT: " + headerSent + "\n  REQUIRED: " + header.Length + "\n");
@@ -229,6 +233,11 @@ namespace videoSocketTools
                     }
                 }
             }
+        }
+
+        public static void QueueFrameAction(Action<NewFrameEventArgs> action, NewFrameEventArgs eventArgs)
+        {
+            ThreadPool.QueueUserWorkItem(s => action((NewFrameEventArgs)s), eventArgs);
         }
 
         private byte[] Bitmap2JpegArray(Bitmap Frame)

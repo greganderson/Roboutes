@@ -40,3 +40,11 @@ C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocOnboard\bin\Debug\commF
 C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocOnboard\bin\Debug\commFeedViz.pdb
 C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocOnboard\bin\Debug\ArduinoLibrary.dll
 C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocOnboard\bin\Debug\ArduinoLibrary.pdb
+C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocOnboard\bin\Debug\AForge.Video.DirectShow.dll
+C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocOnboard\bin\Debug\AForge.Video.dll
+C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocOnboard\bin\Debug\managedVideoTransmitter.dll
+C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocOnboard\bin\Debug\videoSocketSender.dll
+C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocOnboard\bin\Debug\managedVideoTransmitter.pdb
+C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocOnboard\bin\Debug\videoSocketSender.pdb
+C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocOnboard\bin\Debug\renderer.exe
+C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocOnboard\bin\Debug\renderer.pdb

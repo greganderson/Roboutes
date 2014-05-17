@@ -15,6 +15,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "commFeedViz", "commFeedViz\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArduinoLibrary", "ArduinoLibrary\ArduinoLibrary.csproj", "{CD1400A5-F47E-4CFC-BA4B-458A6D47E6E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "managedVideoTransmitter", "managedVideoTransmitter\managedVideoTransmitter.csproj", "{FD7B472F-8852-493A-BACE-9608B5A5D878}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "videoSocketSender", "videoSocketSender\videoSocketSender.csproj", "{D812F08B-0555-44D6-A1AE-CD3F31E2CF9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "renderer", "renderer\renderer.csproj", "{286EA7D1-FB5F-491E-BE16-33C26007A796}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,8 +55,23 @@ Global
 		{CD1400A5-F47E-4CFC-BA4B-458A6D47E6E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD1400A5-F47E-4CFC-BA4B-458A6D47E6E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD1400A5-F47E-4CFC-BA4B-458A6D47E6E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD7B472F-8852-493A-BACE-9608B5A5D878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD7B472F-8852-493A-BACE-9608B5A5D878}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD7B472F-8852-493A-BACE-9608B5A5D878}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD7B472F-8852-493A-BACE-9608B5A5D878}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D812F08B-0555-44D6-A1AE-CD3F31E2CF9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D812F08B-0555-44D6-A1AE-CD3F31E2CF9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D812F08B-0555-44D6-A1AE-CD3F31E2CF9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D812F08B-0555-44D6-A1AE-CD3F31E2CF9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{286EA7D1-FB5F-491E-BE16-33C26007A796}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{286EA7D1-FB5F-491E-BE16-33C26007A796}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{286EA7D1-FB5F-491E-BE16-33C26007A796}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{286EA7D1-FB5F-491E-BE16-33C26007A796}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
 	EndGlobalSection
 EndGlobal

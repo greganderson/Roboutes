@@ -64,3 +64,4 @@ C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\commFeedViz\obj\Debug\comm
 C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\commFeedViz\obj\Debug\commFeedViz.pkgdef
 C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\commFeedViz\obj\Debug\commFeedViz.latest.pkgdef
 C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\commFeedViz\obj\Debug\extension.vsixmanifest
+C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\commFeedViz\obj\Debug\commFeedViz.csprojResolveAssemblyReference.cache

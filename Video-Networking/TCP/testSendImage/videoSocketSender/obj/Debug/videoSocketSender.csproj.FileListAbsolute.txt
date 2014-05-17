@@ -12,3 +12,10 @@ C:\Users\CORE\Documents\GitHub\Roboutes\Video-Networking\TCP\testSendImage\video
 C:\Users\CORE\Documents\GitHub\Roboutes\Video-Networking\TCP\testSendImage\videoSocketSender\obj\Debug\videoSocketSender.csprojResolveAssemblyReference.cache
 C:\Users\CORE\Documents\GitHub\Roboutes\Video-Networking\TCP\testSendImage\videoSocketSender\obj\Debug\videoSocketSender.dll
 C:\Users\CORE\Documents\GitHub\Roboutes\Video-Networking\TCP\testSendImage\videoSocketSender\obj\Debug\videoSocketSender.pdb
+C:\Users\ROC\Documents\GitHub\Roboutes\Video-Networking\TCP\testSendImage\videoSocketSender\bin\Debug\videoSocketSender.dll
+C:\Users\ROC\Documents\GitHub\Roboutes\Video-Networking\TCP\testSendImage\videoSocketSender\bin\Debug\videoSocketSender.pdb
+C:\Users\ROC\Documents\GitHub\Roboutes\Video-Networking\TCP\testSendImage\videoSocketSender\bin\Debug\AForge.Video.DirectShow.dll
+C:\Users\ROC\Documents\GitHub\Roboutes\Video-Networking\TCP\testSendImage\videoSocketSender\bin\Debug\AForge.Video.dll
+C:\Users\ROC\Documents\GitHub\Roboutes\Video-Networking\TCP\testSendImage\videoSocketSender\obj\Debug\videoSocketSender.csprojResolveAssemblyReference.cache
+C:\Users\ROC\Documents\GitHub\Roboutes\Video-Networking\TCP\testSendImage\videoSocketSender\obj\Debug\videoSocketSender.dll
+C:\Users\ROC\Documents\GitHub\Roboutes\Video-Networking\TCP\testSendImage\videoSocketSender\obj\Debug\videoSocketSender.pdb
