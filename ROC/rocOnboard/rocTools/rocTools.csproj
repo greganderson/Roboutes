@@ -43,6 +43,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ArduinoLibrary\ArduinoLibrary.csproj">
+      <Project>{cd1400a5-f47e-4cfc-ba4b-458a6d47e6e9}</Project>
+      <Name>ArduinoLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\commSocketSender\commSockSender.csproj">
       <Project>{cdf62a2e-3c52-4eed-80a9-0011eaaa0bc9}</Project>
       <Name>commSockSender</Name>

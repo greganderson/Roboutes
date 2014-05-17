@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 using System.Net;
 using System.Net.Sockets;
-
 using commSockClient;
+using ArduinoLibrary;
 
 namespace rocTools
 {
@@ -17,7 +17,7 @@ namespace rocTools
         public event ConnectionChangedEventHandler DriveConnectionStatusChanged;
 
         public delegate void incomingLineEventHandler(string incomingString);
-        private incomingLineEventHandler incomingDrive;
+        public event incomingLineEventHandler incomingDrive;
        // private incomingLineEventHandler incomingArm;
        // private incomingLineEventHandler incomingLogistics;
 
@@ -88,6 +88,17 @@ namespace rocTools
             }
         }
 
+        public void write(rocConstants.COMID ID, string Message)
+        {
+            switch (ID)
+            {
+                case rocConstants.COMID.DRIVECOM:
+                    Message = Message.Replace("\n", ""); //Do not allow \n to be transmitted... I think this is dealt with elsewhere, but this is safe...
+                    DRIVECOM.sendMessage(Message);
+                    break;
+            }
+        }
+
     }
 
     public static class rocConstants
@@ -104,5 +115,83 @@ namespace rocTools
             ARMCOM = 1,
             LOGISTICSCOM = 2
         };
+    }
+
+    public class driveManager
+    {
+        private Arduino frontDriveDuino;
+        private Arduino backDriveDuino;
+
+        private volatile int leftSpeed = 0;
+        private volatile int rightSpeed = 0;
+
+        private networkManager netMan;
+
+        private static driveManager instance;
+        public static driveManager getInstance(Arduino backArduino, Arduino frontArduino, networkManager _netMan)
+        {
+            if (instance == null)
+            {
+                instance = new driveManager(backArduino, frontArduino, _netMan);
+            }
+            return instance;
+        }
+
+        private driveManager(Arduino backArduino, Arduino frontArduino, networkManager _netMan)
+        {
+            frontDriveDuino = frontArduino;
+            backDriveDuino = backArduino;
+
+            frontDriveDuino.Data_Received += frontDriveDuino_Data_Received;
+            backDriveDuino.Data_Received+=backDriveDuino_Data_Received;
+
+            netMan = _netMan;
+            netMan.incomingDrive += netMan_incomingDrive;
+        }
+
+        void netMan_incomingDrive(string incomingString)
+        {
+            if (incomingString.StartsWith("R:"))
+            {
+                incomingString = incomingString.Replace("R:", "");
+                int newRightSpeed;
+                if (int.TryParse(incomingString,out newRightSpeed))
+                {
+                    updateRightSpeed(newRightSpeed);
+                }
+            }
+            else if (incomingString.StartsWith("L:"))
+            {
+                incomingString = incomingString.Replace("L:", "");
+                int newLeftSpeed;
+                if (int.TryParse(incomingString, out newLeftSpeed))
+                {
+                    updateLeftSpeed(newLeftSpeed);
+                }
+            }
+        }
+
+        public void updateLeftSpeed(int speed)
+        {
+            frontDriveDuino.write("L:" + speed);
+            backDriveDuino.write("L:" + speed);
+        }
+
+        public void updateRightSpeed(int speed)
+        {
+            frontDriveDuino.write("R:" + speed);
+            backDriveDuino.write("R:" + speed);
+        }
+
+
+        private void frontDriveDuino_Data_Received(string receivedData)
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void backDriveDuino_Data_Received(string receivedData)
+        {
+            //throw new NotImplementedException();
+        }
     }
 }

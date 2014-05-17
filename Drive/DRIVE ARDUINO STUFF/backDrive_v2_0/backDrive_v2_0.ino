@@ -1,6 +1,6 @@
 #include <Encoder.h>
 #include <PID_v1.h>
-#include <SHARPCOMARDUINO.h>
+#include <SHARPCOMTEENSY.h>
 ADVCOM driveCom(&Serial, "DRIVEBACK");
 String dataFromPC;
 #include "pins_arduino.h"

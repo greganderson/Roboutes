@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:toggleIndicator="clr-namespace:toggleIndicator;assembly=toggleIndicator" xmlns:commFeedViz="clr-namespace:commFeedViz;assembly=commFeedViz" x:Class="rocOnboard.MainWindow"
-        Title="MainWindow" Height="350" Width="753.311">
+        Title="MainWindow" Height="346" Width="1395.311" Closed="Window_Closed">
     <Grid>
         <Label Content="DRIVE IP:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Height="45" Width="100" FontSize="20"/>
         <Label x:Name="driveIPLabel" Content="NA" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="115,10,0,0" Height="48" Width="173" FontSize="20"/>
@@ -16,6 +16,8 @@
         <toggleIndicator:ToolboxControl x:Name="logisticsConnectedInd" HorizontalAlignment="Left" Margin="293,90,0,0" VerticalAlignment="Top" Height="35" Width="33"/>
 
         <commFeedViz:commFeedViz x:Name="incomingInternet" HorizontalAlignment="Left" Margin="438,0,0,0" VerticalAlignment="Top" Height="220" Width="307" title="Internet IN"/>
+        <commFeedViz:commFeedViz x:Name="driveFrontCOMIN" HorizontalAlignment="Left" Margin="750,0,0,0" VerticalAlignment="Top" Height="220" Width="307" title="Drive Front COM IN"/>
+        <commFeedViz:commFeedViz x:Name="driveBackCOMIN" HorizontalAlignment="Left" Margin="1062,0,-50,0" VerticalAlignment="Top" Height="220" Width="307" title="Drive Back COM IN"/>
 
     </Grid>
 </Window>

@@ -96,6 +96,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ArduinoLibrary\ArduinoLibrary.csproj">
+      <Project>{cd1400a5-f47e-4cfc-ba4b-458a6d47e6e9}</Project>
+      <Name>ArduinoLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\commFeedViz\commFeedViz.csproj">
       <Project>{f470b85f-598a-4002-8191-111e9565f239}</Project>
       <Name>commFeedViz</Name>

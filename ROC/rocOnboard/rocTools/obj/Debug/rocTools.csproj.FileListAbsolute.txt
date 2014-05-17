@@ -12,3 +12,5 @@ C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocTools\bin\Debug\commSoc
 C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocTools\bin\Debug\StringSocket.pdb
 C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocTools\obj\Debug\rocTools.dll
 C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocTools\obj\Debug\rocTools.pdb
+C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocTools\bin\Debug\ArduinoLibrary.dll
+C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocTools\bin\Debug\ArduinoLibrary.pdb

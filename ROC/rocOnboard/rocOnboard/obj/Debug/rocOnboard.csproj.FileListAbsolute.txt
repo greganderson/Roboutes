@@ -38,3 +38,5 @@ C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocOnboard\obj\Debug\rocOn
 C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocOnboard\obj\Debug\rocOnboard.pdb
 C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocOnboard\bin\Debug\commFeedViz.dll
 C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocOnboard\bin\Debug\commFeedViz.pdb
+C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocOnboard\bin\Debug\ArduinoLibrary.dll
+C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocOnboard\bin\Debug\ArduinoLibrary.pdb

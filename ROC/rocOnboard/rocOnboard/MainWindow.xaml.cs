@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using rocTools;
+using ArduinoLibrary;
 
 namespace rocOnboard
 {
@@ -23,6 +24,11 @@ namespace rocOnboard
     public partial class MainWindow : Window
     {
         networkManager NetMan;
+        ArduinoManager ArduMan;
+        driveManager driveMan;
+
+        Arduino backDrive;
+        Arduino frontDrive;
 
         public MainWindow()
         {
@@ -33,6 +39,26 @@ namespace rocOnboard
 
             NetMan = networkManager.getInstance(incomingDriveLineManager);
             NetMan.DriveConnectionStatusChanged += NetMan_DriveConnectionStatusChanged;
+
+            ArduMan = ArduinoManager.Instance;
+            ArduMan.findArduinos();
+
+            backDrive = ArduMan.getDriveBackArduino();
+            frontDrive = ArduMan.getDriveFrontArduino();
+            backDrive.Data_Received += backDrive_Data_Received;
+            frontDrive.Data_Received += frontDrive_Data_Received;
+
+            driveMan = driveManager.getInstance(backDrive, frontDrive, NetMan);
+        }
+
+        void frontDrive_Data_Received(string receivedData)
+        {
+            Dispatcher.Invoke(() => driveFrontCOMIN.addText(receivedData+"\r"));
+        }
+
+        void backDrive_Data_Received(string receivedData)
+        {
+            Dispatcher.Invoke(() => driveBackCOMIN.addText(receivedData + "\r"));
         }
 
         void NetMan_DriveConnectionStatusChanged(bool commSockIsConnected)
@@ -48,6 +74,12 @@ namespace rocOnboard
         void incomingDriveLineManager(string incoming)
         {
             Dispatcher.Invoke(() => incomingInternet.addText(incoming+"\n"));
+            NetMan.write(rocConstants.COMID.DRIVECOM, " PING ");
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }
