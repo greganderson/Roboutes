@@ -44,7 +44,7 @@ namespace managedVideoTransmitter_Tester
                 return;
             }
             VideoCaptureDevice tempSource = new VideoCaptureDevice(videoDevices[0].MonikerString); //just use the first camera found
-            MVT = new managedVideoTransmitter(tempSource, IPAddress.Parse("155.99.165.139"), 45000);
+            MVT = new managedVideoTransmitter(tempSource, IPAddress.Parse("155.99.166.173"), 45000);
             MVT.actualFPSRecalculated += MVT_actualFPSRecalculated;
         }
 
