@@ -73,7 +73,7 @@ void setup() {
 void loop() {
   long timer1 = micros();
   if(driveCom.newData(&dataFromPC)){
-    driveCom.writeln("leftEnc: "+(String)((int)leftEnc.read()));
+    //driveCom.writeln("leftEnc: "+(String)((int)leftEnc.read()));
    //Serial.println(inputString);
 	  if (dataFromPC.startsWith("L:")){ //[ L0][ L100]
                   dataFromPC.replace("L:","");
@@ -112,7 +112,7 @@ void loop() {
             	  }
     }
     else{
-      driveCom.writeln("Weird data recieved");
+      driveCom.writeln("Weird drive data recieved");
       return;
     }
     
