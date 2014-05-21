@@ -1,0 +1,7 @@
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\ConsoleApplication1\ConsoleApplication1\bin\Debug\OpenHardwareMonitorLib.dll
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb

@@ -1,0 +1,11 @@
+﻿<Window x:Class="manyCamTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="382.45" Width="1002.437">
+    <Grid>
+        <WindowsFormsHost x:Name="cam1Viewer" HorizontalAlignment="Left" Height="306" Margin="0,36,0,0" VerticalAlignment="Top" Width="306"/>
+        <WindowsFormsHost x:Name="cam2Viewer" HorizontalAlignment="Left" Height="306" Margin="311,36,0,0" VerticalAlignment="Top" Width="306"/>
+        <WindowsFormsHost x:Name="cam3Viewer" HorizontalAlignment="Left" Height="306" Margin="622,36,0,0" VerticalAlignment="Top" Width="306"/>
+
+    </Grid>
+</Window>

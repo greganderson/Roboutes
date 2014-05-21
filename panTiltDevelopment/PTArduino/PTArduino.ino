@@ -11,8 +11,8 @@ Servo pitchServo;
 
 void setup() {
   test.init(9600);
-  yawServo.attach(23);
-  pitchServo.attach(22);
+  yawServo.attach(6);
+  pitchServo.attach(5);
 }
 
 void loop() {

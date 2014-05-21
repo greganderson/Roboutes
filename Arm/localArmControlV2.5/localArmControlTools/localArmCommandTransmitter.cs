@@ -295,7 +295,7 @@ namespace ArmControlTools
             {
                 lock (elbowSync)
                 {
-                    commandedElbowAngle += elbowRate;
+                    commandedElbowAngle -= elbowRate; //this is where inverting can happen
                     commandedElbowAngle = commandedElbowAngle.Constrain(armConstants.MIN_ELBOW_ANGLE, armConstants.MAX_ELBOW_ANGLE);
                     if (elbowRate != 0)
                     {

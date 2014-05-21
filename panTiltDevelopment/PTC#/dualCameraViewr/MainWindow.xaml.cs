@@ -26,6 +26,8 @@ namespace dualCameraViewer
     {
         VideoSourcePlayer leftPlayer = new VideoSourcePlayer();
         VideoSourcePlayer rightPlayer = new VideoSourcePlayer();
+        VideoSourcePlayer tempPlayer = new VideoSourcePlayer();
+        VideoSourcePlayer temp2Player = new VideoSourcePlayer();
 
         public MainWindow()
         {
@@ -46,15 +48,23 @@ namespace dualCameraViewer
             }
             VideoCaptureDevice leftSource = new VideoCaptureDevice(videoDevices[0].MonikerString);
             VideoCaptureDevice rightSource = new VideoCaptureDevice(videoDevices[1].MonikerString);
+            VideoCaptureDevice tempSource = new VideoCaptureDevice(videoDevices[2].MonikerString);
+            VideoCaptureDevice temp2Source = new VideoCaptureDevice(videoDevices[3].MonikerString);
             
             leftPlayer.VideoSource = leftSource;
             rightPlayer.VideoSource = rightSource;
+            tempPlayer.VideoSource = tempSource;
+            temp2Player.VideoSource = temp2Source;
 
             leftHost.Child = leftPlayer;
             rightHost.Child = rightPlayer;
+            tempHost.Child = tempPlayer;
+            temp2Host.Child = temp2Player;
 
             leftPlayer.Start();
             rightPlayer.Start();
+            tempPlayer.Start();
+            temp2Player.Start();
         }
     }
 }

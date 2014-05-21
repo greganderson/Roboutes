@@ -1,0 +1,17 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:videoManager="clr-namespace:videoManager;assembly=videoManager" xmlns:networkStatusIndicator="clr-namespace:networkStatusIndicator;assembly=networkStatusIndicator" xmlns:HardwareMonitor="clr-namespace:HardwareMonitor;assembly=HardwareMonitor" xmlns:commFeedViz="clr-namespace:commFeedViz;assembly=commFeedViz" x:Class="Engineering_Terminal.MainWindow"
+        Title="MainWindow" Height="644.801" Width="1329.662" Closed="Window_Closed" Loaded="Window_Loaded">
+    <Grid>
+
+        <videoManager:ToolboxControl x:Name="videoManager" HorizontalAlignment="Left" VerticalAlignment="Top" Height="523" Width="410"/>
+
+        <networkStatusIndicator:ToolboxControl x:Name="connectionIndicator" HorizontalAlignment="Left" Margin="0,523,0,0" VerticalAlignment="Top" Height="92"/>
+
+        <HardwareMonitor:ToolboxControl x:Name="hardwareMonitor" HorizontalAlignment="Left" Margin="410,0,0,0" VerticalAlignment="Top" Height="523" Width="446"/>
+
+        <commFeedViz:commFeedViz x:Name="internetInComViz" HorizontalAlignment="Left" Margin="856,0,0,0" VerticalAlignment="Top" Height="523" title="Internet IN"/>
+
+    </Grid>
+</Window>
