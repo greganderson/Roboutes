@@ -14,7 +14,7 @@
                 <Grid Height="195" Width="632">
                     <Image HorizontalAlignment="Center" Height="142" VerticalAlignment="Top" Width="180" Source="Resources/XBox360Controller.png" Margin="232,0,220,0"/>
                     <Label Content="Top Speed" HorizontalAlignment="Center" Margin="277,142,265,0" VerticalAlignment="Top" Foreground="#FFFF5607" FontWeight="Bold" FontSize="16"/>
-                    <Slider x:Name="speedSlider" HorizontalAlignment="Left" Margin="232,173,0,0" VerticalAlignment="Top" Width="136" Maximum="100" ValueChanged="topSpeedSlider_ValueChanged"/>
+                    <Slider x:Name="speedSlider" HorizontalAlignment="Left" Margin="232,173,0,0" VerticalAlignment="Top" Width="136" Maximum="5" ValueChanged="topSpeedSlider_ValueChanged" TickFrequency="0.25"/>
                     <Label x:Name="speedLabel" Content="0%" HorizontalAlignment="Left" Margin="368,166,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" Width="44"/>
                     <Deadzone:ToolboxControl x:Name="deadzoneLeft" HorizontalAlignment="Left" Margin="0,51,0,0" VerticalAlignment="Top"/>
                     <Deadzone:ToolboxControl x:Name="deadzoneRight" HorizontalAlignment="Left" Margin="487,12,0,0" VerticalAlignment="Top"/>

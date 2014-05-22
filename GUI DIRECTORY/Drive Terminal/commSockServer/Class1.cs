@@ -79,7 +79,9 @@ namespace commSockServer
         public void write(String data)
         {
             recentData = true;
-            connection.SendMessage(data);
+            if (connection != null) {
+                connection.SendMessage(data);
+            }
         }
 
     }

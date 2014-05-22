@@ -85,7 +85,7 @@ namespace CC
         /// </summary>
         private void LineReceived(String s, Exception e, object p)
         {
-            Console.WriteLine("Line received in ChatClientModel: " + s);
+            //Console.WriteLine("Line received in ChatClientModel: " + s);
             if (s == null) {
                 Console.WriteLine("DISCONNECTION (no data) received in ChatClientModel");
                 IncomingLineEvent(s);

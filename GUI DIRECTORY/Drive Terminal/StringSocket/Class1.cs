@@ -177,7 +177,7 @@ namespace CustomNetworking {
         private void ProcessSendQueue() {
             while (sendRequests.Count > 0) {
                 sendBytes = encoding.GetBytes(sendRequests.First().Text);
-                Console.WriteLine("stringSocket sending (could be fractured, thats ok): " + encoding.GetString(sendBytes));
+                //Console.WriteLine("stringSocket sending (could be fractured, thats ok): " + encoding.GetString(sendBytes));
                 try {
                     socket.BeginSend(sendBytes, sendCount = 0, sendBytes.Length, SocketFlags.None, BytesSent, null);
                     break;
@@ -332,7 +332,7 @@ namespace CustomNetworking {
 
             // If bytes were received, save them.
             else {
-                Console.WriteLine("StringSocket underlying socket received: " + encoding.GetString(receiveBytes, 0, count));
+                //Console.WriteLine("StringSocket underlying socket received: " + encoding.GetString(receiveBytes, 0, count));
                 incompleteLine += encoding.GetString(receiveBytes, 0, count);
 
                 // Extract all complete lines of text and put into the ReceivedLines queue

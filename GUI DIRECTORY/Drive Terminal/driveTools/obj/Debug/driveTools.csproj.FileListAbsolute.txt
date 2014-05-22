@@ -12,17 +12,3 @@ C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\dr
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\driveTools\obj\Debug\driveTools.csprojResolveAssemblyReference.cache
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\driveTools\obj\Debug\driveTools.dll
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\driveTools\obj\Debug\driveTools.pdb
-C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\driveTools\bin\Debug\driveTools.dll
-C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\driveTools\bin\Debug\driveTools.pdb
-C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\driveTools\bin\Debug\commSockServer.dll
-C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\driveTools\bin\Debug\XboxController.dll
-C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\driveTools\bin\Debug\ChatClientModel.dll
-C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\driveTools\bin\Debug\Microsoft.Xna.Framework.dll
-C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\driveTools\bin\Debug\StringSocket.dll
-C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\driveTools\bin\Debug\commSockServer.pdb
-C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\driveTools\bin\Debug\XboxController.pdb
-C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\driveTools\bin\Debug\ChatClientModel.pdb
-C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\driveTools\bin\Debug\StringSocket.pdb
-C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\driveTools\obj\Debug\driveTools.csprojResolveAssemblyReference.cache
-C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\driveTools\obj\Debug\driveTools.dll
-C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\driveTools\obj\Debug\driveTools.pdb

@@ -16,6 +16,8 @@ using System.Windows.Shapes;
 using XboxController;
 using commSockServer;
 using driveTools;
+using OculusOrientationLibrary;
+using videoViewerWindow;
 
 namespace DriveTerminal {
     /// <summary>
@@ -23,17 +25,26 @@ namespace DriveTerminal {
     /// </summary>
     public partial class MainWindow : Window {
         XboxController.XboxController xboxController;
+
         commSockReceiver comSock;
+
         driveInputManager driveInputMan;
         driveTransmitter driveTransmit;
+
+        OculusOrientation orientation;
+        OculusTransmitter ptTransmitter;
+
+        videoWindow vidWindow;
 
         public MainWindow() {
             InitializeComponent();
 
+            vidWindow = new videoWindow(45000);//TODO: Make a little network management window, maybe it shows when the start button on the controller is pressed?
+            vidWindow.Show();
+
             xboxController = new XboxController.XboxController();
             pilotPreferences.xboxController = xboxController;
-
-            comSock = new commSockReceiver(35000);
+            comSock = new commSockReceiver(35000); //TODO: Make a little network management window, maybe it shows when the start button on the controller is pressed?
             comSock.IncomingLine += comSock_IncomingLine;
             comSock.newConnection += comSock_newConnection;
             comSock.connectionLost += comSock_connectionLost;
@@ -41,6 +52,19 @@ namespace DriveTerminal {
 
             driveInputMan = new driveInputManager(xboxController);
             driveTransmit = new driveTransmitter(driveInputMan, comSock);
+
+            orientation = OculusOrientation.getInstance();
+            ptTransmitter = new OculusTransmitter(comSock, orientation);
+
+            pilotPreferences.topSpeedChanged += pilotPreferences_topSpeedChanged;
+        }
+
+        void pilotPreferences_topSpeedChanged(object sender, int newValue) {
+            driveInputMan.throttleSensitivity = newValue;
+        }
+
+        void orientation_orientationChanged(double[] newOrientation) {
+            throw new NotImplementedException();
         }
 
         void comSock_connectionLost() {

@@ -6,11 +6,3 @@ C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\G
 C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\LiveDriveData.pdb
 C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\toggleIndicator.pdb
 C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\WheelMonitor.pdb
-C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\LiveDriveData.dll
-C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\toggleIndicator.dll
-C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\WheelMonitor.dll
-C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\LiveDriveData.pkgdef
-C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\extension.vsixmanifest
-C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\LiveDriveData.pdb
-C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\toggleIndicator.pdb
-C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\WheelMonitor.pdb
