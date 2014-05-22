@@ -29,3 +29,6 @@ C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Terminal\Engin
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Terminal\Engineering Terminal\bin\Debug\engineeringTerminalTools.pdb
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Terminal\Engineering Terminal\bin\Debug\ChatClientModel.pdb
 C:\Users\CORE\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Terminal\Engineering Terminal\bin\Debug\StringSocket.pdb
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Terminal\Engineering Terminal\bin\Debug\Engineering Terminal.exe.config
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Terminal\Engineering Terminal\obj\Debug\Engineering Terminal.exe
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Terminal\Engineering Terminal\obj\Debug\Engineering Terminal.pdb

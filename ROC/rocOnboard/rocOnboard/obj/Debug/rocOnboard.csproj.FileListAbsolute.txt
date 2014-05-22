@@ -48,3 +48,6 @@ C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocOnboard\bin\Debug\manag
 C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocOnboard\bin\Debug\videoSocketSender.pdb
 C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocOnboard\bin\Debug\renderer.exe
 C:\Users\ROC\Documents\GitHub\Roboutes\ROC\rocOnboard\rocOnboard\bin\Debug\renderer.pdb
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\ROC\rocOnboard\rocOnboard\bin\Debug\rocOnboard.exe.config
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\ROC\rocOnboard\rocOnboard\obj\Debug\rocOnboard.exe
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\ROC\rocOnboard\rocOnboard\obj\Debug\rocOnboard.pdb
