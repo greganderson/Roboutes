@@ -18,3 +18,5 @@ C:\Users\ROC\Documents\GitHub\Roboutes\Video-Networking\AForge Framework\Samples
 C:\Users\ROC\Documents\GitHub\Roboutes\Video-Networking\AForge Framework\Samples\Video\Two Cameras Test\obj\Debug\Two Cameras Test.csproj.GenerateResource.Cache
 C:\Users\ROC\Documents\GitHub\Roboutes\Video-Networking\AForge Framework\Samples\Video\Two Cameras Test\obj\Debug\Two Cameras Test.exe
 C:\Users\ROC\Documents\GitHub\Roboutes\Video-Networking\AForge Framework\Samples\Video\Two Cameras Test\obj\Debug\Two Cameras Test.pdb
+C:\Users\CORE\Documents\GitHub\Roboutes\Video-Networking\AForge Framework\Samples\Video\Two Cameras Test\obj\Debug\Two Cameras Test.exe
+C:\Users\CORE\Documents\GitHub\Roboutes\Video-Networking\AForge Framework\Samples\Video\Two Cameras Test\obj\Debug\Two Cameras Test.pdb
