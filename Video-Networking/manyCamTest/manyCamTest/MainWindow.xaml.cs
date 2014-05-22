@@ -43,10 +43,11 @@ namespace manyCamTest
             foreach (FilterInfo vidDevice in videoDevices)
             {
                 count++;
-                camIds[count] = vidDevice.MonikerString;
-                VideoCaptureDevice temp = new VideoCaptureDevice(vidDevice.MonikerString);
-                temp.Start();
-                temp.NewFrame += NewFrame;
+                    camIds[count] = vidDevice.MonikerString;
+                    VideoCaptureDevice temp = new VideoCaptureDevice(vidDevice.MonikerString);
+                    temp.Start();
+                    temp.NewFrame += NewFrame;
+                
             }
             MessageBox.Show("Found: " + videoDevices.Count + " cameras");
         }
