@@ -44,6 +44,7 @@ namespace rocOnboard
             driveIPLabel.Content = rocConstants.MCIP_DRIVE.ToString();
             armIPLabel.Content = rocConstants.MCIP_ARM;
             logisticsIPLabel.Content = rocConstants.MCIP_LOGISTICS;
+            engineeringIPLabel.Content = rocConstants.MCIP_ENG.ToString();
 
             NetMan = networkManager.getInstance(incomingDriveLineManager, incomingEngLineManager);
             NetMan.DriveConnectionStatusChanged += NetMan_DriveConnectionStatusChanged;
@@ -74,11 +75,6 @@ namespace rocOnboard
             }
         }
 
-        void NetMan_EngineeringConnectionStatusChanged(bool commSockIsConnected)
-        {
-            throw new NotImplementedException();
-        }
-
         void ptDuino_Data_Received(string receivedData)
         {
             Dispatcher.Invoke(() => panTiltCOMIN.addText(receivedData + "\r"));
@@ -101,6 +97,18 @@ namespace rocOnboard
             }
             else{
                 driveConnectedInd.setIndicatorState(toggleIndicator.indicatorState.Red);
+            }
+        }
+
+        void NetMan_EngineeringConnectionStatusChanged(bool commSockIsConnected)
+        {
+            if (commSockIsConnected)
+            {
+                engineeringConnectedInd.setIndicatorState(toggleIndicator.indicatorState.Green);
+            }
+            else
+            {
+                engineeringConnectedInd.setIndicatorState(toggleIndicator.indicatorState.Red);
             }
         }
 
