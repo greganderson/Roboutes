@@ -18,7 +18,7 @@
         <commFeedViz:commFeedViz x:Name="incomingInternet" HorizontalAlignment="Left" Margin="438,0,0,0" VerticalAlignment="Top" Height="220" Width="307" title="Internet IN"/>
         <commFeedViz:commFeedViz x:Name="driveFrontCOMIN" HorizontalAlignment="Left" Margin="750,0,0,0" VerticalAlignment="Top" Height="220" Width="307" title="Drive Front COM IN"/>
         <commFeedViz:commFeedViz x:Name="driveBackCOMIN" HorizontalAlignment="Left" Margin="1062,0,-50,0" VerticalAlignment="Top" Height="220" Width="307" title="Drive Back COM IN"/>
-        <commFeedViz:commFeedViz x:Name="panTiltCOMIN" HorizontalAlignment="Left" Margin="0,166,0,0" VerticalAlignment="Top" Height="220" Width="307" title="Pan Tilt COM IN"/>
+        <commFeedViz:commFeedViz x:Name="panTiltCOMIN" HorizontalAlignment="Left" Margin="0,160,0,0" VerticalAlignment="Top" Height="220" Width="307" title="Pan Tilt COM IN"/>
 
     </Grid>
 </Window>
