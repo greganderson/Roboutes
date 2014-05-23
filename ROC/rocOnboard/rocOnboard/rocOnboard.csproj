@@ -123,6 +123,10 @@
       <Project>{a7dab2d1-3d18-44ec-baa6-6db118470785}</Project>
       <Name>rocTools</Name>
     </ProjectReference>
+    <ProjectReference Include="..\safeCommFeedViz\safeCommFeedViz.csproj">
+      <Project>{22072B78-4DFC-4EB9-9D2A-137C9C589FE9}</Project>
+      <Name>safeCommFeedViz</Name>
+    </ProjectReference>
     <ProjectReference Include="..\toggleIndicator\toggleIndicator.csproj">
       <Project>{C2DD09CF-4E6D-456B-AB71-752D4E354714}</Project>
       <Name>toggleIndicator</Name>

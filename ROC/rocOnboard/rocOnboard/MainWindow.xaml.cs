@@ -45,8 +45,9 @@ namespace rocOnboard
             armIPLabel.Content = rocConstants.MCIP_ARM;
             logisticsIPLabel.Content = rocConstants.MCIP_LOGISTICS;
 
-            NetMan = networkManager.getInstance(incomingDriveLineManager);
+            NetMan = networkManager.getInstance(incomingDriveLineManager, incomingEngLineManager);
             NetMan.DriveConnectionStatusChanged += NetMan_DriveConnectionStatusChanged;
+            NetMan.EngineeringConnectionStatusChanged += NetMan_EngineeringConnectionStatusChanged;
 
             ArduMan = ArduinoManager.Instance;
             ArduMan.findArduinos();
@@ -71,6 +72,11 @@ namespace rocOnboard
                 panTiltTransmitter = new managedDualVideoTransmitter(panTiltLeft, panTiltRight, rocConstants.MCIP_DRIVE, rocConstants.MCPORT_DRIVE_VIDEO_OCULUS);
                 panTiltTransmitter.startTransmitting();
             }
+        }
+
+        void NetMan_EngineeringConnectionStatusChanged(bool commSockIsConnected)
+        {
+            throw new NotImplementedException();
         }
 
         void ptDuino_Data_Received(string receivedData)
@@ -101,7 +107,13 @@ namespace rocOnboard
         void incomingDriveLineManager(string incoming)
         {
             Dispatcher.Invoke(() => incomingInternet.addText(incoming+"\n"));
-            NetMan.write(rocConstants.COMID.DRIVECOM, " PING ");
+            NetMan.write(rocConstants.COMID.DRIVECOM, " drivePING ");
+        }
+
+        void incomingEngLineManager(string incoming)
+        {
+            Dispatcher.Invoke(() => incomingInternet.addText(incoming + "\n"));
+            NetMan.write(rocConstants.COMID.ENGCOM, " engPING ");
         }
 
         private void Window_Closed(object sender, EventArgs e)

@@ -610,18 +610,27 @@ namespace videoSocketTools
             {
                 if (leftReady && rightReady)
                 {
-                    leftReady = false;
-                    rightReady = false;
-                    Bitmap wideImage;
-                    wideImage = new Bitmap((left.Width + right.Width), left.Height);
-                    using (Graphics g = Graphics.FromImage(wideImage))
+                    try
                     {
-                        g.DrawImage(left, 0, 0);
-                        g.DrawImage(right, left.Width, 0);
+                        leftReady = false;
+                        rightReady = false;
+                        Bitmap wideImage;
+                        wideImage = new Bitmap((left.Width + right.Width), left.Height);
+                        using (Graphics g = Graphics.FromImage(wideImage))
+                        {
+                            g.DrawImage(left, 0, 0);
+                            g.DrawImage(right, left.Width, 0);
+                        }
+                        left.Dispose();
+                        right.Dispose();
+                        return wideImage;
                     }
-                    left.Dispose();
-                    right.Dispose();
-                    return wideImage;
+                    catch
+                    {
+                        //do nothing...
+                        Console.WriteLine("ERROR IN getCombined() in dualVideoSocketSender");
+                        return null;
+                    }
                 }
                 else
                 {

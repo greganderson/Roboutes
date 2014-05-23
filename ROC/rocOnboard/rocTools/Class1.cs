@@ -18,15 +18,17 @@ namespace rocTools
     {
         public delegate void ConnectionChangedEventHandler(bool commSockIsConnected);
         public event ConnectionChangedEventHandler DriveConnectionStatusChanged;
+        public event ConnectionChangedEventHandler EngineeringConnectionStatusChanged;
 
         public delegate void incomingLineEventHandler(string incomingString);
         public event incomingLineEventHandler incomingDrive;
-       // private incomingLineEventHandler incomingArm;
-       // private incomingLineEventHandler incomingLogistics;
+        public event incomingLineEventHandler incomingEngineering;
+        // private incomingLineEventHandler incomingArm;
+        // private incomingLineEventHandler incomingLogistics;
 
         private static networkManager NM;
 
-        public static networkManager getInstance(incomingLineEventHandler incomingDriveLineHandler)
+        public static networkManager getInstance(incomingLineEventHandler incomingDriveLineHandler, incomingLineEventHandler incomingEngineeringLineHandler)
         {
             if (NM != null)
             {
@@ -34,22 +36,47 @@ namespace rocTools
             }
             else
             {
-                NM = new networkManager(incomingDriveLineHandler);
+                NM = new networkManager(incomingDriveLineHandler, incomingEngineeringLineHandler);
                 return NM;
             }
         }
 
         private commSockSender DRIVECOM;
-       // private commSockSender ARMCOM;
-       // private commSockSender LOGISTICSCOM;
+        private commSockSender ENGCOM;
+        // private commSockSender ARMCOM;
+        // private commSockSender LOGISTICSCOM;
 
-        private networkManager(incomingLineEventHandler incomingDriveLineHandler)
+        private networkManager(incomingLineEventHandler incomingDriveLineHandler, incomingLineEventHandler incomingEngineeringLineHandler)
         {
+            //Drive networking setup
             incomingDrive = incomingDriveLineHandler;
             DRIVECOM = new commSockSender("DRIVECOM");
             DRIVECOM.incomingLineEvent += DRIVECOM_incomingLineEvent;
             DRIVECOM.connectionStatusChanged += DRIVECOM_connectionStatusChanged;
             DRIVECOM.beginConnect(rocConstants.MCIP_DRIVE, rocConstants.MCPORT_DRIVE);
+
+            //Engineering networking setup
+            incomingEngineering = incomingEngineeringLineHandler;
+            ENGCOM = new commSockSender("ENGCOM");
+            ENGCOM.incomingLineEvent += ENGCOM_incomingLineEvent;
+            ENGCOM.connectionStatusChanged += ENGCOM_connectionStatusChanged;
+            ENGCOM.beginConnect(rocConstants.MCIP_ENG, rocConstants.MCPORT_ENGINEERING);
+        }
+
+        void ENGCOM_connectionStatusChanged(bool commSockIsConnected)
+        {
+            if (EngineeringConnectionStatusChanged != null)
+            {
+                EngineeringConnectionStatusChanged(commSockIsConnected);
+            }
+        }
+
+        void ENGCOM_incomingLineEvent(string obj)
+        {
+            if (incomingEngineering != null)
+            {
+                incomingEngineering(obj);
+            }
         }
 
         void DRIVECOM_connectionStatusChanged(bool commSockIsConnected)
@@ -68,11 +95,15 @@ namespace rocTools
             }
         }
 
-        public void disconnect(rocConstants.COMID ID){
+        public void disconnect(rocConstants.COMID ID)
+        {
             switch (ID)
             {
                 case rocConstants.COMID.DRIVECOM:
                     DRIVECOM.disconnect();
+                    break;
+                case rocConstants.COMID.ENGCOM:
+                    ENGCOM.disconnect();
                     break;
             }
         }
@@ -86,7 +117,10 @@ namespace rocTools
             switch (ID)
             {
                 case rocConstants.COMID.DRIVECOM:
-                    DRIVECOM.beginConnect(rocConstants.MCIP_DRIVE,rocConstants.MCPORT_DRIVE);
+                    DRIVECOM.beginConnect(rocConstants.MCIP_DRIVE, rocConstants.MCPORT_DRIVE);
+                    break;
+                case rocConstants.COMID.ENGCOM:
+                    ENGCOM.beginConnect(rocConstants.MCIP_ENG, rocConstants.MCPORT_ENGINEERING);
                     break;
             }
         }
@@ -99,6 +133,10 @@ namespace rocTools
                     Message = Message.Replace("\n", ""); //Do not allow \n to be transmitted... I think this is dealt with elsewhere, but this is safe...
                     DRIVECOM.sendMessage(Message);
                     break;
+                case rocConstants.COMID.ENGCOM:
+                    Message = Message.Replace("\n", ""); //Do not allow \n to be transmitted... I think this is dealt with elsewhere, but this is safe...
+                    ENGCOM.sendMessage(Message);
+                    break;
             }
         }
 
@@ -106,18 +144,21 @@ namespace rocTools
 
     public static class rocConstants
     {
-        public static readonly IPAddress MCIP_DRIVE = IPAddress.Parse("155.99.165.154");
+        public static readonly IPAddress MCIP_DRIVE = IPAddress.Parse("155.99.167.9");
+        public static readonly IPAddress MCIP_ENG = IPAddress.Parse("155.99.167.9");
         public static readonly string MCIP_ARM = "XXX.XXX.XXX.XXX";
         public static readonly string MCIP_LOGISTICS = "XXX.XXX.XXX.XXX";
 
         public static readonly int MCPORT_DRIVE = 35000;
+        public static readonly int MCPORT_ENGINEERING = 40000;
         public static readonly int MCPORT_DRIVE_VIDEO_OCULUS = 45000;
 
         public enum COMID
         {
             DRIVECOM = 0,
             ARMCOM = 1,
-            LOGISTICSCOM = 2
+            LOGISTICSCOM = 2,
+            ENGCOM = 3
         };
 
         public static int[] defaultCameraAssignments = new int[] { 0, 1 };
@@ -155,7 +196,7 @@ namespace rocTools
             backDriveDuino = backArduino;
 
             frontDriveDuino.Data_Received += frontDriveDuino_Data_Received;
-            backDriveDuino.Data_Received+=backDriveDuino_Data_Received;
+            backDriveDuino.Data_Received += backDriveDuino_Data_Received;
 
             netMan = _netMan;
             netMan.incomingDrive += netMan_incomingDrive;
@@ -167,7 +208,7 @@ namespace rocTools
             {
                 incomingString = incomingString.Replace("R:", "");
                 int newRightSpeed;
-                if (int.TryParse(incomingString,out newRightSpeed))
+                if (int.TryParse(incomingString, out newRightSpeed))
                 {
                     updateRightSpeed(newRightSpeed);
                 }
@@ -217,7 +258,7 @@ namespace rocTools
         {
             if (instance == null)
             {
-                instance = new ptManager(panTiltArduino,_netMan);
+                instance = new ptManager(panTiltArduino, _netMan);
             }
             return instance;
         }
@@ -272,7 +313,7 @@ namespace rocTools
     {
         private FilterInfoCollection videoDevices;
         private Dictionary<String, VideoCaptureDevice> cameraMap;
-        
+
 
         private static cameraManager instance;
         public static cameraManager getInstance()
