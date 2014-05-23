@@ -145,7 +145,7 @@ namespace rocTools
     public static class rocConstants
     {
         public static readonly IPAddress MCIP_DRIVE = IPAddress.Parse("155.99.167.9");
-        public static readonly IPAddress MCIP_ENG = IPAddress.Parse("155.99.167.9");
+        public static readonly IPAddress MCIP_ENG = IPAddress.Parse("155.99.229.90");
         public static readonly string MCIP_ARM = "XXX.XXX.XXX.XXX";
         public static readonly string MCIP_LOGISTICS = "XXX.XXX.XXX.XXX";
 
