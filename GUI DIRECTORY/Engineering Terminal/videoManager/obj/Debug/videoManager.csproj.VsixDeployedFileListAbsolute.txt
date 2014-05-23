@@ -4,3 +4,9 @@ C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\vid
 C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\videoManager\1.0\\extension.vsixmanifest
 C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\videoManager\1.0\\videoManager.pdb
 C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\videoManager\1.0\\toggleIndicator.pdb
+C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\videoManager\1.0\\videoManager.dll
+C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\videoManager\1.0\\toggleIndicator.dll
+C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\videoManager\1.0\\videoManager.pkgdef
+C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\videoManager\1.0\\extension.vsixmanifest
+C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\videoManager\1.0\\videoManager.pdb
+C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\videoManager\1.0\\toggleIndicator.pdb

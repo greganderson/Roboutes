@@ -29,7 +29,7 @@ namespace Engineering_Terminal
         {
             InitializeComponent();
 
-            comSock = new commSockReceiver(37000);
+            comSock = new commSockReceiver(40000);
             comSock.IncomingLine += comSock_IncomingLine;
             comSock.newConnection += comSock_newConnection;
             comSock.connectionLost += comSock_connectionLost;
