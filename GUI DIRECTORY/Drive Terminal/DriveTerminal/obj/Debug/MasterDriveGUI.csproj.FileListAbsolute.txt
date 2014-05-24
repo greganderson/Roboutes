@@ -137,3 +137,6 @@ C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\Dr
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\DriveTerminal\bin\Debug\log4net.pdb
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\DriveTerminal\bin\Debug\videoSocketReceiver.dll
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\DriveTerminal\bin\Debug\videoSocketReceiver.pdb
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\DriveTerminal\bin\Debug\DriveTerminal.exe.config
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\DriveTerminal\obj\Debug\DriveTerminal.exe
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\DriveTerminal\obj\Debug\DriveTerminal.pdb

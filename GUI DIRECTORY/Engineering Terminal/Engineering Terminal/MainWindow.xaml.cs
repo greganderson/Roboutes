@@ -29,13 +29,13 @@ namespace Engineering_Terminal
         {
             InitializeComponent();
 
-            comSock = new commSockReceiver(40000);
+            comSock = new commSockReceiver(35010);
             comSock.IncomingLine += comSock_IncomingLine;
             comSock.newConnection += comSock_newConnection;
             comSock.connectionLost += comSock_connectionLost;
             comSock.beginAccept();
 
-            
+            videoManager.intendedCameraStatusChanged+=videoManager_intendedCameraStatusChanged;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -45,7 +45,19 @@ namespace Engineering_Terminal
 
         void videoManager_intendedCameraStatusChanged(videoManager.ToolboxControl.FeedID videoFeedID, bool feedState)
         {
-            throw new NotImplementedException();
+            switch (videoFeedID)
+            {
+                case global::videoManager.ToolboxControl.FeedID.OculusPT:
+                    if (feedState)
+                    {
+                        comSock.write("PT_TRANSMIT");
+                    }
+                    else
+                    {
+                        comSock.write("PT_STOP_TRANSMIT");
+                    }
+                    break;
+            }
         }
 
         void videoManager_resetRequest(videoManager.ToolboxControl.FeedID videoFeedID)

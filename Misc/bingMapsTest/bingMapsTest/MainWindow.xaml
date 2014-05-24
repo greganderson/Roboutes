@@ -5,7 +5,7 @@
         Title="MainWindow" Height="521.523" Width="695.364">
     <Grid>
 
-        <WPF:Map x:Name="map" HorizontalAlignment="Left" Mode="Road" CredentialsProvider="AsaeRh8J8G1EhQkHvmLrjs8W-UV3ewKmfN5GaSR78LpDKteP9W-040ox_cWtBgKU" VerticalAlignment="Top" Height="492" Width="687"/>
+        <WPF:Map x:Name="map" HorizontalAlignment="Left" Mode="Road" CredentialsProvider="Al2oQI-q7Smo56DtFnC-dsuoQ4LxQqf4cKEwt1RZgn1x8lQj6qJOeVpK_lCjvyXF" VerticalAlignment="Top" Height="492" Width="687"/>
 
     </Grid>
 </Window>

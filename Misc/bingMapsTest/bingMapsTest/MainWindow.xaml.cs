@@ -27,7 +27,7 @@ namespace bingMapsTest
         {
             InitializeComponent();
             map.Mode = new AerialMode(false);
-            map.SetView(new Location(29.564753, -95.081363),19,0);
+            map.SetView(new Location(29.564753, -95.081363),19,0);  //location of the rock yard
             map.MouseDoubleClick+=map_MouseDoubleClick;
             
         }
