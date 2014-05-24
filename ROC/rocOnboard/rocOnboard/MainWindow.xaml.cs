@@ -122,6 +122,14 @@ namespace rocOnboard
         {
             Dispatcher.Invoke(() => incomingInternet.addText(incoming + "\n"));
             NetMan.write(rocConstants.COMID.ENGCOM, " engPING ");
+            if (incoming == "PT_TRANSMIT")
+            {
+                panTiltTransmitter.startTransmitting();
+            }
+            else if (incoming == "PT_STOP_TRANSMIT")
+            {
+                panTiltTransmitter.stop();
+            }
         }
 
         private void Window_Closed(object sender, EventArgs e)

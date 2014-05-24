@@ -14,3 +14,4 @@ C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\safeCommFeedViz\obj\Debug\safeCommF
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\safeCommFeedViz\obj\Debug\safeCommFeedViz.pkgdef
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\safeCommFeedViz\obj\Debug\safeCommFeedViz.latest.pkgdef
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\safeCommFeedViz\obj\Debug\extension.vsixmanifest
+C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\safeCommFeedViz\obj\Debug\safeCommFeedViz.csprojResolveAssemblyReference.cache

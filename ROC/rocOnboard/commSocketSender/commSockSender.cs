@@ -39,7 +39,7 @@ namespace commSockClient
                                             connectionStatusChanged(isConnected);
                                     }
                                 }
-        private static volatile bool _isConnected = false; //ensure thread safety with volatile
+        private volatile bool _isConnected = false; //ensure thread safety with volatile
         public string Name { get; private set; } //Name ought not to be changeable...
 
         private TcpClient tcpClient;
@@ -180,7 +180,7 @@ namespace commSockClient
                     beginConnect(destIP, destPort); //attempt to reconnect if the commsock is supposed to be connected
                 }
             }
-            if (incomingLineEvent != null) {
+            else if (incomingLineEvent != null) { //TODO: This used to jsut be an if... change back if it causes problems...
                 incomingLineEvent(s);
             }
             if (!isConnected) { //if the socket lost its connection (which can happen is s == null) return and stopp calling more BeginReceives

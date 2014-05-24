@@ -22,3 +22,4 @@ C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\renderer\obj\Debug\renderer.Propert
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\renderer\obj\Debug\renderer.csproj.GenerateResource.Cache
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\renderer\obj\Debug\renderer.exe
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\renderer\obj\Debug\renderer.pdb
+C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\renderer\obj\Debug\renderer.csprojResolveAssemblyReference.cache

@@ -81,3 +81,4 @@ C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\commFeedViz\obj\Debug\commFeedViz.p
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\commFeedViz\obj\Debug\commFeedViz.pkgdef
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\commFeedViz\obj\Debug\commFeedViz.latest.pkgdef
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\commFeedViz\obj\Debug\extension.vsixmanifest
+C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\commFeedViz\obj\Debug\commFeedViz.csprojResolveAssemblyReference.cache

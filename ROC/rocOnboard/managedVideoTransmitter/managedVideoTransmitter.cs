@@ -213,7 +213,6 @@ namespace videoSocketTools
             if (connectionStatus)
             {
                 connected = true;
-                VSS.beginTransmitting();
             }
             else
             {

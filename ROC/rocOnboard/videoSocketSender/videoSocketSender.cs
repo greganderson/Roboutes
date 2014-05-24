@@ -114,7 +114,6 @@ namespace videoSocketTools
             transmittedFPSTimer = new Timer(transmittedFPSTimerCallback, null, 0, 1000);
             cameraSource = _cameraSource;
             cameraSource.NewFrame +=cameraSource_NewFrame;
-            cameraSource.Start();
         }
 
         private void transmittedFPSTimerCallback(object state)
@@ -181,6 +180,7 @@ namespace videoSocketTools
                 {
                     return false;
                 }
+                cameraSource.Start();
                 Transmitting = true;
                 return true;
             }
@@ -192,6 +192,7 @@ namespace videoSocketTools
 
         public void stop()
         {
+            cameraSource.Stop();
             Transmitting = false;
         }
 
@@ -223,6 +224,7 @@ namespace videoSocketTools
                 }
                 catch
                 {
+                    cameraSource.Stop();
                     Transmitting = false;
                     if (connectionLost != null)
                     {
@@ -379,9 +381,6 @@ namespace videoSocketTools
             rightCameraSource.NewFrame += rightCameraSource_NewFrame;
 
             DB = new dualBitmap();
-
-            leftCameraSource.Start();
-            rightCameraSource.Start();
         }
 
         private void transmitWideImage()
@@ -418,6 +417,8 @@ namespace videoSocketTools
                 }
                 catch
                 {
+                    leftCameraSource.Stop();
+                    rightCameraSource.Stop();
                     Transmitting = false;
                     if (connectionLost != null)
                     {
@@ -520,6 +521,8 @@ namespace videoSocketTools
                 {
                     return false;
                 }
+                leftCameraSource.Start();
+                rightCameraSource.Start();
                 Transmitting = true;
                 return true;
             }
@@ -531,6 +534,8 @@ namespace videoSocketTools
 
         public void stop()
         {
+            leftCameraSource.Stop();
+            rightCameraSource.Stop();
             Transmitting = false;
         }
 

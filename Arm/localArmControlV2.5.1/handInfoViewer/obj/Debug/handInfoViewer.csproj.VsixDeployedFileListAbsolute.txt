@@ -12,3 +12,17 @@ C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\han
 C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\handInfoViewer\1.0\\powerBar.pdb
 C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\handInfoViewer\1.0\\toggleIndicator.pdb
 C:\Users\CORE\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\handInfoViewer\1.0\\XboxController.pdb
+C:\Users\ROC\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\handInfoViewer\1.0\\handInfoViewer.dll
+C:\Users\ROC\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\handInfoViewer\1.0\\localArmControlTools.dll
+C:\Users\ROC\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\handInfoViewer\1.0\\powerBar.dll
+C:\Users\ROC\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\handInfoViewer\1.0\\toggleIndicator.dll
+C:\Users\ROC\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\handInfoViewer\1.0\\XboxController.dll
+C:\Users\ROC\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\handInfoViewer\1.0\\handInfoViewer.pkgdef
+C:\Users\ROC\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\handInfoViewer\1.0\\extension.vsixmanifest
+C:\Users\ROC\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\handInfoViewer\1.0\\ArduinoLibrary.dll
+C:\Users\ROC\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\handInfoViewer\1.0\\Microsoft.Xna.Framework.dll
+C:\Users\ROC\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\handInfoViewer\1.0\\handInfoViewer.pdb
+C:\Users\ROC\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\handInfoViewer\1.0\\localArmControlTools.pdb
+C:\Users\ROC\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\handInfoViewer\1.0\\powerBar.pdb
+C:\Users\ROC\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\handInfoViewer\1.0\\toggleIndicator.pdb
+C:\Users\ROC\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\handInfoViewer\1.0\\XboxController.pdb

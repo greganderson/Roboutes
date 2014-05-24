@@ -145,13 +145,13 @@ namespace rocTools
     public static class rocConstants
     {
         public static readonly IPAddress MCIP_DRIVE = IPAddress.Parse("155.99.167.9");
-        public static readonly IPAddress MCIP_ENG = IPAddress.Parse("155.99.229.90");
+        public static readonly IPAddress MCIP_ENG = IPAddress.Parse("155.98.5.148");
         public static readonly string MCIP_ARM = "XXX.XXX.XXX.XXX";
         public static readonly string MCIP_LOGISTICS = "XXX.XXX.XXX.XXX";
 
         public static readonly int MCPORT_DRIVE = 35000;
-        public static readonly int MCPORT_ENGINEERING = 40000;
-        public static readonly int MCPORT_DRIVE_VIDEO_OCULUS = 45000;
+        public static readonly int MCPORT_ENGINEERING = 35010;
+        public static readonly int MCPORT_DRIVE_VIDEO_OCULUS = 35001;
 
         public enum COMID
         {

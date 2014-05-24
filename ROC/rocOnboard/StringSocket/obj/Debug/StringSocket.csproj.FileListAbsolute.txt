@@ -26,3 +26,4 @@ C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\StringSocket\bin\Debug\StringSocket
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\StringSocket\bin\Debug\StringSocket.pdb
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\StringSocket\obj\Debug\StringSocket.dll
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\StringSocket\obj\Debug\StringSocket.pdb
+C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\StringSocket\obj\Debug\StringSocket.csprojResolveAssemblyReference.cache
