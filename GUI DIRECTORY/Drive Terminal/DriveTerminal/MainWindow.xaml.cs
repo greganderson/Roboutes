@@ -39,7 +39,7 @@ namespace DriveTerminal {
         public MainWindow() {
             InitializeComponent();
 
-            vidWindow = new videoWindow(45000);//TODO: Make a little network management window, maybe it shows when the start button on the controller is pressed?
+            vidWindow = new videoWindow(35001);//TODO: Make a little network management window, maybe it shows when the start button on the controller is pressed?
             vidWindow.Show();
 
             xboxController = new XboxController.XboxController();
