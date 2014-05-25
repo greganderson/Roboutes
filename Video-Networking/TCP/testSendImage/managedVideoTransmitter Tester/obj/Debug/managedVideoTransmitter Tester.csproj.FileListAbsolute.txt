@@ -55,3 +55,6 @@ C:\Users\ROC\Documents\GitHub\Roboutes\Video-Networking\TCP\testSendImage\manage
 C:\Users\ROC\Documents\GitHub\Roboutes\Video-Networking\TCP\testSendImage\managedVideoTransmitter Tester\obj\Debug\managedVideoTransmitter Tester.g.resources
 C:\Users\ROC\Documents\GitHub\Roboutes\Video-Networking\TCP\testSendImage\managedVideoTransmitter Tester\obj\Debug\managedVideoTransmitter_Tester.Properties.Resources.resources
 C:\Users\ROC\Documents\GitHub\Roboutes\Video-Networking\TCP\testSendImage\managedVideoTransmitter Tester\obj\Debug\managedVideoTransmitter Tester.csproj.GenerateResource.Cache
+C:\Users\ROC\Documents\GitHub\Video-Networking\TCP\testSendImage\managedVideoTransmitter Tester\bin\Debug\managedVideoTransmitter Tester.exe.config
+C:\Users\ROC\Documents\GitHub\Video-Networking\TCP\testSendImage\managedVideoTransmitter Tester\obj\Debug\managedVideoTransmitter Tester.exe
+C:\Users\ROC\Documents\GitHub\Video-Networking\TCP\testSendImage\managedVideoTransmitter Tester\obj\Debug\managedVideoTransmitter Tester.pdb
