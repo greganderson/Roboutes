@@ -127,8 +127,8 @@ String tester;
 
   // Error Tolerances
       float TT_error_tolerance = 3;
-      float S1_error_tolerance = 2;
-      float E_error_tolerance = 3;
+      float S1_error_tolerance = 0;
+      float E_error_tolerance = 0;
 
   // P Gains
       int TT_P_gain = 675; //was 675
@@ -137,8 +137,8 @@ String tester;
 
   // I Gains
       float TT_I_gain = 5;
-      float S1_I_gain = 5;
-      float E_I_gain = 5;
+      float S1_I_gain = 30;
+      float E_I_gain = 30;
       
   // Signed Duty Cycles
       int TT_duty_cycle = 0;

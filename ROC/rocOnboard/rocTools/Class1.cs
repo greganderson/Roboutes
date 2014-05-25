@@ -19,16 +19,17 @@ namespace rocTools
         public delegate void ConnectionChangedEventHandler(bool commSockIsConnected);
         public event ConnectionChangedEventHandler DriveConnectionStatusChanged;
         public event ConnectionChangedEventHandler EngineeringConnectionStatusChanged;
+        public event ConnectionChangedEventHandler ArmConnectionStatusChanged;
 
         public delegate void incomingLineEventHandler(string incomingString);
         public event incomingLineEventHandler incomingDrive;
         public event incomingLineEventHandler incomingEngineering;
-        // private incomingLineEventHandler incomingArm;
+        public event incomingLineEventHandler incomingArm;
         // private incomingLineEventHandler incomingLogistics;
 
         private static networkManager NM;
 
-        public static networkManager getInstance(incomingLineEventHandler incomingDriveLineHandler, incomingLineEventHandler incomingEngineeringLineHandler)
+        public static networkManager getInstance(incomingLineEventHandler incomingDriveLineHandler, incomingLineEventHandler incomingEngineeringLineHandler, incomingLineEventHandler incomingArmLineHandler)
         {
             if (NM != null)
             {
@@ -36,17 +37,17 @@ namespace rocTools
             }
             else
             {
-                NM = new networkManager(incomingDriveLineHandler, incomingEngineeringLineHandler);
+                NM = new networkManager(incomingDriveLineHandler, incomingEngineeringLineHandler, incomingArmLineHandler);
                 return NM;
             }
         }
 
         private commSockSender DRIVECOM;
         private commSockSender ENGCOM;
-        // private commSockSender ARMCOM;
+        private commSockSender ARMCOM;
         // private commSockSender LOGISTICSCOM;
 
-        private networkManager(incomingLineEventHandler incomingDriveLineHandler, incomingLineEventHandler incomingEngineeringLineHandler)
+        private networkManager(incomingLineEventHandler incomingDriveLineHandler, incomingLineEventHandler incomingEngineeringLineHandler, incomingLineEventHandler incomingArmLineHandler)
         {
             //Drive networking setup
             incomingDrive = incomingDriveLineHandler;
@@ -61,6 +62,29 @@ namespace rocTools
             ENGCOM.incomingLineEvent += ENGCOM_incomingLineEvent;
             ENGCOM.connectionStatusChanged += ENGCOM_connectionStatusChanged;
             ENGCOM.beginConnect(rocConstants.MCIP_ENG, rocConstants.MCPORT_ENGINEERING);
+
+            //Arm networking setup
+            incomingArm = incomingArmLineHandler;
+            ARMCOM = new commSockSender("ARMCOM");
+            ARMCOM.incomingLineEvent +=ARMCOM_incomingLineEvent;
+            ARMCOM.connectionStatusChanged +=ARMCOM_connectionStatusChanged;
+            ARMCOM.beginConnect(rocConstants.MCIP_ARM, rocConstants.MCPORT_ARM);
+        }
+
+        private void ARMCOM_connectionStatusChanged(bool commSockIsConnected)
+        {
+            if (ArmConnectionStatusChanged != null)
+            {
+                ArmConnectionStatusChanged(commSockIsConnected);
+            }
+        }
+
+        private void ARMCOM_incomingLineEvent(string obj)
+        {
+            if (incomingArm != null)
+            {
+                incomingArm(obj);
+            }
         }
 
         void ENGCOM_connectionStatusChanged(bool commSockIsConnected)
@@ -105,6 +129,9 @@ namespace rocTools
                 case rocConstants.COMID.ENGCOM:
                     ENGCOM.disconnect();
                     break;
+                case rocConstants.COMID.ARMCOM:
+                    ARMCOM.disconnect();
+                    break;
             }
         }
 
@@ -122,6 +149,9 @@ namespace rocTools
                 case rocConstants.COMID.ENGCOM:
                     ENGCOM.beginConnect(rocConstants.MCIP_ENG, rocConstants.MCPORT_ENGINEERING);
                     break;
+                case rocConstants.COMID.ARMCOM:
+                    ARMCOM.beginConnect(rocConstants.MCIP_ARM, rocConstants.MCPORT_ARM);
+                    break;
             }
         }
 
@@ -137,6 +167,10 @@ namespace rocTools
                     Message = Message.Replace("\n", ""); //Do not allow \n to be transmitted... I think this is dealt with elsewhere, but this is safe...
                     ENGCOM.sendMessage(Message);
                     break;
+                case rocConstants.COMID.ARMCOM:
+                    Message = Message.Replace("\n", ""); //Do not allow \n to be transmitted... I think this is dealt with elsewhere, but this is safe...
+                    ARMCOM.sendMessage(Message);
+                    break;
             }
         }
 
@@ -146,12 +180,13 @@ namespace rocTools
     {
         public static readonly IPAddress MCIP_DRIVE = IPAddress.Parse("155.99.167.9");
         public static readonly IPAddress MCIP_ENG = IPAddress.Parse("155.98.5.148");
-        public static readonly string MCIP_ARM = "XXX.XXX.XXX.XXX";
+        public static readonly IPAddress MCIP_ARM = IPAddress.Parse("155.98.5.148");
         public static readonly string MCIP_LOGISTICS = "XXX.XXX.XXX.XXX";
 
         public static readonly int MCPORT_DRIVE = 35000;
-        public static readonly int MCPORT_ENGINEERING = 35010;
         public static readonly int MCPORT_DRIVE_VIDEO_OCULUS = 35001;
+        public static readonly int MCPORT_ENGINEERING = 35010;
+        public static readonly int MCPORT_ARM = 35002;
 
         public enum COMID
         {
@@ -309,6 +344,73 @@ namespace rocTools
         }
     }
 
+    public class armManager
+    {
+        private Arduino armDuino;
+        private networkManager netMan;
+
+        private static armManager instance;
+
+        public static armManager getInstance(Arduino armArduino, networkManager _netman)
+        {
+            if (instance == null)
+            {
+                instance = new armManager(armArduino,_netman);
+            }
+            return instance;
+        }
+
+        private armManager(Arduino armArduino, networkManager _netman)
+        {
+            armDuino = armArduino;
+            netMan = _netman;
+            netMan.incomingArm += netMan_incomingArm;
+        }
+
+        void netMan_incomingArm(string incomingString)
+        {
+            if(incomingString.StartsWith("ARM_EL_")){
+                incomingString = incomingString.Replace("ARM_EL_", "");
+                int elbowPos;
+                if(int.TryParse(incomingString,out elbowPos)){
+                    updateElbow(elbowPos);
+                }
+            }
+            else if(incomingString.StartsWith("ARM_SH_")){
+                incomingString = incomingString.Replace("ARM_SH_","");
+                int shoulderPos;
+                if(int.TryParse(incomingString,out shoulderPos)){
+                    updateShoulder(shoulderPos);
+                }
+            }
+            else if(incomingString.StartsWith("ARM_TT_")){
+                incomingString = incomingString.Replace("ARM_TT_","");
+                int turnTablePos;
+                if(int.TryParse(incomingString, out turnTablePos)){
+                    updateTurnTable(turnTablePos);
+                }
+            }
+        }
+
+        private void updateTurnTable(int target)
+        {
+            target = target.Constrain(armConstants.MIN_TURNTABLE_ANGLE,armConstants.MAX_TURNTABLE_ANGLE);
+            armDuino.write("TTPOS:" + target);
+        }
+
+        private void updateShoulder(int target)
+        {
+            target = target.Constrain(armConstants.MIN_SHOULDER_ANGLE, armConstants.MAX_SHOULDER_ANGLE);
+            armDuino.write("S1POS:" + target);
+        }
+
+        private void updateElbow(int target)
+        {
+            target = target.Constrain(armConstants.MIN_ELBOW_ANGLE, armConstants.MAX_ELBOW_ANGLE);
+            armDuino.write("ELPOS:" + target);
+        }
+    }
+
     public class cameraManager
     {
         private FilterInfoCollection videoDevices;
@@ -398,6 +500,58 @@ namespace rocTools
                 return false;
             }
             return true;
+        }
+    }
+
+    public static class armConstants
+    {
+        public const int MAX_SHOULDER_ANGLE = 50;
+        public const int MIN_SHOULDER_ANGLE = 0;
+        public const int SHOULDER_RANGE = 50;
+
+        public const int MAX_ELBOW_ANGLE = 120;
+        public const int MIN_ELBOW_ANGLE = 0;
+        public const int ELBOW_RANGE = 120;
+
+        public const int MAX_TURNTABLE_ANGLE = 330;
+        public const int MIN_TURNTABLE_ANGLE = 0;
+        public const int TURNTABLE_RANGE = 330;
+
+        public const int MAX_GRIPPER = 100;
+        public const int MIN_GRIPPER = 0;
+    }
+
+    public static class ExtensionMethods
+    {
+        public static double Constrain(this double value, double min, double max)
+        {
+            if(value > max){
+                return max;
+            }
+            else if (value < min)
+            {
+                return min;
+            }
+            else
+            {
+                return value;
+            }
+        }
+
+        public static int Constrain(this int value, int min, int max)
+        {
+            if (value > max)
+            {
+                return max;
+            }
+            else if (value < min)
+            {
+                return min;
+            }
+            else
+            {
+                return value;
+            }
         }
     }
 }

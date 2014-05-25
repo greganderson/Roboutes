@@ -31,10 +31,12 @@ namespace rocOnboard
         driveManager driveMan;
         ptManager ptMan;
         cameraManager camMan;
+        armManager armMan;
 
         Arduino backDrive;
         Arduino frontDrive;
         Arduino ptDuino;
+        Arduino ArmDuino;
 
         managedDualVideoTransmitter panTiltTransmitter;
 
@@ -42,13 +44,14 @@ namespace rocOnboard
         {
             InitializeComponent();
             driveIPLabel.Content = rocConstants.MCIP_DRIVE.ToString();
-            armIPLabel.Content = rocConstants.MCIP_ARM;
+            armIPLabel.Content = rocConstants.MCIP_ARM.ToString();
             logisticsIPLabel.Content = rocConstants.MCIP_LOGISTICS;
             engineeringIPLabel.Content = rocConstants.MCIP_ENG.ToString();
 
-            NetMan = networkManager.getInstance(incomingDriveLineManager, incomingEngLineManager);
+            NetMan = networkManager.getInstance(incomingDriveLineManager, incomingEngLineManager, incomingArmLineManager);
             NetMan.DriveConnectionStatusChanged += NetMan_DriveConnectionStatusChanged;
             NetMan.EngineeringConnectionStatusChanged += NetMan_EngineeringConnectionStatusChanged;
+            NetMan.ArmConnectionStatusChanged += NetMan_ArmConnectionStatusChanged;
 
             ArduMan = ArduinoManager.Instance;
             ArduMan.findArduinos();
@@ -56,13 +59,16 @@ namespace rocOnboard
             backDrive = ArduMan.getDriveBackArduino();
             frontDrive = ArduMan.getDriveFrontArduino();
             ptDuino = ArduMan.getPanTiltArduino();
+            ArmDuino = ArduMan.getArmArduino();
 
             backDrive.Data_Received += backDrive_Data_Received;
             frontDrive.Data_Received += frontDrive_Data_Received;
             ptDuino.Data_Received += ptDuino_Data_Received;
+            ArmDuino.Data_Received += ArmDuino_Data_Received;
 
             driveMan = driveManager.getInstance(backDrive, frontDrive, NetMan);
             ptMan = ptManager.getInstance(ptDuino, NetMan);
+            armMan = armManager.getInstance(ArmDuino, NetMan);
 
             camMan = cameraManager.getInstance();
             camMan.assignCameras();
@@ -73,6 +79,29 @@ namespace rocOnboard
                 panTiltTransmitter = new managedDualVideoTransmitter(panTiltLeft, panTiltRight, rocConstants.MCIP_DRIVE, rocConstants.MCPORT_DRIVE_VIDEO_OCULUS);
                 panTiltTransmitter.startTransmitting();
             }
+        }
+
+        void ArmDuino_Data_Received(string receivedData)
+        {
+            Dispatcher.Invoke(() => armCOMIN.addText(receivedData));
+        }
+
+        void NetMan_ArmConnectionStatusChanged(bool commSockIsConnected)
+        {
+            if (commSockIsConnected)
+            {
+                armConnectedInd.setIndicatorState(toggleIndicator.indicatorState.Green);
+            }
+            else
+            {
+                armConnectedInd.setIndicatorState(toggleIndicator.indicatorState.Red);
+            }
+        }
+
+        private void incomingArmLineManager(string incoming)
+        {
+            Dispatcher.Invoke(() => incomingInternet.addText(incoming + "\n"));
+            NetMan.write(rocConstants.COMID.ARMCOM, " armPING ");
         }
 
         void ptDuino_Data_Received(string receivedData)
