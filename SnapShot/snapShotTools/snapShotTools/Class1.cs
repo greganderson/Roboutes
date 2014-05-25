@@ -144,36 +144,39 @@ namespace snapShotTools
 
 
 
-    public class snapShotReceiver
-    {
+    public class snapShotReceiver {
         public delegate void snapShotReceivedEventHandler(byte[] receivedImage);
         public event snapShotReceivedEventHandler newSnapShotReceived;
 
         private TcpListener listener;
         private int port;
 
-        public snapShotReceiver(int _port)
-        {
+        public snapShotReceiver(int _port) {
             port = _port;
             listener = new TcpListener(IPAddress.Any, port);
             listener.Start();
             listener.BeginAcceptTcpClient(newConnectionCallback, null);
         }
 
-        private void newConnectionCallback(IAsyncResult ar)
-        {
+        private void newConnectionCallback(IAsyncResult ar) {
             TcpClient snapShotSource = listener.EndAcceptTcpClient(ar);
-            byte[] buffer = new byte[5000000];
-            snapShotSource.Client.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, snapShotReceivedCallback, buffer);
+            byte[] buffer = new byte[200000];
+            object[] holder = new object[] { buffer, snapShotSource };
+            NetworkStream NS = snapShotSource.GetStream();
+            NS.BeginRead(buffer, 0, buffer.Length, snapShotReceivedCallback, holder);
         }
 
-        private void snapShotReceivedCallback(IAsyncResult ar)
-        {
-            byte[] receiveBuffer = (byte[])ar.AsyncState;
-            if (receiveBuffer[0] != null && newSnapShotReceived != null)
-            {
+        private void snapShotReceivedCallback(IAsyncResult ar) {
+            object[] holder = (object[])ar.AsyncState;
+            byte[] receiveBuffer = (byte[])holder[0];
+            if (newSnapShotReceived != null) {
                 newSnapShotReceived(receiveBuffer);
             }
+            TcpClient oldClient = (TcpClient)holder[1];
+            oldClient.Client.Close(0);
+            oldClient.Client.Dispose();
+            oldClient.Close();
+            listener.BeginAcceptTcpClient(newConnectionCallback, null);
         }
     }
 }

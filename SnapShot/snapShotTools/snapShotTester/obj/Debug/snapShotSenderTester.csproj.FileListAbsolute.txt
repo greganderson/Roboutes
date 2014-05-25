@@ -16,3 +16,6 @@ C:\Users\ROC\Documents\GitHub\SnapShot\snapShotTools\snapShotTester\bin\Debug\AF
 C:\Users\ROC\Documents\GitHub\SnapShot\snapShotTools\snapShotTester\bin\Debug\snapShotTools.dll
 C:\Users\ROC\Documents\GitHub\SnapShot\snapShotTools\snapShotTester\bin\Debug\AForge.Controls.dll
 C:\Users\ROC\Documents\GitHub\SnapShot\snapShotTools\snapShotTester\bin\Debug\snapShotTools.pdb
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\SnapShot\snapShotTools\snapShotTester\bin\Debug\snapShotTester.exe.config
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\SnapShot\snapShotTools\snapShotTester\obj\Debug\snapShotTester.exe
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\SnapShot\snapShotTools\snapShotTester\obj\Debug\snapShotTester.pdb
