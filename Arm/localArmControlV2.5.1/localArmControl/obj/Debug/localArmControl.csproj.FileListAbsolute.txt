@@ -99,3 +99,6 @@ C:\Users\ROC\Documents\GitHub\Arm\localArmControlV2.5.1\localArmControl\obj\Debu
 C:\Users\ROC\Documents\GitHub\Arm\localArmControlV2.5.1\localArmControl\obj\Debug\localArmControl.g.resources
 C:\Users\ROC\Documents\GitHub\Arm\localArmControlV2.5.1\localArmControl\obj\Debug\localArmControl.Properties.Resources.resources
 C:\Users\ROC\Documents\GitHub\Arm\localArmControlV2.5.1\localArmControl\obj\Debug\localArmControl.csproj.GenerateResource.Cache
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\Arm\localArmControlV2.5.1\localArmControl\bin\Debug\localArmControl.exe.config
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\Arm\localArmControlV2.5.1\localArmControl\obj\Debug\localArmControl.exe
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\Arm\localArmControlV2.5.1\localArmControl\obj\Debug\localArmControl.pdb

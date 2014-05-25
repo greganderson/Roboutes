@@ -25,22 +25,30 @@ namespace snapShotReceiver_Tester
     {
 
         snapShotReceiver SSReceiver;
-        public MainWindow()
-        {
+        int frameCount = 0;
+        public MainWindow() {
             InitializeComponent();
             SSReceiver = new snapShotReceiver(35005);
             SSReceiver.newSnapShotReceived += SSReceiver_newSnapShotReceived;
         }
 
-        private void SSReceiver_newSnapShotReceived(byte[] receivedImage)
-        {
-            receivedImageViewer.Source = ByteImageConverter.ByteToImage(receivedImage);
+        private void SSReceiver_newSnapShotReceived(byte[] receivedImage) {
+            try {
+                frameCount++;
+                ImageSource IS = ByteImageConverter.ByteToImage(receivedImage);
+                Dispatcher.Invoke(() => receivedImageViewer.Source = ByteImageConverter.ByteToImage(receivedImage));
+                string size = IS.Width + " x " + IS.Height;
+                Dispatcher.Invoke(() => sizeLabel.Content = size);
+                Dispatcher.Invoke(() => frameNumLabel.Content = frameCount + "");
+            }
+            catch {
+                //do nothing
+                return;
+            }
         }
 
-        public class ByteImageConverter
-        {
-            public static ImageSource ByteToImage(byte[] imageData)
-            {
+        public class ByteImageConverter {
+            public static ImageSource ByteToImage(byte[] imageData) {
                 BitmapImage biImg = new BitmapImage();
                 MemoryStream ms = new MemoryStream(imageData);
                 biImg.BeginInit();
