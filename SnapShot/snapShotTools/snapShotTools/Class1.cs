@@ -29,9 +29,11 @@ namespace snapShotTools
         private volatile bool transmit = false;
         private volatile bool transmitInProgress = false;
 
+        byte[] jpegToSend;
+
         private TcpClient tcpClient;
 
-        private int _quality = 0;
+        private int _quality = 7;   //TODO: This value is temporary. It should be adjsutable and probably start at 0. 7 just happens to be the best the rocketfish can give.
         /// <summary>
         /// set from 0 - 100
         /// </summary>
@@ -53,7 +55,7 @@ namespace snapShotTools
 
             videoDevice.VideoResolution = videoCapabilities[0];
             videoDevice.ProvideSnapshots = true;
-            videoDevice.SnapshotResolution = snapshotCapabilitites[_quality];
+            videoDevice.SnapshotResolution = snapshotCapabilitites[_quality]; //
             videoDevice.SnapshotFrame += videoDevice_SnapshotFrame;
             VSP.VideoSource = videoDevice; //Idk why this has to happen to get snapshots, but it does...
             videoDevice.Start();
@@ -79,8 +81,14 @@ namespace snapShotTools
                     {
                         lock (frameSync)
                         {
-                            byte[] toSend = Bitmap2JpegArray(currentFrame);
-                            tcpClient.GetStream().Write(toSend, 0, toSend.Length);
+                            NetworkStream NS = tcpClient.GetStream();
+                            NS.Write(jpegToSend, 0, jpegToSend.Length);
+                            NS.Flush();
+                            NS.Dispose();
+                            tcpClient.Client.Close(0);
+                            tcpClient.Client.Dispose();
+                            tcpClient.Close();
+                            transmitInProgress = false;
                         }
                     }
                 }
@@ -92,40 +100,28 @@ namespace snapShotTools
             }
         }
 
-        private void sentCallback(IAsyncResult ar)
-        {
-            transmitInProgress = false;
-            tcpClient.Client.Disconnect(true);
-            tcpClient.Close();
-            tcpClient.Client.Dispose();
-        }
-
         void videoDevice_SnapshotFrame(object sender, NewFrameEventArgs eventArgs)
         {
             lock (frameSync)
             {
-                currentFrame = eventArgs.Frame;
+                MemoryStream ms = new MemoryStream();
+                eventArgs.Frame.Save(ms, ImageFormat.Jpeg);
+                jpegToSend = ms.ToArray();
             }
             if (transmit && !transmitInProgress)
             {
                 transmitInProgress = true;
-                tcpClient = new TcpClient(target.ToString(), port);
+                tcpClient = new TcpClient();
                 tcpClient.BeginConnect(target, port, transmitCallback, null);
             }
         }
 
         private byte[] Bitmap2JpegArray(Bitmap Frame)
         {
+            Bitmap temp = Frame;
             MemoryStream ms = new MemoryStream();
-            /*long sendQuality; //TODO: can be sued to control quality of image transmitted, currently set to 100% quality
-            lock (qualitySync)
-            {
-                sendQuality = quality;
-            }*/
-            EncoderParameters myEncoderParameters = new EncoderParameters(1);
-            EncoderParameter qualityParameter = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 100L);
-            myEncoderParameters.Param[0] = qualityParameter;
-            Frame.Save(ms, GetEncoder(ImageFormat.Jpeg), myEncoderParameters);
+
+            temp.Save(ms, ImageFormat.Jpeg);
             byte[] toReturn = ms.ToArray();
             return toReturn;
         }
