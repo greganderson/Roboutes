@@ -80,8 +80,7 @@ namespace snapShotTools
                         lock (frameSync)
                         {
                             byte[] toSend = Bitmap2JpegArray(currentFrame);
-                            tcpClient.GetStream().BeginWrite(toSend, 0, toSend.Length, null, null);
-                            transmitInProgress = false;
+                            tcpClient.GetStream().Write(toSend, 0, toSend.Length);
                         }
                     }
                 }
@@ -93,6 +92,14 @@ namespace snapShotTools
             }
         }
 
+        private void sentCallback(IAsyncResult ar)
+        {
+            transmitInProgress = false;
+            tcpClient.Client.Disconnect(true);
+            tcpClient.Close();
+            tcpClient.Client.Dispose();
+        }
+
         void videoDevice_SnapshotFrame(object sender, NewFrameEventArgs eventArgs)
         {
             lock (frameSync)
@@ -101,8 +108,8 @@ namespace snapShotTools
             }
             if (transmit && !transmitInProgress)
             {
-                tcpClient = new TcpClient(target.ToString(), port);
                 transmitInProgress = true;
+                tcpClient = new TcpClient(target.ToString(), port);
                 tcpClient.BeginConnect(target, port, transmitCallback, null);
             }
         }

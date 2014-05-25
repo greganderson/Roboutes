@@ -26,7 +26,6 @@ namespace snapShotTester
     public partial class MainWindow : Window
     {
         snapShotSender SSSender;
-        snapShotReceiver SSReceiver;
         FilterInfoCollection videoDevices;
         VideoCaptureDevice VCD;
 
@@ -36,18 +35,16 @@ namespace snapShotTester
             videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             VCD = new VideoCaptureDevice(videoDevices[0].MonikerString);
             SSSender = new snapShotSender(VCD);
-            SSReceiver = new snapShotReceiver(35005);
-            SSReceiver.newSnapShotReceived += SSReceiver_newSnapShotReceived;
-        }
-
-        void SSReceiver_newSnapShotReceived(byte[] receivedImage)
-        {
-            throw new NotImplementedException();
         }
 
         private void sendButton_Click(object sender, RoutedEventArgs e)
         {
             SSSender.transmitSnapshot(IPAddress.Parse("127.0.0.1"), 35005);
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }
