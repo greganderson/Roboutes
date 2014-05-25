@@ -94,9 +94,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\XboxController\XboxController.csproj">
-      <Project>{cac2902b-97fd-483e-b362-39e244aa1ace}</Project>
-      <Name>XboxController</Name>
+    <ProjectReference Include="..\localArmControlTools\ArmControlTools.csproj">
+      <Project>{9ff256b8-f7e0-4917-a1ac-c0938a0dd038}</Project>
+      <Name>ArmControlTools</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

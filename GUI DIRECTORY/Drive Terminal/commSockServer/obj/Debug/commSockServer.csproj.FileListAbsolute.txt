@@ -34,3 +34,12 @@ C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\co
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\commSockServer\obj\Debug\commSockServer.csprojResolveAssemblyReference.cache
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\commSockServer\obj\Debug\commSockServer.dll
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\commSockServer\obj\Debug\commSockServer.pdb
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\commSockServer\bin\Debug\commSockServer.dll
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\commSockServer\bin\Debug\commSockServer.pdb
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\commSockServer\bin\Debug\ChatClientModel.dll
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\commSockServer\bin\Debug\StringSocket.dll
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\commSockServer\bin\Debug\ChatClientModel.pdb
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\commSockServer\bin\Debug\StringSocket.pdb
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\commSockServer\obj\Debug\commSockServer.csprojResolveAssemblyReference.cache
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\commSockServer\obj\Debug\commSockServer.dll
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\commSockServer\obj\Debug\commSockServer.pdb

@@ -11,8 +11,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using XboxController;
+
 using System.Threading;
+using ArmControlTools;
 
 namespace ArmTopView {
     /// <summary>
@@ -20,65 +21,48 @@ namespace ArmTopView {
     /// </summary>
     [ProvideToolboxControl("ArmTopView", true)]
     public partial class ArmTop : UserControl {
-        private XboxController.XboxController _xboxController;
-        public XboxController.XboxController XboxController
+        private double actualArmAngle = 0;
+        private armInputManager _armInputManager;
+        public armInputManager armInputManager
         {
             set
             {
-                _xboxController = value;
-                _xboxController.ThumbStickRight +=_xboxController_ThumbStickRight;
+                _armInputManager = value;
+                _armInputManager.targetTurnTableChanged += _armInputManager_targetTurnTableChanged;
+                _armInputManager.EmergencyStop += emergencyStop;
+            }
+            get
+            {
+                return _armInputManager;
             }
         }
 
-        Thread turntableUpdateThread;
+        private void emergencyStop() {
+            Dispatcher.Invoke(()=>updateGoalArmAngle(actualArmAngle));
+            _armInputManager.manuallySetTurnTable((int)actualArmAngle);
+        }
 
-        double commandedTurntableAngle;
-        double turnTableRate;
-        object turnTableSync = 1;
+        void _armInputManager_targetTurnTableChanged(double newAngle)
+        {
+            Dispatcher.Invoke(() => updateGoalArmAngle(newAngle));
+        }
 
         public double maxLength = 260; //starting standard value
-        public double maxRotation = 90; //starting standard value
+        public double maxRotation = armConstants.MAX_TURNTABLE_ANGLE; //starting standard value
         public ArmTop() {
             InitializeComponent();
-            turntableUpdateThread = new Thread(new ThreadStart(turnTableUpdate));
-            turntableUpdateThread.Start();
-        }
-
-        private void _xboxController_ThumbStickRight(object sender, EventArgs e)
-        {
-            XboxEventArgs args = (XboxEventArgs)e;
-            Tuple<float, float> vec = args.GetRightThumbStick();
-            double X = vec.Item1.Map(-1, 1, -2, 2);
-            Console.WriteLine("val: " + X);
-            lock (turnTableSync)
-            {
-                turnTableRate = X;
-            }
-        }
-
-        void turnTableUpdate()
-        {
-            while (true)
-            {
-                lock (turnTableSync)
-                {
-                    commandedTurntableAngle += turnTableRate;
-                    commandedTurntableAngle = commandedTurntableAngle.Constrain(0, 90);
-                    Dispatcher.Invoke(() => updateGoalArmAngle(commandedTurntableAngle));
-                    Thread.Sleep(20);
-                }
-            }
         }
 
         public void updateActualArmAngle(double angle) {
+            actualArmAngle = angle;
             if (angle >= 0 && angle <= maxRotation) { //changes goal arm shoulder rotation angle
-                Dispatcher.Invoke(() =>aRec.RenderTransform = new RotateTransform(180 + angle));
+                Dispatcher.Invoke(() =>aRec.RenderTransform = new RotateTransform(103 + angle));
             }
         }
 
         public void updateGoalArmAngle(double angle){
             if (angle >= 0 && angle <= maxRotation) { //changes goal arm shoulder rotation angle
-                gRec.RenderTransform = new RotateTransform(180+angle);
+                gRec.RenderTransform = new RotateTransform(103 + angle);
             }
         }
 

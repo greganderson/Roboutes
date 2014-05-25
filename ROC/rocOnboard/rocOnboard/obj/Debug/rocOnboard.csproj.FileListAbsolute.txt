@@ -86,3 +86,6 @@ C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\obj\Debug\rocOnboard.Pro
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\obj\Debug\rocOnboard.csproj.GenerateResource.Cache
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\safeCommFeedViz.dll
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\safeCommFeedViz.pdb
+C:\Users\RoboUtes 6\Desktop\Roboutes\ROC\rocOnboard\rocOnboard\bin\Debug\rocOnboard.exe.config
+C:\Users\RoboUtes 6\Desktop\Roboutes\ROC\rocOnboard\rocOnboard\obj\Debug\rocOnboard.exe
+C:\Users\RoboUtes 6\Desktop\Roboutes\ROC\rocOnboard\rocOnboard\obj\Debug\rocOnboard.pdb

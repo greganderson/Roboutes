@@ -5,3 +5,9 @@ c:\users\greg\documents\visual studio 2012\Projects\XboxController\XboxControlle
 c:\users\greg\documents\visual studio 2012\Projects\XboxController\XboxController\obj\Debug\XboxController.dll
 c:\users\greg\documents\visual studio 2012\Projects\XboxController\XboxController\obj\Debug\XboxController.pdb
 C:\Users\greg\Documents\Visual Studio 2012\Projects\XboxController\XboxController\obj\Debug\XboxController.csprojResolveAssemblyReference.cache
+C:\Users\RoboUtes 6\Desktop\Roboutes\XboxController\Xbox Library Stuff\XboxController\bin\Debug\XboxController.dll
+C:\Users\RoboUtes 6\Desktop\Roboutes\XboxController\Xbox Library Stuff\XboxController\bin\Debug\XboxController.pdb
+C:\Users\RoboUtes 6\Desktop\Roboutes\XboxController\Xbox Library Stuff\XboxController\bin\Debug\Microsoft.Xna.Framework.xml
+C:\Users\RoboUtes 6\Desktop\Roboutes\XboxController\Xbox Library Stuff\XboxController\obj\Debug\XboxController.csprojResolveAssemblyReference.cache
+C:\Users\RoboUtes 6\Desktop\Roboutes\XboxController\Xbox Library Stuff\XboxController\obj\Debug\XboxController.dll
+C:\Users\RoboUtes 6\Desktop\Roboutes\XboxController\Xbox Library Stuff\XboxController\obj\Debug\XboxController.pdb

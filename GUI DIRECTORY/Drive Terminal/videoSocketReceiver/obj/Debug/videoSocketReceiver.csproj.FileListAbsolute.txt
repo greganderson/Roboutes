@@ -28,3 +28,8 @@ C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\vi
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\videoSocketReceiver\obj\Debug\videoSocketReceiver.csprojResolveAssemblyReference.cache
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\videoSocketReceiver\obj\Debug\videoSocketReceiver.dll
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Drive Terminal\videoSocketReceiver\obj\Debug\videoSocketReceiver.pdb
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\videoSocketReceiver\bin\Debug\videoSocketReceiver.dll
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\videoSocketReceiver\bin\Debug\videoSocketReceiver.pdb
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\videoSocketReceiver\obj\Debug\videoSocketReceiver.csprojResolveAssemblyReference.cache
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\videoSocketReceiver\obj\Debug\videoSocketReceiver.dll
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\videoSocketReceiver\obj\Debug\videoSocketReceiver.pdb

@@ -29,6 +29,7 @@ namespace localArmControl
         Arduino armDuino;
         Arduino handDuino;
         ArduinoManager ArduMan;
+
         armInputManager armInput;
         localArmCommandTransmitter armTransmitter;
 

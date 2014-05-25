@@ -11,8 +11,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using XboxController;
+
 using System.Threading;
+using ArmControlTools;
 
 namespace ArmSideView {
     /// <summary>
@@ -21,27 +22,42 @@ namespace ArmSideView {
     [ProvideToolboxControl("ArmSideView", true)]
     public partial class ArmSide : UserControl {
 
-        Thread elbowUpdateThread;
-        Thread shoulderUpdateThread;
+        private Line elbowGoalLine;
+        private Line shoulderGoalLine;
+        private Line elbowActualLine;
+        private Line shoulderActualLine;
 
-        double commandedElbowAngle;
-        double elbowRate;
-        object elbowSync = 1;
-
-        double commandedShoulderAngle;
-        double shoulderRate;
-        object shoulderSync = 1;
-
-        private XboxController.XboxController _xboxController;
-        public XboxController.XboxController XboxController
+        private armInputManager _armInputManager;
+        public armInputManager armInputManager
         {
             set
             {
-                _xboxController = value;
-                _xboxController.ThumbStickRight += _xboxController_ThumbStickRight;
-                _xboxController.TriggerLeft += _xboxController_TriggerLeft;
-                _xboxController.TriggerRight += _xboxController_TriggerRight;
+                _armInputManager = value;
+                _armInputManager.targetElbowChanged += _armInputManager_targetElbowChanged;
+                _armInputManager.targetShoulderChanged += _armInputManager_targetShoulderChanged;
+                _armInputManager.EmergencyStop += emergencyStop;
             }
+            get
+            {
+                return _armInputManager;
+            }
+        }
+
+        private void emergencyStop() {
+            Dispatcher.Invoke(() => updateGoalElbow(aElbowAngle));
+            Dispatcher.Invoke(() => updateGoalShoulder(-aShoulderAngle));
+            _armInputManager.manuallySetElbow((int)aElbowAngle);
+            _armInputManager.manuallySetShoulder(-(int)aShoulderAngle);
+        }
+
+        void _armInputManager_targetShoulderChanged(double newAngle)
+        {
+            Dispatcher.Invoke(() => updateGoalShoulder(newAngle));
+        }
+
+        void _armInputManager_targetElbowChanged(double newAngle)
+        {
+            Dispatcher.Invoke(() => updateGoalElbow(newAngle));
         }
 
         double gShoulderAngle = 0;
@@ -56,71 +72,10 @@ namespace ArmSideView {
             InitializeComponent();
             gRec2.RenderTransform = new RotateTransform(gElbowOffsetAngle);
             aRec2.RenderTransform = new RotateTransform(aElbowOffsetAngle);
-            elbowUpdateThread = new Thread(new ThreadStart(elbowUpdate));
-            elbowUpdateThread.Start();
-            shoulderUpdateThread = new Thread(new ThreadStart(shoulderUpdate));
-            shoulderUpdateThread.Start();
-        }
-
-        void shoulderUpdate()
-        {
-            while (true)
-            {
-                lock (shoulderSync)
-                {
-                    commandedShoulderAngle += shoulderRate;
-                    Dispatcher.Invoke(() => updateGoalShoulder(commandedShoulderAngle));
-                    Thread.Sleep(20);
-                }
-            }
-        }
-
-        void elbowUpdate()
-        {
-            while (true)
-            {
-                lock (elbowSync)
-                {
-                    commandedElbowAngle -= elbowRate;   //TODO: This is currently inverted, make it += instead
-                    Dispatcher.Invoke(() => updateGoalElbow(commandedElbowAngle));
-                    Thread.Sleep(20);
-                }
-            }
-        }
-
-        void _xboxController_TriggerLeft(object sender, EventArgs e)
-        {
-            XboxEventArgs args = (XboxEventArgs)e;
-            float val = args.GetLeftTrigger();
-            val = val / 2;  //keep it slow
-            Console.WriteLine("val: " + val);
-            lock (shoulderSync)
-            {
-                shoulderRate = -val;    //left trigger is down
-            }
-        }
-
-        void _xboxController_TriggerRight(object sender, EventArgs e)
-        {
-            XboxEventArgs args = (XboxEventArgs)e;
-            float val = args.GetRightTrigger();
-            val = val / 2;  //keep it slow
-            Console.WriteLine("val: " + val);
-            lock (shoulderSync)
-            {
-                shoulderRate = val;    //right trigger is up
-            }
-        }
-
-        void _xboxController_ThumbStickRight(object sender, EventArgs e)
-        {
-            XboxEventArgs args = (XboxEventArgs)e;
-            Tuple<float, float> vec = args.GetRightThumbStick();
-            double Y = vec.Item2.Map(-1, 1, -2, 2);
-            lock (elbowSync)
-            {
-                elbowRate = Y;
-            }
+            elbowGoalLine = new Line();
+            shoulderGoalLine = new Line();
+            elbowActualLine = new Line();
+            shoulderActualLine = new Line();
         }
 
         /// <summary>
@@ -130,7 +85,28 @@ namespace ArmSideView {
         /// <param name="angle"></param>
         public void updateActualElbow(double angle) {
             aElbowAngle = angle;
-            aRec2.RenderTransform = new RotateTransform(180 - aElbowAngle + (aShoulderAngle));
+            Dispatcher.Invoke(()=>aRec2.RenderTransform = new RotateTransform(180 - aElbowAngle + (aShoulderAngle)));
+
+
+            Action update = delegate()
+            {
+                realElbowAngleLabel.Content = angle;
+                Point realElbowLabelPos = new Point(Canvas.GetLeft(realElbowLabel), Canvas.GetBottom(realElbowLabel));
+                Point realElbowBasePos = new Point(Canvas.GetLeft(aRec2), Canvas.GetBottom(aRec2));
+
+                canv.Children.Remove(elbowActualLine);
+
+                elbowActualLine.X1 = realElbowLabelPos.X; ;
+                elbowActualLine.Y1 = canv.Height - realElbowLabelPos.Y - realElbowLabel.Height*.5;
+
+                elbowActualLine.X2 = realElbowBasePos.X;
+                elbowActualLine.Y2 = canv.Height - realElbowBasePos.Y;
+
+                elbowActualLine.StrokeThickness = 3;
+                elbowActualLine.Stroke = new LinearGradientBrush(Colors.Red, Colors.Black, 90);
+                canv.Children.Add(elbowActualLine);
+            };
+            Dispatcher.Invoke(update);
         }
 
         /// <summary>
@@ -141,6 +117,26 @@ namespace ArmSideView {
         public void updateGoalElbow(double angle) {
             gElbowAngle = angle;
             gRec2.RenderTransform = new RotateTransform(180 - gElbowAngle + (gShoulderAngle));
+
+            Action update = delegate()
+            {
+                elbowAngleLabel.Content = angle;
+                Point elbowLabelPos = new Point(Canvas.GetLeft(elbowAngleLabel), Canvas.GetBottom(elbowAngleLabel));
+                Point elbowBasePos = new Point(Canvas.GetLeft(gRec2), Canvas.GetBottom(gRec2));
+
+                canv.Children.Remove(elbowGoalLine);
+
+                elbowGoalLine.X1 = elbowLabelPos.X + (elbowAngleLabel.Width * .5);
+                elbowGoalLine.Y1 = canv.Height - (elbowAngleLabel.Height);
+
+                elbowGoalLine.X2 = elbowBasePos.X;
+                elbowGoalLine.Y2 = canv.Height - elbowBasePos.Y;
+
+                elbowGoalLine.StrokeThickness = 3;
+                elbowGoalLine.Stroke = new LinearGradientBrush(Colors.Green, Colors.Black, 90);
+                canv.Children.Add(elbowGoalLine);
+            };
+            Dispatcher.Invoke(update);
         }
 
         /// <summary>
@@ -149,10 +145,31 @@ namespace ArmSideView {
         /// <param name="angle"></param>
         public void updateActualShoulder(double angle) {
             aShoulderAngle = -angle;
-            aRec1.RenderTransform = new RotateTransform(aShoulderAngle);
-            Canvas.SetLeft(aRec2, Canvas.GetLeft(aRec1) + (aRec1.Width * Math.Cos(ConvertToRadians(aShoulderAngle)))); //set rec2 dist from left
-            Canvas.SetBottom(aRec2, Canvas.GetBottom(aRec1) + (aRec1.Width * Math.Sin(ConvertToRadians(-aShoulderAngle)))); //set rec2 dist from top
-            updateActualElbow(aElbowAngle);
+            //aShoulderAngle = (270 - aShoulderAngle);
+            Dispatcher.Invoke(()=>aRec1.RenderTransform = new RotateTransform(aShoulderAngle));
+            Dispatcher.Invoke(()=>Canvas.SetLeft(aRec2, Canvas.GetLeft(aRec1) + (aRec1.Width * Math.Cos(ConvertToRadians(aShoulderAngle))))); //set rec2 dist from left
+            Dispatcher.Invoke(()=>Canvas.SetBottom(aRec2, Canvas.GetBottom(aRec1) + (aRec1.Width * Math.Sin(ConvertToRadians(-aShoulderAngle))))); //set rec2 dist from top
+            Dispatcher.Invoke(()=>updateActualElbow(aElbowAngle));
+
+            Action update = delegate()
+            {
+                realShoulderAngleLabel.Content = angle;
+                Point realShoulderLabelPos = new Point(Canvas.GetLeft(realShoulderLabel), Canvas.GetBottom(realShoulderLabel));
+                Point realShoulderBasePos = new Point(Canvas.GetLeft(aRec1), Canvas.GetBottom(aRec1));
+
+                canv.Children.Remove(shoulderActualLine);
+
+                shoulderActualLine.X1 = realShoulderLabelPos.X; ;
+                shoulderActualLine.Y1 = canv.Height - realShoulderLabelPos.Y - realShoulderLabel.Height * .5;
+
+                shoulderActualLine.X2 = realShoulderBasePos.X;
+                shoulderActualLine.Y2 = canv.Height - realShoulderBasePos.Y;
+
+                shoulderActualLine.StrokeThickness = 3;
+                shoulderActualLine.Stroke = new LinearGradientBrush(Colors.Red, Colors.Black, 90);
+                canv.Children.Add(shoulderActualLine);
+            };
+            Dispatcher.Invoke(update);
         }
 
         /// <summary>
@@ -165,6 +182,26 @@ namespace ArmSideView {
             Canvas.SetLeft(gRec2, Canvas.GetLeft(gRec1) + (gRec1.Width * Math.Cos(ConvertToRadians(gShoulderAngle)))); //set rec2 dist from left
             Canvas.SetBottom(gRec2, Canvas.GetBottom(gRec1) + (gRec1.Width * Math.Sin(ConvertToRadians(-gShoulderAngle)))); //set rec2 dist from top
             updateGoalElbow(gElbowAngle);
+
+            Action update = delegate()
+            {
+                shoulderAngleLabel.Content = angle;
+                Point shoulderLabelPos = new Point(Canvas.GetLeft(shoulderAngleLabel), Canvas.GetBottom(shoulderAngleLabel));
+                Point shoulderBasePos = new Point(Canvas.GetLeft(gRec1), Canvas.GetBottom(gRec1));
+
+                canv.Children.Remove(shoulderGoalLine);
+
+                shoulderGoalLine.X1 = shoulderLabelPos.X + (shoulderAngleLabel.Width * .5);
+                shoulderGoalLine.Y1 = canv.Height - (shoulderAngleLabel.Height);
+
+                shoulderGoalLine.X2 = shoulderBasePos.X;
+                shoulderGoalLine.Y2 = canv.Height - shoulderBasePos.Y;
+
+                shoulderGoalLine.StrokeThickness = 3;
+                shoulderGoalLine.Stroke = new LinearGradientBrush(Colors.Green, Colors.Black, 90);
+                canv.Children.Add(shoulderGoalLine);
+            };
+            Dispatcher.Invoke(update);
         }
 
         public double ConvertToRadians(double angle) {
@@ -182,22 +219,6 @@ namespace ArmSideView {
         public static double Map(this double value, double fromSource, double toSource, double fromTarget, double toTarget)
         {
             return (value - fromSource) / (toSource - fromSource) * (toTarget - fromTarget) + fromTarget;
-        }
-
-        public static double Constrain(this double value, double min, double max)
-        {
-            if (value > max)
-            {
-                return max;
-            }
-            else if (value < min)
-            {
-                return min;
-            }
-            else
-            {
-                return value;
-            }
         }
     }
 }
