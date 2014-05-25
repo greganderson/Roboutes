@@ -48,6 +48,7 @@ namespace ArmControlTools
             armInput.targetTurnTableChanged += armInput_targetTurnTableChanged;
             armInput.targetWristChanged += armInput_targetWristChanged;
             armInput.targetGripperChanged += armInput_targetGripperChanged;
+            armInput.EmergencyStop = emerStop;
 
             elbowTimer = new Timer(elbowTimerCallback, null, 0, delay);
             shoulderTimer = new Timer(shoulderTimerCallback, null, 0, delay);
@@ -55,6 +56,10 @@ namespace ArmControlTools
             wristTimer = new Timer(wristTimerCallback, null, 0, delay);
             gripperTimer = new Timer(gripperTimerCallback, null, 0, delay);
 
+        }
+
+        private void emerStop() {
+            armArduino.write("EMERSTOP");
         }
 
         private void wristTimerCallback(object state)
@@ -153,6 +158,8 @@ namespace ArmControlTools
         public delegate void ChangedWristPositionEventHandler(wristPositionData newPosition);
         public event ChangedWristPositionEventHandler targetWristChanged;
 
+        public Action EmergencyStop;
+
         double commandedTurnTableAngle;
         double turnTableRate;
         object turnTableSync = 1;
@@ -218,6 +225,7 @@ namespace ArmControlTools
             xboxController.ButtonLeftShoulderPressed += xboxController_ButtonLeftShoulderPressed;
             xboxController.ButtonRightShoulderReleased += bumperReleased;
             xboxController.ButtonLeftShoulderReleased += bumperReleased;
+            xboxController.ButtonBPressed += xboxController_ButtonBPressed;
 
             turntableUpdateThread = new Thread(new ThreadStart(turnTableUpdate));
             turntableUpdateThread.Start();
@@ -229,6 +237,46 @@ namespace ArmControlTools
             wristUpdateThread.Start();
             gripperUpdateThread = new Thread(new ThreadStart(gripperUpdate));
             gripperUpdateThread.Start();
+        }
+
+        /// <summary>
+        /// Manually set the target positions of the turnTable angle.
+        /// </summary>
+        /// <param name="newPositions"></param>
+        public void manuallySetTurnTable(int newPosition){
+            commandedTurnTableAngle = newPosition.Constrain(armConstants.MIN_TURNTABLE_ANGLE, armConstants.MAX_TURNTABLE_ANGLE);
+            if (targetTurnTableChanged != null) {
+                targetTurnTableChanged(commandedTurnTableAngle);
+            }
+        }
+
+        /// <summary>
+        /// Manually set the target positions of the shoulder angle.
+        /// </summary>
+        /// <param name="newPositions"></param>
+        public void manuallySetShoulder(int newPosition) {
+
+            commandedShoulderAngle = newPosition.Constrain(armConstants.MIN_SHOULDER_ANGLE, armConstants.MAX_SHOULDER_ANGLE);
+            if (targetShoulderChanged != null) {
+                targetShoulderChanged(commandedShoulderAngle);
+            }
+        }
+
+        /// <summary>
+        /// Manually set the target positions of the elbow angle.
+        /// </summary>
+        /// <param name="newPositions"></param>
+        public void manuallySetElbow(int newPosition) {
+            commandedElbowAngle = newPosition.Constrain(armConstants.MIN_ELBOW_ANGLE, armConstants.MAX_ELBOW_ANGLE);
+            if (targetElbowChanged != null) {
+                targetElbowChanged(commandedElbowAngle);
+            }
+        }
+
+        void xboxController_ButtonBPressed(object sender, EventArgs e) {
+            if (EmergencyStop != null) {
+                EmergencyStop();
+            }
         }
 
         private void gripperUpdate()

@@ -12,3 +12,9 @@ C:\Users\ROC\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\live
 C:\Users\ROC\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\liveXboxMonitorV2\1.0\\Microsoft.Xna.Framework.dll
 C:\Users\ROC\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\liveXboxMonitorV2\1.0\\liveXboxMonitorV2.pdb
 C:\Users\ROC\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\liveXboxMonitorV2\1.0\\XboxController.pdb
+C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\liveXboxMonitorV2\1.0\\liveXboxMonitorV2.dll
+C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\liveXboxMonitorV2\1.0\\XboxController.dll
+C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\liveXboxMonitorV2\1.0\\liveXboxMonitorV2.pkgdef
+C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\liveXboxMonitorV2\1.0\\extension.vsixmanifest
+C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\liveXboxMonitorV2\1.0\\liveXboxMonitorV2.pdb
+C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\liveXboxMonitorV2\1.0\\XboxController.pdb

@@ -36,7 +36,15 @@ namespace ArmSideView {
                 _armInputManager = value;
                 _armInputManager.targetElbowChanged += _armInputManager_targetElbowChanged;
                 _armInputManager.targetShoulderChanged += _armInputManager_targetShoulderChanged;
+                _armInputManager.EmergencyStop += emergencyStop;
             }
+        }
+
+        private void emergencyStop() {
+            Dispatcher.Invoke(() => updateGoalElbow(aElbowAngle));
+            Dispatcher.Invoke(() => updateGoalShoulder(-aShoulderAngle));
+            _armInputManager.manuallySetElbow((int)aElbowAngle);
+            _armInputManager.manuallySetShoulder(-(int)aShoulderAngle);
         }
 
         void _armInputManager_targetShoulderChanged(double newAngle)

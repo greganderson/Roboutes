@@ -22,6 +22,7 @@ namespace ArmTopView {
     /// </summary>
     [ProvideToolboxControl("ArmTopView", true)]
     public partial class ArmTop : UserControl {
+        private double actualArmAngle = 0;
         private armInputManager _armInputManager;
         public armInputManager armInputManager
         {
@@ -29,7 +30,13 @@ namespace ArmTopView {
             {
                 _armInputManager = value;
                 _armInputManager.targetTurnTableChanged += _armInputManager_targetTurnTableChanged;
+                _armInputManager.EmergencyStop += emergencyStop;
             }
+        }
+
+        private void emergencyStop() {
+            Dispatcher.Invoke(()=>updateGoalArmAngle(actualArmAngle));
+            _armInputManager.manuallySetTurnTable((int)actualArmAngle);
         }
 
         void _armInputManager_targetTurnTableChanged(double newAngle)
@@ -44,6 +51,7 @@ namespace ArmTopView {
         }
 
         public void updateActualArmAngle(double angle) {
+            actualArmAngle = angle;
             if (angle >= 0 && angle <= maxRotation) { //changes goal arm shoulder rotation angle
                 Dispatcher.Invoke(() =>aRec.RenderTransform = new RotateTransform(103 + angle));
             }

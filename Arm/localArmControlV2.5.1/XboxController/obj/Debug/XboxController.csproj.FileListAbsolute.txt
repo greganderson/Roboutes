@@ -35,3 +35,8 @@ C:\Users\ROC\Documents\GitHub\Arm\localArmControlV2.5.1\XboxController\bin\Debug
 C:\Users\ROC\Documents\GitHub\Arm\localArmControlV2.5.1\XboxController\obj\Debug\XboxController.csprojResolveAssemblyReference.cache
 C:\Users\ROC\Documents\GitHub\Arm\localArmControlV2.5.1\XboxController\obj\Debug\XboxController.dll
 C:\Users\ROC\Documents\GitHub\Arm\localArmControlV2.5.1\XboxController\obj\Debug\XboxController.pdb
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\Arm\localArmControlV2.5.1\XboxController\bin\Debug\XboxController.dll
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\Arm\localArmControlV2.5.1\XboxController\bin\Debug\XboxController.pdb
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\Arm\localArmControlV2.5.1\XboxController\obj\Debug\XboxController.csprojResolveAssemblyReference.cache
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\Arm\localArmControlV2.5.1\XboxController\obj\Debug\XboxController.dll
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\Arm\localArmControlV2.5.1\XboxController\obj\Debug\XboxController.pdb
