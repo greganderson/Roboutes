@@ -162,7 +162,7 @@ namespace commSockClient
         /// <param name="line"></param>
         public void sendMessage(string line) {
             if (isConnected) {
-                SS.BeginSend(line + "\n", (e, p) => { if (e != null) throw e; }, null); //TODO: Not sure what to do if the SS throws an exception. Maybe disconnect from it and start a reconnect routine.
+                SS.BeginSend(line + "\n", (e, p) => { if (e != null) { /*throw e;*/} }, null); //TODO: Not sure what to do if the SS throws an exception. Maybe disconnect from it and start a reconnect routine.
             }
         }
 

@@ -274,12 +274,12 @@ namespace rocTools
 
         private void frontDriveDuino_Data_Received(string receivedData)
         {
-            //throw new NotImplementedException();
+
         }
 
         private void backDriveDuino_Data_Received(string receivedData)
         {
-            //throw new NotImplementedException();
+
         }
     }
 
@@ -348,6 +348,11 @@ namespace rocTools
     {
         private Arduino armDuino;
         private networkManager netMan;
+        
+        private int shoulderPos;
+        private int elbowPos;
+        private int turnTablePos;
+        private object positionSync = 1;
 
         private static armManager instance;
 
@@ -365,6 +370,63 @@ namespace rocTools
             armDuino = armArduino;
             netMan = _netman;
             netMan.incomingArm += netMan_incomingArm;
+            armDuino.Data_Received += armDuino_Data_Received;
+        }
+
+        void armDuino_Data_Received(string receivedData)
+        {
+            string toParse = receivedData.Substring(receivedData.LastIndexOf(":") + 1);
+            int parsedVal;
+
+            if (receivedData.Contains("Shoulder Position:"))
+            {
+                
+                if (int.TryParse(toParse, out parsedVal))
+                {
+                    lock (positionSync)
+                    {
+                        int val = (int)((parsedVal / 100.0) * armConstants.SHOULDER_RANGE);
+                        if (val != shoulderPos)
+                        {
+                            shoulderPos = val;
+                            string updateMC = "SH_REAL_UPDATE_" + shoulderPos;
+                            netMan.write(rocConstants.COMID.ARMCOM, updateMC);
+                        }
+                    }
+                }
+            }
+            else if (receivedData.Contains("Elbow Position:"))
+            {
+                if (int.TryParse(toParse, out parsedVal))
+                {
+                    lock (positionSync)
+                    {
+                        int val = (int)((parsedVal / 100.0) * armConstants.ELBOW_RANGE);
+                        if (val != elbowPos)
+                        {
+                            elbowPos = val;
+                            string updateMC = "EL_REAL_UPDATE_" + elbowPos;
+                            netMan.write(rocConstants.COMID.ARMCOM, updateMC);
+                        }
+                    }
+                }
+            }
+            else if (receivedData.Contains("Turn Table Position:"))
+            {
+                if (int.TryParse(toParse, out parsedVal))
+                {
+                    lock (positionSync)
+                    {
+                        int val = (int)((parsedVal / 100.0) * armConstants.TURNTABLE_RANGE);
+                        if (val != turnTablePos)
+                        {
+                            turnTablePos = val;
+                            string updateMC = "TT_REAL_UPDATE_" + turnTablePos;
+                            netMan.write(rocConstants.COMID.ARMCOM, updateMC);
+                        }
+                    }
+                }
+            }
         }
 
         void netMan_incomingArm(string incomingString)
@@ -388,6 +450,41 @@ namespace rocTools
                 int turnTablePos;
                 if(int.TryParse(incomingString, out turnTablePos)){
                     updateTurnTable(turnTablePos);
+                }
+            }
+            else if(incomingString.Contains("ARM_EMERGENCY_STOP")){
+                armDuino.write("EMERSTOP");
+                lock (positionSync)
+                {
+                    string updateMC = "EM_SH_REAL_UPDATE_" + shoulderPos;  //update mission control with shoulderPos after emergency stop WITH special "EM_" tag
+                    netMan.write(rocConstants.COMID.ARMCOM, updateMC);
+
+                    updateMC = "EM_EL_REAL_UPDATE_" + elbowPos;  //update mission control with elbowPos after emergency stop WITH special "EM_" tag
+                    netMan.write(rocConstants.COMID.ARMCOM, updateMC);
+
+                    updateMC = "EM_TT_REAL_UPDATE_" + turnTablePos;  //update mission control with elbowPos after emergency stop WITH special "EM_" tag
+                    netMan.write(rocConstants.COMID.ARMCOM, updateMC);
+                }
+            }
+            else if (incomingString.StartsWith("ARM_WR_"))
+            {
+                int up;
+                int left;
+                int right;
+                if (int.TryParse(incomingString.Substring(9, 3), out up))//get up command
+                {
+                    //TODO: write to hand arduino: "U:"+up
+                    Console.WriteLine("U:" + up);
+                    if (int.TryParse(incomingString.Substring(15, 3), out right)) //get right command
+                    {
+                        //TODO: write to hand arduino: "R:"+right
+                        Console.WriteLine("R:" + right);
+                        if (int.TryParse(incomingString.Substring(21, 3), out left))
+                        {
+                            //TODO: write to hand arduino: "L:"+left
+                            Console.WriteLine("L:" + left);
+                        }
+                    }
                 }
             }
         }
