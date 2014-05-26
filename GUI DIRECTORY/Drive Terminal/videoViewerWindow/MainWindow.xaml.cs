@@ -26,10 +26,13 @@ namespace videoViewerWindow {
     public partial class videoWindow : Window {
         private videoSocketReceiver VSR;
         private int port;
-        public videoWindow(int _port) {
+        private monitors targetMonitor;
+
+        public videoWindow(int _port, monitors monitorToDisplayOn) {
             InitializeComponent();
             port = _port;
             VSR = new videoSocketReceiver(port, connectionCallback);
+            targetMonitor = monitorToDisplayOn;
         }
 
         private void connectionCallback(bool connectionStatus) {
@@ -65,7 +68,15 @@ namespace videoViewerWindow {
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-            this.MaximizeToSecondaryMonitor();
+            switch (targetMonitor)
+            {
+                case monitors.secondMonitor:
+                    this.MaximizeToSecondaryMonitor();
+                    break;
+                case monitors.thirdMonitor:
+                    this.MaximizeToThirdMonitor();
+                    break;
+            }
         }
 
         private void MaximizeToSecondaryMonitor() {
@@ -85,6 +96,49 @@ namespace videoViewerWindow {
                     this.WindowState = WindowState.Normal;
             }
         }
+
+        private void MaximizeToThirdMonitor()
+        {
+            System.Windows.Forms.Screen secondaryScreen = System.Windows.Forms.Screen.AllScreens.Where(s => !s.Primary).FirstOrDefault();
+            System.Windows.Forms.Screen tertiaryScreen = System.Windows.Forms.Screen.AllScreens.Where(s => s != secondaryScreen).FirstOrDefault();
+
+            if (tertiaryScreen != null)
+            {
+                if (!this.IsLoaded)
+                    this.WindowStartupLocation = WindowStartupLocation.Manual;
+
+                var workingArea = tertiaryScreen.WorkingArea;
+                this.Left = workingArea.Left;
+                this.Top = workingArea.Top;
+                this.Width = workingArea.Width;
+                this.Height = workingArea.Height;
+                // If window isn't loaded then maxmizing will result in the window displaying on the primary monitor
+                if (this.IsLoaded)
+                    this.WindowState = WindowState.Normal;
+            }
+
+            else if (secondaryScreen != null)
+            {
+                if (!this.IsLoaded)
+                    this.WindowStartupLocation = WindowStartupLocation.Manual;
+
+                var workingArea = secondaryScreen.WorkingArea;
+                this.Left = workingArea.Left;
+                this.Top = workingArea.Top;
+                this.Width = workingArea.Width;
+                this.Height = workingArea.Height;
+                // If window isn't loaded then maxmizing will result in the window displaying on the primary monitor
+                if (this.IsLoaded)
+                    this.WindowState = WindowState.Normal;
+            }
+        }
+
+        public enum monitors
+        {
+            secondMonitor,
+            thirdMonitor
+        }
+
     }
 
     public class ByteImageConverter {

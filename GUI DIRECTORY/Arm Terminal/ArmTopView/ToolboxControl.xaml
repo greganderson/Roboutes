@@ -7,6 +7,7 @@
     <Grid >
         <Viewbox Stretch="Fill">
             <Canvas Background="#FF0E0E0E" Height="287" Width="344">
+                <Rectangle Fill="#FF383838" Height="29" Stroke="Black" Canvas.Top="258" Width="344"/>
                 <Rectangle Fill="#FF666666" HorizontalAlignment="Center" Height="81" Stroke="Black" VerticalAlignment="Center" Width="152" Canvas.Left="102" Canvas.Top="127"/>
                 <Rectangle x:Name="gRec" Height="15" Canvas.Left="249" Stroke="Lime" Canvas.Bottom="7" Width="140" RenderTransformOrigin="0,0.5" StrokeThickness="3" RadiusX="10" RadiusY="10" Canvas.Top="132">
                     <Rectangle.RenderTransform>
@@ -72,6 +73,10 @@
                     <Label Content="Y" Canvas.Top="20" Background="{x:Null}" Foreground="Green"/>
                     <Label Content="X" Canvas.Left="28" Canvas.Top="46" Background="{x:Null}" Foreground="Blue"/>
                 </Canvas>
+                <Label Content="Real Arm Θ: " Canvas.Top="261" Width="78" Foreground="#FFFF9700"/>
+                <Label x:Name="realArmAngleLabel" Content="NA°" Canvas.Top="261" Width="45" Foreground="#FFFF9700" Canvas.Left="78"/>
+                <Label Content="Goal Arm Θ: " Canvas.Top="261" Width="78" Foreground="#FFFF9700" Canvas.Left="221"/>
+                <Label x:Name="goalArmAngleLabel" Content="NA°" Canvas.Top="261" Width="45" Foreground="#FFFF9700" Canvas.Left="299"/>
             </Canvas>
         </Viewbox>
     </Grid>

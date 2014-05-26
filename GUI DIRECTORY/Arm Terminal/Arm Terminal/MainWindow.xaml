@@ -21,11 +21,16 @@
             <liveXboxMonitorV2:ToolboxControl x:Name="xboxControlMonitor" HorizontalAlignment="Left" Margin="871,627,0,0" VerticalAlignment="Top" Height="413" Width="632"/>
 
             <networkStatusIndicator:ToolboxControl x:Name="netStatusInd" HorizontalAlignment="Left" Margin="441,10,0,0" VerticalAlignment="Top" Height="92"/>
-            <Rectangle Fill="#FF383838" HorizontalAlignment="Left" Height="73" Stroke="Black" VerticalAlignment="Top" Width="232" Margin="1254,549,0,0"/>
+            <Viewbox Margin="1254,0,426,977" Stretch="Fill">
+                <Grid Height="73" Width="232">
+                    <Rectangle Fill="#FF383838" HorizontalAlignment="Left" Height="73" Stroke="Black" VerticalAlignment="Top" Width="232"/>
 
-            <toggleIndicator:ToolboxControl x:Name="inputOnlineInd" HorizontalAlignment="Left" Margin="1260,566,0,0" VerticalAlignment="Top" Height="39" Width="38"/>
-            <Label Content="INPUT ONLINE" HorizontalAlignment="Left" Margin="1304,549,0,0" VerticalAlignment="Top" Height="30" Width="123" FontWeight="Bold" FontSize="16" Foreground="#FFFFA200"/>
-            <TextBlock HorizontalAlignment="Left" Margin="1304,579,0,0" TextWrapping="Wrap" Text="(Press &quot;B&quot; to send emergency stop and request valid data from arm to unlock input)" VerticalAlignment="Top" Height="43" Width="182" TextAlignment="Center" FontSize="10" Foreground="#FFFFB900"/>
+                    <toggleIndicator:ToolboxControl x:Name="inputOnlineInd" HorizontalAlignment="Left" Margin="6,17,0,0" VerticalAlignment="Top" Height="39" Width="38"/>
+                    <Label Content="INPUT ONLINE" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Top" Height="30" Width="123" FontWeight="Bold" FontSize="16" Foreground="#FFFFA200"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="50,30,0,0" TextWrapping="Wrap" Text="(Press &quot;B&quot; to send emergency stop and request valid data from arm to unlock input)" VerticalAlignment="Top" Height="43" Width="182" TextAlignment="Center" FontSize="10" Foreground="#FFFFB900"/>
+
+                </Grid>
+            </Viewbox>
 
         </Grid>
     </Viewbox>

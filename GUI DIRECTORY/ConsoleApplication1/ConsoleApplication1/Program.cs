@@ -15,7 +15,7 @@ namespace ConsoleApplication1
             Console.WriteLine(test.ToString(format));
             Console.Read();*/
 
-            string test = "ARM_WR_U:951_R:100_L:000";
+            string test = "ARM_WR_U:050_R:100_L:000";
             int testInt = -999;
             if (int.TryParse(test.Substring(9, 3), out testInt))
             {

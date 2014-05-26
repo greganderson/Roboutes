@@ -1006,17 +1006,17 @@ namespace ArmControlTools
 
     public static class armConstants
     {
-        public const int MAX_SHOULDER_ANGLE = 50;
+        public const int MAX_SHOULDER_ANGLE = 57;
         public const int MIN_SHOULDER_ANGLE = 0;
-        public const int SHOULDER_RANGE = 50;
+        public const int SHOULDER_RANGE = 57;
 
         public const int MAX_ELBOW_ANGLE = 120;
         public const int MIN_ELBOW_ANGLE = 0;
         public const int ELBOW_RANGE = 120;
 
-        public const int MAX_TURNTABLE_ANGLE = 330;
+        public const int MAX_TURNTABLE_ANGLE = 143;
         public const int MIN_TURNTABLE_ANGLE = 0;
-        public const int TURNTABLE_RANGE = 330;
+        public const int TURNTABLE_RANGE = 143;
 
         public const int MAX_GRIPPER = 100;
         public const int MIN_GRIPPER = 0;

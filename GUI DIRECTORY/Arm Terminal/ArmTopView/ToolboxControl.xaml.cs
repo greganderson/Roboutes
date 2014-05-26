@@ -61,15 +61,17 @@ namespace ArmTopView {
         }
 
         public void updateActualArmAngle(double angle) {
+            Dispatcher.Invoke(()=>realArmAngleLabel.Content = angle+"°");
             actualArmAngle = angle;
             if (angle >= 0 && angle <= maxRotation) { //changes goal arm shoulder rotation angle
-                Dispatcher.Invoke(() =>aRec.RenderTransform = new RotateTransform(103 + angle));
+                Dispatcher.Invoke(() =>aRec.RenderTransform = new RotateTransform(angle-213));
             }
         }
 
         public void updateGoalArmAngle(double angle){
+            Dispatcher.Invoke(() => goalArmAngleLabel.Content = angle + "°");
             if (angle >= 0 && angle <= maxRotation) { //changes goal arm shoulder rotation angle
-                gRec.RenderTransform = new RotateTransform(103 + angle);
+                gRec.RenderTransform = new RotateTransform(angle-213);
             }
         }
 
