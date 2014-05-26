@@ -347,6 +347,7 @@ namespace rocTools
     public class armManager
     {
         private Arduino armDuino;
+        private Arduino handDuino;
         private networkManager netMan;
         
         private int shoulderPos;
@@ -356,21 +357,28 @@ namespace rocTools
 
         private static armManager instance;
 
-        public static armManager getInstance(Arduino armArduino, networkManager _netman)
+        public static armManager getInstance(Arduino armArduino, Arduino handArduino, networkManager _netman)
         {
             if (instance == null)
             {
-                instance = new armManager(armArduino,_netman);
+                instance = new armManager(armArduino,handArduino,_netman);
             }
             return instance;
         }
 
-        private armManager(Arduino armArduino, networkManager _netman)
+        private armManager(Arduino armArduino, Arduino handArduino, networkManager _netman)
         {
             armDuino = armArduino;
+            handDuino = handArduino;
             netMan = _netman;
             netMan.incomingArm += netMan_incomingArm;
             armDuino.Data_Received += armDuino_Data_Received;
+            handDuino.Data_Received += handDuino_Data_Received;
+        }
+
+        void handDuino_Data_Received(string receivedData)
+        {
+            //throw new NotImplementedException();
         }
 
         void armDuino_Data_Received(string receivedData)
@@ -473,16 +481,13 @@ namespace rocTools
                 int right;
                 if (int.TryParse(incomingString.Substring(9, 3), out up))//get up command
                 {
-                    //TODO: write to hand arduino: "U:"+up
-                    Console.WriteLine("U:" + up);
+                    handDuino.write("U:" + up);
                     if (int.TryParse(incomingString.Substring(15, 3), out right)) //get right command
                     {
-                        //TODO: write to hand arduino: "R:"+right
-                        Console.WriteLine("R:" + right);
+                        handDuino.write("R:" + right);
                         if (int.TryParse(incomingString.Substring(21, 3), out left))
                         {
-                            //TODO: write to hand arduino: "L:"+left
-                            Console.WriteLine("L:" + left);
+                            handDuino.write("L:" + left);
                         }
                     }
                 }
@@ -602,17 +607,17 @@ namespace rocTools
 
     public static class armConstants
     {
-        public const int MAX_SHOULDER_ANGLE = 50;
+        public const int MAX_SHOULDER_ANGLE = 57;
         public const int MIN_SHOULDER_ANGLE = 0;
-        public const int SHOULDER_RANGE = 50;
+        public const int SHOULDER_RANGE = 57;
 
         public const int MAX_ELBOW_ANGLE = 120;
         public const int MIN_ELBOW_ANGLE = 0;
         public const int ELBOW_RANGE = 120;
 
-        public const int MAX_TURNTABLE_ANGLE = 330;
+        public const int MAX_TURNTABLE_ANGLE = 143;
         public const int MIN_TURNTABLE_ANGLE = 0;
-        public const int TURNTABLE_RANGE = 330;
+        public const int TURNTABLE_RANGE = 143;
 
         public const int MAX_GRIPPER = 100;
         public const int MIN_GRIPPER = 0;

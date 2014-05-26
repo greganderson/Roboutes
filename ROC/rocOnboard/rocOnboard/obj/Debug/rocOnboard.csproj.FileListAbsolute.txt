@@ -65,7 +65,6 @@ C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\rocTools.dll
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\toggleIndicator.dll
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\videoSocketSender.dll
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\commSocket.dll
-C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\renderer.exe
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\StringSocket.dll
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\ArduinoLibrary.pdb
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\commFeedViz.pdb
@@ -74,7 +73,6 @@ C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\rocTools.pdb
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\toggleIndicator.pdb
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\videoSocketSender.pdb
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\commSocket.pdb
-C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\renderer.pdb
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\StringSocket.pdb
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\obj\Debug\rocOnboard.csprojResolveAssemblyReference.cache
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\obj\Debug\MainWindow.baml

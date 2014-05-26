@@ -12,7 +12,6 @@ using System.Threading;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
-using renderer;
 using System.Xaml;
 
 namespace videoSocketTools
@@ -364,13 +363,9 @@ namespace videoSocketTools
 
         public delegate void connectCallback(bool connectionStatus);
 
-        renderWindow RW;
 
         public dualVideoSocketSender(VideoCaptureDevice _leftCameraSource, VideoCaptureDevice _rightCameraSource)
         {
-            RW = new renderWindow();
-            RW.Show();
-
             lock (fpsSync)
             {
                 fpsTimer = new Timer(timerCallback, null, 0, 1000 / FPS);

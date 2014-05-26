@@ -37,6 +37,7 @@ namespace rocOnboard
         Arduino frontDrive;
         Arduino ptDuino;
         Arduino ArmDuino;
+        Arduino HandDuino;
 
         managedDualVideoTransmitter panTiltTransmitter;
 
@@ -60,6 +61,7 @@ namespace rocOnboard
             frontDrive = ArduMan.getDriveFrontArduino();
             ptDuino = ArduMan.getPanTiltArduino();
             ArmDuino = ArduMan.getArmArduino();
+            HandDuino = ArduMan.getHandArduino();
 
             backDrive.Data_Received += backDrive_Data_Received;
             frontDrive.Data_Received += frontDrive_Data_Received;
@@ -68,7 +70,7 @@ namespace rocOnboard
 
             driveMan = driveManager.getInstance(backDrive, frontDrive, NetMan);
             ptMan = ptManager.getInstance(ptDuino, NetMan);
-            armMan = armManager.getInstance(ArmDuino, NetMan);
+            armMan = armManager.getInstance(ArmDuino, HandDuino, NetMan);
 
             camMan = cameraManager.getInstance();
             camMan.assignCameras();
