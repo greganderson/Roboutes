@@ -152,20 +152,27 @@ String tester;
       
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Constants ////////////////////////////////////////////////////////////////////////////////////////////////
-#define shoulderMaxAngle 50
+#define shoulderMaxAngle 57
 #define shoulderMinAngle 0
-#define shoulderDeployedPot 270
-#define shoulderRetractedPot 749
+#define shoulderDeployedPot 285
+#define shoulderRetractedPot 747
 
 #define elbowMaxAngle 120
 #define elbowMinAngle 0
 #define elbowDeployedPot 14
-#define elbowRetractedPot 974
+#define elbowRetractedPot 1009
 
-#define turnTableMaxAngle 330
+#define turnTableMaxAngle 143
 #define turnTableMinAngle 0
-#define turnTableDeployedPot 230
-#define turnTableRetractedPot 825
+#define turnTableDeployedPot 477 
+#define turnTableRetractedPot 735
+/*
+turnTable right = 477
+TurnTable straight = 501
+turn table stow(ish) = 663
+turnTable left = 735
+
+*/
 ////////////////////////////////////////////////////////////////////////////////////////////
 void setup() { ////////////////////////////////////////////////////////////////////////////
  
