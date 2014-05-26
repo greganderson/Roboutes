@@ -30,11 +30,18 @@ namespace ArmTopView {
                 _armInputManager = value;
                 _armInputManager.targetTurnTableChanged += _armInputManager_targetTurnTableChanged;
                 _armInputManager.EmergencyStop += emergencyStop;
+
+                _armInputManager.actualTurnTableChanged += _armInputManager_actualTurnTableChanged;
             }
             get
             {
                 return _armInputManager;
             }
+        }
+
+        void _armInputManager_actualTurnTableChanged(double newAngle)
+        {
+            updateActualArmAngle(newAngle);
         }
 
         private void emergencyStop() {

@@ -138,7 +138,7 @@ namespace ArmControlTools
                 oldElbow = ((int)newAngle);
                 elbowTimerExpired = false;
                 newAngle = newAngle.Constrain(armConstants.MIN_ELBOW_ANGLE, armConstants.MAX_ELBOW_ANGLE);
-                armArduino.write("ELPOS:" + ((int)newAngle) ); //TODO: This is temporary! When finished we will be sending just an angle.
+                armArduino.write("ELPOS:" + ((int)newAngle) );
             }
         }
     }

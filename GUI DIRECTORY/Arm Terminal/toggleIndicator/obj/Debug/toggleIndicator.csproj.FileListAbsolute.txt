@@ -122,6 +122,7 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\toggleIndicator\
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\toggleIndicator\bin\Debug\toggleIndicator.pkgdef
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\toggleIndicator\bin\Debug\toggleIndicator.vsix
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\toggleIndicator\bin\Debug\extension.vsixmanifest
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\toggleIndicator\obj\Debug\toggleIndicator.csprojResolveAssemblyReference.cache
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\toggleIndicator\obj\Debug\ToolboxControl.baml
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\toggleIndicator\obj\Debug\ToolboxControl.g.cs
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\toggleIndicator\obj\Debug\toggleIndicator_MarkupCompile.cache
@@ -133,4 +134,3 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\toggleIndicator\
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\toggleIndicator\obj\Debug\toggleIndicator.pkgdef
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\toggleIndicator\obj\Debug\toggleIndicator.latest.pkgdef
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\toggleIndicator\obj\Debug\extension.vsixmanifest
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\toggleIndicator\obj\Debug\toggleIndicator.csprojResolveAssemblyReference.cache

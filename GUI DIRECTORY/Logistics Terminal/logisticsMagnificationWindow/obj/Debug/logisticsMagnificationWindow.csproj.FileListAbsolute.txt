@@ -10,3 +10,4 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\logisticsM
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\logisticsMagnificationWindow\bin\Debug\logisticsMagnificationWindow.pdb
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\logisticsMagnificationWindow\obj\Debug\logisticsMagnificationWindow.exe
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\logisticsMagnificationWindow\obj\Debug\logisticsMagnificationWindow.pdb
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\logisticsMagnificationWindow\obj\Debug\logisticsMagnificationWindow.csprojResolveAssemblyReference.cache

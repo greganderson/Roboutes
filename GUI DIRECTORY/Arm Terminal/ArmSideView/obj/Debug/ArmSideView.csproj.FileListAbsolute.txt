@@ -153,10 +153,16 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\bin\
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\bin\Debug\ArmSideView.vsix
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\bin\Debug\extension.vsixmanifest
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\bin\Debug\localArmControlTools.dll
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\bin\Debug\commSockServer.dll
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\bin\Debug\XboxController.dll
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\bin\Debug\ChatClientModel.dll
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\bin\Debug\Microsoft.Xna.Framework.dll
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\bin\Debug\StringSocket.dll
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\bin\Debug\localArmControlTools.pdb
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\bin\Debug\commSockServer.pdb
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\bin\Debug\XboxController.pdb
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\bin\Debug\ChatClientModel.pdb
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\bin\Debug\StringSocket.pdb
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\obj\Debug\ArmSideView.csprojResolveAssemblyReference.cache
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\obj\Debug\ToolboxControl.baml
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\obj\Debug\ToolboxControl.g.cs
@@ -169,9 +175,3 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\obj\
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\obj\Debug\ArmSideView.pkgdef
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\obj\Debug\ArmSideView.latest.pkgdef
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\obj\Debug\extension.vsixmanifest
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\bin\Debug\commSockServer.dll
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\bin\Debug\ChatClientModel.dll
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\bin\Debug\StringSocket.dll
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\bin\Debug\commSockServer.pdb
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\bin\Debug\ChatClientModel.pdb
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\ArmSideView\bin\Debug\StringSocket.pdb

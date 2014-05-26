@@ -36,11 +36,24 @@ namespace ArmSideView {
                 _armInputManager.targetElbowChanged += _armInputManager_targetElbowChanged;
                 _armInputManager.targetShoulderChanged += _armInputManager_targetShoulderChanged;
                 _armInputManager.EmergencyStop += emergencyStop;
+
+                _armInputManager.actualElbowChanged += _armInputManager_actualElbowChanged;
+                _armInputManager.actualShoulderChanged += _armInputManager_actualShoulderChanged;
             }
             get
             {
                 return _armInputManager;
             }
+        }
+
+        void _armInputManager_actualShoulderChanged(double newAngle)
+        {
+            updateActualShoulder(newAngle);
+        }
+
+        void _armInputManager_actualElbowChanged(double newAngle)
+        {
+            updateActualElbow(newAngle);
         }
 
         private void emergencyStop() {
