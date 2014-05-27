@@ -347,7 +347,7 @@ namespace ArmControlTools
         public event ChangedWristPositionEventHandler targetWristChanged;
 
         public Action EmergencyStop;
-        public Action InputUnlockedEvent;
+        public Action<bool> InputUnlockedEvent;
 
         double commandedTurnTableAngle;
         double turnTableRate;
@@ -402,7 +402,28 @@ namespace ArmControlTools
             }
         }
 
-        private volatile bool inputUnlocked = false;
+
+        private volatile bool _inputUnlocked = false;
+
+        private bool inputUnlocked
+        {
+            set {
+                _inputUnlocked = value;
+                if (_inputUnlocked)
+                {
+                    InputUnlockedEvent(true);
+                }
+                else
+                {
+                    InputUnlockedEvent(false);
+                }
+            }
+
+            get {
+                return _inputUnlocked;
+            }
+        }
+
         private volatile bool _shoulderValid = false;
         private volatile bool _elbowValid = false;
         private volatile bool _turnTableValid = false;
@@ -415,10 +436,6 @@ namespace ArmControlTools
                 if (_shoulderValid && _elbowValid && _turnTableValid)
                 {
                     inputUnlocked = true;
-                    if (InputUnlockedEvent != null)
-                    {
-                        InputUnlockedEvent();
-                    }
                 }
             }
             get
@@ -435,10 +452,6 @@ namespace ArmControlTools
                 if (_shoulderValid && _elbowValid && _turnTableValid)
                 {
                     inputUnlocked = true;
-                    if (InputUnlockedEvent != null)
-                    {
-                        InputUnlockedEvent();
-                    }
                 }
             }
             get
@@ -455,10 +468,6 @@ namespace ArmControlTools
                 if (_shoulderValid && _elbowValid && _turnTableValid)
                 {
                     inputUnlocked = true;
-                    if (InputUnlockedEvent != null)
-                    {
-                        InputUnlockedEvent();
-                    }
                 }
             }
             get
@@ -495,6 +504,12 @@ namespace ArmControlTools
 
             commSock = _armCommSock;
             commSock.IncomingLine += commSock_IncomingLine;
+            commSock.connectionLost += commSock_connectionLost;
+        }
+
+        void commSock_connectionLost()
+        {
+            inputUnlocked = false;
         }
 
         void commSock_IncomingLine(string obj)

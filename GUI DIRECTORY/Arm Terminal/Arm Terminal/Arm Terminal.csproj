@@ -147,6 +147,10 @@
       <Project>{c2dd09cf-4e6d-456b-ab71-752d4e354714}</Project>
       <Name>toggleIndicator</Name>
     </ProjectReference>
+    <ProjectReference Include="..\videoViewerWindow\videoViewerWindow.csproj">
+      <Project>{c84eb84b-52bd-4d3e-a646-5696e525f499}</Project>
+      <Name>videoViewerWindow</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XboxController\XboxController.csproj">
       <Project>{cac2902b-97fd-483e-b362-39e244aa1ace}</Project>
       <Name>XboxController</Name>

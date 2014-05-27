@@ -34,7 +34,7 @@ namespace videoSocketTools
 
         Thread worker;
 
-        public videoSocketReceiver(int _Port,connectionEstablished _connectionEstablishedHandler)
+        public videoSocketReceiver(int _Port, connectionEstablished _connectionEstablishedHandler)
         {
             connectionEstablishedHandler = _connectionEstablishedHandler;
             port = _Port;

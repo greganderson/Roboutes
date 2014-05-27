@@ -34,17 +34,23 @@ namespace DriveTerminal {
         OculusOrientation orientation;
         OculusTransmitter ptTransmitter;
 
-        videoWindow vidWindow;
+        videoWindow oculusVidWindow;
+        videoWindow noseCamVidWindow;
 
         public MainWindow() {
             InitializeComponent();
 
-            vidWindow = new videoWindow(35001, videoWindow.monitors.secondMonitor);//TODO: Make a little network management window, maybe it shows when the start button on the controller is pressed?
-            vidWindow.Show();
+            oculusVidWindow = new videoWindow(35001, videoWindow.monitors.secondMonitor);
+            oculusVidWindow.setIDLabel("oculusVidWindow");
+            oculusVidWindow.Show();
+
+            noseCamVidWindow = new videoWindow(35004, videoWindow.monitors.thirdMonitor);
+            noseCamVidWindow.setIDLabel("noseCamVidWindow");
+            noseCamVidWindow.Show();
 
             xboxController = new XboxController.XboxController();
             pilotPreferences.xboxController = xboxController;
-            comSock = new commSockReceiver(35000); //TODO: Make a little network management window, maybe it shows when the start button on the controller is pressed?
+            comSock = new commSockReceiver(35000);
             comSock.IncomingLine += comSock_IncomingLine;
             comSock.newConnection += comSock_newConnection;
             comSock.connectionLost += comSock_connectionLost;

@@ -31,6 +31,7 @@ namespace Logistics_Terminal
         public MainWindow()
         {
             InitializeComponent();
+            this.WindowState = System.Windows.WindowState.Maximized;
             mapPalette.newPaletteItemSelected += mapPalette_newPaletteItemSelected;
             mapWin = new mapWindow();
             mapWin.Show();

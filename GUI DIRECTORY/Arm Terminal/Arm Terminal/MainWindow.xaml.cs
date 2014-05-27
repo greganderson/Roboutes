@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using ArmControlTools;
 using XboxController;
 using commSockServer;
+using videoViewerWindow;
 
 namespace Arm_Terminal
 {
@@ -31,9 +32,15 @@ namespace Arm_Terminal
         armInputManager armInputMan;
         armCommandTransmitter armTransmit;
 
+        videoWindow palmVidWindow;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            palmVidWindow = new videoWindow(35003, videoWindow.monitors.secondMonitor);
+            palmVidWindow.Show();
+
             inputOnlineInd.setIndicatorState(toggleIndicator.indicatorState.Red);
 
             xboxController = new XboxController.XboxController();
@@ -55,9 +62,16 @@ namespace Arm_Terminal
             wristVisualizer.armInput = armInputMan;
         }
 
-        private void inputUnlocked()
+        private void inputUnlocked(bool unlocked)
         {
-            Dispatcher.Invoke(()=>inputOnlineInd.setIndicatorState(toggleIndicator.indicatorState.Green));
+            if (unlocked)
+            {
+                Dispatcher.Invoke(() => inputOnlineInd.setIndicatorState(toggleIndicator.indicatorState.Green));
+            }
+            else
+            {
+                Dispatcher.Invoke(() => inputOnlineInd.setIndicatorState(toggleIndicator.indicatorState.Red));
+            }
         }
 
         void comSock_connectionLost()

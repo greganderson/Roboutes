@@ -127,12 +127,12 @@ namespace driveTools
 
             if (throttle > 50) { //FORWARD
                 if (direction < 0) {      //Left turn
-                    leftCommand = (int)((throttle) - ((-direction) * _turnMagnification)).Constrain(50, 100); //direction is negated to make it positive...
-                    rightCommand = (int)(throttle).Constrain(0, 100);
+                    rightCommand = (int)((throttle) - ((-direction) * _turnMagnification)).Constrain(50, 100); //direction is negated to make it positive...
+                    leftCommand = (int)(throttle).Constrain(0, 100);
                 }
                 else if (direction > 0) {       //right turn
-                    leftCommand = (int)(throttle).Constrain(0, 100);
-                    rightCommand = (int)((throttle) - (direction * _turnMagnification)).Constrain(50, 100);
+                    rightCommand = (int)(throttle).Constrain(0, 100);
+                    leftCommand = (int)((throttle) - (direction * _turnMagnification)).Constrain(50, 100);
                 }
                 else { //going straight ---- if(direction == 0)
                     leftCommand = (int)(throttle).Constrain(0, 100);
@@ -142,12 +142,12 @@ namespace driveTools
 
             else if(throttle < 50){ //REVERSE
                 if (direction < 0) {      //Left turn
-                    leftCommand = (int)((throttle) - (direction * _turnMagnification)).Constrain(0,50); //direction is negated to make it positive...
-                    rightCommand = (int)(throttle).Constrain(0, 100);
+                    rightCommand = (int)((throttle) - (direction * _turnMagnification)).Constrain(0,50); //direction is negated to make it positive...
+                    leftCommand = (int)(throttle).Constrain(0, 100);
                 }
                 else if (direction > 0) {       //right turn
-                    leftCommand = (int)(throttle).Constrain(0, 100);
-                    rightCommand = (int)((throttle) - ( (-direction) * _turnMagnification)).Constrain(0, 50);
+                    rightCommand = (int)(throttle).Constrain(0, 100);
+                    leftCommand = (int)((throttle) - ((-direction) * _turnMagnification)).Constrain(0, 50);
                 }
                 else { //going straight ---- if(direction == 0)
                     leftCommand = (int)(throttle).Constrain(0, 100);
@@ -158,12 +158,12 @@ namespace driveTools
             else if (throttle == 50 && direction != 0) { //turn in place, tank drive style...
                 if (direction < 0) { //left turn in place
                     direction = -direction; //direction is negative here, so make it positive
-                    leftCommand = 50 - direction;
-                    rightCommand = 50 + direction;
-                }
-                else if (direction > 0) { //right turn in place
                     leftCommand = 50 + direction;
                     rightCommand = 50 - direction;
+                }
+                else if (direction > 0) { //right turn in place
+                    leftCommand = 50 - direction;
+                    rightCommand = 50 + direction;
                 }
             }
 

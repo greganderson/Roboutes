@@ -33,6 +33,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "networkStatusIndicator", "n
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatClientModel", "ChatClientModel\ChatClientModel.csproj", "{4F52014D-F19E-4830-B338-34EBE169F103}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "videoSocketReceiver", "videoSocketReceiver\videoSocketReceiver.csproj", "{EE8758AC-D9E0-49FC-84D2-7001BF588420}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "videoViewerWindow", "videoViewerWindow\videoViewerWindow.csproj", "{C84EB84B-52BD-4D3E-A646-5696E525F499}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -103,6 +107,14 @@ Global
 		{4F52014D-F19E-4830-B338-34EBE169F103}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F52014D-F19E-4830-B338-34EBE169F103}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F52014D-F19E-4830-B338-34EBE169F103}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE8758AC-D9E0-49FC-84D2-7001BF588420}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE8758AC-D9E0-49FC-84D2-7001BF588420}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE8758AC-D9E0-49FC-84D2-7001BF588420}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE8758AC-D9E0-49FC-84D2-7001BF588420}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C84EB84B-52BD-4D3E-A646-5696E525F499}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C84EB84B-52BD-4D3E-A646-5696E525F499}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C84EB84B-52BD-4D3E-A646-5696E525F499}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C84EB84B-52BD-4D3E-A646-5696E525F499}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

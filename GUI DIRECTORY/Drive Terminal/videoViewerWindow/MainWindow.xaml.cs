@@ -35,6 +35,11 @@ namespace videoViewerWindow {
             targetMonitor = monitorToDisplayOn;
         }
 
+        public void setIDLabel(string ID)
+        {
+            Dispatcher.Invoke(() => idLabel.Content = ID);
+        }
+
         private void connectionCallback(bool connectionStatus) {
             if (connectionStatus) {
                 VSR.frameReceived += VSR_frameReceived;
@@ -60,7 +65,12 @@ namespace videoViewerWindow {
 
         public void displayFrame(byte[] frame) {
             try {
-                Dispatcher.Invoke(() => imageBox.Source = ByteImageConverter.ByteToImage(frame)); //TODO: stack overflow???
+                Dispatcher.Invoke((Action)(() =>
+                {
+                    ImageSource IS = ByteImageConverter.ByteToImage(frame);
+                    imageBox.Source = IS; //TODO: stack overflow???
+                }));
+                
             }
             catch {
                 return; //do nothing...
@@ -142,6 +152,7 @@ namespace videoViewerWindow {
     }
 
     public class ByteImageConverter {
+
         public static ImageSource ByteToImage(byte[] imageData) {
             BitmapImage biImg = new BitmapImage();
             MemoryStream ms = new MemoryStream(imageData);
@@ -153,5 +164,6 @@ namespace videoViewerWindow {
 
             return imgSrc;
         }
+
     }
 }

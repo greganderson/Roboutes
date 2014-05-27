@@ -42,3 +42,7 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\Arm Terminal\bin
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\Arm Terminal\bin\Debug\networkStatusIndicator.pdb
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\Arm Terminal\bin\Debug\ChatClientModel.pdb
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\Arm Terminal\bin\Debug\StringSocket.pdb
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\Arm Terminal\bin\Debug\videoViewerWindow.exe
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\Arm Terminal\bin\Debug\videoSocketReceiver.dll
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\Arm Terminal\bin\Debug\videoViewerWindow.pdb
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\Arm Terminal\bin\Debug\videoSocketReceiver.pdb
