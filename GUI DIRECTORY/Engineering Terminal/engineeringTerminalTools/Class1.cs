@@ -28,58 +28,60 @@ namespace engineeringTerminalTools
         /// <param name="obj"></param>
         void comSock_IncomingLine(string obj)
         {
-            int state = -1;
-            if (obj.StartsWith("VideoUpdate_")) //Is it a video status update?
-            {
-                obj = obj.Replace("VideoUpdate_", "");
-
-                if (obj.StartsWith("Oculus_"))  //Is it a video update for the oculus
-                {
-                    obj = obj.Replace("Oculus_", "");
-                    if(int.TryParse(obj,out state)){
-                        if (state == 1)
-                        {
-                            VM.setReportedStatus(ToolboxControl.FeedID.OculusPT, true);
-                        }
-                        else if (state == 0)
-                        {
-                            VM.setReportedStatus(ToolboxControl.FeedID.OculusPT, false);
-                        }
-                    }
-                }
-
-                else if (obj.StartsWith("Workspace_"))
-                {
-                    obj = obj.Replace("Workspace_", "");
-                    if (int.TryParse(obj, out state))
+                if(obj!=null){
+                    int state = -1;
+                    if (obj.StartsWith("VideoUpdate_")) //Is it a video status update?
                     {
-                        if (state == 1)
-                        {
-                            VM.setReportedStatus(ToolboxControl.FeedID.Workspace, true);
-                        }
-                        else if (state == 0)
-                        {
-                            VM.setReportedStatus(ToolboxControl.FeedID.Workspace, false);
-                        }
-                    }
-                }
+                        obj = obj.Replace("VideoUpdate_", "");
 
-                else if (obj.StartsWith("Palm_"))
-                {
-                    obj = obj.Replace("Palm_", "");
-                    if (int.TryParse(obj, out state))
-                    {
-                        if (state == 1)
+                        if (obj.StartsWith("Oculus_"))  //Is it a video update for the oculus
                         {
-                            VM.setReportedStatus(ToolboxControl.FeedID.Palm, true);
+                            obj = obj.Replace("Oculus_", "");
+                            if(int.TryParse(obj,out state)){
+                                if (state == 1)
+                                {
+                                    VM.setReportedStatus(ToolboxControl.FeedID.OculusPT, true);
+                                }
+                                else if (state == 0)
+                                {
+                                    VM.setReportedStatus(ToolboxControl.FeedID.OculusPT, false);
+                                }
+                            }
                         }
-                        else if (state == 0)
+
+                        else if (obj.StartsWith("Workspace_"))
                         {
-                            VM.setReportedStatus(ToolboxControl.FeedID.Palm, false);
+                            obj = obj.Replace("Workspace_", "");
+                            if (int.TryParse(obj, out state))
+                            {
+                                if (state == 1)
+                                {
+                                    VM.setReportedStatus(ToolboxControl.FeedID.Workspace, true);
+                                }
+                                else if (state == 0)
+                                {
+                                    VM.setReportedStatus(ToolboxControl.FeedID.Workspace, false);
+                                }
+                            }
+                        }
+
+                        else if (obj.StartsWith("Palm_"))
+                        {
+                            obj = obj.Replace("Palm_", "");
+                            if (int.TryParse(obj, out state))
+                            {
+                                if (state == 1)
+                                {
+                                    VM.setReportedStatus(ToolboxControl.FeedID.Palm, true);
+                                }
+                                else if (state == 0)
+                                {
+                                    VM.setReportedStatus(ToolboxControl.FeedID.Palm, false);
+                                }
+                            }
                         }
                     }
-                }
-            }
+               }
         }
 
         private void VM_intendedCameraStatusChanged(ToolboxControl.FeedID videoFeedID, bool feedState)

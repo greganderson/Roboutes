@@ -57,6 +57,15 @@ namespace Engineering_Terminal
                         comSock.write("PT_STOP_TRANSMIT");
                     }
                     break;
+
+                case global::videoManager.ToolboxControl.FeedID.Palm:
+                    if (feedState) {
+                        comSock.write("PALM_TRANSMIT");
+                    }
+                    else {
+                        comSock.write("PALM_STOP_TRANSMIT");
+                    }
+                    break;
             }
         }
 
