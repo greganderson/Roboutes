@@ -178,15 +178,16 @@ namespace rocTools
 
     public static class rocConstants
     {
-        public static readonly IPAddress MCIP_DRIVE = IPAddress.Parse("155.99.167.9");
-        public static readonly IPAddress MCIP_ENG = IPAddress.Parse("155.98.5.148");
-        public static readonly IPAddress MCIP_ARM = IPAddress.Parse("155.98.5.148");
+        public static readonly IPAddress MCIP_DRIVE = IPAddress.Parse("155.98.5.147");
+        public static readonly IPAddress MCIP_ENG = IPAddress.Parse("155.99.167.43");
+        public static readonly IPAddress MCIP_ARM = IPAddress.Parse("155.98.5.147");
         public static readonly string MCIP_LOGISTICS = "XXX.XXX.XXX.XXX";
 
         public static readonly int MCPORT_DRIVE = 35000;
         public static readonly int MCPORT_DRIVE_VIDEO_OCULUS = 35001;
         public static readonly int MCPORT_ENGINEERING = 35010;
         public static readonly int MCPORT_ARM = 35002;
+        public static readonly int MCPORT_ARM_VIDEO_PALM = 35003;
 
         public enum COMID
         {
@@ -196,12 +197,13 @@ namespace rocTools
             ENGCOM = 3
         };
 
-        public static int[] defaultCameraAssignments = new int[] { 0, 1 };
+        public static int[] defaultCameraAssignments = new int[] { 0, 1, 2 };
 
         public enum CAMS
         {
             PT_left = 1,
             PT_right = 0,
+            PALM = 2
         };
     }
 

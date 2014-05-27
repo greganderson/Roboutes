@@ -40,6 +40,7 @@ namespace rocOnboard
         Arduino HandDuino;
 
         managedDualVideoTransmitter panTiltTransmitter;
+        managedVideoTransmitter palmCamTransmitter;
 
         public MainWindow()
         {
@@ -80,6 +81,13 @@ namespace rocOnboard
             if(camMan.getCamera(rocConstants.CAMS.PT_left, out panTiltLeft)  &&  camMan.getCamera(rocConstants.CAMS.PT_right, out panTiltRight)){ //if both the left and right cameras are found...
                 panTiltTransmitter = new managedDualVideoTransmitter(panTiltLeft, panTiltRight, rocConstants.MCIP_DRIVE, rocConstants.MCPORT_DRIVE_VIDEO_OCULUS);
                 panTiltTransmitter.startTransmitting();
+            }
+
+            VideoCaptureDevice palmCam;
+            if (camMan.getCamera(rocConstants.CAMS.PALM, out palmCam))
+            {
+                palmCamTransmitter = new managedVideoTransmitter(palmCam, rocConstants.MCIP_ARM, rocConstants.MCPORT_ARM_VIDEO_PALM);
+                //palmCamTransmitter.startTransmitting();
             }
         }
 
@@ -160,6 +168,14 @@ namespace rocOnboard
             else if (incoming == "PT_STOP_TRANSMIT")
             {
                 panTiltTransmitter.stop();
+            }
+            else if (incoming == "PALM_TRANSMIT")
+            {
+                palmCamTransmitter.startTransmitting();
+            }
+            else if (incoming == "PALM_STOP_TRANSMIT")
+            {
+                palmCamTransmitter.stop();
             }
         }
 
