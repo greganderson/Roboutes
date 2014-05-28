@@ -26,10 +26,10 @@ bool newCommands  = false;
 
 void setup(){
   test.init(9600);
-  upwrist.attach(A5);
-  leftwrist.attach(A9);
-  rightwrist.attach(A6);
-  gripper.attach(A8);
+  upwrist.attach(18);
+  leftwrist.attach(16);
+  rightwrist.attach(17);
+  gripper.attach(15);
   
   executeCommands();
 }

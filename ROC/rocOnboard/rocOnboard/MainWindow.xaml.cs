@@ -45,6 +45,7 @@ namespace rocOnboard
         managedDualVideoTransmitter panTiltTransmitter;
         managedVideoTransmitter palmCamTransmitter;
         managedVideoTransmitter noseCamTransmitter;
+        managedVideoTransmitter humerusCamTransmitter;
 
         public MainWindow()
         {
@@ -63,11 +64,11 @@ namespace rocOnboard
             ArduMan = ArduinoManager.Instance;
             ArduMan.findArduinos();
 
-            backDrive = ArduMan.getDriveBackArduino();
-            frontDrive = ArduMan.getDriveFrontArduino();
-            ptDuino = ArduMan.getPanTiltArduino();
-            ArmDuino = ArduMan.getArmArduino(true); //TODO: These are Dummy arduinos currently!
-            HandDuino = ArduMan.getHandArduino(true);  //TODO: These are Dummy arduinos currently!
+            backDrive = ArduMan.getDriveBackArduino(false);
+            frontDrive = ArduMan.getDriveFrontArduino(false);
+            ptDuino = ArduMan.getPanTiltArduino(false);
+            ArmDuino = ArduMan.getArmArduino(false); //TODO: These are Dummy arduinos currently!
+            HandDuino = ArduMan.getHandArduino(false);  //TODO: These are Dummy arduinos currently!
 
             backDrive.Data_Received += backDrive_Data_Received;
             frontDrive.Data_Received += frontDrive_Data_Received;
@@ -103,6 +104,12 @@ namespace rocOnboard
             if (camMan.getCamera(rocConstants.CAMS.NOSE, out noseCam))
             {
                 noseCamTransmitter = new managedVideoTransmitter(noseCam, rocConstants.MCIP_DRIVE, rocConstants.MCPORT_DRIVE_VIDEO_NOSE);
+            }
+
+            VideoCaptureDevice humerusCam;
+            if (camMan.getCamera(rocConstants.CAMS.Humerus, out humerusCam))
+            {
+                humerusCamTransmitter = new managedVideoTransmitter(humerusCam, rocConstants.MCIP_ARM, rocConstants.MCPORT_ARM_VIDEO_HUMERUS);
             }
 
         }
@@ -242,6 +249,14 @@ namespace rocOnboard
                     else if (incoming == "NOSE_STOP_TRANSMIT")
                     {
                         noseCamTransmitter.stop();
+                    }
+                    else if (incoming == "HUMERUS_TRANSMIT")
+                    {
+                        humerusCamTransmitter.startTransmitting();
+                    }
+                    else if (incoming == "HUMERUS_STOP_TRANSMIT")
+                    {
+                        humerusCamTransmitter.stop();
                     }
                 }
             }

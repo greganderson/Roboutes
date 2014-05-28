@@ -135,39 +135,60 @@ namespace ArduinoLibrary
             }
         }
 
-        public Arduino getDriveFrontArduino()
+        public Arduino getDriveFrontArduino(bool real)
         {
-            if (ArduinoMap.ContainsKey(Arduino_Codes.DRIVEFRONT_IDENTITY))
+            if (real)
             {
-                return ArduinoMap[Arduino_Codes.DRIVEFRONT_IDENTITY];
+                if (ArduinoMap.ContainsKey(Arduino_Codes.DRIVEFRONT_IDENTITY))
+                {
+                    return ArduinoMap[Arduino_Codes.DRIVEFRONT_IDENTITY];
+                }
+                else
+                {
+                    throw new Exception("No Drive Front Arduino Exists");
+                }
             }
             else
             {
-                throw new Exception("No Drive Front Arduino Exists");
+                return new Arduino();
             }
         }
 
-        public Arduino getDriveBackArduino()
+        public Arduino getDriveBackArduino(bool real)
         {
-            if (ArduinoMap.ContainsKey(Arduino_Codes.DRIVEBACK_IDENTITY))
+            if (real)
             {
-                return ArduinoMap[Arduino_Codes.DRIVEBACK_IDENTITY];
+                if (ArduinoMap.ContainsKey(Arduino_Codes.DRIVEBACK_IDENTITY))
+                {
+                    return ArduinoMap[Arduino_Codes.DRIVEBACK_IDENTITY];
+                }
+                else
+                {
+                    throw new Exception("No Drive Back Arduino Exists");
+                }
             }
             else
             {
-                throw new Exception("No Drive Back Arduino Exists");
+                return new Arduino();
             }
         }
 
-        public Arduino getPanTiltArduino()
+        public Arduino getPanTiltArduino(bool real)
         {
-            if (ArduinoMap.ContainsKey(Arduino_Codes.PT_IDENTITY))
+            if (real)
             {
-                return ArduinoMap[Arduino_Codes.PT_IDENTITY];
+                if (ArduinoMap.ContainsKey(Arduino_Codes.PT_IDENTITY))
+                {
+                    return ArduinoMap[Arduino_Codes.PT_IDENTITY];
+                }
+                else
+                {
+                    throw new Exception("No Drive Back Arduino Exists");
+                }
             }
             else
             {
-                throw new Exception("No Drive Back Arduino Exists");
+                return new Arduino();
             }
         }
 
