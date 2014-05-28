@@ -87,7 +87,6 @@ C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Termi
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Terminal\commFeedViz\bin\Debug\commFeedViz.pkgdef
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Terminal\commFeedViz\bin\Debug\commFeedViz.vsix
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Terminal\commFeedViz\bin\Debug\extension.vsixmanifest
-C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Terminal\commFeedViz\obj\Debug\commFeedViz.csprojResolveAssemblyReference.cache
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Terminal\commFeedViz\obj\Debug\ToolboxControl.baml
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Terminal\commFeedViz\obj\Debug\ToolboxControl.g.cs
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Terminal\commFeedViz\obj\Debug\commFeedViz_MarkupCompile.cache

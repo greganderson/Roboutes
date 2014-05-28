@@ -29,6 +29,7 @@ namespace videoManager
         private volatile bool IntendedOculus = false;
         private volatile bool IntendedWorkspace = false;
         private volatile bool IntendedPalm = false;
+        private volatile bool IntendedHumerus = false;
 
         public ToolboxControl()
         {
@@ -51,7 +52,8 @@ namespace videoManager
                             ReportedOculusInd.setIndicatorState(toggleIndicator.indicatorState.Red);
                         }
                         break;
-                    case FeedID.Workspace:
+
+                    case FeedID.Nose:
                         if (state)
                         {
                             ReportedWorkspaceInd.setIndicatorState(toggleIndicator.indicatorState.Green);
@@ -61,6 +63,7 @@ namespace videoManager
                             ReportedWorkspaceInd.setIndicatorState(toggleIndicator.indicatorState.Red);
                         }
                         break;
+
                     case FeedID.Palm:
                         if (state)
                         {
@@ -69,6 +72,15 @@ namespace videoManager
                         else
                         {
                             ReportedPalmInd.setIndicatorState(toggleIndicator.indicatorState.Red);
+                        }
+                        break;
+
+                    case FeedID.Humerus:
+                        if (state) {
+                            ReportedHumerusInd.setIndicatorState(toggleIndicator.indicatorState.Green);
+                        }
+                        else {
+                            ReportedHumerusInd.setIndicatorState(toggleIndicator.indicatorState.Red);
                         }
                         break;
                 }
@@ -80,8 +92,9 @@ namespace videoManager
         public enum FeedID
         {
             OculusPT,
-            Workspace,
-            Palm
+            Palm,
+            Nose,
+            Humerus
         }
 
         private void OculusToggle_Click(object sender, RoutedEventArgs e)
@@ -97,7 +110,7 @@ namespace videoManager
             }
             else
             {
-                IntendedOculusInd.setIndicatorState(toggleIndicator.indicatorState.Red);
+                Dispatcher.Invoke(()=>IntendedOculusInd.setIndicatorState(toggleIndicator.indicatorState.Red));
                 if (intendedCameraStatusChanged != null)
                 {
                     intendedCameraStatusChanged(FeedID.OculusPT, false);
@@ -113,15 +126,15 @@ namespace videoManager
                 Dispatcher.Invoke(()=>IntendedWorkspaceInd.setIndicatorState(toggleIndicator.indicatorState.Green));
                 if (intendedCameraStatusChanged != null)
                 {
-                    intendedCameraStatusChanged(FeedID.Workspace, true);
+                    intendedCameraStatusChanged(FeedID.Nose, true);
                 }
             }
             else
             {
-                IntendedWorkspaceInd.setIndicatorState(toggleIndicator.indicatorState.Red);
+                Dispatcher.Invoke(()=>IntendedWorkspaceInd.setIndicatorState(toggleIndicator.indicatorState.Red));
                 if (intendedCameraStatusChanged != null)
                 {
-                    intendedCameraStatusChanged(FeedID.Workspace, false);
+                    intendedCameraStatusChanged(FeedID.Nose, false);
                 }
             }
         }
@@ -139,10 +152,26 @@ namespace videoManager
             }
             else
             {
-                IntendedPalmInd.setIndicatorState(toggleIndicator.indicatorState.Red);
+                Dispatcher.Invoke(()=>IntendedPalmInd.setIndicatorState(toggleIndicator.indicatorState.Red));
                 if (intendedCameraStatusChanged != null)
                 {
                     intendedCameraStatusChanged(FeedID.Palm, false);
+                }
+            }
+        }
+
+        private void HumerusToggle_Click(object sender, RoutedEventArgs e) {
+            IntendedHumerus = !IntendedHumerus;
+            if (IntendedHumerus) {
+                Dispatcher.Invoke(() => IntendedHumerusInd.setIndicatorState(toggleIndicator.indicatorState.Green));
+                if (intendedCameraStatusChanged != null) {
+                    intendedCameraStatusChanged(FeedID.Humerus, true);
+                }
+            }
+            else {
+                Dispatcher.Invoke(()=>IntendedHumerusInd.setIndicatorState(toggleIndicator.indicatorState.Red));
+                if (intendedCameraStatusChanged != null) {
+                    intendedCameraStatusChanged(FeedID.Humerus, false);
                 }
             }
         }
@@ -166,7 +195,7 @@ namespace videoManager
             {
                 if (resetRequest != null)
                 {
-                    resetRequest(FeedID.Workspace);
+                    resetRequest(FeedID.Nose);
                 }
             }
         }
@@ -179,6 +208,15 @@ namespace videoManager
                 if (resetRequest != null)
                 {
                     resetRequest(FeedID.Palm);
+                }
+            }
+        }
+
+        private void HumerusReset_Click(object sender, RoutedEventArgs e) {
+            MessageBoxResult MR = MessageBox.Show("Are you sure you want to attempt to reset the Palm video feed?");
+            if (MR == MessageBoxResult.Yes) {
+                if (resetRequest != null) {
+                    resetRequest(FeedID.Humerus);
                 }
             }
         }

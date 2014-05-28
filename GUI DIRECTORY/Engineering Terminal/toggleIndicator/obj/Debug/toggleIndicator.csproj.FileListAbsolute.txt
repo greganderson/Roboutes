@@ -70,7 +70,6 @@ C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Termi
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Terminal\toggleIndicator\bin\Debug\toggleIndicator.pkgdef
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Terminal\toggleIndicator\bin\Debug\toggleIndicator.vsix
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Terminal\toggleIndicator\bin\Debug\extension.vsixmanifest
-C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Terminal\toggleIndicator\obj\Debug\toggleIndicator.csprojResolveAssemblyReference.cache
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Terminal\toggleIndicator\obj\Debug\ToolboxControl.baml
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Terminal\toggleIndicator\obj\Debug\ToolboxControl.g.cs
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Terminal\toggleIndicator\obj\Debug\toggleIndicator_MarkupCompile.cache
@@ -99,3 +98,4 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Engineering Terminal\toggleIn
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Engineering Terminal\toggleIndicator\obj\Debug\toggleIndicator.pkgdef
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Engineering Terminal\toggleIndicator\obj\Debug\toggleIndicator.latest.pkgdef
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Engineering Terminal\toggleIndicator\obj\Debug\extension.vsixmanifest
+C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Terminal\toggleIndicator\obj\Debug\toggleIndicator.csprojResolveAssemblyReference.cache

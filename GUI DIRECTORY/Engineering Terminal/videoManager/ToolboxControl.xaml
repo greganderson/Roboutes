@@ -70,18 +70,23 @@
             <Button x:Name="OculusToggle" Content="Toggle" HorizontalAlignment="Left" Margin="215,95,0,0" VerticalAlignment="Top" Width="85" FontWeight="Bold" Foreground="#FFFF9802" Background="Black" Click="OculusToggle_Click"/>
             <Button x:Name="OculusReset" Content="Reset" HorizontalAlignment="Left" Margin="215,120,0,0" VerticalAlignment="Top" Width="85" FontWeight="Bold" Background="Black" Foreground="#FFFF9700" Click="OculusReset_Click"/>
             <toggleIndicator:ToolboxControl x:Name="ReportedOculusInd" HorizontalAlignment="Left" Margin="164,100,0,0" VerticalAlignment="Top" Height="37" Width="41"/>
-            <TextBox x:Name="WorkspaceLabel" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="Workspace:" VerticalAlignment="Top" Width="94" Background="{x:Null}" Foreground="Black" FontWeight="Bold" BorderBrush="{x:Null}" Margin="0,263,0,0" FontSize="15"/>
-            <toggleIndicator:ToolboxControl x:Name="IntendedWorkspaceInd" HorizontalAlignment="Left" Margin="103,256,0,0" VerticalAlignment="Top" Height="37" Width="41"/>
+            <TextBox x:Name="WorkspaceLabel" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="Workspace:" VerticalAlignment="Top" Width="94" Background="{x:Null}" Foreground="Black" FontWeight="Bold" BorderBrush="{x:Null}" Margin="0,158,0,0" FontSize="15"/>
+            <toggleIndicator:ToolboxControl x:Name="IntendedWorkspaceInd" HorizontalAlignment="Left" Margin="103,151,0,0" VerticalAlignment="Top" Height="37" Width="41"/>
             <Rectangle Fill="#FF383838" HorizontalAlignment="Left" Height="2" Stroke="#FFFF9700" VerticalAlignment="Top" Width="300" Margin="0,298,0,0"/>
-            <Button x:Name="WorkspaceToggle" Content="Toggle" HorizontalAlignment="Left" Margin="215,251,0,0" VerticalAlignment="Top" Width="85" FontWeight="Bold" Foreground="#FFFF9802" Background="Black" Click="WorkspaceToggle_Click"/>
-            <Button x:Name="WorkspaceReset" Content="Reset" HorizontalAlignment="Left" Margin="215,276,0,0" VerticalAlignment="Top" Width="85" FontWeight="Bold" Background="Black" Foreground="#FFFF9700" Click="WorkspaceReset_Click"/>
-            <toggleIndicator:ToolboxControl x:Name="ReportedWorkspaceInd" HorizontalAlignment="Left" Margin="164,256,0,0" VerticalAlignment="Top" Height="37" Width="41"/>
-            <TextBox x:Name="PalmLabel" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="Palm:" VerticalAlignment="Top" Width="94" Background="{x:Null}" Foreground="Black" FontWeight="Bold" BorderBrush="{x:Null}" Margin="0,305,0,0" FontSize="20"/>
-            <toggleIndicator:ToolboxControl x:Name="IntendedPalmInd" HorizontalAlignment="Left" Margin="103,305,0,0" VerticalAlignment="Top" Height="37" Width="41"/>
+            <Button x:Name="WorkspaceToggle" Content="Toggle" HorizontalAlignment="Left" Margin="215,146,0,0" VerticalAlignment="Top" Width="85" FontWeight="Bold" Foreground="#FFFF9802" Background="Black" Click="WorkspaceToggle_Click"/>
+            <Button x:Name="WorkspaceReset" Content="Reset" HorizontalAlignment="Left" Margin="215,173,0,0" VerticalAlignment="Top" Width="85" FontWeight="Bold" Background="Black" Foreground="#FFFF9700" Click="WorkspaceReset_Click"/>
+            <toggleIndicator:ToolboxControl x:Name="ReportedWorkspaceInd" HorizontalAlignment="Left" Margin="164,151,0,0" VerticalAlignment="Top" Height="37" Width="41"/>
+            <TextBox x:Name="PalmLabel" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="Palm:" VerticalAlignment="Top" Width="94" Background="{x:Null}" Foreground="Black" FontWeight="Bold" BorderBrush="{x:Null}" Margin="0,256,0,0" FontSize="20"/>
+            <toggleIndicator:ToolboxControl x:Name="IntendedPalmInd" HorizontalAlignment="Left" Margin="103,256,0,0" VerticalAlignment="Top" Height="37" Width="41"/>
             <Rectangle Fill="#FF383838" HorizontalAlignment="Left" Height="2" Stroke="#FFFF9700" VerticalAlignment="Top" Width="300" Margin="0,347,0,0"/>
-            <Button x:Name="PalmToggle" Content="Toggle" HorizontalAlignment="Left" Margin="215,300,0,0" VerticalAlignment="Top" Width="85" FontWeight="Bold" Foreground="#FFFF9802" Background="Black" Click="PalmToggle_Click"/>
-            <Button x:Name="PalmReset" Content="Reset" HorizontalAlignment="Left" Margin="215,325,0,0" VerticalAlignment="Top" Width="85" FontWeight="Bold" Background="Black" Foreground="#FFFF9700" Click="PalmReset_Click"/>
-            <toggleIndicator:ToolboxControl x:Name="ReportedPalmInd" HorizontalAlignment="Left" Margin="164,305,0,0" VerticalAlignment="Top" Height="37" Width="41"/>
+            <Button x:Name="PalmToggle" Content="Toggle" HorizontalAlignment="Left" Margin="215,251,0,0" VerticalAlignment="Top" Width="85" FontWeight="Bold" Foreground="#FFFF9802" Background="Black" Click="PalmToggle_Click"/>
+            <Button x:Name="PalmReset" Content="Reset" HorizontalAlignment="Left" Margin="215,276,0,0" VerticalAlignment="Top" Width="85" FontWeight="Bold" Background="Black" Foreground="#FFFF9700" Click="PalmReset_Click"/>
+            <toggleIndicator:ToolboxControl x:Name="ReportedPalmInd" HorizontalAlignment="Left" Margin="164,256,0,0" VerticalAlignment="Top" Height="37" Width="41"/>
+            <TextBox x:Name="HumerusLabel" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="Humerus:" VerticalAlignment="Top" Width="94" Background="{x:Null}" Foreground="Black" FontWeight="Bold" BorderBrush="{x:Null}" Margin="0,305,0,0" FontSize="18"/>
+            <toggleIndicator:ToolboxControl x:Name="IntendedHumerusInd" HorizontalAlignment="Left" Margin="103,305,0,0" VerticalAlignment="Top" Height="37" Width="41"/>
+            <Button x:Name="HumerusToggle" Content="Toggle" HorizontalAlignment="Left" Margin="215,300,0,0" VerticalAlignment="Top" Width="85" FontWeight="Bold" Foreground="#FFFF9802" Background="Black" Click="HumerusToggle_Click"/>
+            <Button x:Name="HumerusReset" Content="Reset" HorizontalAlignment="Left" Margin="215,325,0,0" VerticalAlignment="Top" Width="85" FontWeight="Bold" Background="Black" Foreground="#FFFF9700" Click="HumerusReset_Click"/>
+            <toggleIndicator:ToolboxControl x:Name="ReportedHumerusInd" HorizontalAlignment="Left" Margin="164,305,0,0" VerticalAlignment="Top" Height="37" Width="41"/>
         </Grid>
     </Viewbox>
 </UserControl>

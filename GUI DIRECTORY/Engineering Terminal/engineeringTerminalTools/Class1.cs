@@ -56,11 +56,11 @@ namespace engineeringTerminalTools
                             {
                                 if (state == 1)
                                 {
-                                    VM.setReportedStatus(ToolboxControl.FeedID.Workspace, true);
+                                    VM.setReportedStatus(ToolboxControl.FeedID.Nose, true);
                                 }
                                 else if (state == 0)
                                 {
-                                    VM.setReportedStatus(ToolboxControl.FeedID.Workspace, false);
+                                    VM.setReportedStatus(ToolboxControl.FeedID.Nose, false);
                                 }
                             }
                         }

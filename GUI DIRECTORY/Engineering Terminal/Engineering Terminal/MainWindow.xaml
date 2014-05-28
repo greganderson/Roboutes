@@ -11,7 +11,7 @@
 
         <HardwareMonitor:ToolboxControl x:Name="hardwareMonitor" HorizontalAlignment="Left" Margin="410,0,0,0" VerticalAlignment="Top" Height="523" Width="446"/>
 
-        <commFeedViz:commFeedViz x:Name="internetInComViz" HorizontalAlignment="Left" Margin="856,0,0,0" VerticalAlignment="Top" Height="523" title="Internet IN"/>
+        <commFeedViz:commFeedViz x:Name="internetInComViz" HorizontalAlignment="Left" Margin="856,0,0,0" VerticalAlignment="Top" Height="523" title="Internet IN" IsHitTestVisible="False"/>
 
     </Grid>
 </Window>

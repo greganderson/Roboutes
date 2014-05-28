@@ -66,12 +66,30 @@ namespace Engineering_Terminal
                         comSock.write("PALM_STOP_TRANSMIT");
                     }
                     break;
+
+                case global::videoManager.ToolboxControl.FeedID.Nose:
+                    if (feedState) {
+                        comSock.write("NOSE_TRANSMIT");
+                    }
+                    else {
+                        comSock.write("NOSE_STOP_TRANSMIT");
+                    }
+                    break;
+
+                case global::videoManager.ToolboxControl.FeedID.Humerus:
+                    if (feedState) {
+                        comSock.write("HUMERUS_TRANSMIT");
+                    }
+                    else {
+                        comSock.write("HUMERUS_STOP_TRANSMIT");
+                    }
+                    break;
             }
         }
 
         void videoManager_resetRequest(videoManager.ToolboxControl.FeedID videoFeedID)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         void comSock_connectionLost()
@@ -86,7 +104,35 @@ namespace Engineering_Terminal
 
         void comSock_IncomingLine(string obj)
         {
-            Dispatcher.Invoke(() => internetInComViz.addText(obj+"\r"));
+            if (obj != null) {
+                Dispatcher.Invoke(() => internetInComViz.addText(obj + "\r"));
+                int val;
+                if (obj.StartsWith("CPU_LOAD_")) {
+                    if (int.TryParse(obj.Substring(obj.LastIndexOf("_")+1), out val)) {
+                        hardwareMonitor.setCPULoad(val);
+                    }
+                }
+                else if (obj.StartsWith("CPU_TEMP_")) {
+                    if (int.TryParse(obj.Substring(obj.LastIndexOf("_") + 1), out val)) {
+                        hardwareMonitor.setCPUTemp(val);
+                    }
+                }
+                else if (obj.StartsWith("GPU_LOAD_")) {
+                    if (int.TryParse(obj.Substring(obj.LastIndexOf("_") + 1), out val)) {
+                        hardwareMonitor.setGPULoad(val);
+                    }
+                }
+                else if (obj.StartsWith("GPU_TEMP_")) {
+                    if (int.TryParse(obj.Substring(obj.LastIndexOf("_") + 1), out val)) {
+                        hardwareMonitor.setGPUTemp(val);
+                    }
+                }
+                else if (obj.StartsWith("RAM_LOAD_")) {
+                    if (int.TryParse(obj.Substring(obj.LastIndexOf("_") + 1), out val)) {
+                        hardwareMonitor.setRAMLoad(val);
+                    }
+                }
+            }
         }
 
         private void Window_Closed(object sender, EventArgs e)
