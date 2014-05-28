@@ -24,7 +24,7 @@ namespace videoSocketTools
         private TcpClient tcpClient;
         private Socket sendSocket;
         private volatile bool Transmitting = false;
-        private long quality = 30; //15% is default quality
+        private long quality = 15; //15% is default quality
         private object qualitySync = 1;
         private volatile bool timeExpired = true; //when expired the frame can be sent (used to control FPS)
         private int FPS = 15;

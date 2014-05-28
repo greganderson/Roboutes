@@ -46,6 +46,13 @@ namespace ArduinoLibrary {
             sendThread.Start();
         }
 
+        /// <summary>
+        /// This is a DUMMY Arduino. it doesnt do anything... Use the other constructor that requires parameters for a real one.
+        /// </summary>
+        public Arduino()
+        {
+        }
+
         private void sendData()
         {
             while (true)

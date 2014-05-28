@@ -119,6 +119,10 @@
       <Project>{fd7b472f-8852-493a-bace-9608b5a5d878}</Project>
       <Name>managedVideoTransmitter</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ROC infoTools\ROC infoTools.csproj">
+      <Project>{c59c0a70-10db-406c-94b8-79b2253a3f42}</Project>
+      <Name>ROC infoTools</Name>
+    </ProjectReference>
     <ProjectReference Include="..\rocTools\rocTools.csproj">
       <Project>{a7dab2d1-3d18-44ec-baa6-6db118470785}</Project>
       <Name>rocTools</Name>

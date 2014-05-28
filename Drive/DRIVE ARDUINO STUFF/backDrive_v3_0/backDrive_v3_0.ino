@@ -73,7 +73,7 @@ void setup() {
 void loop() {
   long timer1 = micros();
   if(driveCom.newData(&dataFromPC)){
-   // driveCom.writeln("leftEnc: "+(String)((int)leftEnc.read()));
+    //driveCom.writeln("leftEnc: "+(String)((int)leftEnc.read()));
    //Serial.println(inputString);
 	  if (dataFromPC.startsWith("L:")){ //[ L0][ L100]
                   dataFromPC.replace("L:","");
@@ -101,7 +101,7 @@ void loop() {
                   driveCom.writeln("new rightSpeed: "+(String)rightspeed);
                   //Serial.println(rightspeed);
                   rightspeed = map(rightspeed, 0, 100, -3200, 3200);
-            	  inputSpeed2 = rightspeed;
+            	  inputSpeed2 = -rightspeed;
             	  if(inputSpeed2 >= -3200 && inputSpeed2 <= 3200)
             	  {
             		  double temp2 = inputSpeed2/3200;

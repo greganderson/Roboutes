@@ -5,8 +5,8 @@ ADVCOM driveCom(&Serial, "DRIVEFRONT");
 String dataFromPC;
 #include "pins_arduino.h"
 
-Encoder leftEnc(5, 4);
-Encoder rightEnc(12, 11);
+Encoder leftEnc(4, 5);
+Encoder rightEnc(11, 12);
 
 String lspeed;
 int leftspeed;

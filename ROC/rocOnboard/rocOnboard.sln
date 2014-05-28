@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "safeCommFeedViz", "safeComm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "safeCommFeedViz Tester", "safeCommFeedViz Tester\safeCommFeedViz Tester.csproj", "{AA6D4FC8-1965-4CFC-918D-1CC72ABEB99B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ROC infoTools", "ROC infoTools\ROC infoTools.csproj", "{C59C0A70-10DB-406C-94B8-79B2253A3F42}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,10 @@ Global
 		{AA6D4FC8-1965-4CFC-918D-1CC72ABEB99B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA6D4FC8-1965-4CFC-918D-1CC72ABEB99B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA6D4FC8-1965-4CFC-918D-1CC72ABEB99B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C59C0A70-10DB-406C-94B8-79B2253A3F42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C59C0A70-10DB-406C-94B8-79B2253A3F42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C59C0A70-10DB-406C-94B8-79B2253A3F42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C59C0A70-10DB-406C-94B8-79B2253A3F42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

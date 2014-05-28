@@ -98,25 +98,40 @@ namespace ArduinoLibrary
             return false;
         }
 
-        public Arduino getArmArduino() {
-            if (ArduinoMap.ContainsKey(Arduino_Codes.ARM_IDENTITY))
+        public Arduino getArmArduino(bool real) {
+            if (real)
             {
-                return ArduinoMap[Arduino_Codes.ARM_IDENTITY];
-            }
-            else {
-                throw new Exception("No Arm Arduino Exists");
-            }
-        }
-
-        public Arduino getHandArduino()
-        {
-            if (ArduinoMap.ContainsKey(Arduino_Codes.HAND_IDENTITY))
-            {
-                return ArduinoMap[Arduino_Codes.HAND_IDENTITY];
+                if (ArduinoMap.ContainsKey(Arduino_Codes.ARM_IDENTITY))
+                {
+                    return ArduinoMap[Arduino_Codes.ARM_IDENTITY];
+                }
+                else
+                {
+                    throw new Exception("No Arm Arduino Exists");
+                }
             }
             else
             {
-                throw new Exception("No Hand Arduino Exists");
+                return new Arduino(); //Dummy arduino
+            }
+        }
+
+        public Arduino getHandArduino(bool real)
+        {
+            if (real)
+            {
+                if (ArduinoMap.ContainsKey(Arduino_Codes.HAND_IDENTITY))
+                {
+                    return ArduinoMap[Arduino_Codes.HAND_IDENTITY];
+                }
+                else
+                {
+                    throw new Exception("No Hand Arduino Exists");
+                }
+            }
+            else
+            {
+                return new Arduino(); //Dummy Arduino
             }
         }
 
