@@ -33,6 +33,7 @@ namespace Arm_Terminal
         armCommandTransmitter armTransmit;
 
         videoWindow palmVidWindow;
+        videoWindow humerusVidWindow;
 
         public MainWindow()
         {
@@ -40,6 +41,9 @@ namespace Arm_Terminal
 
             palmVidWindow = new videoWindow(35003, videoWindow.monitors.secondMonitor);
             palmVidWindow.Show();
+
+            humerusVidWindow = new videoWindow(35005, videoWindow.monitors.thirdMonitor);
+            humerusVidWindow.Show();
 
             inputOnlineInd.setIndicatorState(toggleIndicator.indicatorState.Red);
 

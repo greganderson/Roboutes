@@ -69,6 +69,8 @@ namespace videoViewerWindow {
                 {
                     ImageSource IS = ByteImageConverter.ByteToImage(frame);
                     imageBox.Source = IS; //TODO: stack overflow???
+                    /*BitmapImage bi = IS as BitmapImage;
+                    bi.StreamSource.Dispose();*/
                 }));
                 
             }
@@ -164,6 +166,30 @@ namespace videoViewerWindow {
 
             return imgSrc;
         }
+
+
+       /* MemoryStream MS;
+
+        public ByteImageConverter()
+        {
+            MS = new MemoryStream();
+        }
+
+       /* public ImageSource ByteToImage(byte[] imageData)
+        {
+            MS.Dispose();
+
+            BitmapImage biImg = new BitmapImage();
+            MemoryStream ms = new MemoryStream(imageData);
+            biImg.BeginInit();
+            biImg.StreamSource = ms;
+            biImg.EndInit();
+
+            ImageSource imgSrc = biImg as ImageSource;
+
+            return imgSrc;
+
+        }*/
 
     }
 }

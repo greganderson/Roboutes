@@ -1,18 +1,3 @@
-C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\PilotPreferences.dll
-C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\Deadzone.dll
-C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\liveXboxMonitor.dll
-C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\liveXboxMonitorV2.dll
-C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\toggleIndicator.dll
-C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\XboxController.dll
-C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\PilotPreferences.pkgdef
-C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\extension.vsixmanifest
-C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\Microsoft.Xna.Framework.dll
-C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\PilotPreferences.pdb
-C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\Deadzone.pdb
-C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\liveXboxMonitorV2.pdb
-C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\liveXboxMonitor.pdb
-C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\toggleIndicator.pdb
-C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\XboxController.pdb
 C:\Users\RoboUtes 6\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\PilotPreferences.dll
 C:\Users\RoboUtes 6\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\Deadzone.dll
 C:\Users\RoboUtes 6\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\PilotPreferences\1.0\\liveXboxMonitor.dll

@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>riftdotnet\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="RiftDotNet">
       <HintPath>..\..\demoHMDwCams\demoHMDwCams\riftdotnet\RiftDotNet.dll</HintPath>
     </Reference>

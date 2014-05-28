@@ -27,15 +27,7 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\videoViewerWin
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\videoViewerWindow\bin\Debug\videoViewerWindow.pdb
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\videoViewerWindow\bin\Debug\AForge.Controls.dll
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\videoViewerWindow\bin\Debug\videoSocketReceiver.dll
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\videoViewerWindow\bin\Debug\AForge.Video.dll
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\videoViewerWindow\bin\Debug\AForge.dll
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\videoViewerWindow\bin\Debug\AForge.Imaging.dll
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\videoViewerWindow\bin\Debug\AForge.Math.dll
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\videoViewerWindow\bin\Debug\videoSocketReceiver.pdb
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\videoViewerWindow\bin\Debug\AForge.Video.xml
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\videoViewerWindow\bin\Debug\AForge.xml
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\videoViewerWindow\bin\Debug\AForge.Imaging.xml
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\videoViewerWindow\bin\Debug\AForge.Math.xml
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\videoViewerWindow\obj\Debug\videoViewerWindow.csprojResolveAssemblyReference.cache
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\videoViewerWindow\obj\Debug\MainWindow.baml
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\videoViewerWindow\obj\Debug\MainWindow.g.cs

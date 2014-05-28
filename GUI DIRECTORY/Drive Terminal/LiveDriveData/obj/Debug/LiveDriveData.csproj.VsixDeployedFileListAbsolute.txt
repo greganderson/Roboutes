@@ -1,11 +1,3 @@
-C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\LiveDriveData.dll
-C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\toggleIndicator.dll
-C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\WheelMonitor.dll
-C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\LiveDriveData.pkgdef
-C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\extension.vsixmanifest
-C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\LiveDriveData.pdb
-C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\toggleIndicator.pdb
-C:\Users\StealthBomber\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\WheelMonitor.pdb
 C:\Users\RoboUtes 6\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\LiveDriveData.dll
 C:\Users\RoboUtes 6\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\toggleIndicator.dll
 C:\Users\RoboUtes 6\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\LiveDriveData\1.0\\WheelMonitor.dll

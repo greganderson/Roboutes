@@ -58,3 +58,6 @@ C:\Users\ROC\Documents\GitHub\panTiltDevelopment\PTC#\dualCameraViewr\obj\Debug\
 C:\Users\ROC\Documents\GitHub\panTiltDevelopment\PTC#\dualCameraViewr\obj\Debug\dualCameraViewr.g.resources
 C:\Users\ROC\Documents\GitHub\panTiltDevelopment\PTC#\dualCameraViewr\obj\Debug\dualCameraViewer.Properties.Resources.resources
 C:\Users\ROC\Documents\GitHub\panTiltDevelopment\PTC#\dualCameraViewr\obj\Debug\dualCameraViewer.csproj.GenerateResource.Cache
+C:\Users\RoboUtes 6\Desktop\Roboutes\panTiltDevelopment\PTC#\dualCameraViewr\bin\Debug\dualCameraViewr.exe.config
+C:\Users\RoboUtes 6\Desktop\Roboutes\panTiltDevelopment\PTC#\dualCameraViewr\obj\Debug\dualCameraViewr.exe
+C:\Users\RoboUtes 6\Desktop\Roboutes\panTiltDevelopment\PTC#\dualCameraViewr\obj\Debug\dualCameraViewr.pdb
