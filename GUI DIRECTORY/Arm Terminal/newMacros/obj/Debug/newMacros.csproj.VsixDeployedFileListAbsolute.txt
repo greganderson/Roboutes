@@ -4,3 +4,8 @@ C:\Users\RoboUtes 6\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt
 C:\Users\RoboUtes 6\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\newMacros\1.0\\extension.vsixmanifest
 C:\Users\RoboUtes 6\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\newMacros\1.0\\newMacros.pdb
 C:\Users\RoboUtes 6\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\newMacros\1.0\\localArmControlTools.pdb
+C:\Users\RoboUtes 6\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\newMacros\1.0\\commSockServer.dll
+C:\Users\RoboUtes 6\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\newMacros\1.0\\XboxController.dll
+C:\Users\RoboUtes 6\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\newMacros\1.0\\ChatClientModel.dll
+C:\Users\RoboUtes 6\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\newMacros\1.0\\Microsoft.Xna.Framework.dll
+C:\Users\RoboUtes 6\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Matt M\newMacros\1.0\\StringSocket.dll

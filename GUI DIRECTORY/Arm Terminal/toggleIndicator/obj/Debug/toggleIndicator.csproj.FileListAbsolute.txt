@@ -133,4 +133,3 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\toggleIndicator\
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\toggleIndicator\obj\Debug\toggleIndicator.pkgdef
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\toggleIndicator\obj\Debug\toggleIndicator.latest.pkgdef
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\toggleIndicator\obj\Debug\extension.vsixmanifest
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\toggleIndicator\obj\Debug\toggleIndicator.csprojResolveAssemblyReference.cache
