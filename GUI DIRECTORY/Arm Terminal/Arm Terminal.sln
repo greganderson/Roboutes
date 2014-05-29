@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "videoViewerWindow", "videoV
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "macroInProgressWindow", "macroInProgressWindow\macroInProgressWindow.csproj", "{6245D9C1-8B9E-4F06-A35F-3232ED983BB9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "newMacros", "newMacros\newMacros.csproj", "{04DEA8EC-2F6A-407C-9135-0C724982FB27}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,6 +123,10 @@ Global
 		{6245D9C1-8B9E-4F06-A35F-3232ED983BB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6245D9C1-8B9E-4F06-A35F-3232ED983BB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6245D9C1-8B9E-4F06-A35F-3232ED983BB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04DEA8EC-2F6A-407C-9135-0C724982FB27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04DEA8EC-2F6A-407C-9135-0C724982FB27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04DEA8EC-2F6A-407C-9135-0C724982FB27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04DEA8EC-2F6A-407C-9135-0C724982FB27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

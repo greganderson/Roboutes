@@ -638,11 +638,11 @@ namespace ArmControlTools
         /// Manually set the target position of the gripper.
         /// </summary>
         /// <param name="newPositions"></param>
-        public void manuallySetGripper(int newPosition)
+        public void manuallySetGripper(double newPosition)
         {
             lock (gripperSync)
             {
-                commandedGripper = newPosition.Constrain(armConstants.MIN_GRIPPER, armConstants.MAX_GRIPPER);
+                commandedGripper = (int)newPosition.Constrain(armConstants.MIN_GRIPPER, armConstants.MAX_GRIPPER);
                 if (targetGripperChanged != null && inputUnlocked)
                 {
                     targetGripperChanged(commandedGripper);
@@ -1217,7 +1217,7 @@ namespace ArmControlTools
         private armMacroExecutor(armInputManager _armIn)
         {
             armIn = _armIn;
-            armIn.EmergencyStop += emergencyStopHandler();
+            armIn.EmergencyStop += emergencyStopHandler;
             stepTimer = new Timer(stepCallback, null, Timeout.Infinite, Timeout.Infinite);
 
             //////////TEST BEGIN
@@ -1233,7 +1233,7 @@ namespace ArmControlTools
             performMacro(temp);
         }
 
-        private Action emergencyStopHandler()
+        private void emergencyStopHandler()
         {
             safe = false;
             if (macroEventStatusUpdate != null)
@@ -1244,7 +1244,6 @@ namespace ArmControlTools
             {
                 stepTimer.Change(Timeout.Infinite, Timeout.Infinite);
             }
-            return null;
         }
 
         public void performMacro(Queue<armMovement> dance)

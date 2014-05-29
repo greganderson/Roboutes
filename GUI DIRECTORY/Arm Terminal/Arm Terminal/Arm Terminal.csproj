@@ -139,6 +139,10 @@
       <Project>{f169b9c3-3117-487d-a186-5b2ef9d71805}</Project>
       <Name>networkStatusIndicator</Name>
     </ProjectReference>
+    <ProjectReference Include="..\newMacros\newMacros.csproj">
+      <Project>{04dea8ec-2f6a-407c-9135-0c724982fb27}</Project>
+      <Name>newMacros</Name>
+    </ProjectReference>
     <ProjectReference Include="..\powerBar\PowerBar.csproj">
       <Project>{008d03b3-e23a-4a86-b7f8-2d75e0502703}</Project>
       <Name>PowerBar</Name>

@@ -7,14 +7,14 @@
     <Grid>
         <Viewbox Stretch="Fill">
             <Canvas x:Name="canv" Background="#FF0E0E0E" Height="287" Width="344">
-                <Label Content="GOAL SHOULDER Θ:" Canvas.Top="254" Height="33" Width="122" Background="#FF7E7E7E"/>
-                <Label x:Name="shoulderAngleLabel" Content="NA" Canvas.Bottom="0" Height="33" Width="44" Background="#FF7E7E7E" Canvas.Left="122"/>
-                <Label Content="GOAL ELBOW Θ:" Canvas.Top="254" Height="33" Width="105" Background="#FF7E7E7E" Canvas.Left="195"/>
-                <Label x:Name="elbowAngleLabel" Content="NA" Canvas.Bottom="0" Height="33" Width="44" Background="#FF7E7E7E" Canvas.Left="300"/>
-                <Label x:Name="realElbowLabel" Content="REAL ELBOW Θ:" Height="33" Width="120" Background="#FF7E7E7E" Canvas.Left="180" Canvas.Bottom="180"/>
-                <Label x:Name="realElbowAngleLabel" Content="NA" Height="33" Width="44" Background="#FF7E7E7E" Canvas.Left="300" Canvas.Bottom="180"/>
-                <Label x:Name="realShoulderLabel" Content="REAL SHOULDER Θ:" Height="33" Width="120" Background="#FF7E7E7E" Canvas.Left="180" Canvas.Bottom="147"/>
-                <Label x:Name="realShoulderAngleLabel" Content="NA" Height="33" Width="44" Background="#FF7E7E7E" Canvas.Left="300" Canvas.Bottom="147"/>
+                <Label Content="GOAL SHOULDER Θ:" Canvas.Top="254" Height="33" Width="122" Background="#FF383838" Foreground="#FFFFA200"/>
+                <Label x:Name="shoulderAngleLabel" Content="NA" Canvas.Bottom="0" Height="33" Width="44" Background="#FF383838" Canvas.Left="122" Foreground="#FFFFA200"/>
+                <Label Content="GOAL ELBOW Θ:" Canvas.Top="254" Height="33" Width="105" Background="#FF383838" Canvas.Left="195" Foreground="#FFFFA200"/>
+                <Label x:Name="elbowAngleLabel" Content="NA" Canvas.Bottom="0" Height="33" Width="44" Background="#FF383838" Canvas.Left="300" Foreground="#FFFFA200"/>
+                <Label x:Name="realElbowLabel" Content="REAL ELBOW Θ:" Height="33" Width="120" Background="#FF383838" Canvas.Left="180" Canvas.Bottom="180" Foreground="#FFFFA200"/>
+                <Label x:Name="realElbowAngleLabel" Content="NA" Height="33" Width="44" Background="#FF383838" Canvas.Left="300" Canvas.Bottom="180" Foreground="#FFFFA200"/>
+                <Label x:Name="realShoulderLabel" Content="REAL SHOULDER Θ:" Height="33" Width="120" Background="#FF383838" Canvas.Left="180" Canvas.Bottom="147" Foreground="#FFFFA200"/>
+                <Label x:Name="realShoulderAngleLabel" Content="NA" Height="33" Width="44" Background="#FF383838" Canvas.Left="300" Canvas.Bottom="147" Foreground="#FFFFA200"/>
                 <Rectangle Fill="#FF666666" Height="27" Stroke="Black" Canvas.Top="222" Width="60"/>
                 <Rectangle Fill="#FF666666" Height="17" Canvas.Left="24" Stroke="Black" Canvas.Top="206" Width="36"/>
                 <Rectangle x:Name="gRec1" Height="20" Canvas.Left="38" Stroke="Lime" Canvas.Bottom="80" Width="142" RenderTransformOrigin="0,0.5" StrokeThickness="3" RadiusX="10" RadiusY="10">

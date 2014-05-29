@@ -37,3 +37,4 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\videoSocketRecei
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\videoSocketReceiver\bin\Debug\videoSocketReceiver.pdb
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\videoSocketReceiver\obj\Debug\videoSocketReceiver.dll
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\videoSocketReceiver\obj\Debug\videoSocketReceiver.pdb
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\videoSocketReceiver\obj\Debug\videoSocketReceiver.csprojResolveAssemblyReference.cache

@@ -65,3 +65,4 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\Macros\obj\Debug
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\Macros\obj\Debug\Macros.pkgdef
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\Macros\obj\Debug\Macros.latest.pkgdef
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\Macros\obj\Debug\extension.vsixmanifest
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\Macros\obj\Debug\Macros.csprojResolveAssemblyReference.cache

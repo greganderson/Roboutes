@@ -48,3 +48,5 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\Arm Terminal\bin
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\Arm Terminal\bin\Debug\videoSocketReceiver.pdb
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\Arm Terminal\bin\Debug\macroInProgressWindow.exe
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\Arm Terminal\bin\Debug\macroInProgressWindow.pdb
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\Arm Terminal\bin\Debug\newMacros.dll
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\Arm Terminal\bin\Debug\newMacros.pdb

@@ -36,8 +36,6 @@ namespace Arm_Terminal
         videoWindow palmVidWindow;
         videoWindow humerusVidWindow;
 
-        armMacroExecutor AME;
-
         macroInProgressWindow.MainWindow macroProgWindow;
 
         public MainWindow()
@@ -63,8 +61,7 @@ namespace Arm_Terminal
             armInputMan = armInputManager.getInstance(xboxController,comSock);
             armInputMan.InputUnlockedEvent += inputUnlocked;
 
-            AME = armMacroExecutor.getInstance(armInputMan);
-            AME.macroEventStatusUpdate += AME_macroEventStatusUpdate;
+            macros.newMacroData += macros_newMacroData;
             
 
             armTransmit = new armCommandTransmitter(armInputMan, comSock);
@@ -73,6 +70,28 @@ namespace Arm_Terminal
             armSideView.armInputManager = armInputMan;
             armTopView.armInputManager = armInputMan;
             wristVisualizer.armInput = armInputMan;
+        }
+
+        void macros_newMacroData(newMacros.ToolboxControl.armCommand[] newTargets)
+        {
+            foreach (newMacros.ToolboxControl.armCommand command in newTargets)
+            {
+                switch (command.ID)
+                {
+                    case armConstants.armActuatorID.turnTable:
+                        armInputMan.manuallySetTurnTable(command.target);
+                        break;
+                    case armConstants.armActuatorID.shoulder:
+                        armInputMan.manuallySetShoulder(command.target);
+                        break;
+                    case armConstants.armActuatorID.grip:
+                        armInputMan.manuallySetGripper(command.target);
+                        break;
+                    case armConstants.armActuatorID.elbow:
+                        armInputMan.manuallySetElbow(command.target);
+                        break;
+                }
+            }
         }
 
         void AME_macroEventStatusUpdate(bool currentStatus)
@@ -88,7 +107,10 @@ namespace Arm_Terminal
             }
             else
             {
-                macroProgWindow.stop();
+                if (macroProgWindow != null)
+                {
+                    macroProgWindow.stop();
+                }
             }
         }
 
@@ -122,11 +144,6 @@ namespace Arm_Terminal
         private void Window_Closed(object sender, EventArgs e)
         {
             Environment.Exit(0);
-        }
-
-        private void testButton_Click(object sender, RoutedEventArgs e)
-        {
-            AME.runTest();
         }
     }
 }
