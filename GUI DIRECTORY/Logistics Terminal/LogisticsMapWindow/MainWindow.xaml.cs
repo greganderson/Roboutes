@@ -94,12 +94,33 @@ namespace LogisticsMapWindow
         void pin_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
             e.Handled = true;
-            map.Children.Remove((Pushpin)sender);
+            Dispatcher.Invoke(()=>map.Children.Remove((Pushpin)sender));
+        }
+
+        public void clearPins()
+        {
+            Dispatcher.Invoke(()=>map.Children.Clear());
+        }
+
+        public void placeRover(double lat, double lon) //TODO: add heading as a third parameter
+        {
+            MapPolygon polygon = new MapPolygon();
+            polygon.Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Blue);
+            polygon.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Green);
+            polygon.StrokeThickness = 5;
+            polygon.Opacity = 0.7;
+            polygon.Locations = new LocationCollection() { 
+            new Location(lat+.00002,lon), 
+            new Location(lat,lon-.000012), 
+            new Location(lat,lon+.000012)
+            };
+
+            map.Children.Add(polygon);
         }
 
         private void animate()
         {
-            speechsynth.SpeakAsync("Locking on NASA");
+            speechsynth.SpeakAsync("Logistics terminal coming online, welcome bridge team");
             for (double i = 4; i < 20.3; i+=.1)
             {
                 Dispatcher.Invoke(()=>map.SetView(new Location(29.564753, -95.081363), i, 0));

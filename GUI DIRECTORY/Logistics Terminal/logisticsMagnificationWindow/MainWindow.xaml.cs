@@ -65,5 +65,9 @@ namespace logisticsMagnificationWindow
                     this.WindowState = WindowState.Normal;
             }
         }
+
+        public void displayImage(ImageSource IS){
+            Dispatcher.Invoke(()=>magImage.Source = IS);
+        }
     }
 }

@@ -127,6 +127,10 @@
       <Project>{9ff256b8-f7e0-4917-a1ac-c0938a0dd038}</Project>
       <Name>ArmControlTools</Name>
     </ProjectReference>
+    <ProjectReference Include="..\macroInProgressWindow\macroInProgressWindow.csproj">
+      <Project>{6245d9c1-8b9e-4f06-a35f-3232ed983bb9}</Project>
+      <Name>macroInProgressWindow</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Macros\Macros.csproj">
       <Project>{f55614f2-e7ed-441d-b3e5-95628f20db32}</Project>
       <Name>Macros</Name>

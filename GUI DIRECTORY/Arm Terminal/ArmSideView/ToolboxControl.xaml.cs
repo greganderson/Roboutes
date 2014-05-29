@@ -59,8 +59,8 @@ namespace ArmSideView {
         private void emergencyStop() {
             Dispatcher.Invoke(() => updateGoalElbow(aElbowAngle));
             Dispatcher.Invoke(() => updateGoalShoulder(-aShoulderAngle));
-            _armInputManager.manuallySetElbow((int)aElbowAngle);
-            _armInputManager.manuallySetShoulder(-(int)aShoulderAngle);
+            _armInputManager.manuallySetElbow(aElbowAngle);
+            _armInputManager.manuallySetShoulder(-aShoulderAngle);
         }
 
         void _armInputManager_targetShoulderChanged(double newAngle)

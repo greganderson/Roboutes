@@ -34,6 +34,7 @@ namespace handInfoViewer
                 armIn.targetWristChanged += armIn_targetWristChanged;
                 armIn.targetGripperChanged += armIn_targetGripperChanged;
                 armIn.targetWristRotationAngleChanged += armIn_targetWristRotationAngleChanged;
+                Dispatcher.Invoke(() => gripperStrengthBar.setFillValue(100-armIn.getCommandedGripperVal()));
             }
             get {
                 return armIn;

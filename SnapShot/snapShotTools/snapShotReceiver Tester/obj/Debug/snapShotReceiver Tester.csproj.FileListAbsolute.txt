@@ -40,3 +40,6 @@ C:\Users\StealthBomber\Documents\GitHub\Roboutes\SnapShot\snapShotTools\snapShot
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\SnapShot\snapShotTools\snapShotReceiver Tester\obj\Debug\snapShotReceiver Tester.g.resources
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\SnapShot\snapShotTools\snapShotReceiver Tester\obj\Debug\snapShotReceiver_Tester.Properties.Resources.resources
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\SnapShot\snapShotTools\snapShotReceiver Tester\obj\Debug\snapShotReceiver Tester.csproj.GenerateResource.Cache
+C:\Users\RoboUtes 6\Desktop\Roboutes\SnapShot\snapShotTools\snapShotReceiver Tester\bin\Debug\snapShotReceiver Tester.exe.config
+C:\Users\RoboUtes 6\Desktop\Roboutes\SnapShot\snapShotTools\snapShotReceiver Tester\obj\Debug\snapShotReceiver Tester.exe
+C:\Users\RoboUtes 6\Desktop\Roboutes\SnapShot\snapShotTools\snapShotReceiver Tester\obj\Debug\snapShotReceiver Tester.pdb

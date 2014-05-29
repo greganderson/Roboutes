@@ -17,6 +17,7 @@ using ArmControlTools;
 using XboxController;
 using commSockServer;
 using videoViewerWindow;
+using macroInProgressWindow;
 
 namespace Arm_Terminal
 {
@@ -34,6 +35,10 @@ namespace Arm_Terminal
 
         videoWindow palmVidWindow;
         videoWindow humerusVidWindow;
+
+        armMacroExecutor AME;
+
+        macroInProgressWindow.MainWindow macroProgWindow;
 
         public MainWindow()
         {
@@ -58,12 +63,33 @@ namespace Arm_Terminal
             armInputMan = armInputManager.getInstance(xboxController,comSock);
             armInputMan.InputUnlockedEvent += inputUnlocked;
 
+            AME = armMacroExecutor.getInstance(armInputMan);
+            AME.macroEventStatusUpdate += AME_macroEventStatusUpdate;
+            
+
             armTransmit = new armCommandTransmitter(armInputMan, comSock);
 
             xboxControlMonitor.xboxController = xboxController;
             armSideView.armInputManager = armInputMan;
             armTopView.armInputManager = armInputMan;
             wristVisualizer.armInput = armInputMan;
+        }
+
+        void AME_macroEventStatusUpdate(bool currentStatus)
+        {
+            if (macroProgWindow != null)
+            {
+                macroProgWindow.stop();
+            }
+            if (currentStatus)
+            {
+                macroProgWindow = new macroInProgressWindow.MainWindow();
+                macroProgWindow.Show();
+            }
+            else
+            {
+                macroProgWindow.stop();
+            }
         }
 
         private void inputUnlocked(bool unlocked)
@@ -96,6 +122,11 @@ namespace Arm_Terminal
         private void Window_Closed(object sender, EventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void testButton_Click(object sender, RoutedEventArgs e)
+        {
+            AME.runTest();
         }
     }
 }

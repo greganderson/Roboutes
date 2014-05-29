@@ -106,6 +106,14 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\commFeedViz\commFeedViz.csproj">
+      <Project>{F470B85F-598A-4002-8191-111E9565F239}</Project>
+      <Name>commFeedViz</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\commSockServer\commSockServer.csproj">
+      <Project>{c3252112-2fad-46f9-a34a-609185a67747}</Project>
+      <Name>commSockServer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\logisticsMagnificationWindow\logisticsMagnificationWindow.csproj">
       <Project>{5f9c8099-ab19-4c01-b179-315fb06d7286}</Project>
       <Name>logisticsMagnificationWindow</Name>
@@ -118,9 +126,25 @@
       <Project>{b3897720-bf40-4806-8ad1-eb55ecaa2a23}</Project>
       <Name>logisticsTools</Name>
     </ProjectReference>
+    <ProjectReference Include="..\networkStatusIndicator\networkStatusIndicator.csproj">
+      <Project>{F169B9C3-3117-487D-A186-5B2EF9D71805}</Project>
+      <Name>networkStatusIndicator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\safeCommFeedViz\safeCommFeedViz.csproj">
+      <Project>{22072b78-4dfc-4eb9-9d2a-137c9c589fe9}</Project>
+      <Name>safeCommFeedViz</Name>
+    </ProjectReference>
     <ProjectReference Include="..\safeMapPalette\safeMapPalette.csproj">
       <Project>{E234B95B-DBF8-420D-8123-EE6CAB233C22}</Project>
       <Name>safeMapPalette</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\snapShotTools\snapShotTools.csproj">
+      <Project>{0d07a762-22a1-4165-9f00-f5107deb282c}</Project>
+      <Name>snapShotTools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\toggleIndicator\toggleIndicator.csproj">
+      <Project>{C2DD09CF-4E6D-456B-AB71-752D4E354714}</Project>
+      <Name>toggleIndicator</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -32,3 +32,19 @@ C:\Users\ROC\Documents\GitHub\Arm\localArmControlV2.5.1\powerBar\obj\Debug\power
 C:\Users\ROC\Documents\GitHub\Arm\localArmControlV2.5.1\powerBar\obj\Debug\powerBar.pkgdef
 C:\Users\ROC\Documents\GitHub\Arm\localArmControlV2.5.1\powerBar\obj\Debug\powerBar.latest.pkgdef
 C:\Users\ROC\Documents\GitHub\Arm\localArmControlV2.5.1\powerBar\obj\Debug\extension.vsixmanifest
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\powerBar\bin\Debug\powerBar.dll
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\powerBar\bin\Debug\powerBar.pdb
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\powerBar\bin\Debug\powerBar.pkgdef
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\powerBar\bin\Debug\powerBar.vsix
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\powerBar\bin\Debug\extension.vsixmanifest
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\powerBar\obj\Debug\ToolboxControl.baml
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\powerBar\obj\Debug\ToolboxControl.g.cs
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\powerBar\obj\Debug\powerBar_MarkupCompile.cache
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\powerBar\obj\Debug\powerBar.g.resources
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\powerBar\obj\Debug\powerBar.Properties.Resources.resources
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\powerBar\obj\Debug\PowerBar.csproj.GenerateResource.Cache
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\powerBar\obj\Debug\powerBar.dll
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\powerBar\obj\Debug\powerBar.pdb
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\powerBar\obj\Debug\powerBar.pkgdef
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\powerBar\obj\Debug\powerBar.latest.pkgdef
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\powerBar\obj\Debug\extension.vsixmanifest

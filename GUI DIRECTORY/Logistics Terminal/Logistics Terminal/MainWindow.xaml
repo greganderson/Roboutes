@@ -1,7 +1,7 @@
 ﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:safeMapPalette="clr-namespace:safeMapPalette;assembly=safeMapPalette" x:Class="Logistics_Terminal.MainWindow"
+        xmlns:safeMapPalette="clr-namespace:safeMapPalette;assembly=safeMapPalette" xmlns:networkStatusIndicator="clr-namespace:networkStatusIndicator;assembly=networkStatusIndicator" xmlns:safeCommFeedViz="clr-namespace:safeCommFeedViz;assembly=safeCommFeedViz" x:Class="Logistics_Terminal.MainWindow"
         Title="MainWindow" Height="1080" Width="1920" Closed="Window_Closed">
     <Viewbox Stretch="Fill">
         <Grid Background="#FF383838" Height="1050" Width="1912">
@@ -32,7 +32,7 @@
             </Image>
 
             <safeMapPalette:ToolboxControl x:Name="mapPalette" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="379" Width="381"/>
-            <Rectangle x:Name="frontRectangle" HorizontalAlignment="Left" Height="390" Margin="652,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="610" MouseDown="frontRectangle_MouseDown">
+            <Rectangle x:Name="frontRectangle" HorizontalAlignment="Left" Height="390" Margin="652,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="610" MouseDown="Rectangle_MouseDown">
                 <Rectangle.ContextMenu>
                     <ContextMenu >
                         <MenuItem Header="Request New Image" Click="MenuItem_Click" Uid="newFront"/>
@@ -43,7 +43,7 @@
                     <SolidColorBrush Color="#FFF4F4F5" Opacity="0"/>
                 </Rectangle.Fill>
             </Rectangle>
-            <Rectangle x:Name="rightRectangle" HorizontalAlignment="Left" Height="390" Margin="1292,394,0,0" Stroke="Black" VerticalAlignment="Top" Width="610" MouseDown="frontRectangle_MouseDown">
+            <Rectangle x:Name="rightRectangle" HorizontalAlignment="Left" Height="390" Margin="1292,394,0,0" Stroke="Black" VerticalAlignment="Top" Width="610" MouseDown="Rectangle_MouseDown">
                 <Rectangle.ContextMenu>
                     <ContextMenu >
                         <MenuItem Header="Request New Image" Click="MenuItem_Click" Uid="newRight"/>
@@ -54,7 +54,7 @@
                     <SolidColorBrush Color="#FFF4F4F5" Opacity="0"/>
                 </Rectangle.Fill>
             </Rectangle>
-            <Rectangle x:Name="rearRectangle" HorizontalAlignment="Left" Height="390" Margin="652,650,0,0" Stroke="Black" VerticalAlignment="Top" Width="610" MouseDown="frontRectangle_MouseDown">
+            <Rectangle x:Name="rearRectangle" HorizontalAlignment="Left" Height="390" Margin="652,650,0,0" Stroke="Black" VerticalAlignment="Top" Width="610" MouseDown="Rectangle_MouseDown">
                 <Rectangle.ContextMenu>
                     <ContextMenu >
                         <MenuItem Header="Request New Image" Click="MenuItem_Click" Uid="newRear"/>
@@ -65,7 +65,7 @@
                     <SolidColorBrush Color="#FFF4F4F5" Opacity="0"/>
                 </Rectangle.Fill>
             </Rectangle>
-            <Rectangle x:Name="leftRectangle" HorizontalAlignment="Left" Height="390" Margin="10,394,0,0" Stroke="Black" VerticalAlignment="Top" Width="610" MouseDown="frontRectangle_MouseDown">
+            <Rectangle x:Name="leftRectangle" HorizontalAlignment="Left" Height="390" Margin="10,394,0,0" Stroke="Black" VerticalAlignment="Top" Width="610" MouseDown="Rectangle_MouseDown">
                 <Rectangle.ContextMenu>
                     <ContextMenu >
                         <MenuItem Header="Request New Image" Click="MenuItem_Click" Uid="newLeft"/>
@@ -77,6 +77,12 @@
                 </Rectangle.Fill>
             </Rectangle>
             <Button x:Name="centerMapButton" Content="CENTER MAP ON JSC" HorizontalAlignment="Left" VerticalAlignment="Top" Width="141" Margin="391,0,0,0" Height="41" Click="centerMapButton_Click"/>
+
+            <networkStatusIndicator:ToolboxControl x:Name="networkConnectionInd" HorizontalAlignment="Left" VerticalAlignment="Top" Height="92" Margin="1615,958,0,0" Width="297"/>
+
+            <safeCommFeedViz:ToolboxControl x:Name="internetINViz" HorizontalAlignment="Left" Margin="1262,0,0,0" VerticalAlignment="Top" Height="391" Width="381" title="Internet IN"/>
+            <Button x:Name="clearMapButton" Content="CLEAR MAP OF ALL PINS" HorizontalAlignment="Left" VerticalAlignment="Top" Width="141" Margin="391,41,0,0" Height="41" Click="clearMapButton_Click"/>
+            <Button x:Name="tempButton" Content="TEMP" HorizontalAlignment="Left" VerticalAlignment="Top" Width="141" Margin="450,257,0,0" Height="41" Click="tempButton_Click"/>
 
         </Grid>
     </Viewbox>

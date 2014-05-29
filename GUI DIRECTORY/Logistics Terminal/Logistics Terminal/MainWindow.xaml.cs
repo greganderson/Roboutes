@@ -16,6 +16,9 @@ using System.Windows.Shapes;
 using LogisticsMapWindow;
 using logisticsMagnificationWindow;
 using logisticsTools;
+using commSockServer;
+using snapShotTools;
+using System.IO;
 
 namespace Logistics_Terminal
 {
@@ -28,15 +31,61 @@ namespace Logistics_Terminal
         private mapWindow mapWin;
         private magnificationWindow magWin;
 
+        commSockReceiver comSock;
+
+        snapShotReceiver frontSSR;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            comSock = new commSockReceiver(35006);
+            comSock.IncomingLine += comSock_IncomingLine;
+            comSock.newConnection += comSock_newConnection;
+            comSock.connectionLost += comSock_connectionLost;
+            comSock.beginAccept();
+
+            frontSSR = new snapShotReceiver(35007);
+            frontSSR.newSnapShotReceived += frontSSR_newSnapShotReceived;
+
             this.WindowState = System.Windows.WindowState.Maximized;
             mapPalette.newPaletteItemSelected += mapPalette_newPaletteItemSelected;
             mapWin = new mapWindow();
             mapWin.Show();
             magWin = new magnificationWindow();
             magWin.Show();
+        }
+
+        void frontSSR_newSnapShotReceived(byte[] receivedImage)
+        {
+            Action work = delegate
+            {
+                BitmapImage biImg = new BitmapImage();
+                MemoryStream ms = new MemoryStream(receivedImage);
+                biImg.BeginInit();
+                biImg.StreamSource = ms;
+                biImg.EndInit();
+                ImageSource ImgSrc = biImg as ImageSource;
+
+                frontImage.Source = ImgSrc;
+            };
+            Dispatcher.Invoke(work);
+
+        }
+
+        void comSock_connectionLost()
+        {
+            Dispatcher.Invoke(() => networkConnectionInd.connected = false);
+        }
+
+        void comSock_newConnection(bool obj)
+        {
+            Dispatcher.Invoke(() => networkConnectionInd.connected = obj);
+        }
+
+        void comSock_IncomingLine(string obj)
+        {
+            Dispatcher.Invoke(() => internetINViz.addText(obj));
         }
 
         /// <summary>
@@ -48,7 +97,7 @@ namespace Logistics_Terminal
             mapWin.selectedItem = Item;
         }
 
-        private void frontRectangle_MouseDown(object sender, MouseButtonEventArgs e)
+        private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
         {
             try
             {
@@ -75,35 +124,42 @@ namespace Logistics_Terminal
             switch ((string)item.Uid)
             {
                 case "newFront":
-                    MessageBox.Show((string)item.Uid);
+                    comSock.write("LOG_FRONT");
                     break;
                 case "magFront":
-                    MessageBox.Show((string)item.Uid);
+                    if (frontImage.Source != null)
+                    {
+                        magWin.displayImage(frontImage.Source);
+                    }
                     break;
                 case "newRight":
-                    MessageBox.Show((string)item.Uid);
+                    comSock.write("LOG_RIGHT");
                     break;
                 case "magRight":
-                    MessageBox.Show((string)item.Uid);
+                    if (rightImage.Source != null)
+                    {
+                        magWin.displayImage(rightImage.Source);
+                    }
                     break;
                 case "newRear":
-                    MessageBox.Show((string)item.Uid);
+                    comSock.write("LOG_REAR");
                     break;
                 case "magRear":
-                    MessageBox.Show((string)item.Uid);
+                    if (rearImage.Source != null)
+                    {
+                        magWin.displayImage(rearImage.Source);
+                    }
                     break;
                 case "newLeft":
-                    MessageBox.Show((string)item.Uid);
+                    comSock.write("LOG_LEFT");
                     break;
                 case "magLeft":
-                    MessageBox.Show((string)item.Uid);
+                    if (leftImage.Source != null)
+                    {
+                        magWin.displayImage(leftImage.Source);
+                    }
                     break;
             }
-        }
-
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -116,8 +172,36 @@ namespace Logistics_Terminal
             mapWin.centerOnNasa();
         }
 
+        private void clearMapButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult MR = MessageBox.Show("Are you sure you want to clear all of the pins off of the map???","TEST CAPTION",MessageBoxButton.YesNo);
+            if (MR == MessageBoxResult.Yes)
+            {
+                mapWin.clearPins();
+            }
+        }
 
 
+        public class ByteImageConverter
+        {
+            public static ImageSource ByteToImage(byte[] imageData)
+            {
+                BitmapImage biImg = new BitmapImage();
+                MemoryStream ms = new MemoryStream(imageData);
+                biImg.BeginInit();
+                biImg.StreamSource = ms;
+                biImg.EndInit();
+
+                ImageSource ImgSrc = biImg as ImageSource;
+
+                return ImgSrc;
+            }
+        }
+
+        private void tempButton_Click(object sender, RoutedEventArgs e)
+        {
+            mapWin.placeRover(29.564698, -95.081483);
+        }
 
     }
 }

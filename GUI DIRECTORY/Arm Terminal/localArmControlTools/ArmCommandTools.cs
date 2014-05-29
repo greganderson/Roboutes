@@ -8,6 +8,7 @@ using XboxController;
 using System.Threading;
 using ArmControlTools;
 using commSockServer;
+using System.Collections;
 
 namespace ArmControlTools
 {
@@ -152,15 +153,15 @@ namespace ArmControlTools
         private volatile bool newWrist = false;
         private object WR_LOCK = 1;
 
-        private int turnTableVal = 0;
+        private double turnTableVal = 0;
         private volatile bool newTurnTable = false;
         private object TT_LOCK = 1;
 
-        private int shoulderVal = 0;
+        private double shoulderVal = 0;
         private volatile bool newShoulder = false;
         private object SH_LOCK = 1;
 
-        private int elbowVal = 0;
+        private double elbowVal = 0;
         private volatile bool newElbow = false;
         private object EL_LOCK = 1;
 
@@ -211,7 +212,7 @@ namespace ArmControlTools
                 if (newElbow)
                 {
                     newElbow = false;
-                    CSR.write("ARM_EL_" + elbowVal);
+                    CSR.write("ARM_EL_" + (int)(elbowVal*armConstants.ELBOW_RESOLUTION_MULTIPLIER));
                 }
             }
         }
@@ -223,7 +224,7 @@ namespace ArmControlTools
                 if (newShoulder)
                 {
                     newShoulder = false;
-                    CSR.write("ARM_SH_" + shoulderVal);
+                    CSR.write("ARM_SH_" + (int)(shoulderVal * armConstants.SHOULDER_RESOLUTION_MULTIPLIER));
                 }
             }
         }
@@ -235,7 +236,7 @@ namespace ArmControlTools
                 if (newTurnTable)
                 {
                     newTurnTable = false;
-                    CSR.write("ARM_TT_" + turnTableVal);
+                    CSR.write("ARM_TT_" + (int)(turnTableVal * armConstants.TURNTABLE_RESOLUTION_MULTIPLIER));
                 }
             }
         }
@@ -299,10 +300,10 @@ namespace ArmControlTools
         {
             lock (SH_LOCK)
             {
-                if (shoulderVal != (int)newAngle)
+                if (shoulderVal != newAngle)
                 {
                     newShoulder = true;
-                    shoulderVal = (int)newAngle;
+                    shoulderVal = newAngle;
                 }
             }
         }
@@ -361,9 +362,22 @@ namespace ArmControlTools
         double shoulderRate;
         object shoulderSync = 1;
 
-        int commandedGripper = 100;
+        int commandedGripper = 33;
         int gripperRate;
         object gripperSync = 1;
+
+
+        double aTurnTableAngle;
+        object actTurnTableSync = 1;
+
+        double aElbowAngle;
+        object actElbowSync = 1;
+
+        double aShoulderAngle;
+        object actShoulderSync = 1;
+
+        int aGripper;
+        object actGripperSync = 1;
 
         Thread elbowUpdateThread;
         Thread shoulderUpdateThread;
@@ -401,7 +415,6 @@ namespace ArmControlTools
                 return actualInstance;
             }
         }
-
 
         private volatile bool _inputUnlocked = false;
 
@@ -524,9 +537,14 @@ namespace ArmControlTools
                     toParse = obj.Substring(obj.LastIndexOf("_") + 1);
                     if (int.TryParse(toParse, out parsedVal))
                     {
+                        double val = parsedVal / armConstants.SHOULDER_RESOLUTION_MULTIPLIER;
                         if (actualShoulderChanged != null)
                         {
-                            actualShoulderChanged(parsedVal);
+                            actualShoulderChanged(val);
+                        }
+                        lock (actShoulderSync)
+                        {
+                            aShoulderAngle = val;
                         }
                     }
                 }
@@ -535,9 +553,14 @@ namespace ArmControlTools
                     toParse = obj.Substring(obj.LastIndexOf("_")+1);
                     if(int.TryParse(toParse, out parsedVal))
                     {
+                        double val = parsedVal / armConstants.ELBOW_RESOLUTION_MULTIPLIER;
                         if(actualElbowChanged != null)
                         {
-                            actualElbowChanged(parsedVal);
+                            actualElbowChanged(val);
+                        }
+                        lock (actElbowSync)
+                        {
+                            aElbowAngle = val;
                         }
                     }
                 }
@@ -546,9 +569,14 @@ namespace ArmControlTools
                     toParse = obj.Substring(obj.LastIndexOf("_")+1);
                     if (int.TryParse(toParse, out parsedVal))
                     {
+                        double val = parsedVal / armConstants.TURNTABLE_RESOLUTION_MULTIPLIER;
                         if (actualTurnTableChanged != null)
                         {
-                            actualTurnTableChanged(parsedVal);
+                            actualTurnTableChanged(val);
+                        }
+                        lock (actTurnTableSync)
+                        {
+                            aTurnTableAngle = val;
                         }
                     }
                 }
@@ -559,7 +587,7 @@ namespace ArmControlTools
                     {
                         if (actualShoulderChanged != null)
                         {
-                            actualShoulderChanged(parsedVal);
+                            actualShoulderChanged(parsedVal / armConstants.SHOULDER_RESOLUTION_MULTIPLIER);
                         }
                         shoulderValid = true;
                     }
@@ -571,7 +599,7 @@ namespace ArmControlTools
                     {
                         if (actualElbowChanged != null)
                         {
-                            actualElbowChanged(parsedVal);
+                            actualElbowChanged(parsedVal / armConstants.ELBOW_RESOLUTION_MULTIPLIER);
                         }
                         elbowValid = true;
                     }
@@ -583,7 +611,7 @@ namespace ArmControlTools
                     {
                         if (actualTurnTableChanged != null)
                         {
-                            actualTurnTableChanged(parsedVal);
+                            actualTurnTableChanged(parsedVal / armConstants.TURNTABLE_RESOLUTION_MULTIPLIER);
                         }
                         turnTableValid = true;
                     }
@@ -595,10 +623,30 @@ namespace ArmControlTools
         /// Manually set the target positions of the turnTable angle.
         /// </summary>
         /// <param name="newPositions"></param>
-        public void manuallySetTurnTable(int newPosition){
-            commandedTurnTableAngle = newPosition.Constrain(armConstants.MIN_TURNTABLE_ANGLE, armConstants.MAX_TURNTABLE_ANGLE);
-            if (targetTurnTableChanged != null && inputUnlocked) {
-                targetTurnTableChanged(commandedTurnTableAngle);
+        public void manuallySetTurnTable(double newPosition){
+            lock (turnTableSync)
+            {
+                commandedTurnTableAngle = newPosition.Constrain(armConstants.MIN_TURNTABLE_ANGLE, armConstants.MAX_TURNTABLE_ANGLE);
+                if (targetTurnTableChanged != null && inputUnlocked)
+                {
+                    targetTurnTableChanged(commandedTurnTableAngle);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Manually set the target position of the gripper.
+        /// </summary>
+        /// <param name="newPositions"></param>
+        public void manuallySetGripper(int newPosition)
+        {
+            lock (gripperSync)
+            {
+                commandedGripper = newPosition.Constrain(armConstants.MIN_GRIPPER, armConstants.MAX_GRIPPER);
+                if (targetGripperChanged != null && inputUnlocked)
+                {
+                    targetGripperChanged(commandedGripper);
+                }
             }
         }
 
@@ -606,23 +654,108 @@ namespace ArmControlTools
         /// Manually set the target positions of the shoulder angle.
         /// </summary>
         /// <param name="newPositions"></param>
-        public void manuallySetShoulder(int newPosition) {
-            commandedShoulderAngle = newPosition.Constrain(armConstants.MIN_SHOULDER_ANGLE, armConstants.MAX_SHOULDER_ANGLE);
-            if (targetShoulderChanged != null && inputUnlocked)
+        public void manuallySetShoulder(double newPosition) {
+            lock (shoulderSync)
             {
-                targetShoulderChanged(commandedShoulderAngle);
+                commandedShoulderAngle = newPosition.Constrain(armConstants.MIN_SHOULDER_ANGLE, armConstants.MAX_SHOULDER_ANGLE);
+                if (targetShoulderChanged != null && inputUnlocked)
+                {
+                    targetShoulderChanged(commandedShoulderAngle);
+                }
             }
+        }
+
+        public double getCommandedGripperVal()
+        {
+            double val;
+            lock (gripperSync)
+            {
+                val = commandedGripper;
+            }
+            return val;
+        }
+
+        public double getCommandedElbowVal(){
+            double val;
+            lock (elbowSync)
+            {
+                val = commandedElbowAngle;
+            }
+            return val;
+        }
+
+        public double getCommandedShoulderVal()
+        {
+            double val;
+            lock (shoulderSync)
+            {
+                val = commandedShoulderAngle;
+            }
+            return val;
+        }
+
+        public double getCommandedTurnTableVal()
+        {
+            double val;
+            lock (turnTableSync)
+            {
+                val = commandedTurnTableAngle;
+            }
+            return val;
+        }
+
+        public double getActualGripperVal()
+        {
+            double val;
+            lock (actGripperSync)
+            {
+                val = aGripper;
+            }
+            return val;
+        }
+
+        public double getActualElbowVal()
+        {
+            double val;
+            lock (actElbowSync)
+            {
+                val = aElbowAngle;
+            }
+            return val;
+        }
+
+        public double getActualShoulderVal()
+        {
+            double val;
+            lock (actShoulderSync)
+            {
+                val = aShoulderAngle;
+            }
+            return val;
+        }
+
+        public double getActualTurnTableVal()
+        {
+            double val;
+            lock (actTurnTableSync)
+            {
+                val = aTurnTableAngle;
+            }
+            return val;
         }
 
         /// <summary>
         /// Manually set the target positions of the elbow angle.
         /// </summary>
         /// <param name="newPositions"></param>
-        public void manuallySetElbow(int newPosition) {
-            commandedElbowAngle = newPosition.Constrain(armConstants.MIN_ELBOW_ANGLE, armConstants.MAX_ELBOW_ANGLE);
-            if (targetElbowChanged != null && inputUnlocked)
+        public void manuallySetElbow(double newPosition) {
+            lock (elbowSync)
             {
-                targetElbowChanged(commandedElbowAngle);
+                commandedElbowAngle = newPosition.Constrain(armConstants.MIN_ELBOW_ANGLE, armConstants.MAX_ELBOW_ANGLE);
+                if (targetElbowChanged != null && inputUnlocked)
+                {
+                    targetElbowChanged(commandedElbowAngle);
+                }
             }
         }
 
@@ -818,13 +951,15 @@ namespace ArmControlTools
         {
             XboxEventArgs args = (XboxEventArgs)e;
             Tuple<float, float> vec = args.GetRightThumbStick();
-            double X = Math.Round(vec.Item1.Map(-1, 1, -2, 2), 1); //only 2 decimals of precision
+            float Xval = vec.Item1 / 2;
+            double X = Math.Round(Xval.Map(-1, 1, -2, 2), 1); //only 2 decimals of precision
             lock (turnTableSync)
             {
                 turnTableRate = X;
             }
 
-            double Y = Math.Round(vec.Item2.Map(-1, 1, -2, 2), 1); //only 2 decimals of precision
+            float Yval = vec.Item2 / 2;
+            double Y = Math.Round(Yval.Map(-1, 1, -2, 2), 1); //only 2 decimals of precision
             lock (elbowSync)
             {
                 elbowRate = Y;
@@ -841,6 +976,18 @@ namespace ArmControlTools
                 shoulderRate = -val;    //left trigger is down
             }
         }
+
+        void xboxController_TriggerRight(object sender, EventArgs e)
+        {
+            XboxEventArgs args = (XboxEventArgs)e;
+            double val = args.GetRightTrigger();
+            val = Math.Round((val / 2), 1);  //keep it slow , only 2 decimals of precision
+            lock (shoulderSync)
+            {
+                shoulderRate = val;    //right trigger is up
+            }
+        }
+
 
         void xboxController_ButtonRightShoulderPressed(object sender, EventArgs e)
         {
@@ -866,16 +1013,7 @@ namespace ArmControlTools
         }
 
 
-        void xboxController_TriggerRight(object sender, EventArgs e)
-        {
-            XboxEventArgs args = (XboxEventArgs)e;
-            double val = args.GetRightTrigger();
-            val = Math.Round((val / 2), 1);  //keep it slow , only 2 decimals of precision
-            lock (shoulderSync)
-            {
-                shoulderRate = val;    //right trigger is up
-            }
-        }
+        
 
         public void initShoulderPosition(int target)
         {
@@ -1024,16 +1162,233 @@ namespace ArmControlTools
         public const int MAX_SHOULDER_ANGLE = 57;
         public const int MIN_SHOULDER_ANGLE = 0;
         public const int SHOULDER_RANGE = 57;
+        public const double SHOULDER_RESOLUTION_MULTIPLIER = 10;
 
         public const int MAX_ELBOW_ANGLE = 120;
         public const int MIN_ELBOW_ANGLE = 0;
         public const int ELBOW_RANGE = 120;
+        public const double ELBOW_RESOLUTION_MULTIPLIER = 10;
 
         public const int MAX_TURNTABLE_ANGLE = 143;
         public const int MIN_TURNTABLE_ANGLE = 0;
         public const int TURNTABLE_RANGE = 143;
+        public const double TURNTABLE_RESOLUTION_MULTIPLIER = 10;
 
         public const int MAX_GRIPPER = 100;
         public const int MIN_GRIPPER = 0;
+
+        /// <summary>
+        /// The number of degrees the actual arm must be within the target set by the macro for the macro execture to consider the move succesful, in degrees.
+        /// </summary>
+        public const double MACRO_TOLERANCE = 5;
+
+        public enum armActuatorID{
+            turnTable = 0,
+            shoulder,
+            elbow,
+            grip
+        }
+
+    }
+
+    public class armMacroExecutor
+    {
+        private static armMacroExecutor Instance;
+        private armInputManager armIn;
+        private volatile bool safe = false;
+        private armMovement currentMovement = null;
+        private Timer stepTimer;
+        Queue<armMovement> currentDance;
+
+        public delegate void macroEventStatusChanged(bool currentStatus);
+        public event macroEventStatusChanged macroEventStatusUpdate;
+
+        public Queue<armMovement> testDance = new Queue<armMovement>(); //TODO: THIS IS FOR TESTING! KILL IT LATER!
+
+        public static armMacroExecutor getInstance(armInputManager _armIn)
+        {
+            if (Instance == null)
+            {
+                Instance = new armMacroExecutor(_armIn);
+            }
+            return Instance;
+        }
+
+        private armMacroExecutor(armInputManager _armIn)
+        {
+            armIn = _armIn;
+            armIn.EmergencyStop += emergencyStopHandler();
+            stepTimer = new Timer(stepCallback, null, Timeout.Infinite, Timeout.Infinite);
+
+            //////////TEST BEGIN
+            testDance.Enqueue(new armMovement(5000, 54, armConstants.armActuatorID.shoulder));
+            testDance.Enqueue(new armMovement(5000, 130, armConstants.armActuatorID.turnTable));
+            testDance.Enqueue(new armMovement(5000, 55, armConstants.armActuatorID.elbow));
+            //////////TEST END
+        }
+
+        public void runTest()
+        {
+            Queue<armMovement> temp = new Queue<armMovement>(testDance.ToArray());
+            performMacro(temp);
+        }
+
+        private Action emergencyStopHandler()
+        {
+            safe = false;
+            if (macroEventStatusUpdate != null)
+            {
+                macroEventStatusUpdate(safe);
+            }
+            if (stepTimer != null)
+            {
+                stepTimer.Change(Timeout.Infinite, Timeout.Infinite);
+            }
+            return null;
+        }
+
+        public void performMacro(Queue<armMovement> dance)
+        {
+            stepTimer.Change(Timeout.Infinite, Timeout.Infinite);
+            currentDance = dance;
+            safe = true;
+            if (macroEventStatusUpdate != null)
+            {
+                macroEventStatusUpdate(safe);
+            }
+            if (currentDance.Count > 0)
+            {
+                currentMovement = currentDance.Peek();
+                if (transmitMove(currentMovement.ID, currentMovement.target))
+                {
+                    stepTimer = new Timer(stepCallback, currentDance, currentMovement.waitTime, Timeout.Infinite);
+                }
+                else
+                {
+                    safe = false;
+                    if (macroEventStatusUpdate != null)
+                    {
+                        macroEventStatusUpdate(safe);
+                    }
+                    stepTimer.Change(0, Timeout.Infinite);
+                }
+            }
+        }
+
+        private void stepCallback(object state)
+        {
+            Queue<armMovement> dance = (Queue<armMovement>)state; //the dance should be one move shorter now
+            if (safe)
+            {
+                armMovement lastMove = dance.Dequeue();
+                if (inRange(lastMove.target,lastMove.ID))
+                {
+                    if (dance.Count > 0)
+                    {
+                        currentMovement = dance.Peek();
+                        if (transmitMove(currentMovement.ID, currentMovement.target))
+                        {
+                            stepTimer.Change(currentMovement.waitTime, Timeout.Infinite);
+                        }
+                        else
+                        {
+                            safe = false;
+                            if (macroEventStatusUpdate != null)
+                            {
+                                macroEventStatusUpdate(safe);
+                            }
+                            stepTimer.Change(0, Timeout.Infinite);
+                        }
+                    }
+                    else
+                    {
+                        safe = false;
+                        if (macroEventStatusUpdate != null)
+                        {
+                            macroEventStatusUpdate(safe);
+                        }
+                        stepTimer.Change(0, Timeout.Infinite);
+                    }
+                }
+                else
+                {
+                    safe = false;
+                    if (macroEventStatusUpdate != null)
+                    {
+                        macroEventStatusUpdate(safe);
+                    }
+                    stepTimer.Change(0, Timeout.Infinite);
+                }
+            }
+        }
+
+        private bool inRange(double p, armConstants.armActuatorID armActuatorID)
+        {
+            switch (armActuatorID)
+            {
+                case armConstants.armActuatorID.elbow:
+                    return (Math.Abs(armIn.getActualElbowVal() - p) <= armConstants.MACRO_TOLERANCE);
+                case armConstants.armActuatorID.grip:
+                    return (Math.Abs(armIn.getActualGripperVal() - p) <= armConstants.MACRO_TOLERANCE);
+                case armConstants.armActuatorID.shoulder:
+                    return (Math.Abs(armIn.getActualShoulderVal() - p) <= armConstants.MACRO_TOLERANCE);
+                case armConstants.armActuatorID.turnTable:
+                    return (Math.Abs(armIn.getActualTurnTableVal() - p) <= armConstants.MACRO_TOLERANCE);
+                default:
+                    return false;
+            }
+        }
+
+        private bool transmitMove(armConstants.armActuatorID ID, double target)
+        {
+            try
+            {
+                switch (ID)
+                {
+                    case armConstants.armActuatorID.elbow:
+                        armIn.manuallySetElbow(target);
+                        break;
+                    case armConstants.armActuatorID.shoulder:
+                        armIn.manuallySetShoulder(target);
+                        break;
+                    case armConstants.armActuatorID.turnTable:
+                        armIn.manuallySetTurnTable(target);
+                        break;
+                    case armConstants.armActuatorID.grip:
+                        armIn.manuallySetGripper((int)target);
+                        break;
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+
+        
+
+    }
+
+    public class armMovement
+    {
+        public int waitTime;
+        public double target;
+        public armConstants.armActuatorID ID;
+
+        /// <summary>
+        /// Represent the movement of a SINGLE actuator. timeout is how long the motion is expected to take (plus some) before the motion should be finished. If it isnt the motion should "fail" as something likely went wrong.
+        /// </summary>
+        /// <param name="timeout"></param>
+        /// <param name="jointVal"></param>
+        /// <param name="actuatorID"></param>
+        public armMovement(int timeout, double jointVal, armConstants.armActuatorID actuatorID)
+        {
+            waitTime = timeout;
+            target = jointVal;
+            ID = actuatorID;
+        }
     }
 }
