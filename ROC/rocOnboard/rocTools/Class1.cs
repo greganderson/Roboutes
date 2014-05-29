@@ -229,7 +229,11 @@ namespace rocTools
         public static readonly int MCPORT_DRIVE_VIDEO_NOSE = 35004;
         public static readonly int MCPORT_ARM_VIDEO_HUMERUS = 35005;
         public static readonly int MCPORT_LOGISTICS = 35006;
+
         public static readonly int MCPORT_LOGISTICS_FRONT_SS = 35007;
+        public static readonly int MCPORT_LOGISTICS_BACK_SS = 35008;
+        public static readonly int MCPORT_LOGISTICS_RIGHT_SS = 35009;
+        public static readonly int MCPORT_LOGISTICS_LEFT_SS = 35011;
 
         public enum COMID
         {
@@ -239,16 +243,19 @@ namespace rocTools
             ENGCOM = 3
         };
 
-        public static int[] defaultCameraAssignments = new int[] { 0, 1, 2, 3, 4, 5 }; //   0, 1, 4, 2, 3, 5
+        public static int[] defaultCameraAssignments = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
 
         public enum CAMS
         {
-            PT_left = 2,
-            PT_right = 1,
-            PALM = 4,
-            NOSE = 5,
-            Humerus = 3,
-            LOG_FRONT = 0
+            PT_left = 4,
+            PT_right = 2,
+            PALM = 7,
+            NOSE = 8,
+            Humerus = 6,
+            LOG_FRONT = 5,
+            LOG_BACK = 3,
+            LOG_RIGHT = 0,
+            LOG_LEFT = 1,
         };
     }
 

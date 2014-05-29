@@ -77,9 +77,9 @@ namespace rocOnboard
             backDrive = ArduMan.getDriveBackArduino(false);
             frontDrive = ArduMan.getDriveFrontArduino(false);
             ptDuino = ArduMan.getPanTiltArduino(false);
-            ArmDuino = ArduMan.getArmArduino(false);
-            HandDuino = ArduMan.getHandArduino(false);
-            miscDuino = ArduMan.getMiscArduino(true);
+            ArmDuino = ArduMan.getArmArduino(true);
+            HandDuino = ArduMan.getHandArduino(true);
+            miscDuino = ArduMan.getMiscArduino(false);
 
             backDrive.Data_Received += backDrive_Data_Received;
             frontDrive.Data_Received += frontDrive_Data_Received;
@@ -92,7 +92,7 @@ namespace rocOnboard
             ptMan = ptManager.getInstance(ptDuino, NetMan);
             armMan = armManager.getInstance(ArmDuino, HandDuino, NetMan);
 
-            hwMonitor = ROCInfo.getInstance(500);//updates 2 times per second
+            hwMonitor = ROCInfo.getInstance(1000);//updates once per second
             hwMonitor.updatedValue += hwMonitor_updatedValue;
 
             camMan = cameraManager.getInstance();
@@ -113,7 +113,6 @@ namespace rocOnboard
             if (camMan.getCamera(rocConstants.CAMS.PALM, out palmCam))
             {
                 palmCamTransmitter = new managedVideoTransmitter(palmCam, rocConstants.MCIP_ARM, rocConstants.MCPORT_ARM_VIDEO_PALM);
-                //palmCamTransmitter.startTransmitting();
             }
 
             VideoCaptureDevice noseCam;
@@ -136,6 +135,24 @@ namespace rocOnboard
             if (camMan.getCamera(rocConstants.CAMS.LOG_FRONT, out logFrontCam))
             {
                 logFrontSS = new snapShotSender(logFrontCam);
+            }
+
+            VideoCaptureDevice logRightCam;
+            if (camMan.getCamera(rocConstants.CAMS.LOG_RIGHT, out logRightCam))
+            {
+                logRightSS = new snapShotSender(logRightCam);
+            }
+
+            VideoCaptureDevice logBackCam;
+            if (camMan.getCamera(rocConstants.CAMS.LOG_BACK, out logBackCam))
+            {
+                logBackSS = new snapShotSender(logBackCam);
+            }
+
+            VideoCaptureDevice logLeftCam;
+            if (camMan.getCamera(rocConstants.CAMS.LOG_LEFT, out logLeftCam))
+            {
+                logLeftSS = new snapShotSender(logLeftCam);
             }
 
         }
@@ -166,6 +183,15 @@ namespace rocOnboard
             {
                 case "LOG_FRONT":
                     logFrontSS.transmitSnapshot(rocConstants.MCIP_LOGISTICS, rocConstants.MCPORT_LOGISTICS_FRONT_SS);
+                    break;
+                case "LOG_RIGHT":
+                    logRightSS.transmitSnapshot(rocConstants.MCIP_LOGISTICS, rocConstants.MCPORT_LOGISTICS_RIGHT_SS);
+                    break;
+                case "LOG_REAR":
+                    logBackSS.transmitSnapshot(rocConstants.MCIP_LOGISTICS, rocConstants.MCPORT_LOGISTICS_BACK_SS);
+                    break;
+                case "LOG_LEFT":
+                    logLeftSS.transmitSnapshot(rocConstants.MCIP_LOGISTICS, rocConstants.MCPORT_LOGISTICS_LEFT_SS);
                     break;
             }
         }

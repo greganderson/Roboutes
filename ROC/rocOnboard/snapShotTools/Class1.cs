@@ -12,6 +12,7 @@ using AForge.Video.DirectShow;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Threading;
 
 namespace snapShotTools
 {
@@ -34,6 +35,9 @@ namespace snapShotTools
 
         private TcpClient tcpClient;
 
+        private volatile bool transmitRequested = false;
+        Timer fullfilTransmitTimer;
+
         private int _quality = 7;   //TODO: This value is temporary. It should be adjsutable and probably start at 0. 7 just happens to be the best the rocketfish can give.
         /// <summary>
         /// set from 0 - 100
@@ -54,18 +58,31 @@ namespace snapShotTools
             videoCapabilities = videoDevice.VideoCapabilities;
             snapshotCapabilitites = videoDevice.SnapshotCapabilities;
 
-            _quality = videoCapabilities.Length - 2; //TODO: This sets it to SECOND HIGHEST quality, i doubt we want that every time... But it usually gets rid of the blob
+            _quality = 5;  //TODO: This sets it to lowest quality, i doubt we want that every time... to the right is code for the second highest, but it crashes on bad cameras with few snapshot choices... can be fixed easily... But it usually gets rid of the blob       videoCapabilities.Length - 2;
 
             videoDevice.VideoResolution = videoCapabilities[0];
             videoDevice.ProvideSnapshots = true;
             videoDevice.SnapshotResolution = snapshotCapabilitites[_quality]; //
             videoDevice.SnapshotFrame += videoDevice_SnapshotFrame;
             VSP.VideoSource = videoDevice; //Idk why this has to happen to get snapshots, but it does...
-            
+            fullfilTransmitTimer = new Timer(timerCallback, null, Timeout.Infinite, Timeout.Infinite);
+        }
+
+        private void timerCallback(object state)
+        {
+            if (transmitRequested)
+            {
+                videoDevice.SimulateTrigger();
+            }
+            else
+            {
+                fullfilTransmitTimer.Change(Timeout.Infinite, Timeout.Infinite);
+            }
         }
 
         public void transmitSnapshot(IPAddress IP, int _port)
         {
+            transmitRequested = true;
             if (!camOn)
             {
                 camOn = true;
@@ -76,6 +93,7 @@ namespace snapShotTools
                 port = _port;
             }
             videoDevice.SimulateTrigger();
+            fullfilTransmitTimer.Change(1000, 1500);
         }
 
         private void transmitCallback(IAsyncResult ar)
@@ -112,6 +130,8 @@ namespace snapShotTools
 
         void videoDevice_SnapshotFrame(object sender, NewFrameEventArgs eventArgs)
         {
+            transmitRequested = false;
+            fullfilTransmitTimer.Change(Timeout.Infinite, Timeout.Infinite);
             camOn = false;
             lock (frameSync)
             {
