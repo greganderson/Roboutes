@@ -78,8 +78,13 @@ namespace commSockServer
 
         public void write(String data)
         {
-            recentData = true;
-            connection.SendMessage(data);
+            try {
+                recentData = true;
+                connection.SendMessage(data);
+            }
+            catch {
+                //do nothing, probably not connected
+            }
         }
 
     }
