@@ -34,6 +34,9 @@ namespace Logistics_Terminal
         commSockReceiver comSock;
 
         snapShotReceiver frontSSR;
+        snapShotReceiver rightSSR;
+        snapShotReceiver backSSR;
+        snapShotReceiver leftSSR;
 
         public MainWindow()
         {
@@ -48,12 +51,69 @@ namespace Logistics_Terminal
             frontSSR = new snapShotReceiver(35007);
             frontSSR.newSnapShotReceived += frontSSR_newSnapShotReceived;
 
+            rightSSR = new snapShotReceiver(35009);
+            rightSSR.newSnapShotReceived += rightSSR_newSnapShotReceived;
+
+            backSSR = new snapShotReceiver(35008);
+            backSSR.newSnapShotReceived += backSSR_newSnapShotReceived;
+
+            leftSSR = new snapShotReceiver(35011);
+            leftSSR.newSnapShotReceived += leftSSR_newSnapShotReceived;
+
             this.WindowState = System.Windows.WindowState.Maximized;
             mapPalette.newPaletteItemSelected += mapPalette_newPaletteItemSelected;
             mapWin = new mapWindow();
             mapWin.Show();
             magWin = new magnificationWindow();
             magWin.Show();
+        }
+
+        void leftSSR_newSnapShotReceived(byte[] receivedImage)
+        {
+            Action work = delegate
+            {
+                BitmapImage biImg = new BitmapImage();
+                MemoryStream ms = new MemoryStream(receivedImage);
+                biImg.BeginInit();
+                biImg.StreamSource = ms;
+                biImg.EndInit();
+                ImageSource ImgSrc = biImg as ImageSource;
+
+                leftImage.Source = ImgSrc;
+            };
+            Dispatcher.Invoke(work);
+        }
+
+        void backSSR_newSnapShotReceived(byte[] receivedImage)
+        {
+            Action work = delegate
+            {
+                BitmapImage biImg = new BitmapImage();
+                MemoryStream ms = new MemoryStream(receivedImage);
+                biImg.BeginInit();
+                biImg.StreamSource = ms;
+                biImg.EndInit();
+                ImageSource ImgSrc = biImg as ImageSource;
+
+                rearImage.Source = ImgSrc;
+            };
+            Dispatcher.Invoke(work);
+        }
+
+        void rightSSR_newSnapShotReceived(byte[] receivedImage)
+        {
+            Action work = delegate
+            {
+                BitmapImage biImg = new BitmapImage();
+                MemoryStream ms = new MemoryStream(receivedImage);
+                biImg.BeginInit();
+                biImg.StreamSource = ms;
+                biImg.EndInit();
+                ImageSource ImgSrc = biImg as ImageSource;
+
+                rightImage.Source = ImgSrc;
+            };
+            Dispatcher.Invoke(work);
         }
 
         void frontSSR_newSnapShotReceived(byte[] receivedImage)
@@ -70,7 +130,6 @@ namespace Logistics_Terminal
                 frontImage.Source = ImgSrc;
             };
             Dispatcher.Invoke(work);
-
         }
 
         void comSock_connectionLost()
