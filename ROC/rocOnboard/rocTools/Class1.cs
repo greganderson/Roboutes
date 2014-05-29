@@ -20,16 +20,17 @@ namespace rocTools
         public event ConnectionChangedEventHandler DriveConnectionStatusChanged;
         public event ConnectionChangedEventHandler EngineeringConnectionStatusChanged;
         public event ConnectionChangedEventHandler ArmConnectionStatusChanged;
+        public event ConnectionChangedEventHandler LogisticsConnectionStatusChanged;
 
         public delegate void incomingLineEventHandler(string incomingString);
         public event incomingLineEventHandler incomingDrive;
         public event incomingLineEventHandler incomingEngineering;
         public event incomingLineEventHandler incomingArm;
-        // private incomingLineEventHandler incomingLogistics;
+        public event incomingLineEventHandler incomingLogistics;
 
         private static networkManager NM;
 
-        public static networkManager getInstance(incomingLineEventHandler incomingDriveLineHandler, incomingLineEventHandler incomingEngineeringLineHandler, incomingLineEventHandler incomingArmLineHandler)
+        public static networkManager getInstance(incomingLineEventHandler incomingDriveLineHandler, incomingLineEventHandler incomingEngineeringLineHandler, incomingLineEventHandler incomingArmLineHandler, incomingLineEventHandler incomingLogisticsLineHandler)
         {
             if (NM != null)
             {
@@ -37,7 +38,7 @@ namespace rocTools
             }
             else
             {
-                NM = new networkManager(incomingDriveLineHandler, incomingEngineeringLineHandler, incomingArmLineHandler);
+                NM = new networkManager(incomingDriveLineHandler, incomingEngineeringLineHandler, incomingArmLineHandler, incomingLogisticsLineHandler);
                 return NM;
             }
         }
@@ -45,9 +46,9 @@ namespace rocTools
         private commSockSender DRIVECOM;
         private commSockSender ENGCOM;
         private commSockSender ARMCOM;
-        // private commSockSender LOGISTICSCOM;
+        private commSockSender LOGCOM;
 
-        private networkManager(incomingLineEventHandler incomingDriveLineHandler, incomingLineEventHandler incomingEngineeringLineHandler, incomingLineEventHandler incomingArmLineHandler)
+        private networkManager(incomingLineEventHandler incomingDriveLineHandler, incomingLineEventHandler incomingEngineeringLineHandler, incomingLineEventHandler incomingArmLineHandler, incomingLineEventHandler incomingLogisticsLineHandler)
         {
             //Drive networking setup
             incomingDrive = incomingDriveLineHandler;
@@ -69,6 +70,30 @@ namespace rocTools
             ARMCOM.incomingLineEvent +=ARMCOM_incomingLineEvent;
             ARMCOM.connectionStatusChanged +=ARMCOM_connectionStatusChanged;
             ARMCOM.beginConnect(rocConstants.MCIP_ARM, rocConstants.MCPORT_ARM);
+
+            //Logistics networking setup
+            incomingLogistics = incomingLogisticsLineHandler;
+            LOGCOM = new commSockSender("LOGCOM");
+            LOGCOM.incomingLineEvent += LOGCOM_incomingLineEvent;
+            LOGCOM.connectionStatusChanged += LOGCOM_connectionStatusChanged;
+            LOGCOM.beginConnect(rocConstants.MCIP_LOGISTICS, rocConstants.MCPORT_LOGISTICS);
+
+        }
+
+        void LOGCOM_connectionStatusChanged(bool commSockIsConnected)
+        {
+            if (LogisticsConnectionStatusChanged != null)
+            {
+                LogisticsConnectionStatusChanged(commSockIsConnected);
+            }
+        }
+
+        void LOGCOM_incomingLineEvent(string obj)
+        {
+            if (incomingLogistics != null)
+            {
+                incomingLogistics(obj);
+            }
         }
 
         private void ARMCOM_connectionStatusChanged(bool commSockIsConnected)
@@ -132,6 +157,9 @@ namespace rocTools
                 case rocConstants.COMID.ARMCOM:
                     ARMCOM.disconnect();
                     break;
+                case rocConstants.COMID.LOGISTICSCOM:
+                    LOGCOM.disconnect();
+                    break;
             }
         }
 
@@ -152,6 +180,9 @@ namespace rocTools
                 case rocConstants.COMID.ARMCOM:
                     ARMCOM.beginConnect(rocConstants.MCIP_ARM, rocConstants.MCPORT_ARM);
                     break;
+                case rocConstants.COMID.LOGISTICSCOM:
+                    LOGCOM.beginConnect(rocConstants.MCIP_LOGISTICS, rocConstants.MCPORT_LOGISTICS);
+                    break;
             }
         }
 
@@ -163,13 +194,20 @@ namespace rocTools
                     Message = Message.Replace("\n", ""); //Do not allow \n to be transmitted... I think this is dealt with elsewhere, but this is safe...
                     DRIVECOM.sendMessage(Message);
                     break;
+
                 case rocConstants.COMID.ENGCOM:
                     Message = Message.Replace("\n", ""); //Do not allow \n to be transmitted... I think this is dealt with elsewhere, but this is safe...
                     ENGCOM.sendMessage(Message);
                     break;
+
                 case rocConstants.COMID.ARMCOM:
                     Message = Message.Replace("\n", ""); //Do not allow \n to be transmitted... I think this is dealt with elsewhere, but this is safe...
                     ARMCOM.sendMessage(Message);
+                    break;
+
+                case rocConstants.COMID.LOGISTICSCOM:
+                    Message = Message.Replace("\n", ""); //Do not allow \n to be transmitted... I think this is dealt with elsewhere, but this is safe...
+                    LOGCOM.sendMessage(Message);
                     break;
             }
         }
@@ -181,7 +219,7 @@ namespace rocTools
         public static readonly IPAddress MCIP_DRIVE = IPAddress.Parse("155.98.5.147");
         public static readonly IPAddress MCIP_ENG = IPAddress.Parse("155.99.166.150");
         public static readonly IPAddress MCIP_ARM = IPAddress.Parse("155.98.5.147");
-        public static readonly string MCIP_LOGISTICS = "XXX.XXX.XXX.XXX";
+        public static readonly IPAddress MCIP_LOGISTICS = IPAddress.Parse("155.98.5.147");
 
         public static readonly int MCPORT_DRIVE = 35000;
         public static readonly int MCPORT_DRIVE_VIDEO_OCULUS = 35001;
@@ -190,6 +228,8 @@ namespace rocTools
         public static readonly int MCPORT_ARM_VIDEO_PALM = 35003;
         public static readonly int MCPORT_DRIVE_VIDEO_NOSE = 35004;
         public static readonly int MCPORT_ARM_VIDEO_HUMERUS = 35005;
+        public static readonly int MCPORT_LOGISTICS = 35006;
+        public static readonly int MCPORT_LOGISTICS_FRONT_SS = 35007;
 
         public enum COMID
         {
@@ -199,15 +239,16 @@ namespace rocTools
             ENGCOM = 3
         };
 
-        public static int[] defaultCameraAssignments = new int[] { 0, 1, 4, 2, 3 };
+        public static int[] defaultCameraAssignments = new int[] { 0, 1, 2, 3, 4, 5 }; //   0, 1, 4, 2, 3, 5
 
         public enum CAMS
         {
-            PT_left = 1,
-            PT_right = 0,
+            PT_left = 2,
+            PT_right = 1,
             PALM = 4,
-            NOSE = 2,
-            Humerus = 3
+            NOSE = 5,
+            Humerus = 3,
+            LOG_FRONT = 0
         };
     }
 
@@ -622,17 +663,17 @@ namespace rocTools
 
     public static class armConstants
     {
-        public const int MAX_SHOULDER_ANGLE = 57;
+        public const int MAX_SHOULDER_ANGLE = 570;   /////NOTE: These r NOT angles, they are angles multiplied by whatever SHOULDER_RESOLUTION_MULTIPLIER determines is neccessary
         public const int MIN_SHOULDER_ANGLE = 0;
-        public const int SHOULDER_RANGE = 57;
+        public const int SHOULDER_RANGE = 570;
 
-        public const int MAX_ELBOW_ANGLE = 120;
+        public const int MAX_ELBOW_ANGLE = 1200;   /////NOTE: These r NOT angles, they are angles multiplied by whatever ELBOW_RESOLUTION_MULTIPLIER determines is neccessary
         public const int MIN_ELBOW_ANGLE = 0;
-        public const int ELBOW_RANGE = 120;
+        public const int ELBOW_RANGE = 1200;
 
-        public const int MAX_TURNTABLE_ANGLE = 143;
+        public const int MAX_TURNTABLE_ANGLE = 1430;   /////NOTE: These r NOT angles, they are angles multiplied by whatever TURNTABLE_RESOLUTION_MULTIPLIER determines is neccessary
         public const int MIN_TURNTABLE_ANGLE = 0;
-        public const int TURNTABLE_RANGE = 143;
+        public const int TURNTABLE_RANGE = 1430;
 
         public const int MAX_GRIPPER = 100;
         public const int MIN_GRIPPER = 0;

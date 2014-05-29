@@ -40,8 +40,8 @@ namespace ArduinoLibrary {
             ArduinoSerial.DataReceived += ArduinoSerial_DataReceived;
             ArduinoSerial.ErrorReceived += ArduinoSerial_ErrorReceived;
             name = _name;
-            checkConnect = new Thread(checkConnection);
-            checkConnect.Start();
+            /*checkConnect = new Thread(checkConnection);   //TODO: This should probably be uncommented, needs to be tested... I commented it out RECENTLY! 5/28/2014
+            checkConnect.Start();*/
             sendThread = new Thread(sendData);
             sendThread.Start();
         }

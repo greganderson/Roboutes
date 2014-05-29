@@ -131,6 +131,10 @@
       <Project>{22072B78-4DFC-4EB9-9D2A-137C9C589FE9}</Project>
       <Name>safeCommFeedViz</Name>
     </ProjectReference>
+    <ProjectReference Include="..\snapShotTools\snapShotTools.csproj">
+      <Project>{0d07a762-22a1-4165-9f00-f5107deb282c}</Project>
+      <Name>snapShotTools</Name>
+    </ProjectReference>
     <ProjectReference Include="..\toggleIndicator\toggleIndicator.csproj">
       <Project>{C2DD09CF-4E6D-456B-AB71-752D4E354714}</Project>
       <Name>toggleIndicator</Name>

@@ -19,6 +19,9 @@ using videoSocketTools;
 using AForge.Video;
 using AForge.Video.DirectShow;
 using ROC_infoTools;
+using snapShotTools;
+
+//TODO: find out how to (and if its worth it) make the program start with priority set to "realtime"
 
 namespace rocOnboard
 {
@@ -47,6 +50,11 @@ namespace rocOnboard
         managedVideoTransmitter noseCamTransmitter;
         managedVideoTransmitter humerusCamTransmitter;
 
+        snapShotSender logFrontSS;
+        snapShotSender logRightSS;
+        snapShotSender logBackSS;
+        snapShotSender logLeftSS;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -56,10 +64,11 @@ namespace rocOnboard
             logisticsIPLabel.Content = rocConstants.MCIP_LOGISTICS;
             engineeringIPLabel.Content = rocConstants.MCIP_ENG.ToString();
 
-            NetMan = networkManager.getInstance(incomingDriveLineManager, incomingEngLineManager, incomingArmLineManager);
+            NetMan = networkManager.getInstance(incomingDriveLineManager, incomingEngLineManager, incomingArmLineManager, incomingLogisticsLineManager);
             NetMan.DriveConnectionStatusChanged += NetMan_DriveConnectionStatusChanged;
             NetMan.EngineeringConnectionStatusChanged += NetMan_EngineeringConnectionStatusChanged;
             NetMan.ArmConnectionStatusChanged += NetMan_ArmConnectionStatusChanged;
+            NetMan.LogisticsConnectionStatusChanged += NetMan_LogisticsConnectionStatusChanged;
 
             ArduMan = ArduinoManager.Instance;
             ArduMan.findArduinos();
@@ -67,8 +76,8 @@ namespace rocOnboard
             backDrive = ArduMan.getDriveBackArduino(false);
             frontDrive = ArduMan.getDriveFrontArduino(false);
             ptDuino = ArduMan.getPanTiltArduino(false);
-            ArmDuino = ArduMan.getArmArduino(false); //TODO: These are Dummy arduinos currently!
-            HandDuino = ArduMan.getHandArduino(false);  //TODO: These are Dummy arduinos currently!
+            ArmDuino = ArduMan.getArmArduino(true);
+            HandDuino = ArduMan.getHandArduino(false);
 
             backDrive.Data_Received += backDrive_Data_Received;
             frontDrive.Data_Received += frontDrive_Data_Received;
@@ -93,6 +102,10 @@ namespace rocOnboard
                 panTiltTransmitter.startTransmitting();
             }
 
+            //////////////
+            ///VIDEO CAMS SETUP
+            //////////////
+
             VideoCaptureDevice palmCam;
             if (camMan.getCamera(rocConstants.CAMS.PALM, out palmCam))
             {
@@ -112,6 +125,41 @@ namespace rocOnboard
                 humerusCamTransmitter = new managedVideoTransmitter(humerusCam, rocConstants.MCIP_ARM, rocConstants.MCPORT_ARM_VIDEO_HUMERUS);
             }
 
+            //////////////
+            ///SNAPSHOT CAMS SETUP
+            //////////////
+
+            VideoCaptureDevice logFrontCam;
+            if (camMan.getCamera(rocConstants.CAMS.LOG_FRONT, out logFrontCam))
+            {
+                logFrontSS = new snapShotSender(logFrontCam);
+            }
+
+        }
+
+        void NetMan_LogisticsConnectionStatusChanged(bool commSockIsConnected)
+        {
+            if (commSockIsConnected)
+            {
+                logisticsConnectedInd.setIndicatorState(toggleIndicator.indicatorState.Green);
+            }
+            else
+            {
+                logisticsConnectedInd.setIndicatorState(toggleIndicator.indicatorState.Red);
+            }
+        }
+
+        private void incomingLogisticsLineManager(string incoming)
+        {
+            Dispatcher.Invoke(() => incomingInternet.addText(incoming));
+            NetMan.write(rocConstants.COMID.LOGISTICSCOM, " logPING ");
+
+            switch (incoming)
+            {
+                case "LOG_FRONT":
+                    logFrontSS.transmitSnapshot(rocConstants.MCIP_LOGISTICS, rocConstants.MCPORT_LOGISTICS_FRONT_SS);
+                    break;
+            }
         }
 
         void hwMonitor_updatedValue(ROCinfoConstants.hardwareInfoID hardwareID, int val)
@@ -215,7 +263,7 @@ namespace rocOnboard
             NetMan.write(rocConstants.COMID.DRIVECOM, " drivePING ");
         }
 
-        void incomingEngLineManager(string incoming)
+        void incomingEngLineManager(string incoming) //TODO: Use a switch here, not a massive else if tree
         {
             try
             {

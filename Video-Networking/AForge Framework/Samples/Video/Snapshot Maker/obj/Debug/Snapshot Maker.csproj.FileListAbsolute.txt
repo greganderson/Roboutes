@@ -19,3 +19,5 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\Video-Networking\AForge Framework\Samples\V
 C:\Users\RoboUtes 6\Desktop\Roboutes\Video-Networking\AForge Framework\Samples\Video\Snapshot Maker\obj\Debug\Snapshot Maker.csproj.GenerateResource.Cache
 C:\Users\RoboUtes 6\Desktop\Roboutes\Video-Networking\AForge Framework\Samples\Video\Snapshot Maker\obj\Debug\Snapshot Maker.exe
 C:\Users\RoboUtes 6\Desktop\Roboutes\Video-Networking\AForge Framework\Samples\Video\Snapshot Maker\obj\Debug\Snapshot Maker.pdb
+C:\Users\ROC\Documents\GitHub\Video-Networking\AForge Framework\Samples\Video\Snapshot Maker\obj\Debug\Snapshot Maker.exe
+C:\Users\ROC\Documents\GitHub\Video-Networking\AForge Framework\Samples\Video\Snapshot Maker\obj\Debug\Snapshot Maker.pdb

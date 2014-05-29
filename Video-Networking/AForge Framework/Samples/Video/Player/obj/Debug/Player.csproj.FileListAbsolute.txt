@@ -21,5 +21,10 @@ C:\Program Files (x86)\AForge.NET\Framework\Samples\Video\Player\obj\Debug\Playe
 C:\Program Files (x86)\AForge.NET\Framework\Samples\Video\Player\obj\Debug\Player.pdb
 C:\Users\CORE\Documents\GitHub\Roboutes\Video-Networking\AForge Framework\Samples\Video\Player\obj\Debug\Player.exe
 C:\Users\CORE\Documents\GitHub\Roboutes\Video-Networking\AForge Framework\Samples\Video\Player\obj\Debug\Player.pdb
+<<<<<<< da9b490e9788d1af472cb21007a389b04b4bfa64
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\Video-Networking\AForge Framework\Samples\Video\Player\obj\Debug\Player.exe
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\Video-Networking\AForge Framework\Samples\Video\Player\obj\Debug\Player.pdb
+=======
+C:\Users\ROC\Documents\GitHub\Video-Networking\AForge Framework\Samples\Video\Player\obj\Debug\Player.exe
+C:\Users\ROC\Documents\GitHub\Video-Networking\AForge Framework\Samples\Video\Player\obj\Debug\Player.pdb
+>>>>>>> c220cb94e67c8a5a5baa2f8568fef979efe8f3bb

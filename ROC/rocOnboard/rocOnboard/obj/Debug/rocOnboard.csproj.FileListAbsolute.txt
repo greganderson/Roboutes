@@ -90,3 +90,12 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\ROC\rocOnboard\rocOnboard\obj\Debug\rocOnbo
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\ROC infoTools.dll
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\OpenHardwareMonitorLib.dll
 C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\ROC infoTools.pdb
+C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\snapShotTools.dll
+C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\AForge.Controls.dll
+C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\AForge.dll
+C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\AForge.Imaging.dll
+C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\AForge.Math.dll
+C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\snapShotTools.pdb
+C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\AForge.xml
+C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\AForge.Imaging.xml
+C:\Users\ROC\Documents\GitHub\ROC\rocOnboard\rocOnboard\bin\Debug\AForge.Math.xml
