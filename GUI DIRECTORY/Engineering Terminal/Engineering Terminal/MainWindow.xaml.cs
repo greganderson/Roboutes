@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 using commSockServer;
 using engineeringTerminalTools;
+using System.Threading;
 
 namespace Engineering_Terminal
 {
@@ -25,6 +26,8 @@ namespace Engineering_Terminal
     {
         commSockReceiver comSock;
         engineeringNetworkManager engNetMan;
+        Timer rareHeartbeatTimer;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -36,6 +39,17 @@ namespace Engineering_Terminal
             comSock.beginAccept();
 
             videoManager.intendedCameraStatusChanged+=videoManager_intendedCameraStatusChanged;
+
+            rareHeartbeatTimer = new Timer(rareHeartbeatTimerCallback, null, 2000, 25000);
+        }
+
+        private void rareHeartbeatTimerCallback(object state) {
+            try {
+                comSock.write("engHeartbeat");
+            }
+            catch {
+                //do nothing, the terminal is probably not connected
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
