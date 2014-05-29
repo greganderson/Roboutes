@@ -44,6 +44,7 @@ namespace rocOnboard
         Arduino ptDuino;
         Arduino ArmDuino;
         Arduino HandDuino;
+        Arduino miscDuino;
 
         managedDualVideoTransmitter panTiltTransmitter;
         managedVideoTransmitter palmCamTransmitter;
@@ -76,14 +77,16 @@ namespace rocOnboard
             backDrive = ArduMan.getDriveBackArduino(false);
             frontDrive = ArduMan.getDriveFrontArduino(false);
             ptDuino = ArduMan.getPanTiltArduino(false);
-            ArmDuino = ArduMan.getArmArduino(true);
+            ArmDuino = ArduMan.getArmArduino(false);
             HandDuino = ArduMan.getHandArduino(false);
+            miscDuino = ArduMan.getMiscArduino(true);
 
             backDrive.Data_Received += backDrive_Data_Received;
             frontDrive.Data_Received += frontDrive_Data_Received;
             ptDuino.Data_Received += ptDuino_Data_Received;
             ArmDuino.Data_Received += ArmDuino_Data_Received;
             HandDuino.Data_Received += HandDuino_Data_Received;
+            miscDuino.Data_Received += miscDuino_Data_Received;
 
             driveMan = driveManager.getInstance(backDrive, frontDrive, NetMan);
             ptMan = ptManager.getInstance(ptDuino, NetMan);
@@ -135,6 +138,11 @@ namespace rocOnboard
                 logFrontSS = new snapShotSender(logFrontCam);
             }
 
+        }
+
+        void miscDuino_Data_Received(string receivedData)
+        {
+            Dispatcher.Invoke(() => miscCOMIN.addText(receivedData));
         }
 
         void NetMan_LogisticsConnectionStatusChanged(bool commSockIsConnected)
@@ -318,6 +326,21 @@ namespace rocOnboard
         private void Window_Closed(object sender, EventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            miscDuino.write("MAST_DOWN");
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            miscDuino.write("MAST_UP");
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            miscDuino.write("MAST_STOP");
         }
     }
 }

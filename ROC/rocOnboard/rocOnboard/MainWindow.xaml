@@ -24,6 +24,10 @@
         <toggleIndicator:ToolboxControl x:Name="engineeringConnectedInd" HorizontalAlignment="Left" Margin="317,130,0,0" VerticalAlignment="Top" Height="35" Width="33"/>
         <safeCommFeedViz:ToolboxControl x:Name="armCOMIN" HorizontalAlignment="Left" Margin="357,280,0,-33" VerticalAlignment="Top" Height="280" Width="273" title="Arm COM IN"/>
         <safeCommFeedViz:ToolboxControl x:Name="wristCOMIN" HorizontalAlignment="Left" Margin="630,280,0,0" VerticalAlignment="Top" Height="280" Width="273" title="Wrist COM IN"/>
+        <safeCommFeedViz:ToolboxControl x:Name="miscCOMIN" HorizontalAlignment="Left" Margin="908,280,0,0" VerticalAlignment="Top" Height="280" Width="273" title="Misc COM IN"/>
+        <Button Content="DOWN" HorizontalAlignment="Left" Margin="1276,332,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="UP" HorizontalAlignment="Left" Margin="1276,357,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <Button Content="STOP" HorizontalAlignment="Left" Margin="1276,382,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_2"/>
 
     </Grid>
 </Window>

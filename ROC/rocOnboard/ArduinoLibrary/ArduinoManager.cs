@@ -88,6 +88,11 @@ namespace ArduinoLibrary
                         _ArduinoMap.Add(Arduino_Codes.PT_IDENTITY, new Arduino(temp, Arduino_Codes.PT_IDENTITY));
                         return true;
                     }
+                    else if (ID.Contains(Arduino_Codes.MISC_IDENTITY_RESPONSE))
+                    {
+                        _ArduinoMap.Add(Arduino_Codes.MISC_IDENTITY, new Arduino(temp, Arduino_Codes.MISC_IDENTITY));
+                        return true;
+                    }
 
                     temp.Dispose(); //Gets rid of safe handle issue! Or at least appears to!
                 }
@@ -183,7 +188,26 @@ namespace ArduinoLibrary
                 }
                 else
                 {
-                    throw new Exception("No Drive Back Arduino Exists");
+                    throw new Exception("No Pan Tilt Arduino Exists");
+                }
+            }
+            else
+            {
+                return new Arduino();
+            }
+        }
+
+        public Arduino getMiscArduino(bool real)
+        {
+            if (real)
+            {
+                if (ArduinoMap.ContainsKey(Arduino_Codes.MISC_IDENTITY))
+                {
+                    return ArduinoMap[Arduino_Codes.MISC_IDENTITY];
+                }
+                else
+                {
+                    throw new Exception("No Misc Arduino Exists");
                 }
             }
             else
@@ -240,6 +264,12 @@ namespace ArduinoLibrary
         /////////////////////////////////////////////////////////////
         public static readonly string PT_IDENTITY_RESPONSE = "POLO->PT";
         public static readonly string PT_IDENTITY = "PT";
+
+        /////////////////////////////////////////////////////////////
+        ///////////////      MISC CODES - Apply to the misc arduino
+        /////////////////////////////////////////////////////////////
+        public static readonly string MISC_IDENTITY_RESPONSE = "POLO->MISC";
+        public static readonly string MISC_IDENTITY = "MISC";
     }
     
     
