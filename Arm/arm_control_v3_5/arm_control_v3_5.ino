@@ -131,7 +131,7 @@ String tester;
       float E_error_tolerance = 0;
 
   // P Gains
-      int TT_P_gain = 675; //was 675
+      int TT_P_gain = 675;
       int S1_P_gain = 3000;
       int E_P_gain = 3000;
 
