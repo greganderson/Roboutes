@@ -65,3 +65,4 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\liveXboxMonito
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\liveXboxMonitor\obj\Debug\liveXboxMonitor.pkgdef
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\liveXboxMonitor\obj\Debug\liveXboxMonitor.latest.pkgdef
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\liveXboxMonitor\obj\Debug\extension.vsixmanifest
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\liveXboxMonitor\obj\Debug\liveXboxMonitor.csprojResolveAssemblyReference.cache
