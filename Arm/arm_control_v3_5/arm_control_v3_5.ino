@@ -136,7 +136,7 @@ String tester;
       int E_P_gain = 3000;
 
   // I Gains
-      float TT_I_gain = 5;
+      float TT_I_gain = 8;
       float S1_I_gain = 30;
       float E_I_gain = 30;
       
