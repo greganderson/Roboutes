@@ -217,7 +217,7 @@ namespace rocTools
     public static class rocConstants
     {
         public static readonly IPAddress MCIP_DRIVE = IPAddress.Parse("155.98.5.147");
-        public static readonly IPAddress MCIP_ENG = IPAddress.Parse("155.99.166.150");
+        public static readonly IPAddress MCIP_ENG = IPAddress.Parse("155.98.5.147");
         public static readonly IPAddress MCIP_ARM = IPAddress.Parse("155.98.5.147");
         public static readonly IPAddress MCIP_LOGISTICS = IPAddress.Parse("155.98.5.147");
 
@@ -247,8 +247,8 @@ namespace rocTools
 
         public enum CAMS
         {
-            PT_left = 4,
-            PT_right = 2,
+            PT_left = 1,
+            PT_right = 0,
             PALM = 7,
             NOSE = 8,
             Humerus = 6,

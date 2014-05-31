@@ -7,8 +7,8 @@ String dataFromPC;
 Servo mastMotor;
  
  // Declare Pins
- const int lowerLimitPin = 22; // purple wire    //was 2
- const int upperLimitPin = 23; // yellow wire  //was 3
+ const int lowerLimitPin = 2; // purple wire
+ const int upperLimitPin = 3; // yellow wire
  const int rockerDownPin = 4; // red wire
  const int rockerUpPin = 5; // orange wire
  

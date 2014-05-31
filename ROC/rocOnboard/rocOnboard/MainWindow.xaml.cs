@@ -74,9 +74,9 @@ namespace rocOnboard
             ArduMan = ArduinoManager.Instance;
             ArduMan.findArduinos();
 
-            backDrive = ArduMan.getDriveBackArduino(false);
-            frontDrive = ArduMan.getDriveFrontArduino(false);
-            ptDuino = ArduMan.getPanTiltArduino(false);
+            backDrive = ArduMan.getDriveBackArduino(true);
+            frontDrive = ArduMan.getDriveFrontArduino(true);
+            ptDuino = ArduMan.getPanTiltArduino(true);
             ArmDuino = ArduMan.getArmArduino(true);
             HandDuino = ArduMan.getHandArduino(true);
             miscDuino = ArduMan.getMiscArduino(false);
@@ -303,42 +303,109 @@ namespace rocOnboard
             {
                 if (incoming != null)
                 {
-                    Dispatcher.Invoke(() => incomingInternet.addText(incoming + "\n"));
-                    NetMan.write(rocConstants.COMID.ENGCOM, " engPING ");
-                    if (incoming == "PT_TRANSMIT")
+                    if (incoming.Contains("TRANSMIT"))
                     {
-                        if (panTiltTransmitter != null)
+                        Dispatcher.Invoke(() => incomingInternet.addText(incoming + "\n"));
+                        NetMan.write(rocConstants.COMID.ENGCOM, " engPING ");
+                        if (incoming == "PT_TRANSMIT")
                         {
-                            panTiltTransmitter.startTransmitting();
+                            if (panTiltTransmitter != null)
+                            {
+                                panTiltTransmitter.startTransmitting();
+                            }
+                        }
+                        else if (incoming == "PT_STOP_TRANSMIT")
+                        {
+                            panTiltTransmitter.stop();
+                        }
+                        else if (incoming == "PALM_TRANSMIT")
+                        {
+                            palmCamTransmitter.startTransmitting();
+                        }
+                        else if (incoming == "PALM_STOP_TRANSMIT")
+                        {
+                            palmCamTransmitter.stop();
+                        }
+                        else if (incoming == "NOSE_TRANSMIT")
+                        {
+                            noseCamTransmitter.startTransmitting();
+                        }
+                        else if (incoming == "NOSE_STOP_TRANSMIT")
+                        {
+                            noseCamTransmitter.stop();
+                        }
+                        else if (incoming == "HUMERUS_TRANSMIT")
+                        {
+                            humerusCamTransmitter.startTransmitting();
+                        }
+                        else if (incoming == "HUMERUS_STOP_TRANSMIT")
+                        {
+                            humerusCamTransmitter.stop();
                         }
                     }
-                    else if (incoming == "PT_STOP_TRANSMIT")
+                    else if (incoming.Contains("QUALITY"))
                     {
-                        panTiltTransmitter.stop();
+                        int quality;
+                        if (incoming.StartsWith("PT_QUALITY_"))
+                        {
+                            if (int.TryParse(incoming.Substring(incoming.LastIndexOf("_") + 1), out quality))
+                            {
+                                panTiltTransmitter.setQuality(quality);
+                            }
+                        }
+                        else if (incoming.StartsWith("WORKSPACE_QUALITY_"))
+                        {
+                            if (int.TryParse(incoming.Substring(incoming.LastIndexOf("_") + 1), out quality))
+                            {
+                                noseCamTransmitter.setQuality(quality);
+                            }
+                        }
+                        else if (incoming.StartsWith("PALM_QUALITY_"))
+                        {
+                            if (int.TryParse(incoming.Substring(incoming.LastIndexOf("_") + 1), out quality))
+                            {
+                                palmCamTransmitter.setQuality(quality);
+                            }
+                        }
+                        else if (incoming.StartsWith("HUMERUS_QUALITY_"))
+                        {
+                            if (int.TryParse(incoming.Substring(incoming.LastIndexOf("_") + 1), out quality))
+                            {
+                                humerusCamTransmitter.setQuality(quality);
+                            }
+                        }
                     }
-                    else if (incoming == "PALM_TRANSMIT")
+                    else if (incoming.Contains("FPS"))
                     {
-                        palmCamTransmitter.startTransmitting();
-                    }
-                    else if (incoming == "PALM_STOP_TRANSMIT")
-                    {
-                        palmCamTransmitter.stop();
-                    }
-                    else if (incoming == "NOSE_TRANSMIT")
-                    {
-                        noseCamTransmitter.startTransmitting();
-                    }
-                    else if (incoming == "NOSE_STOP_TRANSMIT")
-                    {
-                        noseCamTransmitter.stop();
-                    }
-                    else if (incoming == "HUMERUS_TRANSMIT")
-                    {
-                        humerusCamTransmitter.startTransmitting();
-                    }
-                    else if (incoming == "HUMERUS_STOP_TRANSMIT")
-                    {
-                        humerusCamTransmitter.stop();
+                        int fps;
+                        if (incoming.StartsWith("PT_FPS_"))
+                        {
+                            if (int.TryParse(incoming.Substring(incoming.LastIndexOf("_") + 1), out fps))
+                            {
+                                panTiltTransmitter.setFPS(fps);
+                            }
+                        }
+                        else if (incoming.StartsWith("PALM_FPS_"))
+                        {
+                            if (int.TryParse(incoming.Substring(incoming.LastIndexOf("_") + 1), out fps))
+                            {
+                                palmCamTransmitter.setFPS(fps);
+                            }
+                        }
+                        else if (incoming.StartsWith("HUMERUS_FPS_"))
+                        {
+                            if (int.TryParse(incoming.Substring(incoming.LastIndexOf("_") + 1), out fps))
+                            {
+                                humerusCamTransmitter.setFPS(fps);
+                            }
+                        }
+                        else if (incoming.StartsWith("WORKSPACE_FPS_"))
+                        {
+                            if (int.TryParse(incoming.Substring(incoming.LastIndexOf("_") + 1), out fps))
+                            {
+                                noseCamTransmitter.setFPS(fps);
+                            }
+                        }
                     }
                 }
             }
