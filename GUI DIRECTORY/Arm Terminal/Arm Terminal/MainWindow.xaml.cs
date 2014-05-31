@@ -42,10 +42,10 @@ namespace Arm_Terminal
         {
             InitializeComponent();
 
-            palmVidWindow = new videoWindow(35003, videoWindow.monitors.secondMonitor);
+            palmVidWindow = new videoWindow(35003, videoWindow.monitors.secondMonitor,"Palm Cam Window");
             palmVidWindow.Show();
 
-            humerusVidWindow = new videoWindow(35005, videoWindow.monitors.thirdMonitor);
+            humerusVidWindow = new videoWindow(35005, videoWindow.monitors.thirdMonitor, "Humerus Cam Window");
             humerusVidWindow.Show();
 
             inputOnlineInd.setIndicatorState(toggleIndicator.indicatorState.Red);

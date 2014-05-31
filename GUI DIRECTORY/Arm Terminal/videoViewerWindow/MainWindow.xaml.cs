@@ -31,12 +31,14 @@ namespace videoViewerWindow {
         private int port;
         private monitors targetMonitor;
         JpegBitmapDecoder JpegDec;
+        private string name;
 
-        public videoWindow(int _port, monitors monitorToDisplayOn) {
+        public videoWindow(int _port, monitors monitorToDisplayOn, string _name) {
             InitializeComponent();
             port = _port;
             VSR = new videoSocketReceiver(port, connectionCallback);
             targetMonitor = monitorToDisplayOn;
+            name = _name;
         }
 
         private void connectionCallback(bool connectionStatus) {
@@ -66,14 +68,6 @@ namespace videoViewerWindow {
             try {
                 Action work = delegate
                 {
-                    /*MemoryStream MS = new MemoryStream(frame);
-                    JpegDec = new JpegBitmapDecoder(MS, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
-                    // Dispatcher.Invoke(() => imageBox.Source = (ImageSource)ByteImageConverter.ByteToImage(frame,out MS)); //TODO: stack overflow???
-                    imageBox.Source = JpegDec.Frames[0];
-                    imageBox.Source.Freeze();
-                    MS.Dispose();*/
-                    /*ImageConverter IC = new ImageConverter();
-                    imageBox.Source = GetImageStream((System.Drawing.Image)IC.ConvertFrom(frame));*/
                     imageBox.Source = ByteImageConverter.ByteToImage(frame);
                 };
                 Dispatcher.Invoke(work);
@@ -94,6 +88,7 @@ namespace videoViewerWindow {
                     this.MaximizeToThirdMonitor();
                     break;
             }
+            this.Title = name;
         }
 
         private void MaximizeToSecondaryMonitor() {
