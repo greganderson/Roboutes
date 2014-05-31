@@ -98,3 +98,4 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\commFeedVi
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\commFeedViz\obj\Debug\commFeedViz.pkgdef
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\commFeedViz\obj\Debug\commFeedViz.latest.pkgdef
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\commFeedViz\obj\Debug\extension.vsixmanifest
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\commFeedViz\obj\Debug\commFeedViz.csprojResolveAssemblyReference.cache

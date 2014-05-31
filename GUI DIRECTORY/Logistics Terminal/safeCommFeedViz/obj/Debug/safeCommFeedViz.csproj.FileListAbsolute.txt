@@ -31,3 +31,4 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\safeCommFe
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\safeCommFeedViz\obj\Debug\safeCommFeedViz.pkgdef
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\safeCommFeedViz\obj\Debug\safeCommFeedViz.latest.pkgdef
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\safeCommFeedViz\obj\Debug\extension.vsixmanifest
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\safeCommFeedViz\obj\Debug\safeCommFeedViz.csprojResolveAssemblyReference.cache

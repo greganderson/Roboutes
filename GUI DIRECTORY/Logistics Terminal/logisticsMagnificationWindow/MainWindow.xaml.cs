@@ -23,8 +23,11 @@ namespace logisticsMagnificationWindow
     public partial class magnificationWindow : Window
     {
         private int monitor;
-        public magnificationWindow(int _monitor)
+        private string windowName;
+
+        public magnificationWindow(int _monitor, string _WindowName)
         {
+            windowName = _WindowName;
             monitor = _monitor;
             InitializeComponent();
         }
@@ -127,6 +130,7 @@ namespace logisticsMagnificationWindow
             var senderWindow = sender as Window;
             senderWindow.WindowState = WindowState.Maximized;
             ShowOnMonitor(monitor, this);
+            this.Title = windowName;
         }
 
 

@@ -65,9 +65,9 @@ namespace Logistics_Terminal
             mapPalette.newPaletteItemSelected += mapPalette_newPaletteItemSelected;
             mapWin = new mapWindow();
             mapWin.Show();
-            leftMagWin = new magnificationWindow(1);
+            leftMagWin = new magnificationWindow(1, "Left Magnification");
             leftMagWin.Show();
-            rightMagWin = new magnificationWindow(0);
+            rightMagWin = new magnificationWindow(2, "Right Magnification");
             rightMagWin.Show();
         }
 

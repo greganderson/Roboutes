@@ -111,6 +111,7 @@ namespace LogisticsMapWindow
             ShowOnMonitor(3, this);
             animationThread = new Thread(new ThreadStart(animate));
             animationThread.Start();
+            this.Title = "MAP Window";
         }
 
 

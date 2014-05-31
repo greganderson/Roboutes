@@ -24,3 +24,4 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\snapShotTo
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\snapShotTools\bin\Debug\snapShotTools.pdb
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\snapShotTools\obj\Debug\snapShotTools.dll
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\snapShotTools\obj\Debug\snapShotTools.pdb
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\snapShotTools\obj\Debug\snapShotTools.csprojResolveAssemblyReference.cache
