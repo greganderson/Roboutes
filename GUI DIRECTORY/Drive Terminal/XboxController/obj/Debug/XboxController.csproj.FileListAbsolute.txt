@@ -29,3 +29,8 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\XboxController
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\XboxController\bin\Debug\XboxController.pdb
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\XboxController\obj\Debug\XboxController.dll
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\XboxController\obj\Debug\XboxController.pdb
+C:\Users\RoboUtes 1\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\XboxController\bin\Debug\XboxController.dll
+C:\Users\RoboUtes 1\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\XboxController\bin\Debug\XboxController.pdb
+C:\Users\RoboUtes 1\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\XboxController\obj\Debug\XboxController.csprojResolveAssemblyReference.cache
+C:\Users\RoboUtes 1\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\XboxController\obj\Debug\XboxController.dll
+C:\Users\RoboUtes 1\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\XboxController\obj\Debug\XboxController.pdb

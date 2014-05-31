@@ -19,6 +19,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 
 namespace videoViewerWindow {
@@ -32,11 +33,12 @@ namespace videoViewerWindow {
         private monitors targetMonitor;
         JpegBitmapDecoder JpegDec;
 
-        public videoWindow(int _port, monitors monitorToDisplayOn) {
+        public videoWindow(int _port, monitors monitorToDisplayOn, string monitorID) {
             InitializeComponent();
             port = _port;
             VSR = new videoSocketReceiver(port, connectionCallback);
             targetMonitor = monitorToDisplayOn;
+            monitorIDLabel.Content = monitorID;
         }
 
         private void connectionCallback(bool connectionStatus) {
@@ -47,6 +49,38 @@ namespace videoViewerWindow {
             else {
                 VSR.close();
                 VSR = new videoSocketReceiver(port, connectionCallback);
+            }
+        }
+
+        private void ShowOnMonitor(int monitor, Window window)
+        {
+            var screen = ScreenHandler.GetScreen(monitor);
+            var currentScreen = ScreenHandler.GetCurrentScreen(this);
+            window.WindowState = WindowState.Normal;
+            window.Left = screen.WorkingArea.Left;
+            window.Top = screen.WorkingArea.Top;
+            window.Width = screen.WorkingArea.Width;
+            window.Height = screen.WorkingArea.Height;
+            window.Loaded += Window_Loaded;
+        }
+
+        public static class ScreenHandler
+        {
+            public static Screen GetCurrentScreen(Window window)
+            {
+                var parentArea = new System.Drawing.Rectangle((int)window.Left, (int)window.Top, (int)window.Width, (int)window.Height);
+                return Screen.FromRectangle(parentArea);
+            }
+
+            public static Screen GetScreen(int requestedScreen)
+            {
+                var screens = Screen.AllScreens;
+                var mainScreen = 0;
+                if (screens.Length > 1 && mainScreen < screens.Length)
+                {
+                    return screens[requestedScreen];
+                }
+                return screens[0];
             }
         }
 
@@ -80,10 +114,13 @@ namespace videoViewerWindow {
             switch (targetMonitor)
             {
                 case monitors.secondMonitor:
-                    this.MaximizeToSecondaryMonitor();
+                    ShowOnMonitor(1, this);
                     break;
                 case monitors.thirdMonitor:
-                    this.MaximizeToThirdMonitor();
+                    ShowOnMonitor(2, this);
+                    break;
+                case monitors.fourthMonitor:
+                    ShowOnMonitor(3, this);
                     break;
             }
         }
@@ -145,7 +182,8 @@ namespace videoViewerWindow {
         public enum monitors
         {
             secondMonitor,
-            thirdMonitor
+            thirdMonitor,
+            fourthMonitor
         }
 
     }

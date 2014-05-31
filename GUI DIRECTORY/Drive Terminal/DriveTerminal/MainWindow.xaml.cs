@@ -40,14 +40,6 @@ namespace DriveTerminal {
         public MainWindow() {
             InitializeComponent();
 
-            oculusVidWindow = new videoWindow(35001, videoWindow.monitors.secondMonitor);
-           // oculusVidWindow.setIDLabel("oculusVidWindow");
-            oculusVidWindow.Show();
-
-            noseCamVidWindow = new videoWindow(35004, videoWindow.monitors.thirdMonitor);
-           // noseCamVidWindow.setIDLabel("noseCamVidWindow");
-            noseCamVidWindow.Show();
-
             xboxController = new XboxController.XboxController();
             pilotPreferences.xboxController = xboxController;
             comSock = new commSockReceiver(35000);
@@ -95,6 +87,19 @@ namespace DriveTerminal {
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void Window_Loaded_1(object sender, RoutedEventArgs e)
+        {
+
+
+            oculusVidWindow = new videoWindow(35001, videoWindow.monitors.thirdMonitor,"Oculus");
+            // oculusVidWindow.setIDLabel("oculusVidWindow");
+            oculusVidWindow.Show();
+
+            noseCamVidWindow = new videoWindow(35004, videoWindow.monitors.secondMonitor,"Nose");
+            // noseCamVidWindow.setIDLabel("noseCamVidWindow");
+            noseCamVidWindow.Show();
         }
     }
 }

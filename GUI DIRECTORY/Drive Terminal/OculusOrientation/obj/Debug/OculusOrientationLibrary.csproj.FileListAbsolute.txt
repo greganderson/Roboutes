@@ -59,3 +59,16 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\OculusOrientat
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\OculusOrientation\obj\Debug\OculusOrientation.pdb
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\OculusOrientation\bin\Debug\log4net.dll
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\OculusOrientation\bin\Debug\log4net.pdb
+C:\Users\RoboUtes 1\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\OculusOrientation\bin\Debug\OculusOrientation.dll
+C:\Users\RoboUtes 1\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\OculusOrientation\bin\Debug\OculusOrientation.pdb
+C:\Users\RoboUtes 1\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\OculusOrientation\bin\Debug\commSockServer.dll
+C:\Users\RoboUtes 1\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\OculusOrientation\bin\Debug\log4net.dll
+C:\Users\RoboUtes 1\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\OculusOrientation\bin\Debug\ChatClientModel.dll
+C:\Users\RoboUtes 1\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\OculusOrientation\bin\Debug\StringSocket.dll
+C:\Users\RoboUtes 1\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\OculusOrientation\bin\Debug\commSockServer.pdb
+C:\Users\RoboUtes 1\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\OculusOrientation\bin\Debug\log4net.pdb
+C:\Users\RoboUtes 1\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\OculusOrientation\bin\Debug\ChatClientModel.pdb
+C:\Users\RoboUtes 1\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\OculusOrientation\bin\Debug\StringSocket.pdb
+C:\Users\RoboUtes 1\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\OculusOrientation\obj\Debug\OculusOrientationLibrary.csprojResolveAssemblyReference.cache
+C:\Users\RoboUtes 1\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\OculusOrientation\obj\Debug\OculusOrientation.dll
+C:\Users\RoboUtes 1\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\OculusOrientation\obj\Debug\OculusOrientation.pdb

@@ -56,3 +56,6 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\Logistics 
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\Logistics Terminal\bin\Debug\AForge.Controls.dll
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\Logistics Terminal\bin\Debug\AForge.Video.dll
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\Logistics Terminal\bin\Debug\snapShotTools.pdb
+C:\Users\RoboUtes 1\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\Logistics Terminal\bin\Debug\Logistics Terminal.exe.config
+C:\Users\RoboUtes 1\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\Logistics Terminal\obj\Debug\Logistics Terminal.exe
+C:\Users\RoboUtes 1\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\Logistics Terminal\obj\Debug\Logistics Terminal.pdb
