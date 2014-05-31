@@ -33,7 +33,6 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\Deadzone Teste
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\Deadzone Tester\bin\Debug\Deadzone Tester.pdb
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\Deadzone Tester\bin\Debug\Deadzone.dll
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\Deadzone Tester\bin\Debug\Deadzone.pdb
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\Deadzone Tester\obj\Debug\Deadzone Tester.csprojResolveAssemblyReference.cache
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\Deadzone Tester\obj\Debug\MainWindow.baml
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\Deadzone Tester\obj\Debug\MainWindow.g.cs
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\Deadzone Tester\obj\Debug\App.g.cs
@@ -43,3 +42,4 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\Deadzone Teste
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\Deadzone Tester\obj\Debug\Deadzone Tester.csproj.GenerateResource.Cache
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\Deadzone Tester\obj\Debug\Deadzone Tester.exe
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\Deadzone Tester\obj\Debug\Deadzone Tester.pdb
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\Deadzone Tester\obj\Debug\Deadzone Tester.csprojResolveAssemblyReference.cache

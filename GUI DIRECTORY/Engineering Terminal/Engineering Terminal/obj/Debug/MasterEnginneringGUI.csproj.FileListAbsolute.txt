@@ -61,8 +61,6 @@ C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Termi
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Terminal\Engineering Terminal\obj\Debug\Engineering_Terminal.Properties.Resources.resources
 C:\Users\StealthBomber\Documents\GitHub\Roboutes\GUI DIRECTORY\Engineering Terminal\Engineering Terminal\obj\Debug\MasterEnginneringGUI.csproj.GenerateResource.Cache
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Engineering Terminal\Engineering Terminal\bin\Debug\Engineering Terminal.exe.config
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Engineering Terminal\Engineering Terminal\obj\Debug\Engineering Terminal.exe
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Engineering Terminal\Engineering Terminal\obj\Debug\Engineering Terminal.pdb
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Engineering Terminal\Engineering Terminal\bin\Debug\Engineering Terminal.exe
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Engineering Terminal\Engineering Terminal\bin\Debug\Engineering Terminal.pdb
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Engineering Terminal\Engineering Terminal\bin\Debug\commFeedViz.dll
@@ -91,3 +89,7 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Engineering Terminal\Engineer
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Engineering Terminal\Engineering Terminal\obj\Debug\Engineering Terminal.g.resources
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Engineering Terminal\Engineering Terminal\obj\Debug\Engineering_Terminal.Properties.Resources.resources
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Engineering Terminal\Engineering Terminal\obj\Debug\MasterEnginneringGUI.csproj.GenerateResource.Cache
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Engineering Terminal\Engineering Terminal\obj\Debug\Engineering Terminal.exe
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Engineering Terminal\Engineering Terminal\obj\Debug\Engineering Terminal.pdb
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Engineering Terminal\Engineering Terminal\bin\Debug\videoTraits.dll
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Engineering Terminal\Engineering Terminal\bin\Debug\videoTraits.pdb

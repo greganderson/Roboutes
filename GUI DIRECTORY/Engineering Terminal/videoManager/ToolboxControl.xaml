@@ -9,7 +9,7 @@
         <Grid >
             <Rectangle Fill="#FF383838" HorizontalAlignment="Left" Height="349" Stroke="Black" VerticalAlignment="Top" Width="300"/>
             <Rectangle Fill="#FF383838" HorizontalAlignment="Left" Height="2" Stroke="#FFFF9700" VerticalAlignment="Top" Width="300" Margin="0,43,0,0"/>
-            <TextBox HorizontalAlignment="Left" Height="43" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="Video Management" VerticalAlignment="Top" Width="300" Background="{x:Null}" Foreground="#FFFF6800" FontWeight="Bold" BorderBrush="{x:Null}" FontSize="26"/>
+            <TextBox HorizontalAlignment="Left" Height="43" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="Video Feed Management" VerticalAlignment="Top" Width="300" Background="{x:Null}" Foreground="#FFFF6800" FontWeight="Bold" BorderBrush="{x:Null}" FontSize="24"/>
             <TextBox HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="DRIVE:" VerticalAlignment="Top" Width="69" Background="{x:Null}" Foreground="#FFFF6800" FontWeight="Bold" BorderBrush="{x:Null}" FontSize="18" Margin="0,65,0,0"/>
             <Rectangle Fill="#FF383838" HorizontalAlignment="Left" Height="2" Stroke="#FFFF9700" VerticalAlignment="Top" Width="300" Margin="0,93,0,0"/>
             <TextBox HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="ARM:" VerticalAlignment="Top" Width="69" Background="{x:Null}" Foreground="#FFFF6800" FontWeight="Bold" BorderBrush="{x:Null}" FontSize="18" Margin="0,221,0,0"/>

@@ -18,6 +18,7 @@ using Microsoft.Maps.MapControl.WPF.Design;
 using logisticsTools;
 using System.Threading;
 using System.Speech.Synthesis;
+using System.Windows.Forms;
 
 namespace LogisticsMapWindow
 {
@@ -102,6 +103,49 @@ namespace LogisticsMapWindow
             Dispatcher.Invoke(()=>map.Children.Clear());
         }
 
+        /*You can use this event for all the Windows*/
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var senderWindow = sender as Window;
+            senderWindow.WindowState = WindowState.Maximized;
+            ShowOnMonitor(3, this);
+            animationThread = new Thread(new ThreadStart(animate));
+            animationThread.Start();
+        }
+
+
+        private void ShowOnMonitor(int monitor, Window window)
+        {
+            var screen = ScreenHandler.GetScreen(monitor);
+            var currentScreen = ScreenHandler.GetCurrentScreen(this);
+            window.WindowState = WindowState.Normal;
+            window.Left = screen.WorkingArea.Left;
+            window.Top = screen.WorkingArea.Top;
+            window.Width = screen.WorkingArea.Width;
+            window.Height = screen.WorkingArea.Height;
+            window.Loaded += Window_Loaded;
+        }
+
+        public static class ScreenHandler
+        {
+            public static Screen GetCurrentScreen(Window window)
+            {
+                var parentArea = new System.Drawing.Rectangle((int)window.Left, (int)window.Top, (int)window.Width, (int)window.Height);
+                return Screen.FromRectangle(parentArea);
+            }
+
+            public static Screen GetScreen(int requestedScreen)
+            {
+                var screens = Screen.AllScreens;
+                var mainScreen = 0;
+                if (screens.Length > 1 && mainScreen < screens.Length)
+                {
+                    return screens[requestedScreen];
+                }
+                return screens[0];
+            }
+        }
+
         public void placeRover(double lat, double lon) //TODO: add heading as a third parameter
         {
             MapPolygon polygon = new MapPolygon();
@@ -132,13 +176,6 @@ namespace LogisticsMapWindow
         public void centerOnNasa()
         {
             Dispatcher.Invoke(()=>map.SetView(new Location(29.564753, -95.081363), 20.5, 0));  //location of the rock yard
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            this.MaximizeToSecondaryMonitor();
-            animationThread = new Thread(new ThreadStart(animate));
-            animationThread.Start();
         }
 
         private void MaximizeToSecondaryMonitor()

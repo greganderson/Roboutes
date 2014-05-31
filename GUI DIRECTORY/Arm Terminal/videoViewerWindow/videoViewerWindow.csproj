@@ -102,9 +102,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\videoSocketReceiver\videoSocketReceiver.csproj">
+    <ProjectReference Include="..\videoSocketReceiver\videoSocketReceiverV2.csproj">
       <Project>{ee8758ac-d9e0-49fc-84d2-7001bf588420}</Project>
-      <Name>videoSocketReceiver</Name>
+      <Name>videoSocketReceiverV2</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

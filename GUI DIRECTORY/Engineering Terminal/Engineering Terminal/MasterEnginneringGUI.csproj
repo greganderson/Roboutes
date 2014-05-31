@@ -126,6 +126,10 @@
       <Project>{ca0ff59e-0474-43dc-b89f-16dab8b16e7a}</Project>
       <Name>videoManager</Name>
     </ProjectReference>
+    <ProjectReference Include="..\videoTraits\videoTraits.csproj">
+      <Project>{4e23f54e-247f-4ffe-8ce3-11f19e2c15fc}</Project>
+      <Name>videoTraits</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

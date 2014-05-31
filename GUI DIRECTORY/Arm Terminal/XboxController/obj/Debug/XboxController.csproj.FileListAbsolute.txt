@@ -44,4 +44,3 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\XboxController\b
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\XboxController\bin\Debug\XboxController.pdb
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\XboxController\obj\Debug\XboxController.dll
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\XboxController\obj\Debug\XboxController.pdb
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\XboxController\obj\Debug\XboxController.csprojResolveAssemblyReference.cache

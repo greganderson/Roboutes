@@ -48,4 +48,3 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\powerBar\obj\Deb
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\powerBar\obj\Debug\powerBar.pkgdef
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\powerBar\obj\Debug\powerBar.latest.pkgdef
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\powerBar\obj\Debug\extension.vsixmanifest
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\powerBar\obj\Debug\PowerBar.csprojResolveAssemblyReference.cache

@@ -55,10 +55,4 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\Logistics 
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\Logistics Terminal\bin\Debug\AForge.Video.DirectShow.dll
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\Logistics Terminal\bin\Debug\AForge.Controls.dll
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\Logistics Terminal\bin\Debug\AForge.Video.dll
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\Logistics Terminal\bin\Debug\AForge.dll
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\Logistics Terminal\bin\Debug\AForge.Imaging.dll
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\Logistics Terminal\bin\Debug\AForge.Math.dll
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\Logistics Terminal\bin\Debug\snapShotTools.pdb
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\Logistics Terminal\bin\Debug\AForge.xml
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\Logistics Terminal\bin\Debug\AForge.Imaging.xml
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Logistics Terminal\Logistics Terminal\bin\Debug\AForge.Math.xml

@@ -8,14 +8,12 @@ using System.Net;
 using System.Collections;
 using System.Threading;
 
-namespace videoSocketTools
+namespace videoSocketToolsV2
 {
     public class videoSocketReceiver
     {
         private NetworkStream NetStream;
-        private bool parsing = false;
-        private int currentFrameSize = -1;
-        private byte[] currentFrameBuffer;
+        //private int currentFrameSize = -1;
         private TcpClient TCPClient;
         private int port;
         TcpListener listener;
@@ -30,7 +28,7 @@ namespace videoSocketTools
 
         public delegate void connectionEstablished(bool connectionStatus);
 
-
+        private int debugCount = 0;
 
         Thread worker;
 
@@ -83,7 +81,7 @@ namespace videoSocketTools
                 {
                     worker.Abort();
                 }
-                worker = new Thread(new ThreadStart(beginReceive));
+                worker = new Thread(new ThreadStart(receive));
                 worker.Start();
                 return true;
             }
@@ -93,11 +91,19 @@ namespace videoSocketTools
             }
         }
 
+        private void receive(){
+            while (true)
+            {
+                beginReceive();
+            }
+        }
+
         private void beginReceive()
         {
+            bool parsing = false;
             try
             {
-                currentFrameSize = -1;
+                int currentFrameSize = -1;
                 while (!parsing)
                 {
                     byte[] tempBuffer = new byte[5] { 0, 0, 0, 0, 0 }; //start with zero value.
@@ -136,7 +142,8 @@ namespace videoSocketTools
 
                 if (parsing)
                 {
-                    currentFrameBuffer = new byte[currentFrameSize];
+                    debugCount++;
+                    byte[] currentFrameBuffer = new byte[currentFrameSize];
                     List<byte> tempBuffer = new List<byte>();
                     while (tempBuffer.Count < currentFrameSize)
                     {
@@ -148,10 +155,13 @@ namespace videoSocketTools
                     {
                         frameReceived(tempBuffer.ToArray());
                     }
+                    currentFrameBuffer = null;
+                    tempBuffer = null;
+
                     parsing = false;
                     currentFrameSize = -1;
                 }
-                beginReceive(); //TODO: Commented out to just reaceive a frame at a time
+                //beginReceive(); //TODO: Commented out to just reaceive a frame at a time
             }
             catch
             {

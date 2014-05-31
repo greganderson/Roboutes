@@ -22,4 +22,3 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\StringSocket\bin
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\StringSocket\bin\Debug\StringSocket.pdb
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\StringSocket\obj\Debug\StringSocket.dll
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\StringSocket\obj\Debug\StringSocket.pdb
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\StringSocket\obj\Debug\StringSocket.csprojResolveAssemblyReference.cache

@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using System.IO;
-using videoSocketTools;
+using videoSocketToolsV2;
 using System.Net;
 using System.Net.Sockets;
 using System.Drawing;
@@ -26,10 +26,6 @@ namespace videoViewerWindow {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class videoWindow : Window {
-
-        [DllImport("gdi32.dll")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        internal static extern bool DeleteObject(IntPtr value);
 
         private videoSocketReceiver VSR;
         private int port;
@@ -87,23 +83,6 @@ namespace videoViewerWindow {
             }
         }
 
-        public static BitmapSource GetImageStream(System.Drawing.Image myImage)
-        {
-            var bitmap = new Bitmap(myImage);
-            IntPtr bmpPt = bitmap.GetHbitmap();
-            BitmapSource bitmapSource =
-             System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
-                   bmpPt,
-                   IntPtr.Zero,
-                   Int32Rect.Empty,
-                   BitmapSizeOptions.FromEmptyOptions());
-
-            //freeze bitmapSource and clear memory to avoid memory leaks
-            bitmapSource.Freeze();
-            DeleteObject(bmpPt);
-
-            return bitmapSource;
-        }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             switch (targetMonitor)

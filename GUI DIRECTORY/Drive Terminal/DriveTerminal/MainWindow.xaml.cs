@@ -41,11 +41,11 @@ namespace DriveTerminal {
             InitializeComponent();
 
             oculusVidWindow = new videoWindow(35001, videoWindow.monitors.secondMonitor);
-            oculusVidWindow.setIDLabel("oculusVidWindow");
+           // oculusVidWindow.setIDLabel("oculusVidWindow");
             oculusVidWindow.Show();
 
             noseCamVidWindow = new videoWindow(35004, videoWindow.monitors.thirdMonitor);
-            noseCamVidWindow.setIDLabel("noseCamVidWindow");
+           // noseCamVidWindow.setIDLabel("noseCamVidWindow");
             noseCamVidWindow.Show();
 
             xboxController = new XboxController.XboxController();
@@ -59,8 +59,15 @@ namespace DriveTerminal {
             driveInputMan = new driveInputManager(xboxController);
             driveTransmit = new driveTransmitter(driveInputMan, comSock);
 
-            orientation = OculusOrientation.getInstance();
-            ptTransmitter = new OculusTransmitter(comSock, orientation);
+            try
+            {
+                orientation = OculusOrientation.getInstance();
+                ptTransmitter = new OculusTransmitter(comSock, orientation);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("WARNING! Oculus offline (probably not plugged in). ERROR: " + e.Message);
+            }
 
             pilotPreferences.topSpeedChanged += pilotPreferences_topSpeedChanged;
         }

@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "engineeringTerminalTools", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "commFeedViz", "commFeedViz\commFeedViz.csproj", "{F470B85F-598A-4002-8191-111E9565F239}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "videoTraitsManager", "Video Traits Manager\videoTraitsManager.csproj", "{CA185A4A-4AFA-4735-85D8-415132DF0AEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "videoTraits", "videoTraits\videoTraits.csproj", "{4E23F54E-247F-4FFE-8CE3-11F19E2C15FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +71,14 @@ Global
 		{F470B85F-598A-4002-8191-111E9565F239}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F470B85F-598A-4002-8191-111E9565F239}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F470B85F-598A-4002-8191-111E9565F239}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA185A4A-4AFA-4735-85D8-415132DF0AEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA185A4A-4AFA-4735-85D8-415132DF0AEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA185A4A-4AFA-4735-85D8-415132DF0AEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA185A4A-4AFA-4735-85D8-415132DF0AEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E23F54E-247F-4FFE-8CE3-11F19E2C15FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E23F54E-247F-4FFE-8CE3-11F19E2C15FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E23F54E-247F-4FFE-8CE3-11F19E2C15FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E23F54E-247F-4FFE-8CE3-11F19E2C15FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

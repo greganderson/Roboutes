@@ -29,7 +29,8 @@ namespace Logistics_Terminal
     {
 
         private mapWindow mapWin;
-        private magnificationWindow magWin;
+        private magnificationWindow leftMagWin;
+        private magnificationWindow rightMagWin;
 
         commSockReceiver comSock;
 
@@ -64,8 +65,10 @@ namespace Logistics_Terminal
             mapPalette.newPaletteItemSelected += mapPalette_newPaletteItemSelected;
             mapWin = new mapWindow();
             mapWin.Show();
-            magWin = new magnificationWindow();
-            magWin.Show();
+            leftMagWin = new magnificationWindow(1);
+            leftMagWin.Show();
+            rightMagWin = new magnificationWindow(0);
+            rightMagWin.Show();
         }
 
         void leftSSR_newSnapShotReceived(byte[] receivedImage)
@@ -185,37 +188,61 @@ namespace Logistics_Terminal
                 case "newFront":
                     comSock.write("LOG_FRONT");
                     break;
-                case "magFront":
+                case "magFrontL":
                     if (frontImage.Source != null)
                     {
-                        magWin.displayImage(frontImage.Source);
+                        leftMagWin.displayImage(frontImage.Source);
+                    }
+                    break;
+                case "magFrontR":
+                    if (frontImage.Source != null)
+                    {
+                        rightMagWin.displayImage(frontImage.Source);
                     }
                     break;
                 case "newRight":
                     comSock.write("LOG_RIGHT");
                     break;
-                case "magRight":
+                case "magRightL":
                     if (rightImage.Source != null)
                     {
-                        magWin.displayImage(rightImage.Source);
+                        leftMagWin.displayImage(rightImage.Source);
+                    }
+                    break;
+                case "magRightR":
+                    if (rightImage.Source != null)
+                    {
+                        rightMagWin.displayImage(rightImage.Source);
                     }
                     break;
                 case "newRear":
                     comSock.write("LOG_REAR");
                     break;
-                case "magRear":
+                case "magRearL":
                     if (rearImage.Source != null)
                     {
-                        magWin.displayImage(rearImage.Source);
+                        leftMagWin.displayImage(rearImage.Source);
+                    }
+                    break;
+                case "magRearR":
+                    if (rearImage.Source != null)
+                    {
+                        rightMagWin.displayImage(rearImage.Source);
                     }
                     break;
                 case "newLeft":
                     comSock.write("LOG_LEFT");
                     break;
-                case "magLeft":
+                case "magLeftL":
                     if (leftImage.Source != null)
                     {
-                        magWin.displayImage(leftImage.Source);
+                        leftMagWin.displayImage(leftImage.Source);
+                    }
+                    break;
+                case "magLeftR":
+                    if (leftImage.Source != null)
+                    {
+                        rightMagWin.displayImage(leftImage.Source);
                     }
                     break;
             }

@@ -48,3 +48,4 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\Pitch Tester\o
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\Pitch Tester\obj\Debug\Pitch-Roll Tester.csproj.GenerateResource.Cache
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\Pitch Tester\obj\Debug\Pitch Tester.exe
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\Pitch Tester\obj\Debug\Pitch Tester.pdb
+C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Drive Terminal\Pitch Tester\obj\Debug\Pitch-Roll Tester.csprojResolveAssemblyReference.cache

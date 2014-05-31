@@ -39,8 +39,32 @@ namespace Engineering_Terminal
             comSock.beginAccept();
 
             videoManager.intendedCameraStatusChanged+=videoManager_intendedCameraStatusChanged;
+            videoQualityControl.userUpdatedVideoTraits += videoQualityControl_userUpdatedVideoTraits;
 
             rareHeartbeatTimer = new Timer(rareHeartbeatTimerCallback, null, 2000, 25000);
+        }
+
+        void videoQualityControl_userUpdatedVideoTraits(videoTraits.ToolboxControl.FeedID ID, int quality, int fps)
+        {
+            switch (ID)
+            {
+                case videoTraits.ToolboxControl.FeedID.humerus:
+                    comSock.write("HUMERUS_QUALITY_" + quality);
+                    comSock.write("HUMERUS_FPS_" + fps);
+                    break;
+                case videoTraits.ToolboxControl.FeedID.palm:
+                    comSock.write("PALM_QUALITY_" + quality);
+                    comSock.write("PALM_FPS_" + fps);
+                    break;
+                case videoTraits.ToolboxControl.FeedID.pantilt:
+                    comSock.write("PT_QUALITY_" + quality);
+                    comSock.write("PT_FPS_" + fps);
+                    break;
+                case videoTraits.ToolboxControl.FeedID.workspace:
+                    comSock.write("WORKSPACE_QUALITY_" + quality);
+                    comSock.write("WORKSPACE_FPS_" + fps);
+                    break;
+            }
         }
 
         private void rareHeartbeatTimerCallback(object state) {
@@ -109,6 +133,7 @@ namespace Engineering_Terminal
         void comSock_connectionLost()
         {
             Dispatcher.Invoke(() => connectionIndicator.connected = false);
+            comSock.beginAccept();
         }
 
         void comSock_newConnection(bool obj)

@@ -10,4 +10,3 @@ C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\macroInProgressW
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\macroInProgressWindow\obj\Debug\macroInProgressWindow.csproj.GenerateResource.Cache
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\macroInProgressWindow\obj\Debug\macroInProgressWindow.exe
 C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\macroInProgressWindow\obj\Debug\macroInProgressWindow.pdb
-C:\Users\RoboUtes 6\Desktop\Roboutes\GUI DIRECTORY\Arm Terminal\macroInProgressWindow\obj\Debug\macroInProgressWindow.csprojResolveAssemblyReference.cache

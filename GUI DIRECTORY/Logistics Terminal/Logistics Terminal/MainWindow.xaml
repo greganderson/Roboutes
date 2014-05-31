@@ -20,7 +20,7 @@
             <Border BorderThickness="10" BorderBrush="#FFF70000" VerticalAlignment="Top" Margin="10,394,1292,0" Width="610" Height="390" HorizontalAlignment="Center">
                 <Image x:Name="leftImage" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             </Border>
-            <Image x:Name="roverPic" HorizontalAlignment="Center" Height="530" Margin="479,269,553,251" VerticalAlignment="Center" Width="880" Source="Resources/transparent.png" Opacity="0.3" RenderTransformOrigin="0.5,0.5">
+            <Image x:Name="roverPic" HorizontalAlignment="Center" Height="530" Margin="581,247,451,273" VerticalAlignment="Center" Width="880" Source="Resources/transparent.png" Opacity="0.3" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -36,7 +36,8 @@
                 <Rectangle.ContextMenu>
                     <ContextMenu >
                         <MenuItem Header="Request New Image" Click="MenuItem_Click" Uid="newFront"/>
-                        <MenuItem Header="Magnify" Click="MenuItem_Click" Uid="magFront"/>
+                        <MenuItem Header="Magnify - Left" Click="MenuItem_Click" Uid="magFrontL"/>
+                        <MenuItem Header="Magnify - Right" Click="MenuItem_Click" Uid="magFrontR"/>
                     </ContextMenu>
                 </Rectangle.ContextMenu>
                 <Rectangle.Fill>
@@ -47,7 +48,8 @@
                 <Rectangle.ContextMenu>
                     <ContextMenu >
                         <MenuItem Header="Request New Image" Click="MenuItem_Click" Uid="newRight"/>
-                        <MenuItem Header="Magnify" Click="MenuItem_Click" Uid="magRight"/>
+                        <MenuItem Header="Magnify - Left" Click="MenuItem_Click" Uid="magRightL"/>
+                        <MenuItem Header="Magnify - Right" Click="MenuItem_Click" Uid="magRightR"/>
                     </ContextMenu>
                 </Rectangle.ContextMenu>
                 <Rectangle.Fill>
@@ -58,7 +60,8 @@
                 <Rectangle.ContextMenu>
                     <ContextMenu >
                         <MenuItem Header="Request New Image" Click="MenuItem_Click" Uid="newRear"/>
-                        <MenuItem Header="Magnify" Click="MenuItem_Click" Uid="magRear"/>
+                        <MenuItem Header="Magnify - Left" Click="MenuItem_Click" Uid="magRearL"/>
+                        <MenuItem Header="Magnify - Right" Click="MenuItem_Click" Uid="magRearR"/>
                     </ContextMenu>
                 </Rectangle.ContextMenu>
                 <Rectangle.Fill>
@@ -69,7 +72,8 @@
                 <Rectangle.ContextMenu>
                     <ContextMenu >
                         <MenuItem Header="Request New Image" Click="MenuItem_Click" Uid="newLeft"/>
-                        <MenuItem Header="Magnify" Click="MenuItem_Click" Uid="magLeft"/>
+                        <MenuItem Header="Magnify - Left" Click="MenuItem_Click" Uid="magLeftL"/>
+                        <MenuItem Header="Magnify - Right" Click="MenuItem_Click" Uid="magLeftR"/>
                     </ContextMenu>
                 </Rectangle.ContextMenu>
                 <Rectangle.Fill>
