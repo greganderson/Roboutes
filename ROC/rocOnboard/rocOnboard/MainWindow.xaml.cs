@@ -74,12 +74,12 @@ namespace rocOnboard
             ArduMan = ArduinoManager.Instance;
             ArduMan.findArduinos();
 
-            backDrive = ArduMan.getDriveBackArduino(false);
-            frontDrive = ArduMan.getDriveFrontArduino(false);
-            ptDuino = ArduMan.getPanTiltArduino(false);
+            backDrive = ArduMan.getDriveBackArduino(true);
+            frontDrive = ArduMan.getDriveFrontArduino(true);
+            ptDuino = ArduMan.getPanTiltArduino(true);
             ArmDuino = ArduMan.getArmArduino(false);
             HandDuino = ArduMan.getHandArduino(false);
-            miscDuino = ArduMan.getMiscArduino(true);
+            miscDuino = ArduMan.getMiscArduino(false);
 
             backDrive.Data_Received += backDrive_Data_Received;
             frontDrive.Data_Received += frontDrive_Data_Received;
