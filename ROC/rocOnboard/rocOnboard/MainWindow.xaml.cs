@@ -74,8 +74,8 @@ namespace rocOnboard
             ArduMan = ArduinoManager.Instance;
             ArduMan.findArduinos();
 
-            backDrive = ArduMan.getDriveBackArduino(true);
-            frontDrive = ArduMan.getDriveFrontArduino(true);
+            backDrive = ArduMan.getDriveBackArduino(false);
+            frontDrive = ArduMan.getDriveFrontArduino(false);
             ptDuino = ArduMan.getPanTiltArduino(true);
             ArmDuino = ArduMan.getArmArduino(false);
             HandDuino = ArduMan.getHandArduino(false);
