@@ -1,4 +1,4 @@
-#include<Average.h>
+#include<average.h>
 #include <SHARPCOMTEENSY.h>
 ADVCOM armCOM(&Serial, "ARM");
 String dataFromPC;
