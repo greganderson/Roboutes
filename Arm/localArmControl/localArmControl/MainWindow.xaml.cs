@@ -29,6 +29,7 @@ namespace localArmControl
         Arduino armDuino;
         Arduino handDuino;
         ArduinoManager ArduMan;
+
         armInputManager armInput;
         localArmCommandTransmitter armTransmitter;
 
@@ -39,7 +40,10 @@ namespace localArmControl
             ArduMan = ArduinoManager.Instance;
             ArduMan.findArduinos();
 
-            armDuino = ArduMan.getArmArduino(); //TODO: Setup the hand arduino (handDuino)
+            handDuino = ArduMan.getHandArduino();
+            handDuino.Data_Received += handDuino_Data_Received;
+
+            armDuino = ArduMan.getArmArduino();
             armDuino.Data_Received += armDuino_Data_Received;
 
             Console.SetOut(consoleViz.getStreamLink()); //Show console output in gui
@@ -47,12 +51,19 @@ namespace localArmControl
             xboxController = new XboxController.XboxController();
 
             armInput = armInputManager.getInstance(xboxController);
-            armTransmitter = new localArmCommandTransmitter(armDuino, armInput);
+            armTransmitter = new localArmCommandTransmitter(armDuino, handDuino, armInput);
 
             xboxControllerMonitor.xboxController = xboxController;
             armSideView.armInputManager = armInput;
             armTopView.armInputManager = armInput;
             Console.WriteLine("***XBOX CONTROLLER CONNECTED***");
+
+            wristComponent._xboxController = xboxController;
+        }
+
+        void handDuino_Data_Received(string receivedData)
+        {
+            handComIn.addText(receivedData); //TODO: see how theres an armComHandler below, if the wrist involves the GUI one must be added here...
         }
 
         void armDuino_Data_Received(string receivedData)
@@ -73,8 +84,9 @@ namespace localArmControl
                 string toParse = receivedData.Substring(receivedData.LastIndexOf(":")+1);
                 int parsedVal;
                 if(int.TryParse(toParse,out parsedVal)){
-                    parsedVal = parsedVal.Map(0, 1023, 0, 90);
+                    parsedVal = (int)((parsedVal / 100.0) * armConstants.SHOULDER_RANGE);
                     armSideView.updateActualShoulder(parsedVal);
+                    armInput.initShoulderPosition(parsedVal);
                 }
             }
             else if (receivedData.Contains("Elbow Position:"))
@@ -83,8 +95,9 @@ namespace localArmControl
                 int parsedVal;
                 if (int.TryParse(toParse, out parsedVal))
                 {
-                    parsedVal = parsedVal.Map(0, 1023, 0, 120);
-                    armSideView.updateActualElbow(120-parsedVal);
+                    parsedVal = (int)((parsedVal / 100.0) * armConstants.ELBOW_RANGE); ;
+                    armSideView.updateActualElbow(parsedVal);
+                    armInput.initElbowPosition(parsedVal);
                 }
             }
             else if (receivedData.Contains("Turn Table Position:"))
@@ -93,8 +106,9 @@ namespace localArmControl
                 int parsedVal;
                 if (int.TryParse(toParse, out parsedVal))
                 {
-                    parsedVal = parsedVal.Map(0, 1023, 0, 90);
+                    parsedVal = (int)((parsedVal / 100.0) * armConstants.TURNTABLE_RANGE); ;
                     armTopView.updateActualArmAngle(parsedVal);
+                    armInput.initTurnTablePosition(parsedVal);
                 }
             }
         }

@@ -95,7 +95,7 @@ namespace liveXboxMonitorV2
 
         void _xboxController_ThumbStickRight(object sender, EventArgs e)
         {
-            int MAX_MAGNITUDE = 25; //TEMPORARY
+            int MAX_MAGNITUDE = 25; //TODO: TEMPORARY
             XboxEventArgs args = (XboxEventArgs)e;
             Tuple<float, float> vec = args.GetRightThumbStick();
             float Y = vec.Item2.Map(-1, 1, -100, 100);
