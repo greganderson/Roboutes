@@ -1,4 +1,0 @@
-C:\Users\RoboUtes 1\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\Pitch\1.0\\Pitch.dll
-C:\Users\RoboUtes 1\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\Pitch\1.0\\Pitch.pkgdef
-C:\Users\RoboUtes 1\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\Pitch\1.0\\extension.vsixmanifest
-C:\Users\RoboUtes 1\AppData\Local\Microsoft\VisualStudio\11.0Exp\Extensions\Greg Anderson\Pitch\1.0\\Pitch.pdb
