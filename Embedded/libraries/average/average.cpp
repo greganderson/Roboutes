@@ -1,4 +1,4 @@
-#include "Average.h"
+#include "average.h"
 
 #include <Arduino.h>
 

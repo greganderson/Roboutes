@@ -1,9 +1,9 @@
-#include "SHARPCOMARDUINO.h" //include the declaration for this class
+#include "sharp_com_teensy.h" //include the declaration for this class
 
 const byte LED_PIN = 13; //use the LED @ Arduino pin 13
 
 //<<constructor>>
-ADVCOM::ADVCOM(HardwareSerial *serialIn, String _ID){
+ADVCOM::ADVCOM(usb_serial_class *serialIn, String _ID){
     pinMode(LED_PIN, OUTPUT); //make that pin an OUTPUT
 	SerialLine = serialIn;
 	newDataAvailable = false;
@@ -31,44 +31,29 @@ bool ADVCOM::newData(String *data){
 	}
 }
 
-String ADVCOM::newData(){
-	if(newDataAvailable){
-		String toReturn = fromPC;
-		newDataAvailable = false;
-		fromPC = "";
-		return toReturn;
-	}
-	else{
-		return NULL;
-	}
-}
-
-//blink the LED in a period equal to parameter time.
-void ADVCOM::blinky(int time){
-	digitalWrite(LED_PIN,HIGH); //set the pin HIGH and thus turn LED on
-	delay(time/2);  //wait half of the wanted period
-	digitalWrite(LED_PIN,LOW); //set the pin LOW and thus turn LED off
-	delay(time/2);  //wait the last half of the wanted period
-}
-
 void ADVCOM::writeln(String toSend){
-	SerialLine->println(toSend);
+	Serial.flush();
+	SerialLine->print(toSend+"\n");
 }
 
 void ADVCOM::serialEvent()
 {
 	int read;
 	char toadd;
+	static bool reportedCOMready;
 
 	while(Serial.available() > 0)
 	{
+		reportedCOMready = false;
 		read = Serial.read();
 		if(read == 1){
+			Serial.flush();
 			Serial.print("POLO->");
 			Serial.println(ID);
 			return;
 		}
 		else if(read == 4){
+			Serial.flush();
 			Serial.println("|");
 		}
 		else if(read == 3){
@@ -77,8 +62,15 @@ void ADVCOM::serialEvent()
 		}
 		else{
 			toadd = (char)read;
-			fromPC += toadd;
+			if(toadd != '\n'){
+				fromPC += toadd;
+			}
 		}
 	}
-	Serial.println("~");
+
+	if(!reportedCOMready ){
+		Serial.flush();
+		Serial.println("~");
+		reportedCOMready = true;
+	}
 }
